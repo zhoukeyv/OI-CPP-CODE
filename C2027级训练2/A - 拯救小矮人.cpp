@@ -9,7 +9,7 @@ struct Node
 	int a,b;
 	bool operator<(const Node& x)const
 	{
-		return a<x.a;
+		return a+b<x.a+x.b;
 	}
 }a[N];
 int n,h;
@@ -21,7 +21,7 @@ void solve()
 		cin>>a[i].a>>a[i].b;
 	}
 	cin>>h;
-	sort(a+1,a+n+1,greater<Node>());
+	sort(a+1,a+n+1);
 	return;
 }
 signed main()

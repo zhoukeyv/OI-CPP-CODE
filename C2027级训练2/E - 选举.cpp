@@ -25,21 +25,25 @@ void solve()
 		a[i].id=i;
 		sum+=a[i].a;
 	}
-	for (int i=1;i<=n;i++)
+	for (int i=0;i<=n;i++)
 	{
-		dp[i].resize(2*sum+1);
+		dp[i].resize(sum+1);
 	}
 	sort(a+1,a+n+1,greater<>());
 	dp[0][0]=true;
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<=2*sum;j++)
+		for (int j=0;j<=sum;j++)
 		{
 			dp[i][j]=dp[i-1][j];
 		}
 		for (int j=0;j<lim;j++)
 		{
+			if (j+a[i].a>sum)
+			{
+				break;
+			}
 			if (dp[i-1][j]==1)
 			{
 				dp[i][j+a[i].a]=1;

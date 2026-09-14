@@ -16,7 +16,7 @@ void solve()
 		cin>>a[i];
 		sum+=a[i];
 	}
-	sort(a+1,a+n+1);
+	sort(a+1,a+n+1,greater<int>());
 	dp[0]=true;
 	for (int i=1;i<=n;i++)
 	{

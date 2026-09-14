@@ -27,14 +27,14 @@ void solve()
 	}
 	for (int i=1;i<=n;i++)
 	{
-		dp[i].resize(sum+1);
+		dp[i].resize(2*sum+1);
 	}
 	sort(a+1,a+n+1,greater<>());
 	dp[0][0]=true;
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<=sum;j++)
+		for (int j=0;j<=2*sum;j++)
 		{
 			dp[i][j]=dp[i-1][j];
 		}

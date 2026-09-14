@@ -3,7 +3,7 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18,N=310,V=1e5+10;
+const int inf=1e18,N=310,V=2e5+10;
 struct Node
 {
 	int a,id;
@@ -31,7 +31,7 @@ void solve()
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<=(int)1e5;j++)
+		for (int j=0;j<=(int)2e5;j++)
 		{
 			dp[i][j]=dp[i-1][j];
 			way[i][j]=j;
@@ -46,7 +46,7 @@ void solve()
 		}
 	}
 	int idx=0;
-	for (int i=(int)1e5;i>=1;i--)
+	for (int i=(int)2e5;i>=1;i--)
 	{
 		if (dp[n][i])
 		{

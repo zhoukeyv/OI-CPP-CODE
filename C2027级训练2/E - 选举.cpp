@@ -23,7 +23,7 @@ void solve()
 	{
 		for (int j=0;j<lim;j++)
 		{
-			dp[j+a[i]]&=dp[j];
+			dp[j+a[i]]|=dp[j];
 			way[j+a[i]]=j;
 		}
 	}

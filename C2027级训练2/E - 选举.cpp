@@ -4,7 +4,8 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
-int a[N],dp[N][V];
+bool dp[N][V];
+int a[N];
 int n;
 void solve()
 {
@@ -18,9 +19,10 @@ void solve()
 	sort(a+1,a+n+1);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<=(int)1e5;j++)
+		int lim=ceil(sum/2.0);
+		for (int j=0;j<lim;j++)
 		{
-			if ()
+			dp[i][j]=
 		}
 	}
 	return;

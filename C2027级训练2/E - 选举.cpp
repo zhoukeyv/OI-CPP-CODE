@@ -28,10 +28,15 @@ void solve()
 		}
 	}
 	int idx=0;
-	for (int i=1;i<=n;i++)
+	for (int i=(int)1e5;i>=1;i--)
 	{
-		
+		if (dp[i])
+		{
+			idx=i;
+			break;
+		}
 	}
+	cout<<idx<<'\n';
 	return;
 }
 signed main()

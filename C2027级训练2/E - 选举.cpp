@@ -23,6 +23,7 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i].a;
+		a[i].id=i;
 		sum+=a[i].a;
 	}
 	sort(a+1,a+n+1,greater<>());

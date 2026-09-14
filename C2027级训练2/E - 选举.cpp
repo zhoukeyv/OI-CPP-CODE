@@ -3,10 +3,16 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18;
+const int inf=1e18,N=310,V=1e5+10;
+int a[N];
+int n;
 void solve()
 {
-	
+	cin>>n;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+	}
 	return;
 }
 signed main()

@@ -43,9 +43,6 @@ void solve()
 			return;
 		}
 	}
-    for(int i = n; i >= 0; --i)
-        if(dp[i] >= 0) {
-            printf("%d\n", i);
 	return;
 }
 signed main()

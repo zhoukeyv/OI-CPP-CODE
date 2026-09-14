@@ -4,8 +4,9 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
-bool dp[N][V];
 int a[N],way[N][V];
+vector<int> ans;
+bool dp[N][V];
 int n;
 void solve()
 {
@@ -48,9 +49,15 @@ void solve()
 	{
 		if (way[i+1][idx]!=idx)
 		{
-			cout<<i+1<<'\n';
+			ans.push_back(i+1);
 		}
 		idx=way[i+1][idx];
+	}
+	sort(ans.begin(),ans.end());
+	cout<<ans.size()<<'\n';
+	for (int i:ans)
+	{
+		cout<<i<<' ';
 	}
 	return;
 }

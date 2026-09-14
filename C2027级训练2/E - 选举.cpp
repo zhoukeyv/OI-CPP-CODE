@@ -21,25 +21,25 @@ void solve()
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=lim-1;j>=0;j--)
+		for (int j=0;j<lim;j++)
 		{
-			if (dp[j]==1)
+			if (dp[i-1][j]==1)
 			{
-				dp[j+a[i]]=1;
-				way[j+a[i]]=j;
+				dp[i][j+a[i]]=1;
+				way[i][j+a[i]]=j;
 			}
 		}
 	}
 	int idx=0;
 	for (int i=(int)1e5;i>=1;i--)
 	{
-		if (dp[i])
+		if (dp[n][i])
 		{
 			idx=i;
 			break;
 		}
 	}
-	while (idx!=0)
+	for (int i=n-1;i>=1;i--)
 	{
 		
 	}

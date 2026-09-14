@@ -31,14 +31,14 @@ void solve()
 	}
 	sort(a+1,a+n+1,greater<>());
 	dp[0][0]=true;
-	int lim=ceil(sum/2.0);
+	int lim=sum/2;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=0;j<=sum;j++)
 		{
 			dp[i][j]=dp[i-1][j];
 		}
-		for (int j=0;j<lim;j++)
+		for (int j=0;j<=lim;j++)
 		{
 			if (j+a[i].a>sum)
 			{
@@ -61,7 +61,7 @@ void solve()
 	}
 	for (int i=n-1;i>=0;i--)
 	{
-		if (idx>=a[i+1].a&&idx-a[i+1].a<lim&&dp[i][idx-a[i+1].a]==1)
+		if (idx>=a[i+1].a&&idx-a[i+1].a<=lim&&dp[i][idx-a[i+1].a]==1)
 		{
 			ans.push_back(a[i+1].id);
 			idx-=a[i+1].a;

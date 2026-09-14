@@ -53,7 +53,7 @@ void solve()
 	}
 	for (int i=n-1;i>=0;i--)
 	{
-		if (idx>=a[i+1].a&&idx<=m&&dp[i][idx-a[i+1].a]==1)
+		if (idx>=a[i+1].a&&idx-a[i+1].a<lim&&dp[i][idx-a[i+1].a]==1)
 		{
 			ans.push_back(a[i+1].id);
 			idx-=a[i+1].a;

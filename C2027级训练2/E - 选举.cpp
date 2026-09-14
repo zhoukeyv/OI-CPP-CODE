@@ -50,6 +50,7 @@ void solve()
 		{
 			cout<<i+1<<'\n';
 		}
+		idx=way[i+1][idx];
 	}
 	return;
 }

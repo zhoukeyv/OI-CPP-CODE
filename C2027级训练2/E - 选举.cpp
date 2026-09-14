@@ -27,7 +27,6 @@ void solve()
 			{
 				dp[j+a[i]]=1;
 				way[j+a[i]]=j;
-				cerr<<i<<' '<<j<<"->"<<j+a[i]<<'\n';
 			}
 		}
 	}
@@ -40,7 +39,10 @@ void solve()
 			break;
 		}
 	}
-	cout<<idx<<'\n';
+	while (idx!=0)
+	{
+		
+	}
 	return;
 }
 signed main()

@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
 bool dp[V];
-int a[N];
+int a[N],way[V];
 int n;
 void solve()
 {
@@ -17,13 +17,20 @@ void solve()
 		sum+=a[i];
 	}
 	sort(a+1,a+n+1);
+	dp[0]=true;
 	for (int i=1;i<=n;i++)
 	{
 		int lim=ceil(sum/2.0);
 		for (int j=0;j<lim;j++)
 		{
 			dp[j+a[i]]&=dp[j];
+			way[j+a[i]]=j;
 		}
+	}
+	int idx=0;
+	for (int i=1;i<=n;i++)
+	{
+		
 	}
 	return;
 }

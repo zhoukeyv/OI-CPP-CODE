@@ -12,7 +12,6 @@ struct Node
 		return a>x.a;
 	}
 }a[N];
-int way[N][V];
 vector<int> ans;
 bool dp[N][V];
 int n;
@@ -34,14 +33,12 @@ void solve()
 		for (int j=0;j<=(int)2e5;j++)
 		{
 			dp[i][j]=dp[i-1][j];
-			way[i][j]=j;
 		}
 		for (int j=0;j<lim;j++)
 		{
 			if (dp[i-1][j]==1)
 			{
 				dp[i][j+a[i].a]=1;
-				way[i][j+a[i].a]=j;
 			}
 		}
 	}
@@ -56,11 +53,11 @@ void solve()
 	}
 	for (int i=n-1;i>=0;i--)
 	{
-		if (way[i+1][idx]!=idx)
+		if (idx>=a[i+1].a&&dp[i][idx-a[i+1].a]==1)
 		{
 			ans.push_back(a[i+1].id);
+			idx-=a[i+1].a;
 		}
-		idx=way[i+1][idx];
 	}
 	sort(ans.begin(),ans.end());
 	cout<<ans.size()<<'\n';

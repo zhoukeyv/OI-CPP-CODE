@@ -45,6 +45,7 @@ void solve()
 			break;
 		}
 	}
+	cerr<<idx<<'\n';
 	for (int i=n-1;i>=0;i--)
 	{
 		if (way[i+1][idx]!=idx)

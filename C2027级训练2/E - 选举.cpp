@@ -16,7 +16,10 @@ void solve()
 	sort(a+1,a+n+1);
 	for (int i=1;i<=n;i++)
 	{
-		
+		for (int j=0;j<=(int)1e5;j++)
+		{
+			
+		}
 	}
 	return;
 }

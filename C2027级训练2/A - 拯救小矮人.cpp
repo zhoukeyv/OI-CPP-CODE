@@ -22,10 +22,6 @@ void solve()
 	}
 	cin>>h;
 	sort(a+1,a+n+1,greater<Node>());
-	for (int i=1;i<=n;i++)
-	{
-		
-	}
 	return;
 }
 signed main()

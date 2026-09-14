@@ -20,6 +20,8 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i].a>>a[i].b;
+		dp[0]+=a[i].a;
+		dp[i]=-inf;
 	}
 	cin>>h;
 	sort(a+1,a+n+1);

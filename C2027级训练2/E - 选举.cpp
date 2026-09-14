@@ -9,10 +9,10 @@ struct Node
 	int a,id;
 	bool operator<(const Node& x)const
 	{
-		
+		return a<x.a;
 	}
-};
-int a[N],way[N][V];
+}a[N];
+int way[N][V];
 vector<int> ans;
 bool dp[N][V];
 int n;
@@ -22,10 +22,10 @@ void solve()
 	int sum=0;
 	for (int i=1;i<=n;i++)
 	{
-		cin>>a[i];
-		sum+=a[i];
+		cin>>a[i].a;
+		sum+=a[i].a;
 	}
-	sort(a+1,a+n+1,greater<int>());
+	sort(a+1,a+n+1,greater<>());
 	dp[0][0]=true;
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
@@ -39,8 +39,8 @@ void solve()
 		{
 			if (dp[i-1][j]==1)
 			{
-				dp[i][j+a[i]]=1;
-				way[i][j+a[i]]=j;
+				dp[i][j+a[i].a]=1;
+				way[i][j+a[i].a]=j;
 			}
 		}
 	}
@@ -53,12 +53,11 @@ void solve()
 			break;
 		}
 	}
-	cerr<<idx<<'\n';
 	for (int i=n-1;i>=0;i--)
 	{
 		if (way[i+1][idx]!=idx)
 		{
-			ans.push_back(i+1);
+			ans.push_back(a[i+1].id);
 		}
 		idx=way[i+1][idx];
 	}

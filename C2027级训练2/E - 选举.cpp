@@ -51,7 +51,7 @@ void solve()
 		}
 	}
 	int idx=0;
-	for (int i=(int)2e5;i>=1;i--)
+	for (int i=sum;i>=1;i--)
 	{
 		if (dp[n][i])
 		{

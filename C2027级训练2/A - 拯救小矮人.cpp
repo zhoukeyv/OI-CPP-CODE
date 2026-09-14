@@ -3,10 +3,33 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18;
+const int inf=1e18,N=2010;
+struct Node
+{
+	int a,b;
+	bool operator<(const Node& x)const
+	{
+		return a<x.a;
+	}
+}a[N];
+int n,h;
 void solve()
 {
-	
+	cin>>n;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>a[i].a>>a[i].b;
+	}
+	cin>>h;
+	sort(a+1,a+n+1,greater<Node>());
+	for (int i=1;i<=n;i++)
+	{
+		int l=1,r=n,res=0;
+		while (l<=r)
+		{
+			int mid=l+(r-l)/2;
+		}
+	}
 	return;
 }
 signed main()

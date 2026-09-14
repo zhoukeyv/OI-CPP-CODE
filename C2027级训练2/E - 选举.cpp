@@ -17,10 +17,15 @@ void solve()
 		sum+=a[i];
 	}
 	sort(a+1,a+n+1,greater<int>());
-	dp[0]=true;
+	dp[0][0]=true;
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
+		for (int j=0;j<=(int)1e5;j++)
+		{
+			dp[i][j]=dp[i-1][j];
+			way[i][j]=j;
+		}
 		for (int j=0;j<lim;j++)
 		{
 			if (dp[i-1][j]==1)
@@ -39,9 +44,12 @@ void solve()
 			break;
 		}
 	}
-	for (int i=n-1;i>=1;i--)
+	for (int i=n-1;i>=0;i--)
 	{
-		
+		if (way[i+1][idx]!=idx)
+		{
+			cout<<i+1<<'\n';
+		}
 	}
 	return;
 }

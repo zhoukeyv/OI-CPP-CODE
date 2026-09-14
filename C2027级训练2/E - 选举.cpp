@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
-bool dp[N][V];
+bool dp[V];
 int a[N];
 int n;
 void solve()
@@ -22,7 +22,7 @@ void solve()
 		int lim=ceil(sum/2.0);
 		for (int j=0;j<lim;j++)
 		{
-			dp[i][j]=
+			dp[j+a[i]]&=dp[j];
 		}
 	}
 	return;

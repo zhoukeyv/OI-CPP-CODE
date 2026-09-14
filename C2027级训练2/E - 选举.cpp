@@ -4,8 +4,8 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
-bool dp[V];
-int a[N],way[V];
+bool dp[N][V];
+int a[N],way[N][V];
 int n;
 void solve()
 {

@@ -18,9 +18,9 @@ void solve()
 	}
 	sort(a+1,a+n+1,greater<int>());
 	dp[0]=true;
+	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		int lim=ceil(sum/2.0);
 		for (int j=0;j<lim;j++)
 		{
 			dp[j+a[i]]&=dp[j];

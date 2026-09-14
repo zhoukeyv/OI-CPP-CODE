@@ -12,8 +12,8 @@ struct Node
 		return a>x.a;
 	}
 }a[N];
+vector<bool> dp[N];
 vector<int> ans;
-bool dp[N][V];
 int n;
 void solve()
 {
@@ -25,12 +25,16 @@ void solve()
 		a[i].id=i;
 		sum+=a[i].a;
 	}
+	for (int i=1;i<=n;i++)
+	{
+		dp[i].resize(sum+1);
+	}
 	sort(a+1,a+n+1,greater<>());
 	dp[0][0]=true;
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<=(int)2e5;j++)
+		for (int j=0;j<=sum;j++)
 		{
 			dp[i][j]=dp[i-1][j];
 		}

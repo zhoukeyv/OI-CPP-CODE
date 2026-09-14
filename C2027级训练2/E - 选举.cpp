@@ -4,6 +4,14 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
+struct Node
+{
+	int a,id;
+	bool operator<(const Node& x)const
+	{
+		
+	}
+};
 int a[N],way[N][V];
 vector<int> ans;
 bool dp[N][V];

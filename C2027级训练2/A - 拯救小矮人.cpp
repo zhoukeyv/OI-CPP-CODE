@@ -12,6 +12,7 @@ struct Node
 		return a+b<x.a+x.b;
 	}
 }a[N];
+int dp[N];
 int n,h;
 void solve()
 {

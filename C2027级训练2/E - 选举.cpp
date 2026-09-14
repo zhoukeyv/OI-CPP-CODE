@@ -21,7 +21,7 @@ void solve()
 	int lim=ceil(sum/2.0);
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<lim;j++)
+		for (int j=lim-1;j>=0;j--)
 		{
 			if (dp[j]==1)
 			{

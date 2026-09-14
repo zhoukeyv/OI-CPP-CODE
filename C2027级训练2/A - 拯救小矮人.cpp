@@ -24,11 +24,7 @@ void solve()
 	sort(a+1,a+n+1,greater<Node>());
 	for (int i=1;i<=n;i++)
 	{
-		int l=1,r=n,res=0;
-		while (l<=r)
-		{
-			int mid=l+(r-l)/2;
-		}
+		
 	}
 	return;
 }

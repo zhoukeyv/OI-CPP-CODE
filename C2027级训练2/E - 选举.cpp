@@ -9,16 +9,18 @@ int n;
 void solve()
 {
 	cin>>n;
+	int sum=0;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+		sum+=a[i];
 	}
 	sort(a+1,a+n+1);
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=0;j<=(int)1e5;j++)
 		{
-			
+			if ()
 		}
 	}
 	return;

@@ -7,9 +7,9 @@ const int inf=1e18,N=310,V=1e5+10;
 struct Node
 {
 	int a,id;
-	bool operator<(const Node& x)const
+	bool operator>(const Node& x)const
 	{
-		return a<x.a;
+		return a>x.a;
 	}
 }a[N];
 int way[N][V];

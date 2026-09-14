@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=310,V=1e5+10;
-int a[N];
+int a[N],dp[N][V];
 int n;
 void solve()
 {
@@ -12,6 +12,11 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+	}
+	sort(a+1,a+n+1);
+	for (int i=1;i<=n;i++)
+	{
+		
 	}
 	return;
 }

@@ -23,8 +23,12 @@ void solve()
 	{
 		for (int j=0;j<lim;j++)
 		{
-			dp[j+a[i]]|=dp[j];
-			way[j+a[i]]=j;
+			if (dp[j]==1)
+			{
+				dp[j+a[i]]=1;
+				way[j+a[i]]=j;
+				cerr<<i<<' '<<j<<"->"<<j+a[i]<<'\n';
+			}
 		}
 	}
 	int idx=0;

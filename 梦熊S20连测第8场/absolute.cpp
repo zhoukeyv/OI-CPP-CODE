@@ -27,44 +27,50 @@ void solve()
             int max11=-inf,max12=-inf,max21=-inf,max22=-inf,idx11=-1,idx12=-1,idx21=-1,idx22=-1;
             for (int k=1;k<=n;k++)
             {
-                int X=i*a[k]-j*b[k]-labs(a[k]-b[k]);
-                int Y=j*a[k]-i*b[k]-labs(a[k]-b[k]);
-                if (X>max11)
+                int t1=i*a[k]-j*b[k]-labs(a[k]-b[k]),t2=j*a[k]-i*b[k]-labs(a[k]-b[k]);
+                if (t1>max11)
                 {
                     max12=max11;
                     idx12=idx11;
-                    max11=X;
+                    max11=t1;
                     idx11=k;
-                } else if (X>max12)
+                } else if (t1>max12)
                 {
-                    max12=X;
+                    max12=t1;
                     idx12=k;
                 }
-                if (Y>max21)
+                if (t2>max21)
                 {
                     max22=max21;
                     idx22=idx21;
-                    max21=Y;
+                    max21=t2;
                     idx21=k;
-                } else if (Y>max22)
+                } else if (t2>max22)
                 {
-                    max22=Y;
+                    max22=t2;
                     idx22=k;
                 }
             }
-
             int temp=-inf;
             if (idx11!=idx21)
             {
                 temp=max11+max21;
-            } else {
-                if (max12!=-inf) temp = max(temp, max11 + max22);
-                if (max22!=-inf) temp = max(temp, max12 + max21);
             }
-
-            res = max(res, temp);
+            else
+            {
+                if (max12!=-inf)
+                {
+                    temp=max(temp,max11+max22);
+                }
+                if (max22!=-inf)
+                {
+                    temp=max(temp,max12+max21);
+                }
+            }
+            res=max(res,temp);
         }
     }
+    cout<<res<<'\n';
     return;
 }
 signed main()

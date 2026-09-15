@@ -70,7 +70,7 @@ void solve()
             res=max(res,temp);
         }
     }
-    cout<<res<<'\n';
+    cout<<sum+res<<'\n';
     return;
 }
 signed main()

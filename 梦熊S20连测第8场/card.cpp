@@ -20,23 +20,17 @@ bool check(int mid)
 	{
 		return true;
 	}
-	int maxx=-inf,idx=0;
+	int maxx=-inf,sum=0;
 	for (int i=1;i<=n;i++)
 	{
 		int temp=(b[i]>=mid?1:0)-(a[i]>=mid?1:0);
+		if (temp>0)
+		{
+			sum+=temp;
+		}
+		maxx=max(maxx,sum);
 	}
-    for (int i = 1; i <= n; ++i) {
-        if (a[i] >= x) cnt++;
-    }
-    int need = k - cnt;
-    if (need <= 0) return true;
-    int max_sum = -1e9, cur = 0;
-    for (int i = 1; i <= n; ++i) {
-        int delta = (b[i] >= x ? 1 : 0) - (a[i] >= x ? 1 : 0);
-        cur = max(delta, cur + delta);
-        max_sum = max(max_sum, cur);
-    }
-    return max_sum >= need;
+	return maxx+cnt>=k;
 }
 void solve()
 {

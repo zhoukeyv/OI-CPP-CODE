@@ -24,10 +24,7 @@ bool check(int mid)
 	for (int i=1;i<=n;i++)
 	{
 		int temp=(b[i]>=mid?1:0)-(a[i]>=mid?1:0);
-		if (temp>0)
-		{
-			sum+=temp;
-		}
+		sum=max(temp,sum+temp);
 		maxx=max(maxx,sum);
 	}
 	return maxx+cnt>=k;

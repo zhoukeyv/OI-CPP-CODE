@@ -3,7 +3,16 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18;
+const int inf=1e18,V=3e5+10;
+int n,m;
+int prod(int x,int y)
+{
+	__int128 t=(__int128)x*y;
+	if (t>=m)
+	{
+		
+	}
+}
 void solve()
 {
 	

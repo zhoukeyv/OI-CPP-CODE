@@ -20,6 +20,13 @@ void solve()
         sum+=labs(a[i]-b[i]);
     }
     int res=0;
+    for (int i=-1;i<=1;i+=2)
+    {
+        for (int j=-1;j<=1;j+=2)
+        {
+            
+        }
+    }
     return;
 }
 signed main()

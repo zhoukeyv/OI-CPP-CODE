@@ -3,7 +3,8 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18,V=3e5+10;
+const int inf=1e18,N=130,V=3e5+10;
+int k[N],c[N];
 int n,m;
 int prod(int x,int y)
 {
@@ -16,7 +17,15 @@ int prod(int x,int y)
 }
 void solve()
 {
-	
+	cin>>n>>m;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>k[i];
+	}
+	for (int i=1;i<=n;i++)
+	{
+		cin>>c[i];
+	}
 	return;
 }
 signed main()

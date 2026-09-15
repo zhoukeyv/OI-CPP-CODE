@@ -26,6 +26,7 @@ void solve()
 	{
 		cin>>c[i];
 	}
+	
 	return;
 }
 signed main()

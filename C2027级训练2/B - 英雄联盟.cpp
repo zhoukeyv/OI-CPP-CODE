@@ -27,15 +27,19 @@ void solve()
 		cin>>c[i];
 	}
 	int sum=0;
-	dp[0]=1;
+	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=1;j<=k[i];j++)
 		{
 			for (int t=sum;t>=0;t--)
 			{
+				
+			}
+			for (int t=sum;t>=0;t--)
+			{
 				// cerr<<t<<"->"<<t+j*c[i]<<' '<<j<<'\n';
-				dp[t+j*c[i]]=max(dp[t+j*c[i]],prod(dp[t],j));
+				dp[i][t+j*c[i]]=max(dp[i-1][t+j*c[i]],prod(dp[i][t],j));
 			}
 		}
 		sum+=k[i]*c[i];

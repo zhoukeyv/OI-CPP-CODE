@@ -30,7 +30,7 @@ void solve()
 	dp[0]=1;
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=0;j<=k[i];j++)
+		for (int j=1;j<=k[i];j++)
 		{
 			for (int t=0;t<=sum;t++)
 			{

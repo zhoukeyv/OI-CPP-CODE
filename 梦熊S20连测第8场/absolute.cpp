@@ -29,30 +29,40 @@ void solve()
             {
                 int X=i*a[k]-j*b[k]-labs(a[k]-b[k]);
                 int Y=j*a[k]-i*b[k]-labs(a[k]-b[k]);
-                if (X > max11)
+                if (X>max11)
                 {
-                    max12 = max11; idx12 = idx11;
-                    max11 = X; idx11 = k;
-                } else if (X > max12) {
-                    max12 = X; idx12 = k;
+                    max12=max11;
+                    idx12=idx11;
+                    max11=X;
+                    idx11=k;
+                } else if (X>max12)
+                {
+                    max12=X;
+                    idx12=k;
                 }
-                if (Y > max21) {
-                    max22 = max21; idx22 = idx21;
-                    max21 = Y; idx21 = k;
-                } else if (Y > max22) {
-                    max22 = Y; idx22 = k;
+                if (Y>max21)
+                {
+                    max22=max21;
+                    idx22=idx21;
+                    max21=Y;
+                    idx21=k;
+                } else if (Y>max22)
+                {
+                    max22=Y;
+                    idx22=k;
                 }
             }
 
-            int cand = intONG_MIN;
-            if (idx11 != idx21) {
-                cand = max11 + max21;
+            int temp=-inf;
+            if (idx11!=idx21)
+            {
+                temp=max11+max21;
             } else {
-                if (idx12 != -1) cand = max(cand, max11 + max22);
-                if (idx22 != -1) cand = max(cand, max12 + max21);
+                if (max12!=-inf) temp = max(temp, max11 + max22);
+                if (max22!=-inf) temp = max(temp, max12 + max21);
             }
 
-            res = max(res, cand);
+            res = max(res, temp);
         }
     }
     return;

@@ -3,10 +3,20 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18;
+const int inf=1e18,N=2e5+10;
+int a[N],b[N];
+int n;
 void solve()
 {
-    
+    cin>>n;
+    for (int i=1;i<=n;i++)
+    {
+        cin>>a[i];
+    }
+    for (int i=1;i<=n;i++)
+    {
+        cin>>b[i];
+    }
     return;
 }
 signed main()
@@ -18,7 +28,7 @@ signed main()
     ios::sync_with_stdio(0);
     cin.tie(0);
     int TestCase=1;
-    // cin>>TestCase;
+    cin>>TestCase;
     for (int Caseid=1;Caseid<=TestCase;Caseid++)
     {
         solve();

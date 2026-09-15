@@ -11,7 +11,7 @@ int prod(int x,int y)
 	__int128 t=(__int128)x*y;
 	if (t>=m)
 	{
-		return m+1;
+		return m;
 	}
 	return x*y;
 }
@@ -37,6 +37,14 @@ void solve()
 			}
 		}
 		sum+=k[i]*c[i];
+	}
+	for (int i=sum;i>=0;i--)
+	{
+		if (dp[i]>=m)
+		{
+			cout<<i<<'\n';
+			return;
+		}
 	}
 	return;
 }

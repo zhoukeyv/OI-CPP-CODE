@@ -10,8 +10,9 @@ int prod(int x,int y)
 	__int128 t=(__int128)x*y;
 	if (t>=m)
 	{
-		
+		return m+1;
 	}
+	return x*y;
 }
 void solve()
 {

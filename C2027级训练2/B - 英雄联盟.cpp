@@ -34,6 +34,7 @@ void solve()
 		{
 			for (int t=0;t<=sum;t++)
 			{
+				cerr<<t<<'->'<<t+j*c[i]<<'\n';
 				dp[t+j*c[i]]=max(dp[t+j*c[i]],prod(dp[j],j));
 			}
 		}

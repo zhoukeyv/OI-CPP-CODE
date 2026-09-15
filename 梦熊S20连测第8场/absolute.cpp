@@ -19,6 +19,7 @@ void solve()
         cin>>b[i];
         sum+=labs(a[i]-b[i]);
     }
+    int res=0;
     return;
 }
 signed main()

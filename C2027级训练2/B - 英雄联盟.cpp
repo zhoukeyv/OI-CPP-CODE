@@ -43,7 +43,7 @@ void solve()
 	for (int i=1;i<=sum;i++)
 	{
 		// cerr<<i<<' '<<dp[i]<<'\n';
-		if (dp[i][i]>=m)
+		if (dp[n][i]>=m)
 		{
 			cout<<i<<'\n';
 			return;

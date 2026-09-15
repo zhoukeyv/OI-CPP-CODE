@@ -6,6 +6,10 @@ const double eps=1e-6;
 const int inf=1e18,N=3e5+10;
 int a[N],b[N];
 int n,k;
+bool check(int mid)
+{
+	
+}
 void solve()
 {
 	cin>>n;
@@ -14,6 +18,21 @@ void solve()
 	{
 		cin>>a[i]>>b[i];
 	}
+	int l=1,r=1e9,res=1;
+	while (l<=r)
+	{
+		int mid=l+(r-l)/2;
+		if (check(mid))
+		{
+			res=mid;
+			l=mid+1;
+		}
+		else
+		{
+			r=mid-1;
+		}
+	}
+	cout<<res<<'\n';
 	return;
 }
 signed main()

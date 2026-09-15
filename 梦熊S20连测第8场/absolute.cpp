@@ -24,35 +24,32 @@ void solve()
     {
         for (int j=-1;j<=1;j+=2)
         {
-            int maxX1 =-inf, maxX2 = -inf;
-            int posX1 = -1, posX2 = -1;
-            int maxY1 =-inf, maxY2 =-inf;
-            int posY1 = -1, posY2 = -1;
-
-            for (int i = 0; i < n; ++i) {
-                int c = intabs(a[i] - b[i]);
-                int X = s * a[i] - t * b[i] - c;
-                int Y = t * a[i] - s * b[i] - c;
-                if (X > maxX1) {
-                    maxX2 = maxX1; posX2 = posX1;
-                    maxX1 = X; posX1 = i;
-                } else if (X > maxX2) {
-                    maxX2 = X; posX2 = i;
+            int max11=-inf,max12=-inf,max21=-inf,max22=-inf,idx11=-1,idx12=-1,idx21=-1,idx22=-1;
+            for (int k=1;k<=n;k++)
+            {
+                int X=i*a[k]-j*b[k]-labs(a[k]-b[k]);
+                int Y=j*a[k]-i*b[k]-labs(a[k]-b[k]);
+                if (X > max11)
+                {
+                    max12 = max11; idx12 = idx11;
+                    max11 = X; idx11 = k;
+                } else if (X > max12) {
+                    max12 = X; idx12 = k;
                 }
-                if (Y > maxY1) {
-                    maxY2 = maxY1; posY2 = posY1;
-                    maxY1 = Y; posY1 = i;
-                } else if (Y > maxY2) {
-                    maxY2 = Y; posY2 = i;
+                if (Y > max21) {
+                    max22 = max21; idx22 = idx21;
+                    max21 = Y; idx21 = k;
+                } else if (Y > max22) {
+                    max22 = Y; idx22 = k;
                 }
             }
 
             int cand = intONG_MIN;
-            if (posX1 != posY1) {
-                cand = maxX1 + maxY1;
+            if (idx11 != idx21) {
+                cand = max11 + max21;
             } else {
-                if (posX2 != -1) cand = max(cand, maxX1 + maxY2);
-                if (posY2 != -1) cand = max(cand, maxX2 + maxY1);
+                if (idx12 != -1) cand = max(cand, max11 + max22);
+                if (idx22 != -1) cand = max(cand, max12 + max21);
             }
 
             res = max(res, cand);

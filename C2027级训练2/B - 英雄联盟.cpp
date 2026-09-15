@@ -40,7 +40,7 @@ void solve()
 		}
 		sum+=k[i]*c[i];
 	}
-	for (int i=0;i<=sum;i++)
+	for (int i=1;i<=sum;i++)
 	{
 		// cerr<<i<<' '<<dp[i]<<'\n';
 		if (dp[i]>=m)

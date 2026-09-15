@@ -30,12 +30,12 @@ void solve()
 	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
+		for (int t=0;t<=sum;t++)
+		{
+			dp[i][t]=dp[i-1][t];
+		}
 		for (int j=0;j<=k[i];j++)
 		{
-			for (int t=0;t<=sum;t++)
-			{
-				dp[i][t]=dp[i-1][t];
-			}
 			for (int t=0;t<=sum;t++)
 			{
 				// cerr<<t<<"->"<<t+j*c[i]<<' '<<j<<'\n';

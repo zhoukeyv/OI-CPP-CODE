@@ -8,7 +8,35 @@ int a[N],b[N];
 int n,k;
 bool check(int mid)
 {
-	
+	int cnt=0;
+	for (int i=1;i<=n;i++)
+	{
+		if (a[i]>=mid)
+		{
+			cnt++;
+		}
+	}
+	if (k<=cnt)
+	{
+		return true;
+	}
+	int maxx=-inf,idx=0;
+	for (int i=1;i<=n;i++)
+	{
+		int temp=(b[i]>=mid?1:0)-(a[i]>=mid?1:0);
+	}
+    for (int i = 1; i <= n; ++i) {
+        if (a[i] >= x) cnt++;
+    }
+    int need = k - cnt;
+    if (need <= 0) return true;
+    int max_sum = -1e9, cur = 0;
+    for (int i = 1; i <= n; ++i) {
+        int delta = (b[i] >= x ? 1 : 0) - (a[i] >= x ? 1 : 0);
+        cur = max(delta, cur + delta);
+        max_sum = max(max_sum, cur);
+    }
+    return max_sum >= need;
 }
 void solve()
 {

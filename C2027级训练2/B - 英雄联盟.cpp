@@ -34,15 +34,15 @@ void solve()
 		{
 			for (int t=0;t<=sum;t++)
 			{
-				cerr<<t<<"->"<<t+j*c[i]<<' '<<j<<'\n';
+				// cerr<<t<<"->"<<t+j*c[i]<<' '<<j<<'\n';
 				dp[t+j*c[i]]=max(dp[t+j*c[i]],prod(dp[t],j));
 			}
 		}
 		sum+=k[i]*c[i];
 	}
-	for (int i=sum;i>=0;i--)
+	for (int i=0;i<=sum;i++)
 	{
-		cerr<<i<<' '<<dp[i]<<'\n';
+		// cerr<<i<<' '<<dp[i]<<'\n';
 		if (dp[i]>=m)
 		{
 			cout<<i<<'\n';

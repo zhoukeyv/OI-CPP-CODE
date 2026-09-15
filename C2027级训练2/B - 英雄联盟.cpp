@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=130,V=3e5+10;
-int k[N],c[N];
+int k[N],c[N],dp[V];
 int n,m;
 int prod(int x,int y)
 {
@@ -26,7 +26,18 @@ void solve()
 	{
 		cin>>c[i];
 	}
-	
+	int sum=0;
+	for (int i=1;i<=n;i++)
+	{
+		for (int j=0;j<=k[i];j++)
+		{
+			for (int t=0;t<=sum;t++)
+			{
+				
+			}
+		}
+		sum+=k[i]*c[i];
+	}
 	return;
 }
 signed main()

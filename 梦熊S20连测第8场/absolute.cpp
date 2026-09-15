@@ -13,9 +13,11 @@ void solve()
     {
         cin>>a[i];
     }
+    int sum=0;
     for (int i=1;i<=n;i++)
     {
         cin>>b[i];
+        sum+=labs(a[i]-b[i]);
     }
     return;
 }

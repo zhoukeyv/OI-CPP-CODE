@@ -9,7 +9,11 @@ int n,k;
 void solve()
 {
 	cin>>n;
-	
+	k=(n+1)/2;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>a[i]>>b[i];
+	}
 	return;
 }
 signed main()

@@ -41,6 +41,7 @@ void solve()
 	}
 	for (int i=sum;i>=0;i--)
 	{
+		cerr<<i<<' '<<dp[i]<<'\n';
 		if (dp[i]>=m)
 		{
 			cout<<i<<'\n';

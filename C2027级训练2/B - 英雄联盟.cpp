@@ -27,6 +27,7 @@ void solve()
 		cin>>c[i];
 	}
 	int sum=0;
+	dp[0]=1;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=0;j<=k[i];j++)

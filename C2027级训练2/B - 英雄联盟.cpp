@@ -32,7 +32,7 @@ void solve()
 	{
 		for (int j=0;j<=k[i];j++)
 		{
-			for (int t=sum;t>=0;t--)
+			for (int t=0;t<=sum;t++)
 			{
 				// cerr<<t<<"->"<<t+j*c[i]<<' '<<j<<'\n';
 				dp[i][t+j*c[i]]=max(dp[i-1][t+j*c[i]],prod(dp[i][t],j));

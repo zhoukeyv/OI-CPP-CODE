@@ -33,7 +33,7 @@ void solve()
 		{
 			for (int t=0;t<=sum;t++)
 			{
-				
+				dp[t+j*c[i]]=max(dp[t+j*c[i]],prod(dp[j],j));
 			}
 		}
 		sum+=k[i]*c[i];

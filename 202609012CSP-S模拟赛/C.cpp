@@ -8,8 +8,13 @@ struct Node
 {
 	int l,r,sum,mul,lazy;
 }tr[N*16];
-int tr_cnt=0;
+int tr_cnt=-1;
 int new_node()
+{
+	tr_cnt++;
+	tr[tr_cnt]={-1,-1,0,0,0};
+	return tr_cnt;
+}
 vector<int> graph[N];
 int dp[N];
 int n;

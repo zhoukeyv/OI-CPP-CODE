@@ -32,6 +32,10 @@ void push_down(int idx,int l,int r)
 		tr[idx].r=rc;
 	}
 	int mid=l+(r-l)/2;
+	if (tr[idx].mul!=1)
+	{
+		
+	}
 }
 vector<int> graph[N];
 int dp[N];

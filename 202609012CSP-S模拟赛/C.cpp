@@ -47,7 +47,14 @@ void push_down(int idx,int l,int r)
 	tr[idx].lazy2=1;
 	return;
 }
-
+void update(int idx,int l,int r,int x,int v)
+{
+	if (l==r)
+	{
+		tr[idx].sum=v;
+		return;
+	}
+}
 vector<int> graph[N];
 int dp[N];
 int n;

@@ -15,7 +15,14 @@ int new_node()
 	tr[tr_cnt]={-1,-1,0,1,0};
 	return tr_cnt;
 }
-void push_down(int l,int r,)
+void push_down(int idx,int l,int r)
+{
+	if (tr[idx].lazy==0)
+	{
+		return;
+	}
+	int mid=l+(r-l)/2;
+}
 vector<int> graph[N];
 int dp[N];
 int n;

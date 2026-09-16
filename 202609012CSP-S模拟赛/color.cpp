@@ -133,7 +133,7 @@ int merge(int idx1,int idx2,int l,int r)
 }
 vector<int> graph[N];
 int c[N],dp[N],rt[N];
-int n,m;
+int n,m,k;
 void DFS(int u,int f)
 {
 	if (graph[u].size()==1&&u!=1)
@@ -169,8 +169,8 @@ void DFS(int u,int f)
 }
 void solve()
 {
-	cin>>n>>m;
-	for (int i=1;i<=n;i++)
+	cin>>n>>m>>k;
+	for (int i=2;i<=k+1;i++)
 	{
 		cin>>c[i];
 	}

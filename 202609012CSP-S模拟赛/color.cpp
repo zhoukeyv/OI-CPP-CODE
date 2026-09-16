@@ -146,6 +146,10 @@ void DFS(int u,int f)
 void solve()
 {
 	cin>>n;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>c[i];
+	}
 	for (int i=1;i<n;i++)
 	{
 		int u,v;

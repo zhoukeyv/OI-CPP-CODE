@@ -154,7 +154,7 @@ void DFS(int u,int f)
 		}
 		DFS(v,u);
 		temp=temp*dp[v]%mod;
-		if(!rt[u])
+		if(rt[u]==-1)
 		{
 			rt[u]=rt[v];
 		}
@@ -170,6 +170,7 @@ void DFS(int u,int f)
 }
 void solve()
 {
+	memset(rt,-1,sizeof rt);
 	cin>>n>>m>>k;
 	for (int i=2;i<=k+1;i++)
 	{

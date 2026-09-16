@@ -165,7 +165,7 @@ void DFS(int u,int f)
 	}
 	apply(rt[u],1,n,-temp,1);
 	dp[u]=(temp*(m+1)%mod+tr[rt[u]].sum)%mod;
-	apply(rt[u],1,n,1,dp[u]);
+	apply(rt[u],1,n,dp[u],1);
 	return;
 }
 void solve()

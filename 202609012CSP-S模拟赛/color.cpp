@@ -16,6 +16,10 @@ int new_node()
 	tr[tr_cnt]={-1,-1,0,1,0,false};
 	return tr_cnt;
 }
+void apply(int idx,int l,int r,int x,int y)
+{
+	
+}
 void push_down(int idx,int l,int r)
 {
 	if (tr[idx].lazy1==0&&tr[idx].lazy2==1)

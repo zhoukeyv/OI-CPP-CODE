@@ -6,7 +6,7 @@ const double eps=1e-6;
 const int inf=1e18,N=2e5+10,mod=998244353;
 struct Node
 {
-	int l,r,sum,mul,lazy;
+	int l,r,sum,lazy1,lazy2;
 	bool flag;
 }tr[N*16];
 int tr_cnt=-1;
@@ -18,7 +18,7 @@ int new_node()
 }
 void push_down(int idx,int l,int r)
 {
-	if (tr[idx].lazy==0&&tr[idx].mul==1)
+	if (tr[idx].lazy1==0&&tr[idx].lazy2==1)
 	{
 		return;
 	}
@@ -33,7 +33,7 @@ void push_down(int idx,int l,int r)
 		tr[idx].r=rc;
 	}
 	int mid=l+(r-l)/2;
-	tr[tr[idx].l].sum=tr[tr[idx].l].sum*tr[idx].mul%mod;
+	tr[tr[idx].l].sum=tr[tr[idx].l].sum*tr[idx].lazy2%mod;
 }
 vector<int> graph[N];
 int dp[N];

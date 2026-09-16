@@ -93,7 +93,10 @@ int merge(int idx1,int idx2,int l,int r)
 {
 	if (!(tr[idx1].flag&tr[idx2].flag))
 	{
-		
+		if (!tr[idx2].flag)
+		{
+			swap(idx1,idx2);
+		}
 	}
 }
 vector<int> graph[N];

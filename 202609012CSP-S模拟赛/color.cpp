@@ -114,6 +114,11 @@ int merge(int idx1,int idx2,int l,int r)
 		apply(idx2,l,r,0,tr[idx1].sum*power(r-l+1,mod-2,mod)%mod);
 		return idx2;
 	}
+	if (l==r)
+	{
+		tr[idx1].sum=tr[idx1].sum*tr[idx2].sum%mod;
+		return idx1;
+	}
 }
 vector<int> graph[N];
 int dp[N];

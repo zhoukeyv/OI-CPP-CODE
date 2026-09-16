@@ -122,6 +122,10 @@ int merge(int idx1,int idx2,int l,int r)
 	push_down(idx1,l,r);
 	push_down(idx2,l,r);
 	int mid=l+(r-l)/2;
+	tr[idx1].l=merge(tr[idx1].l,tr[idx2].l,l,mid);
+	tr[idx1].r=merge(tr[idx1].r,tr[idx2].r,mid+1,r);
+	push_up(idx1);
+	return idx1;
 }
 vector<int> graph[N];
 int dp[N];

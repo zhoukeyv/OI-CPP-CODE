@@ -91,7 +91,10 @@ void update(int idx,int l,int r,int x,int v)
 }
 int merge(int idx1,int idx2,int l,int r)
 {
-	
+	if (!(tr[idx1].flag&tr[idx2].flag))
+	{
+		
+	}
 }
 vector<int> graph[N];
 int dp[N];

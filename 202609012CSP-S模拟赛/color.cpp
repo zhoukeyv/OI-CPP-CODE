@@ -133,7 +133,7 @@ int merge(int idx1,int idx2,int l,int r)
 }
 vector<int> graph[N];
 int c[N],dp[N],rt[N];
-int n;
+int n,m;
 void DFS(int u,int f)
 {
 	if (graph[u].size()==1&&u!=1)
@@ -144,10 +144,31 @@ void DFS(int u,int f)
 		apply(rt[u],1,n,dp[u],1);
 		return;
 	}
+	int temp=1;
+	for(int v:graph[u])
+	{
+		if(v==f)
+		{
+			continue;
+		}
+		DFS(v,u);
+		temp=temp*dp[v]%mod;
+		if(!rt[u])
+		{
+			rt[u]=rt[v];
+		}
+		else
+		{
+			rt[u]=merge(rt[u],rt[v],1,n);
+		}
+	}
+	update(rt[u],1,n,-temp,1);
+	dp[u] = (temp * (m + 1) % mod + tr.d[rt[u]].val) % mod;
+	apply(rt[u], 1, dp[u], n);
 }
 void solve()
 {
-	cin>>n;
+	cin>>n>>m;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>c[i];

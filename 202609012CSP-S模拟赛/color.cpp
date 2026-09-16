@@ -75,6 +75,7 @@ void push_up(int idx)
 }
 void update(int idx,int l,int r,int x,int v)
 {
+	tr[idx].flag=true;
 	if (l==r)
 	{
 		tr[idx].sum=v;

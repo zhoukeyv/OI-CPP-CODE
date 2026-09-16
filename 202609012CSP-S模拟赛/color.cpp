@@ -78,6 +78,16 @@ void update(int idx,int l,int r,int x,int v)
 		}
 		update(tr[idx].l,l,mid,x,v);
 	}
+	else
+	{
+		if (tr[idx].r==-1)
+		{
+			int rc=new_node();
+			tr[idx].r=rc;
+		}
+		update(tr[idx].r,mid+1,r,x,v);
+	}
+	return;
 }
 vector<int> graph[N];
 int dp[N];

@@ -184,7 +184,7 @@ void solve()
 		graph[v].push_back(u);
 	}
 	DFS(1,-1);
-	cout<<dp[1]<<'\n';
+	cout<<(dp[1]+mod)%mod<<'\n';
 	return;
 }
 signed main()

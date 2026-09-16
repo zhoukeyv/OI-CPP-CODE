@@ -136,12 +136,13 @@ int c[N],dp[N],rt[N];
 int n;
 void DFS(int u,int f)
 {
-	if(graph[u].size()==1&&u!=1)
+	if (graph[u].size()==1&&u!=1)
 	{
 		dp[u]=1;
-		rt[u]=update(rt[u],1,n,c[u],1);
+		rt[u]=new_node();
+		update(rt[u],1,n,c[u],1);
 		apply(rt[u],1,n,dp[u],1);
-		return ;
+		return;
 	}
 }
 void solve()

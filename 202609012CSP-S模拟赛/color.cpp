@@ -27,7 +27,7 @@ int power(int a,int b,int p)
 int new_node()
 {
 	tr_cnt++;
-	tr[tr_cnt]={-1,-1,0,1,0,false};
+	tr[tr_cnt]={-1,-1,0,0,1,false};
 	return tr_cnt;
 }
 void apply(int idx,int l,int r,int x,int y)

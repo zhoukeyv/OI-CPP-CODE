@@ -18,9 +18,9 @@ int new_node()
 }
 void apply(int idx,int l,int r,int x,int y)
 {
-	tr[idx].sum=(tr[idx].sum*x%mod+y*(r-l+1)%mod)%mod;
-	tr[idx].lazy1=(tr[idx].lazy1*x%mod+y)%mod;
-	tr[idx].lazy2=tr[idx].lazy2*x%mod;
+	tr[idx].sum=(tr[idx].sum*y%mod+x*(r-l+1)%mod)%mod;
+	tr[idx].lazy1=(tr[idx].lazy1*y%mod+x)%mod;
+	tr[idx].lazy2=tr[idx].lazy2*y%mod;
 	return;
 }
 void push_down(int idx,int l,int r)
@@ -40,6 +40,7 @@ void push_down(int idx,int l,int r)
 		tr[idx].r=rc;
 	}
 	int mid=l+(r-l)/2;
+	apply(tr[idx].l,l,mid)
 	tr[tr[idx].l].sum=tr[tr[idx].l].sum*tr[idx].lazy2%mod;
 	tr[tr[idx].r].sum=tr[tr[idx].r].sum*tr[idx].lazy2%mod;
 	tr[tr[idx].l].lazy1=tr[tr[idx].l].lazy1*tr[idx].lazy2%mod;

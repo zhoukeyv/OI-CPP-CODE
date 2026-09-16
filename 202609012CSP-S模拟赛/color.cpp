@@ -105,17 +105,9 @@ void update(int idx,int l,int r,int x,int v)
 }
 int merge(int idx1,int idx2,int l,int r)
 {
-	if (idx1==-1&&idx2==-1)
-	{
-		return -1;
-	}
 	if (idx1==-1||idx2==-1)
 	{
-		if (idx2==-1)
-		{
-			swap(idx1,idx2);
-		}
-		
+		return max(idx1,idx2);
 	}
 	if (!(tr[idx1].flag&tr[idx2].flag))
 	{

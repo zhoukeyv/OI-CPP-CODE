@@ -68,6 +68,7 @@ void update(int idx,int l,int r,int x,int v)
 		return;
 	}
 	push_down(idx,l,r);
+	int mid=l+(r-l)/2;
 }
 vector<int> graph[N];
 int dp[N];

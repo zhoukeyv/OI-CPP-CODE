@@ -4,6 +4,12 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=2e5+10;
+struct Node
+{
+	int l,r,sum,mul,lazy;
+}tr[N*16];
+int tr_cnt=0;
+int new_node()
 vector<int> graph[N];
 int dp[N];
 int n;

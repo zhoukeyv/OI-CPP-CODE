@@ -12,9 +12,10 @@ int tr_cnt=-1;
 int new_node()
 {
 	tr_cnt++;
-	tr[tr_cnt]={-1,-1,0,0,0};
+	tr[tr_cnt]={-1,-1,0,1,0};
 	return tr_cnt;
 }
+void push_down(int l,int r,)
 vector<int> graph[N];
 int dp[N];
 int n;

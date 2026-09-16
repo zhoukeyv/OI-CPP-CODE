@@ -8,7 +8,7 @@ struct Node
 {
 	int l,r,sum,lazy1,lazy2;
 	bool flag;
-}tr[N*16];
+}tr[N*32];
 int tr_cnt=-1;
 int power(int a,int b,int p)
 {

@@ -97,6 +97,7 @@ int merge(int idx1,int idx2,int l,int r)
 		{
 			swap(idx1,idx2);
 		}
+		apply(idx2,)
 	}
 }
 vector<int> graph[N];

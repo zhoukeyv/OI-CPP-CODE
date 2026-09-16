@@ -47,6 +47,19 @@ void push_down(int idx,int l,int r)
 	tr[idx].lazy2=1;
 	return;
 }
+void push_up(int idx)
+{
+	tr[idx].sum=0;
+	if (tr[idx].l!=-1)
+	{
+		tr[idx].sum=(tr[idx].sum+tr[tr[idx].l].sum)%mod;
+	}
+	if (tr[idx].r!=-1)
+	{
+		tr[idx].sum=(tr[idx].sum+tr[tr[idx].r].sum)%mod;
+	}
+	return;
+}
 void update(int idx,int l,int r,int x,int v)
 {
 	if (l==r)
@@ -54,6 +67,7 @@ void update(int idx,int l,int r,int x,int v)
 		tr[idx].sum=v;
 		return;
 	}
+	push_down(idx,l,r);
 }
 vector<int> graph[N];
 int dp[N];

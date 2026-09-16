@@ -10,6 +10,20 @@ struct Node
 	bool flag;
 }tr[N*16];
 int tr_cnt=-1;
+int power(int a,int b,int p)
+{
+	int res=1;
+	while (b)
+	{
+		if (b&1)
+		{
+			res=res*a%p;
+		}
+		a=a*a%p;
+		b>>=1;
+	}
+	return res;
+}
 int new_node()
 {
 	tr_cnt++;
@@ -97,7 +111,7 @@ int merge(int idx1,int idx2,int l,int r)
 		{
 			swap(idx1,idx2);
 		}
-		apply(idx2,(tr[idx1].sum+tr[idx1].lazy1)*tr[idx1].lazy2%mod,tr[idx1].lazy2)
+		apply(idx2,0,tr[idx1].sum)
 	}
 }
 vector<int> graph[N];

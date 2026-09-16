@@ -163,8 +163,9 @@ void DFS(int u,int f)
 		}
 	}
 	apply(rt[u],1,n,-temp,1);
-	dp[u] = (temp * (m + 1) % mod + tr.d[rt[u]].val) % mod;
-	apply(rt[u],1,n,1, dp[u], n);
+	dp[u]=(temp*(m+1)%mod+tr[rt[u]].sum)%mod;
+	apply(rt[u],1,n,1,dp[u]);
+	return;
 }
 void solve()
 {
@@ -180,6 +181,8 @@ void solve()
 		graph[u].push_back(v);
 		graph[v].push_back(u);
 	}
+	DFS(1,-1);
+	cout<<dp[1]<<'\n';
 	return;
 }
 signed main()

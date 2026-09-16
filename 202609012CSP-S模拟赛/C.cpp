@@ -34,6 +34,11 @@ void push_down(int idx,int l,int r)
 	}
 	int mid=l+(r-l)/2;
 	tr[tr[idx].l].sum=tr[tr[idx].l].sum*tr[idx].lazy2%mod;
+	tr[tr[idx].r].sum=tr[tr[idx].r].sum*tr[idx].lazy2%mod;
+	tr[tr[idx].l].lazy1=tr[tr[idx].l].lazy1*tr[idx].lazy2%mod;
+	tr[tr[idx].r].lazy1=tr[tr[idx].r].lazy1*tr[idx].lazy2%mod;
+	tr[tr[idx].l].lazy2=tr[tr[idx].l].lazy2*tr[idx].lazy2%mod;
+	tr[tr[idx].r].lazy2=tr[tr[idx].r].lazy2*tr[idx].lazy2%mod;
 }
 vector<int> graph[N];
 int dp[N];

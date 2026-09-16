@@ -69,6 +69,15 @@ void update(int idx,int l,int r,int x,int v)
 	}
 	push_down(idx,l,r);
 	int mid=l+(r-l)/2;
+	if (x<=mid)
+	{
+		if (tr[idx].l==-1)
+		{
+			int lc=new_node();
+			tr[idx].l=lc;
+		}
+		update(tr[idx].l,l,mid,x,v);
+	}
 }
 vector<int> graph[N];
 int dp[N];

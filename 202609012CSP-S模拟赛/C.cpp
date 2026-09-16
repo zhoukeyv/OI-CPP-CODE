@@ -5,6 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=2e5+10;
 vector<int> graph[N];
+int dp[N];
 int n;
 void solve()
 {

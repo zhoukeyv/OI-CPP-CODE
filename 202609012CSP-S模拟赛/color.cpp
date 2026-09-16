@@ -105,6 +105,14 @@ void update(int idx,int l,int r,int x,int v)
 }
 int merge(int idx1,int idx2,int l,int r)
 {
+	if (idx1==-1&&idx2==-1)
+	{
+		return -1;
+	}
+	if (idx1==-1||idx2==-1)
+	{
+		
+	}
 	if (!(tr[idx1].flag&tr[idx2].flag))
 	{
 		if (!tr[idx2].flag)
@@ -122,16 +130,6 @@ int merge(int idx1,int idx2,int l,int r)
 	push_down(idx1,l,r);
 	push_down(idx2,l,r);
 	int mid=l+(r-l)/2;
-	if (tr[idx1].l==-1)
-	{
-		int lc=new_node();
-		tr[idx1].l=lc;
-	}
-	if (tr[idx1].r==-1)
-	{
-		int rc=new_node();
-		tr[idx1].r=rc;
-	}
 	tr[idx1].l=merge(tr[idx1].l,tr[idx2].l,l,mid);
 	tr[idx1].r=merge(tr[idx1].r,tr[idx2].r,mid+1,r);
 	push_up(idx1);

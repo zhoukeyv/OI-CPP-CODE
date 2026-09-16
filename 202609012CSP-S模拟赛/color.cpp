@@ -112,6 +112,7 @@ int merge(int idx1,int idx2,int l,int r)
 			swap(idx1,idx2);
 		}
 		apply(idx2,l,r,0,tr[idx1].sum*power(r-l+1,mod-2,mod)%mod);
+		return idx2;
 	}
 }
 vector<int> graph[N];

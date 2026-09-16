@@ -162,9 +162,9 @@ void DFS(int u,int f)
 			rt[u]=merge(rt[u],rt[v],1,n);
 		}
 	}
-	update(rt[u],1,n,-temp,1);
+	apply(rt[u],1,n,-temp,1);
 	dp[u] = (temp * (m + 1) % mod + tr.d[rt[u]].val) % mod;
-	apply(rt[u], 1, dp[u], n);
+	apply(rt[u],1,n,1, dp[u], n);
 }
 void solve()
 {

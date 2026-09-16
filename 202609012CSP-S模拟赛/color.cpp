@@ -89,6 +89,10 @@ void update(int idx,int l,int r,int x,int v)
 	push_up(idx);
 	return;
 }
+int merge(int idx1,int idx2,int l,int r)
+{
+	
+}
 vector<int> graph[N];
 int dp[N];
 int n;

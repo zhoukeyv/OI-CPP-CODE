@@ -97,7 +97,7 @@ int merge(int idx1,int idx2,int l,int r)
 		{
 			swap(idx1,idx2);
 		}
-		apply(idx2,)
+		apply(idx2,(tr[idx1].sum+tr[idx1].lazy1)*tr[idx1].lazy2%mod,tr[idx1].lazy2)
 	}
 }
 vector<int> graph[N];

@@ -26,6 +26,11 @@ void push_down(int idx,int l,int r)
 		int lc=new_node();
 		tr[idx].l=lc;
 	}
+	if (tr[idx].r==-1)
+	{
+		int rc=new_node();
+		tr[idx].r=rc;
+	}
 	int mid=l+(r-l)/2;
 }
 vector<int> graph[N];

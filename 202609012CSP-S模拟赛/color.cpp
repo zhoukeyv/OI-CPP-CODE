@@ -134,6 +134,10 @@ int merge(int idx1,int idx2,int l,int r)
 vector<int> graph[N];
 int dp[N];
 int n;
+void DFS(int u,int f)
+{
+	
+}
 void solve()
 {
 	cin>>n;

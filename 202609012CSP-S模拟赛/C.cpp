@@ -7,12 +7,13 @@ const int inf=1e18,N=2e5+10,mod=998244353;
 struct Node
 {
 	int l,r,sum,mul,lazy;
+	bool flag;
 }tr[N*16];
 int tr_cnt=-1;
 int new_node()
 {
 	tr_cnt++;
-	tr[tr_cnt]={-1,-1,0,1,0};
+	tr[tr_cnt]={-1,-1,0,1,0,false};
 	return tr_cnt;
 }
 void push_down(int idx,int l,int r)

@@ -190,8 +190,8 @@ void solve()
 signed main()
 {
 #ifndef LOCAL_cph
-	// freopen("color.in","r",stdin);
-	// freopen("color.out","w",stdout);
+	freopen("color.in","r",stdin);
+	freopen("color.out","w",stdout);
 #endif
 	ios::sync_with_stdio(0);
 	cin.tie(0);

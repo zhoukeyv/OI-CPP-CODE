@@ -20,6 +20,8 @@ void apply(int idx,int l,int r,int x,int y)
 {
 	tr[idx].sum=(tr[idx].sum*x%mod+y*(r-l+1)%mod)%mod;
 	tr[idx].lazy1=(tr[idx].lazy1*x%mod+y)%mod;
+	tr[idx].lazy2=tr[idx].lazy2*x%mod;
+	return;
 }
 void push_down(int idx,int l,int r)
 {

@@ -132,11 +132,16 @@ int merge(int idx1,int idx2,int l,int r)
 	return idx1;
 }
 vector<int> graph[N];
-int dp[N];
+int dp[N],rt[N];
 int n;
 void DFS(int u,int f)
 {
-	
+	if(g[u].size() == 1 && u != 1) {
+		dp[u] = 1;
+		rt[u] = tr.crt(c[u], 1, n, rt[u], 1);
+		tr.upd(rt[u], 1, dp[u], n);
+		return ;
+	}
 }
 void solve()
 {

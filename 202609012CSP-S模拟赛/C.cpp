@@ -17,9 +17,14 @@ int new_node()
 }
 void push_down(int idx,int l,int r)
 {
-	if (tr[idx].lazy==0)
+	if (tr[idx].lazy==0&&tr[idx].mul==1)
 	{
 		return;
+	}
+	if (tr[idx].l==-1)
+	{
+		int lc=new_node();
+		tr[idx].l=lc;
 	}
 	int mid=l+(r-l)/2;
 }

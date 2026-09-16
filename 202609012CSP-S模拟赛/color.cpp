@@ -40,17 +40,8 @@ void push_down(int idx,int l,int r)
 		tr[idx].r=rc;
 	}
 	int mid=l+(r-l)/2;
-	apply(tr[idx].l,l,mid)
-	tr[tr[idx].l].sum=tr[tr[idx].l].sum*tr[idx].lazy2%mod;
-	tr[tr[idx].r].sum=tr[tr[idx].r].sum*tr[idx].lazy2%mod;
-	tr[tr[idx].l].lazy1=tr[tr[idx].l].lazy1*tr[idx].lazy2%mod;
-	tr[tr[idx].r].lazy1=tr[tr[idx].r].lazy1*tr[idx].lazy2%mod;
-	tr[tr[idx].l].lazy2=tr[tr[idx].l].lazy2*tr[idx].lazy2%mod;
-	tr[tr[idx].r].lazy2=tr[tr[idx].r].lazy2*tr[idx].lazy2%mod;
-	tr[tr[idx].l].sum=(tr[tr[idx].l].sum+tr[idx].lazy1*(mid-l+1)%mod)%mod;
-	tr[tr[idx].r].sum=(tr[tr[idx].r].sum+tr[idx].lazy1*(r-mid)%mod)%mod;
-	tr[tr[idx].l].lazy1=(tr[tr[idx].l].lazy1+tr[idx].lazy1)%mod;
-	tr[tr[idx].r].lazy1=(tr[tr[idx].r].lazy1+tr[idx].lazy1)%mod;
+	apply(tr[idx].l,l,mid,tr[idx].lazy1,tr[idx].lazy2);
+	apply(tr[idx].r,mid+1,r,tr[idx].lazy1,tr[idx].lazy2);
 	tr[idx].lazy1=0;
 	tr[idx].lazy2=1;
 	return;

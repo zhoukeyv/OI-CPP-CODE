@@ -136,10 +136,11 @@ int c[N],dp[N],rt[N];
 int n;
 void DFS(int u,int f)
 {
-	if(g[u].size() == 1 && u != 1) {
-		dp[u] = 1;
-		rt[u] =tr.update(c[u], 1, n, rt[u], 1);
-		tr.upd(rt[u], 1, dp[u], n);
+	if(graph[u].size()==1&&u!=1)
+	{
+		dp[u]=1;
+		rt[u]=update(rt[u],1,n,c[u],1);
+		apply(rt[u],1,n,dp[u],1);
 		return ;
 	}
 }

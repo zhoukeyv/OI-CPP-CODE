@@ -3,7 +3,7 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18,N=2e5+10;
+const int inf=1e18,N=2e5+10,mod=998244353;
 struct Node
 {
 	int l,r,sum,mul,lazy;

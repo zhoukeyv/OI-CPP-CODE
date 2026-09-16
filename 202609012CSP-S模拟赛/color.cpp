@@ -108,7 +108,13 @@ int merge(int idx1,int idx2,int l,int r)
 {
 	if (idx1==-1||idx2==-1)
 	{
-		return max(idx1,idx2);
+		int idx=max(idx1, idx2);
+		if (idx==-1)
+		{
+			idx=new_node();
+		}
+		apply(idx,l,r,0,0);
+		return idx;
 	}
 	if (!(tr[idx1].flag&tr[idx2].flag))
 	{

@@ -119,6 +119,9 @@ int merge(int idx1,int idx2,int l,int r)
 		tr[idx1].sum=tr[idx1].sum*tr[idx2].sum%mod;
 		return idx1;
 	}
+	push_down(idx1,l,r);
+	push_down(idx2,l,r);
+	int mid=l+(r-l)/2;
 }
 vector<int> graph[N];
 int dp[N];

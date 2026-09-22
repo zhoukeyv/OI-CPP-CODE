@@ -19,6 +19,22 @@ void update(int x,int v)
 	}
 	return;
 }
+int query(int l,int r)
+{
+	l--;
+	int res=0;
+	while (l>0)
+	{
+		res-=tr[l];
+		l-=lowbit(l);
+	}
+	while (r>0)
+	{
+		res+=tr[r];
+		r-=lowbit(r);
+	}
+	return res;
+}
 void solve()
 {
 	

@@ -9,7 +9,13 @@ bool c[N];
 int n;
 void solve()
 {
-	
+	cin>>n;
+	for (int i=2;i<=n;i++)
+	{
+		int f;
+		char ch;
+		cin>>f>>ch;
+	}
 	return;
 }
 signed main()

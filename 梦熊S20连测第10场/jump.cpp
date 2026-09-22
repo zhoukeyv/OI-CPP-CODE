@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=3e5+10,M=6e5+10;
 int tr[N];
-int n,m;
+int n,m,q;
 int lowbit(int x)
 {
 	return x&-x;
@@ -37,7 +37,7 @@ int query(int l,int r)
 }
 void solve()
 {
-	
+	cin>>n>>m>>q;
 	return;
 }
 signed main()

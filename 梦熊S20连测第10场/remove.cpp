@@ -10,7 +10,7 @@ void solve()
 {
 	cin>>n>>s;
 	s='@'+s;
-	int ans=2*n;
+	int ans=2*n-1;
 	for (int i=1;i<n;i++)
 	{
 		if (s[i]==s[i+1])

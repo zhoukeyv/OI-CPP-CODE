@@ -1,75 +1,64 @@
 #include <bits/stdc++.h>
+#define double long double
+#define int long long
 using namespace std;
-
-struct BIT {
-    int n;
-    vector<int> tree;
-    BIT(int n) : n(n), tree(n + 2, 0) {}
-    void add(int i, int v) {
-        while (i <= n) {
-            tree[i] += v;
-            i += i & -i;
-        }
-    }
-    int sum(int i) {
-        int res = 0;
-        while (i > 0) {
-            res += tree[i];
-            i -= i & -i;
-        }
-        return res;
-    }
-};
-int n, m, q;
-int main()
+const double eps=1e-6;
+const int inf=1e18,N=3e5+10,M=6e5+10;
+pair<int,int> s[M];
+int tr[N];
+int n,m,q;
+int lowbit(int x)
 {
+	return x&-x;
+}
+void update(int x,int v)
+{
+	while (x<=n)
+	{
+		tr[x]+=v;
+		x+=lowbit(x);
+	}
+	return;
+}
+int query(int l,int r)
+{
+	l--;
+	int res=0;
+	while (l>0)
+	{
+		res-=tr[l];
+		l-=lowbit(l);
+	}
+	while (r>0)
+	{
+		res+=tr[r];
+		r-=lowbit(r);
+	}
+	return res;
+}
+void solve()
+{
+	cin>>n>>m>>q;
+	for (int i=1;i<=m;i++)
+	{
+		cin>>s[i].first>>s[i].second;
+	}
+	sort(s+1,s+m+1,greater<>());
+	return;
+}
+signed main()
+{
+#ifndef LOCAL_cph
 	freopen("jump.in","r",stdin);
 	freopen("jump.out","w",stdout);
-    cin>>n>>m>>q;
-    vector<int> vis(n + 1);
-    vector<pair<int, int>> s(m);
-    vector<vector<pair<int, int>>> b(n + 2);
-    for (int i = 0; i < m; ++i)
-    {
-        int l, r;
-        cin>>l>>r;
-        s[i] = {l, r};
-    }
-    sort(s.begin(), s.end(),greater<>());
-    for (int d = 1; d <= n; ++d) {
-        for (int k = 0; k * d <= n; ++k) {
-            int l = k * d + 1;
-            int R = (k + 1) * d - 1;
-            if (R > n) R = n;
-            if (l <= R) {
-                b[l].push_back({R, d});
-            }
-        }
-    }
-    
-    BIT bit(n);
-    int ptr = 0;
-    
-    for (int l = n; l >= 1;l--)
-    {
-        while (ptr < m && s[ptr].first >= l)
-        {
-            bit.add(s[ptr].second, 1);
-            ++ptr;
-        }
-        for (pair<int,int> p:b[l])
-        {
-            int R = p.first;
-            int d = p.second;
-            vis[d] += bit.sum(R);
-        }
-    }
-    
-    for (int i = 0; i < q;i++)
-    {
-        int d;
-        cin>>d;
-        cout<< m - vis[d]<<'\n';
-    }
-    return 0;
+#endif
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int TestCase=1;
+	// cin>>TestCase;
+	for (int Caseid=1;Caseid<=TestCase;Caseid++)
+	{
+		solve();
+	}
+	return 0;
 }

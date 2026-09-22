@@ -10,6 +10,15 @@ void solve()
 {
 	cin>>n>>s;
 	s='@'+s;
+	int ans=2*n;
+	for (int i=1;i<n;i++)
+	{
+		if (s[i]==s[i+1])
+		{
+			ans--;
+		}
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

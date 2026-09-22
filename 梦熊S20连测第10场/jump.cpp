@@ -12,8 +12,8 @@ void solve()
 signed main()
 {
 #ifndef LOCAL_cph
-	// freopen(".in","r",stdin);
-	// freopen(".out","w",stdout);
+	freopen("jump.in","r",stdin);
+	freopen("jump.out","w",stdout);
 #endif
 	ios::sync_with_stdio(0);
 	cin.tie(0);

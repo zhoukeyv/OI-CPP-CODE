@@ -4,23 +4,17 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18;
+set<char> st;
 string s;
 int n;
 void solve()
 {
 	cin>>n>>s;
 	s='@'+s;
-	int ans=n;
+	int ans=0;
 	for (int i=1;i<=n;i++)
 	{
-		ans++;
-	}
-	for (int i=1;i<n;i++)
-	{
-		if (s[i]==s[i+1])
-		{
-			ans--;
-		}
+		
 	}
 	cout<<ans<<'\n';
 	return;

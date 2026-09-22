@@ -3,7 +3,16 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18;
+const int inf=1e18,N=3e5+10,M=6e5+10;
+int tr[N];
+int update(int x,int v)
+{
+	while (x<=n)
+	{
+		tr[x]+=v;
+		x+=lowbit(x);
+	}
+}
 void solve()
 {
 	

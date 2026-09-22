@@ -4,9 +4,12 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18;
+string s;
+int n;
 void solve()
 {
-	
+	cin>>n>>s;
+	s='@'+s;
 	return;
 }
 signed main()
@@ -18,7 +21,7 @@ signed main()
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;
-	// cin>>TestCase;
+	cin>>TestCase;
 	for (int Caseid=1;Caseid<=TestCase;Caseid++)
 	{
 		solve();

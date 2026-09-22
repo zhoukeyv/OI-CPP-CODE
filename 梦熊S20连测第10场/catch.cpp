@@ -3,7 +3,10 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18;
+const int inf=1e18,N=1e5+10;
+vector<int> graph[N];
+bool c[N];
+int n;
 void solve()
 {
 	

@@ -24,8 +24,8 @@ void solve()
 signed main()
 {
 #ifndef LOCAL_cph
-	// freopen("remove.in","r",stdin);
-	// freopen("remove.out","w",stdout);
+	freopen("remove.in","r",stdin);
+	freopen("remove.out","w",stdout);
 #endif
 	ios::sync_with_stdio(0);
 	cin.tie(0);

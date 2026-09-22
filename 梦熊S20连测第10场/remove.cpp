@@ -14,7 +14,8 @@ void solve()
 	int ans=0;
 	for (int i=1;i<=n;i++)
 	{
-		
+		ans+=st.size();
+		st.insert(s[i]);
 	}
 	cout<<ans<<'\n';
 	return;

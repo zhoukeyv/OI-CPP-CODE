@@ -4,6 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=1e18,N=3e5+10,M=6e5+10;
+pair<int,int> s[M];
 int tr[N];
 int n,m,q;
 int lowbit(int x)
@@ -38,6 +39,11 @@ int query(int l,int r)
 void solve()
 {
 	cin>>n>>m>>q;
+	for (int i=1;i<=m;i++)
+	{
+		cin>>s[i].first>>s[i].second;
+	}
+	sort(s+1,s+m+1,greater<>());
 	return;
 }
 signed main()

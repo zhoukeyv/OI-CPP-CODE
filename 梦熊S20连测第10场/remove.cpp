@@ -13,10 +13,14 @@ void solve()
 	st.clear();
 	s='@'+s;
 	int ans=0;
-	for (int i=1;i<=n;i++)
+	st.insert(s[1]);
+	for (int i=2;i<=n+1;i++)
 	{
 		ans+=st.size();
-		st.insert(s[i]);
+		if (i<=n)
+		{
+			st.insert(s[i]);
+		}
 	}
 	cout<<ans<<'\n';
 	return;

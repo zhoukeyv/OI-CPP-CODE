@@ -23,7 +23,6 @@ struct BIT {
 int n, m, q;
 int main()
 {
-    
 	freopen("jump.in","r",stdin);
 	freopen("jump.out","w",stdout);
     cin>>n>>m>>q;
@@ -33,7 +32,7 @@ int main()
     for (int i = 0; i < m; ++i)
     {
         int l, r;
-        cin>>l>.r;
+        cin>>l>>r;
         s[i] = {l, r};
     }
     sort(s.begin(), s.end(),greater<>());

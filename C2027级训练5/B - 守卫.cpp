@@ -15,12 +15,12 @@ void solve()
 		cin>>a[i];
 		dp[i][i]=1;
 	}
-	for (int len=2;len<=n;len++)
+	for (int r=1;r<=n;r++)
 	{
-		for (int l=1;l+len-1<=n;l++)
+		for (int r=1;r-len+1>=1;r--)
 		{
 			int r=l+len-1;
-			
+			for (int )
 		}
 	}
 	return;

@@ -18,6 +18,7 @@ int DP(int l,int r)
 		return dp[l][r]=1;
 	}
 	dp[l][r]=0;
+	
 }
 void solve()
 {
@@ -27,7 +28,7 @@ void solve()
 		cin>>a[i];
 		dp[i][i]=1;
 	}
-	for (int r=1;r<=n;r++)
+	for (int len=2;len<=n;len++)
 	{
 		
 	}

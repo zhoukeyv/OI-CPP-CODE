@@ -13,6 +13,11 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+		dp[i][i]=1;
+	}
+	for (int len=2;len<=n;len++)
+	{
+		
 	}
 	return;
 }

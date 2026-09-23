@@ -7,19 +7,6 @@ const int inf=1e18,N=5010;
 int dp[N][N];
 int a[N];
 int n;
-int DP(int l,int r)
-{
-	if (dp[l][r]!=-1)
-	{
-		return dp[l][r];
-	}
-	if (l==r)
-	{
-		return dp[l][r]=1;
-	}
-	dp[l][r]=0;
-	
-}
 void solve()
 {
 	cin>>n;
@@ -28,9 +15,12 @@ void solve()
 		cin>>a[i];
 		dp[i][i]=1;
 	}
-	for (int len=2;len<=n;len++)
+	for (int r=1;r<=n;r++)
 	{
-		
+		for (int l=r-1;l>=1;l--)
+		{
+			
+		}
 	}
 	return;
 }

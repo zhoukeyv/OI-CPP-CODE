@@ -17,6 +17,7 @@ void solve()
 	}
 	for (int r=1;r<=n;r++)
 	{
+		int p=r,sum=1;
 		for (int l=r-1;l>=1;l--)
 		{
 			

@@ -7,7 +7,7 @@ const int inf=1e18,N=5010;
 int dp[N][N];
 int a[N];
 int n,ans=0;
-bool check(int x,int y)
+bool check(int x,int y,int r)
 {
 	
 }

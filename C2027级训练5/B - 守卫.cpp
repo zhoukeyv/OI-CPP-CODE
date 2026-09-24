@@ -9,7 +9,7 @@ int a[N];
 int n,ans=0;
 bool check(int x,int y,int r)
 {
-	
+	return (a[r]-a[y])*(r-x)>(a[r]-a[x])*(r-y);
 }
 void solve()
 {

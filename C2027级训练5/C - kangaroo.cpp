@@ -3,7 +3,7 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=1e18,N=2010;
+const int inf=1e18,N=2010,mod=1e9+7;
 int dp[N][N];
 int n,s,t;
 void solve()
@@ -14,7 +14,7 @@ void solve()
 	{
 		for (int j=1;j<=i;j++)
 		{
-			dp[i][j]=(j-)
+			dp[i][j]=(dp[i][j]+(j-(i>s)-(i>j))*dp[i-1][j-1]%mod)%mod;
 		}
 	}
 	return;

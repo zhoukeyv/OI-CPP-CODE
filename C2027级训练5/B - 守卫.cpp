@@ -31,6 +31,7 @@ void solve()
 				p=l;
 			}
 			dp[l][r]=sum+min(dp[l][p-1],dp[l][p]);
+			ans^=dp[l][r];
 		}
 	}
 	return;

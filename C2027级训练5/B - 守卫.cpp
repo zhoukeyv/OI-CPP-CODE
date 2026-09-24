@@ -22,10 +22,10 @@ void solve()
 	}
 	for (int r=1;r<=n;r++)
 	{
-		int p=r,sum=0;
+		int p=0,sum=1;
 		for (int l=r-1;l>=1;l--)
 		{
-			if (check(l,p))
+			if (p==0||check(l,p))
 			{
 				sum+=dp[l+1][r-1];
 				dp[l][r]=sum;

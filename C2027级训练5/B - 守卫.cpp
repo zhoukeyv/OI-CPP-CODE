@@ -25,7 +25,7 @@ void solve()
 		int p=0,sum=1;
 		for (int l=r-1;l>=1;l--)
 		{
-			if (p==0||check(l,p))
+			if (p==0||check(l,p,r))
 			{
 				sum+=dp[l+1][r-1];
 				dp[l][r]=sum;

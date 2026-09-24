@@ -14,8 +14,15 @@ void solve()
 	{
 		for (int j=1;j<=i;j++)
 		{
-			dp[i][j]=((j-(i>s)-(i>t))*dp[i-1][j-1]%mod+dp[i-1][j+1]*j%mod)%mod;
-			cerr<<i<<' '<<j<<' '<<dp[i][j]<<'\n';
+			if (i!=s&&i!=t)
+			{
+				dp[i][j]=((j-(i>s)-(i>t))*dp[i-1][j-1]%mod+dp[i-1][j+1]*j%mod)%mod;
+			}
+			else
+			{
+				dp[i][j]=(dp[i-1][j-1]+dp[i-1][j])%mod;
+			}
+			// cerr<<i<<' '<<j<<' '<<dp[i][j]<<'\n';
 		}
 	}
 	cout<<dp[n][1]<<'\n';

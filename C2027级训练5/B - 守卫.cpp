@@ -27,10 +27,10 @@ void solve()
 		{
 			if (p==0||check(l,p,r))
 			{
-				sum+=max(dp[l+1][p-1],dp[l+1][p]);
+				sum+=min(dp[l+1][p-1],dp[l+1][p]);
 				p=l;
 			}
-			dp[l][r]=sum;
+			dp[l][r]=sum+min(dp[l][p-1],dp[l][p]);
 		}
 	}
 	return;

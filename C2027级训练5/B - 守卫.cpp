@@ -34,6 +34,7 @@ void solve()
 			ans^=dp[l][r];
 		}
 	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

@@ -6,7 +6,7 @@ const double eps=1e-6;
 const int inf=1e18,N=5010;
 int dp[N][N];
 int a[N];
-int n;
+int n,ans=0;
 bool check(int x,int y)
 {
 	
@@ -18,6 +18,7 @@ void solve()
 	{
 		cin>>a[i];
 		dp[i][i]=1;
+		ans^=1;
 	}
 	for (int r=1;r<=n;r++)
 	{
@@ -26,9 +27,9 @@ void solve()
 		{
 			if (check(l,p))
 			{
-				dp[l][r]=sum+dp[l+1][r-1];
 				sum+=dp[l+1][r-1];
-				
+				dp[l][r]=sum;
+				sum+=max(sum,)
 			}
 		}
 	}

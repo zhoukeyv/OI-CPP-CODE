@@ -7,6 +7,10 @@ const int inf=1e18,N=5010;
 int dp[N][N];
 int a[N];
 int n;
+bool check(int x,int y)
+{
+	
+}
 void solve()
 {
 	cin>>n;
@@ -20,7 +24,10 @@ void solve()
 		int p=r,sum=0;
 		for (int l=r-1;l>=1;l--)
 		{
-			if ()
+			if (check(l,p))
+			{
+				
+			}
 		}
 	}
 	return;

@@ -26,6 +26,7 @@ void solve()
 		{
 			if (check(l,p))
 			{
+				sum+=dp[l+1][r-1];
 				
 			}
 		}

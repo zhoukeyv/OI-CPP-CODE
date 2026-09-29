@@ -19,7 +19,14 @@ void solve()
 	{
 		for (int j=n;j>=i;j--)
 		{
-			
+			if (i==1&&j==n)
+			{
+				continue;
+			}
+			for (int k=max(0ll,2*i-j-2);k<=i-1;k++)
+			{
+				dp[i][j]=min(dp[i][j],dp[k][j]+a[i-1]);
+			}
 		}
 	}
 	return;

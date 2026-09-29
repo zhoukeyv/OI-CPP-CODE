@@ -27,6 +27,10 @@ void solve()
 			{
 				dp[i][j]=min(dp[i][j],dp[k][j]+a[i-1]);
 			}
+			for (int k=j+1;k<=min(n,2*j-i+2);k++)
+			{
+				dp[i][j]=min(dp[i][j],dp[i][k]+a[j+1]);
+			}
 		}
 	}
 	return;

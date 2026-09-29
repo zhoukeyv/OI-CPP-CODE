@@ -33,6 +33,12 @@ void solve()
 			}
 		}
 	}
+	int ans=-inf;
+	for (int i=1;i<=n;i++)
+	{
+		ans=max(ans,dp[i][i]);
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

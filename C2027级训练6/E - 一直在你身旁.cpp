@@ -37,6 +37,7 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		ans=max(ans,dp[i][i]);
+		cerr<<i<<':'<<dp[i][i]<<'\n';
 	}
 	cout<<ans<<'\n';
 	return;

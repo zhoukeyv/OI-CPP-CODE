@@ -13,6 +13,7 @@ void solve()
 	{
 		cin>>a[i];
 	}
+	memset(dp,0x3f,sizeof dp);
 	for (int i=1;i<=n;i++)
 	{
 		

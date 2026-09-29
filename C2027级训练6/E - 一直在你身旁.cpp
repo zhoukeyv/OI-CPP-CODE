@@ -14,9 +14,13 @@ void solve()
 		cin>>a[i];
 	}
 	memset(dp,0x3f,sizeof dp);
+	dp[1][n]=0;
 	for (int i=1;i<=n;i++)
 	{
-		
+		for (int j=n;j>=i;j--)
+		{
+			
+		}
 	}
 	return;
 }

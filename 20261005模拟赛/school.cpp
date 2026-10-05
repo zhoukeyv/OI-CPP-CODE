@@ -4,9 +4,9 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
-int n,m,a[N],b[N],fa[N],sz1[N],sz2[N],dp[N]={1},cnt,num[N],id[N];
+int n,m,a[N],b[N],fa[N],sz1[N],sz2[N],dp[N]={1},cnt,cnt[N],id[N];
 bool used[N];
-bitset<10010> bs[10010];
+bitset<10010> bit[10010];
 set<int> s;
 int get(int x)
 {
@@ -81,7 +81,7 @@ void solve()
 	{
 		cin>>a[i]>>b[i];
 	}
-	for (int i=m;i;i--)
+	for (int i=m;i>=1;i--)
 	{
 		if (get(a[i])==get(b[i])||get(a[i])==get(b[i]+2*n))
 		{
@@ -103,13 +103,13 @@ void solve()
 			merge(a[i],b[i]);
 		}
 	}
-	bs[0][0]=1;
+	bit[0][0]=1;
 	for (int i=1;i<=2*n;i++)
 	{
 		if ((!s.count(get(i)))&&(!s.count(get(i+2*n))))
 		{
-			num[++num[0]]=get(i);
-			bs[num[0]]=bs[num[0]-1]|(bs[num[0]-1]<<(abs(sz1[get(i)]-sz2[get(i)])<<1));
+			cnt[++cnt[0]]=get(i);
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[get(i)]-sz2[get(i)])<<1));
 			s.insert(get(i));
 		}
 		if (s.count(get(i)))
@@ -122,14 +122,14 @@ void solve()
 		}
 	}
 	int cnt2=cnt;
-	for (int i=num[0];i;i--)
+	for (int i=cnt[0];i;i--)
 	{
-		if (bs[i-1][cnt2])
+		if (bit[i-1][cnt2])
 		{
 			continue;
 		}
-		used[num[i]]=true;
-		cnt2-=abs(sz1[get(num[i])]-sz2[get(num[i])])<<1;
+		used[cnt[i]]=true;
+		cnt2-=abs(sz1[get(cnt[i])]-sz2[get(cnt[i])])<<1;
 	}
 	for (int i=1;i<=2*n;i++)
 	{

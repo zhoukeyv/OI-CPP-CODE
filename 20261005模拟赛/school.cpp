@@ -44,7 +44,6 @@ void insert(int x)
 	for (int j=(n<<1);j>=x;j--)
 	{
 		dp[j]+=dp[j-x];
-		dp[j]%=mod;
 	}
 	return;
 }
@@ -57,8 +56,7 @@ void erase(int x)
 	cnt-=(x>>1);
 	for (int j=x;j<=(n<<1);j++)
 	{
-		dp[j]+=mod-dp[j-x];
-		dp[j]%=mod;
+		dp[j]-=dp[j-x];
 	}
 	return;
 }

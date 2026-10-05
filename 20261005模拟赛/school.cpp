@@ -133,7 +133,7 @@ void solve()
 	}
 	for (int i=1;i<=2*n;i++)
 	{
-		if (s.count(get(i))^((vis[get(i)]||vis[get(i+2*n)]))^1^(sz1[id[i]]>sz2[id[i]]))
+		if (s.count(get(i))^(vis[get(i)]||vis[get(i+2*n)])^1^(sz1[id[i]]>sz2[id[i]]))
 		{
 			cout<<"1\n";
 		}

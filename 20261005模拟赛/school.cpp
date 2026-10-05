@@ -68,7 +68,7 @@ void solve()
 		fa[i]=i;
 		sz1[i]=1;
 	}
-	for (int i=(2*n|1);i<=(n<<2);i++)
+	for (int i=(2*n|1);i<=4*n;i++)
 	{
 		fa[i]=i;
 		sz2[i]=1;

@@ -89,7 +89,7 @@ void solve()
 		}
 		erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]));
 		erase(2*abs(sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
-		insert(2*abs(sz1[find(a[i])]-sz2[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
+		insert(2*abs(sz1[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(a[i])]-sz2[find(b[i]+2*n)]));
 		if (dp[sz]>0)
 		{
 			merge(a[i],b[i]+2*n);
@@ -97,8 +97,8 @@ void solve()
 		}
 		else
 		{
-			erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
-			insert(2*abs(sz1[find(a[i])]-sz2[find(a[i])]+sz1[find(b[i])]-sz2[find(b[i])]));
+			erase(2*abs(sz1[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(a[i])]-sz2[find(b[i]+2*n)]));
+			insert(2*abs(sz1[find(a[i])]+sz1[find(b[i])]-sz2[find(a[i])]-sz2[find(b[i])]));
 			merge(a[i]+2*n,b[i]+2*n);
 			merge(a[i],b[i]);
 		}

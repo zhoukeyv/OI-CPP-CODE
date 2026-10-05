@@ -6,17 +6,16 @@ const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
 int a[N],b[N],fa[N],sz1[N],sz2[N],dp[N],cnt[N],id[N];
 bitset<10010> bit[10010];
+set<int> s;
 bool vis[N];
 int n,m,sz;
-set<int> s;
 int find(int x)
 {
 	if (fa[x]==x)
 	{
 		return x;
 	}
-	fa[x]=find(fa[x]);
-	return fa[x];
+	return fa[x]=find(fa[x]);
 }
 void merge(int x,int y)
 {

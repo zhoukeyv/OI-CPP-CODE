@@ -135,13 +135,14 @@ void solve()
 	{
 		if ((s.count(get(i))+(vis[get(i)]||vis[get(i+2*n)])+1+(sz1[id[i]]>sz2[id[i]]))%2==1)
 		{
-			cout<<"1\n";
+			cout<<'1';
 		}
 		else
 		{
-			cout<<"0\n";
+			cout<<'0';
 		}
 	}
+	cout<<'\n';
 	return;
 }
 signed main()

@@ -122,14 +122,14 @@ void solve()
 		}
 	}
 	int cnt2=cnt;
-	for (int i=num[0];i;i--)
+	for (int i=num[0];i>=1;i--)
 	{
 		if (bit[i-1][cnt2])
 		{
 			continue;
 		}
 		vis[num[i]]=true;
-		cnt2-=abs(sz1[get(num[i])]-sz2[get(num[i])])<<1;
+		cnt2-=2*abs(sz1[get(num[i])]-sz2[get(num[i])]);
 	}
 	for (int i=1;i<=2*n;i++)
 	{

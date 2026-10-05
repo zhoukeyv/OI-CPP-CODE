@@ -9,19 +9,19 @@ bitset<10010> bit[10010];
 bool vis[N];
 int n,m,sz;
 set<int> s;
-int get(int x)
+int find(int x)
 {
 	if (fa[x]==x)
 	{
 		return x;
 	}
-	fa[x]=get(fa[x]);
+	fa[x]=find(fa[x]);
 	return fa[x];
 }
 void merge(int x,int y)
 {
-	x=get(x);
-	y=get(y);
+	x=find(x);
+	y=find(y);
 	if (x==y)
 	{
 		return;
@@ -87,13 +87,13 @@ void solve()
 	}
 	for (int i=m;i>=1;i--)
 	{
-		if (get(a[i])==get(b[i])||get(a[i])==get(b[i]+2*n))
+		if (find(a[i])==find(b[i])||find(a[i])==find(b[i]+2*n))
 		{
 			continue;
 		}
-		erase(2*abs(sz1[get(a[i])]-sz2[get(a[i])]));
-		erase(2*abs(sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
-		insert(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
+		erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]));
+		erase(2*abs(sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
+		insert(2*abs(sz1[find(a[i])]-sz2[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
 		if (dp[sz]>0)
 		{
 			merge(a[i],b[i]+2*n);
@@ -101,8 +101,8 @@ void solve()
 		}
 		else
 		{
-			erase(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
-			insert(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i])]-sz2[get(b[i])]));
+			erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
+			insert(2*abs(sz1[find(a[i])]-sz2[find(a[i])]+sz1[find(b[i])]-sz2[find(b[i])]));
 			merge(a[i]+2*n,b[i]+2*n);
 			merge(a[i],b[i]);
 		}
@@ -110,19 +110,19 @@ void solve()
 	bit[0][0]=1;
 	for (int i=1;i<=2*n;i++)
 	{
-		if ((!s.count(get(i)))&&(!s.count(get(i+2*n))))
+		if ((!s.count(find(i)))&&(!s.count(find(i+2*n))))
 		{
-			cnt[++cnt[0]]=get(i);
-			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[get(i)]-sz2[get(i)])<<1));
-			s.insert(get(i));
+			cnt[++cnt[0]]=find(i);
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[find(i)]-sz2[find(i)])<<1));
+			s.insert(find(i));
 		}
-		if (s.count(get(i)))
+		if (s.count(find(i)))
 		{
-			id[i]=get(i);
+			id[i]=find(i);
 		}
 		else
 		{
-			id[i]=get(i+2*n);
+			id[i]=find(i+2*n);
 		}
 	}
 	int cnt2=sz;
@@ -133,11 +133,11 @@ void solve()
 			continue;
 		}
 		vis[cnt[i]]=true;
-		cnt2-=2*abs(sz1[get(cnt[i])]-sz2[get(cnt[i])]);
+		cnt2-=2*abs(sz1[find(cnt[i])]-sz2[find(cnt[i])]);
 	}
 	for (int i=1;i<=2*n;i++)
 	{
-		if ((s.count(get(i))+(vis[get(i)]||vis[get(i+2*n)])+1+(sz1[id[i]]>sz2[id[i]]))%2==1)
+		if ((s.count(find(i))+(vis[find(i)]||vis[find(i+2*n)])+1+(sz1[id[i]]>sz2[id[i]]))%2==1)
 		{
 			cout<<'1';
 		}

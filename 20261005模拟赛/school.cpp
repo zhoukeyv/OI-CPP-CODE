@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
-int n,m,a[N],b[N],fa[N],sza[N],szb[N],dp[N]={1},cnt,num[N],id[N];
+int n,m,a[N],b[N],fa[N],sz1[N],sz2[N],dp[N]={1},cnt,num[N],id[N];
 bool used[N];
 bitset<10010> bs[10010];
 set<int> s;
@@ -25,13 +25,13 @@ void merge(int x,int y)
 	{
 		return;
 	}
-	if (sza[x]+szb[x]>sza[y]+szb[y])
+	if (sz1[x]+sz2[x]>sz1[y]+sz2[y])
 	{
 		swap(x,y);
 	}
 	fa[x]=y;
-	sza[y]+=sza[x];
-	szb[y]+=szb[x];
+	sz1[y]+=sz1[x];
+	sz2[y]+=sz2[x];
 	return;
 }
 void insert(int x)
@@ -66,12 +66,12 @@ void solve()
 	for (int i=1;i<=2*n;i++)
 	{
 		fa[i]=i;
-		sza[i]=1;
+		sz1[i]=1;
 	}
 	for (int i=(2*n|1);i<=(n<<2);i++)
 	{
 		fa[i]=i;
-		szb[i]=1;
+		sz2[i]=1;
 	}
 	for (int i=1;i<=2*n;i++)
 	{
@@ -87,9 +87,9 @@ void solve()
 		{
 			continue;
 		}
-		erase(abs(sza[get(a[i])]-szb[get(a[i])])<<1);
-		erase(abs(sza[get(b[i]+2*n)]-2*szb[get(b[i]+2*n)]));
-		insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+2*n)]-szb[get(b[i]+2*n)])<<1);
+		erase(2*abs(sz1[get(a[i])]-sz2[get(a[i])]));
+		erase(2*abs(sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
+		insert(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
 		if (dp[cnt])
 		{
 			merge(a[i],b[i]+2*n);
@@ -97,8 +97,8 @@ void solve()
 		}
 		else
 		{
-			erase(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+2*n)]-szb[get(b[i]+2*n)])<<1);
-			insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i])]-szb[get(b[i])])<<1);
+			erase(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
+			insert(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i])]-sz2[get(b[i])]));
 			merge(a[i]+2*n,b[i]+2*n);
 			merge(a[i],b[i]);
 		}
@@ -109,7 +109,7 @@ void solve()
 		if ((!s.count(get(i)))&&(!s.count(get(i+2*n))))
 		{
 			num[++num[0]]=get(i);
-			bs[num[0]]=bs[num[0]-1]|(bs[num[0]-1]<<(abs(sza[get(i)]-szb[get(i)])<<1));
+			bs[num[0]]=bs[num[0]-1]|(bs[num[0]-1]<<(abs(sz1[get(i)]-sz2[get(i)])<<1));
 			s.insert(get(i));
 		}
 		if (s.count(get(i)))
@@ -129,11 +129,11 @@ void solve()
 			continue;
 		}
 		used[num[i]]=true;
-		cnt2-=abs(sza[get(num[i])]-szb[get(num[i])])<<1;
+		cnt2-=abs(sz1[get(num[i])]-sz2[get(num[i])])<<1;
 	}
 	for (int i=1;i<=2*n;i++)
 	{
-		if (s.count(get(i))^((bool)(used[get(i)]||used[get(i+2*n)]))^1^(sza[id[i]]>szb[id[i]]))
+		if (s.count(get(i))^((bool)(used[get(i)]||used[get(i+2*n)]))^1^(sz1[id[i]]>sz2[id[i]]))
 		{
 			cout<<1;
 		}

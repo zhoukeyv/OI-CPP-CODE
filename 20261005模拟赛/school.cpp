@@ -70,15 +70,12 @@ void solve()
 		if (i<=2*n)
 		{
 			sz1[i]=1;
+			insert(2);
 		}
 		else
 		{
 			sz2[i]=1;
 		}
-	}
-	for (int i=1;i<=2*n;i++)
-	{
-		insert(2);
 	}
 	for (int i=1;i<=m;i++)
 	{

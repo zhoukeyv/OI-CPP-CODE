@@ -3,10 +3,10 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=10010;
+const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
 int n,m,a[N],b[N],fa[N],sza[N],szb[N],dp[N]={1},cnt,num[N],id[N];
 bool used[N];
-bitset<10005> bs[10005];
+bitset<10010> bs[10010];
 set<int> s;
 int get(int x)
 {

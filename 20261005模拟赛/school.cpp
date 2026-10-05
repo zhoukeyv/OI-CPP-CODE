@@ -4,10 +4,10 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
-int a[N],b[N],fa[N],sz1[N],sz2[N],dp[N],num[N],id[N];
+int a[N],b[N],fa[N],sz1[N],sz2[N],dp[N],cnt[N],id[N];
 bitset<10010> bit[10010];
 bool vis[N];
-int n,m,cnt;
+int n,m,sz;
 set<int> s;
 int get(int x)
 {
@@ -41,7 +41,7 @@ void insert(int x)
 	{
 		return;
 	}
-	cnt+=x/2;
+	sz+=x/2;
 	for (int j=2*n;j>=x;j--)
 	{
 		dp[j]+=dp[j-x];
@@ -54,7 +54,7 @@ void erase(int x)
 	{
 		return;
 	}
-	cnt-=x/2;
+	sz-=x/2;
 	for (int j=x;j<=2*n;j++)
 	{
 		dp[j]-=dp[j-x];
@@ -94,7 +94,7 @@ void solve()
 		erase(2*abs(sz1[get(a[i])]-sz2[get(a[i])]));
 		erase(2*abs(sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
 		insert(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
-		if (dp[cnt]>0)
+		if (dp[sz]>0)
 		{
 			merge(a[i],b[i]+2*n);
 			merge(a[i]+2*n,b[i]);
@@ -112,8 +112,8 @@ void solve()
 	{
 		if ((!s.count(get(i)))&&(!s.count(get(i+2*n))))
 		{
-			num[++num[0]]=get(i);
-			bit[num[0]]=bit[num[0]-1]|(bit[num[0]-1]<<(abs(sz1[get(i)]-sz2[get(i)])<<1));
+			cnt[++cnt[0]]=get(i);
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[get(i)]-sz2[get(i)])<<1));
 			s.insert(get(i));
 		}
 		if (s.count(get(i)))
@@ -125,15 +125,15 @@ void solve()
 			id[i]=get(i+2*n);
 		}
 	}
-	int cnt2=cnt;
-	for (int i=num[0];i>=1;i--)
+	int cnt2=sz;
+	for (int i=cnt[0];i>=1;i--)
 	{
 		if (bit[i-1][cnt2])
 		{
 			continue;
 		}
-		vis[num[i]]=true;
-		cnt2-=2*abs(sz1[get(num[i])]-sz2[get(num[i])]);
+		vis[cnt[i]]=true;
+		cnt2-=2*abs(sz1[get(cnt[i])]-sz2[get(cnt[i])]);
 	}
 	for (int i=1;i<=2*n;i++)
 	{

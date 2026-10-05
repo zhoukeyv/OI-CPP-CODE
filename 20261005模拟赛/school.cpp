@@ -41,7 +41,7 @@ void insert(int x)
 		return;
 	}
 	cnt+=(x>>1);
-	for (int j=(n<<1);j>=x;j--)
+	for (int j=2*n;j>=x;j--)
 	{
 		dp[j]+=dp[j-x];
 	}
@@ -54,7 +54,7 @@ void erase(int x)
 		return;
 	}
 	cnt-=(x>>1);
-	for (int j=x;j<=(n<<1);j++)
+	for (int j=x;j<=2*n;j++)
 	{
 		dp[j]-=dp[j-x];
 	}
@@ -63,17 +63,17 @@ void erase(int x)
 void solve()
 {
 	cin>>n>>m;
-	for (int i=1;i<=(n<<1);i++)
+	for (int i=1;i<=2*n;i++)
 	{
 		fa[i]=i;
 		sza[i]=1;
 	}
-	for (int i=((n<<1)|1);i<=(n<<2);i++)
+	for (int i=(2*n|1);i<=(n<<2);i++)
 	{
 		fa[i]=i;
 		szb[i]=1;
 	}
-	for (int i=1;i<=(n<<1);i++)
+	for (int i=1;i<=2*n;i++)
 	{
 		insert(2);
 	}
@@ -83,30 +83,30 @@ void solve()
 	}
 	for (int i=m;i;i--)
 	{
-		if (get(a[i])==get(b[i])||get(a[i])==get(b[i]+(n<<1)))
+		if (get(a[i])==get(b[i])||get(a[i])==get(b[i]+2*n))
 		{
 			continue;
 		}
 		erase(abs(sza[get(a[i])]-szb[get(a[i])])<<1);
-		erase(abs(sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
-		insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
+		erase(abs(sza[get(b[i]+2*n)]-2*szb[get(b[i]+2*n)]));
+		insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+2*n)]-szb[get(b[i]+2*n)])<<1);
 		if (dp[cnt])
 		{
-			merge(a[i],b[i]+(n<<1));
-			merge(a[i]+(n<<1),b[i]);
+			merge(a[i],b[i]+2*n);
+			merge(a[i]+2*n,b[i]);
 		}
 		else
 		{
-			erase(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
+			erase(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+2*n)]-szb[get(b[i]+2*n)])<<1);
 			insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i])]-szb[get(b[i])])<<1);
-			merge(a[i]+(n<<1),b[i]+(n<<1));
+			merge(a[i]+2*n,b[i]+2*n);
 			merge(a[i],b[i]);
 		}
 	}
 	bs[0][0]=1;
-	for (int i=1;i<=(n<<1);i++)
+	for (int i=1;i<=2*n;i++)
 	{
-		if ((!s.count(get(i)))&&(!s.count(get(i+(n<<1)))))
+		if ((!s.count(get(i)))&&(!s.count(get(i+2*n))))
 		{
 			num[++num[0]]=get(i);
 			bs[num[0]]=bs[num[0]-1]|(bs[num[0]-1]<<(abs(sza[get(i)]-szb[get(i)])<<1));
@@ -118,7 +118,7 @@ void solve()
 		}
 		else
 		{
-			id[i]=get(i+(n<<1));
+			id[i]=get(i+2*n);
 		}
 	}
 	int cnt2=cnt;
@@ -131,9 +131,9 @@ void solve()
 		used[num[i]]=true;
 		cnt2-=abs(sza[get(num[i])]-szb[get(num[i])])<<1;
 	}
-	for (int i=1;i<=(n<<1);i++)
+	for (int i=1;i<=2*n;i++)
 	{
-		if (s.count(get(i))^((bool)(used[get(i)]||used[get(i+(n<<1))]))^1^(sza[id[i]]>szb[id[i]]))
+		if (s.count(get(i))^((bool)(used[get(i)]||used[get(i+2*n)]))^1^(sza[id[i]]>szb[id[i]]))
 		{
 			cout<<1;
 		}

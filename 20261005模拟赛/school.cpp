@@ -3,11 +3,11 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
-int a[N],b[N],fa[N],sz1[N],sz2[N],dp[N],cnt[N],id[N];
-bitset<10010> bit[10010];
+const int inf=0x3f3f3f3f3f3f3f3f,N=10010,M=1e6+10;
+int a[M],b[M],fa[M],sz1[M],sz2[M],dp[M],cnt[M],id[M];
+bitset<N> bit[N];
+bool vis[M];
 set<int> s;
-bool vis[N];
 int n,m,sz;
 int find(int x)
 {

@@ -4,9 +4,10 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
-int n,m,a[N],b[N],fa[N],sz1[N],sz2[N],dp[N]={1},cnt,num[N],id[N];
-bool vis[N];
+int a[N],b[N],fa[N],sz1[N],sz2[N],dp[N],num[N],id[N];
+int n,m,cnt;
 bitset<10010> bit[10010];
+bool vis[N];
 set<int> s;
 int get(int x)
 {
@@ -63,6 +64,7 @@ void erase(int x)
 void solve()
 {
 	cin>>n>>m;
+	dp[0]=1;
 	for (int i=1;i<=2*n;i++)
 	{
 		fa[i]=i;

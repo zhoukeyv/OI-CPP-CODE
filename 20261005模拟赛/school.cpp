@@ -43,7 +43,7 @@ void insert(int x)
 	sz+=x/2;
 	for (int j=2*n;j>=x;j--)
 	{
-		dp[j]+=(dp[j]+dp[j-x])%mod;
+		dp[j]=(dp[j]+dp[j-x])%mod;
 	}
 	return;
 }

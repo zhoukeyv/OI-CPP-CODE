@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
 int n,m,a[N],b[N],fa[N],sz1[N],sz2[N],dp[N]={1},cnt,num[N],id[N];
-bool used[N];
+bool vis[N];
 bitset<10010> bit[10010];
 set<int> s;
 int get(int x)
@@ -128,12 +128,12 @@ void solve()
 		{
 			continue;
 		}
-		used[num[i]]=true;
+		vis[num[i]]=true;
 		cnt2-=abs(sz1[get(num[i])]-sz2[get(num[i])])<<1;
 	}
 	for (int i=1;i<=2*n;i++)
 	{
-		if (s.count(get(i))^((bool)(used[get(i)]||used[get(i+2*n)]))^1^(sz1[id[i]]>sz2[id[i]]))
+		if (s.count(get(i))^((vis[get(i)]||vis[get(i+2*n)]))^1^(sz1[id[i]]>sz2[id[i]]))
 		{
 			cout<<"1\n";
 		}

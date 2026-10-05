@@ -33,7 +33,7 @@ void merge(int x,int y)
 	szb[y]+=szb[x];
 	return;
 }
-void add(int x)
+void insert(int x)
 {
 	if (x==0)
 	{
@@ -47,7 +47,7 @@ void add(int x)
 	}
 	return;
 }
-void withdraw(int x)
+void erase(int x)
 {
 	if (!x)
 	{
@@ -78,7 +78,7 @@ signed main()
 	}
 	for (int i=1;i<=(n<<1);i++)
 	{
-		add(2);
+		insert(2);
 	}
 	for (int i=1;i<=m;i++)
 	{
@@ -90,9 +90,9 @@ signed main()
 		{
 			continue;
 		}
-		withdraw(abs(sza[get(a[i])]-szb[get(a[i])])<<1);
-		withdraw(abs(sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
-		add(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
+		erase(abs(sza[get(a[i])]-szb[get(a[i])])<<1);
+		erase(abs(sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
+		insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
 		if (dp[cnt])
 		{
 			merge(a[i],b[i]+(n<<1));
@@ -100,8 +100,8 @@ signed main()
 		}
 		else
 		{
-			withdraw(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
-			add(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i])]-szb[get(b[i])])<<1);
+			erase(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i]+(n<<1))]-szb[get(b[i]+(n<<1))])<<1);
+			insert(abs(sza[get(a[i])]-szb[get(a[i])]+sza[get(b[i])]-szb[get(b[i])])<<1);
 			merge(a[i]+(n<<1),b[i]+(n<<1));
 			merge(a[i],b[i]);
 		}

@@ -40,7 +40,7 @@ void insert(int x)
 	{
 		return;
 	}
-	cnt+=(x>>1);
+	cnt+=x/2;
 	for (int j=2*n;j>=x;j--)
 	{
 		dp[j]+=dp[j-x];
@@ -68,7 +68,7 @@ void solve()
 		fa[i]=i;
 		sz1[i]=1;
 	}
-	for (int i=(2*n|1);i<=4*n;i++)
+	for (int i=2*n+1;i<=4*n;i++)
 	{
 		fa[i]=i;
 		sz2[i]=1;

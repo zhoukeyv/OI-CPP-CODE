@@ -5,9 +5,9 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
 int a[N],b[N],fa[N],sz1[N],sz2[N],dp[N],num[N],id[N];
-int n,m,cnt;
 bitset<10010> bit[10010];
 bool vis[N];
+int n,m,cnt;
 set<int> s;
 int get(int x)
 {

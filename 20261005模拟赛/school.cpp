@@ -109,7 +109,7 @@ void solve()
 		if ((!s.count(find(i)))&&(!s.count(find(i+2*n))))
 		{
 			cnt[++cnt[0]]=find(i);
-			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[find(i)]-sz2[find(i)])<<1));
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(2*abs(sz1[find(i)]-sz2[find(i)])));
 			s.insert(find(i));
 		}
 		if (s.count(find(i)))

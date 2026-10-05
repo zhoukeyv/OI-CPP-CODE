@@ -54,7 +54,7 @@ void erase(int x)
 	{
 		return;
 	}
-	cnt-=(x>>1);
+	cnt-=x/2;
 	for (int j=x;j<=2*n;j++)
 	{
 		dp[j]-=dp[j-x];
@@ -65,15 +65,17 @@ void solve()
 {
 	cin>>n>>m;
 	dp[0]=1;
-	for (int i=1;i<=2*n;i++)
+	for (int i=1;i<=4*n;i++)
 	{
 		fa[i]=i;
-		sz1[i]=1;
-	}
-	for (int i=2*n+1;i<=4*n;i++)
-	{
-		fa[i]=i;
-		sz2[i]=1;
+		if (i<=2*n)
+		{
+			sz1[i]=1;
+		}
+		else
+		{
+			sz2[i]=1;
+		}
 	}
 	for (int i=1;i<=2*n;i++)
 	{
@@ -92,7 +94,7 @@ void solve()
 		erase(2*abs(sz1[get(a[i])]-sz2[get(a[i])]));
 		erase(2*abs(sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
 		insert(2*abs(sz1[get(a[i])]-sz2[get(a[i])]+sz1[get(b[i]+2*n)]-sz2[get(b[i]+2*n)]));
-		if (dp[cnt])
+		if (dp[cnt]>0)
 		{
 			merge(a[i],b[i]+2*n);
 			merge(a[i]+2*n,b[i]);

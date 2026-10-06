@@ -42,7 +42,7 @@ void solve()
 	{
 		for (int j=i-b[i]+1;j>i-c[i]+1;j--)
 		{
-			dp[i][j]=(dp[i][j]+dp[])
+			dp[i][j]=(dp[i][j]+dp[i-1][j-1])%mod;
 		}
 	}
 	return;

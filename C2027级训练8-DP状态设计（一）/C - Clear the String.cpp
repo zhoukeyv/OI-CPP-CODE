@@ -38,7 +38,7 @@ void solve()
 		for (int l=1;l+len-1<=n;l++)
 		{
 			int r=l+len-1;
-			if (dp[l][r]!=0)
+			if (dp[l][r]!=inf)
 			{
 				continue;
 			}
@@ -53,7 +53,7 @@ void solve()
 			}
 			if (s[lst]==s[nxt])
 			{
-				dp[l][r]=
+				dp[l][r]=min(dp[l][r],dp[lst+1][nxt-1]+1);
 			}
 		}
 	}

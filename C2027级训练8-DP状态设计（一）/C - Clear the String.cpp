@@ -43,7 +43,7 @@ void solve()
 				continue;
 			}
 			int lst=l,suml=0,nxt=r,sumn=0;
-			while (s[lst+1]==s[lst])
+			while (lst<r&&s[lst+1]==s[lst])
 			{
 				lst++;
 			}

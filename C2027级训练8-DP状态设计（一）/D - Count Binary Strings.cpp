@@ -28,12 +28,14 @@ void solve()
 		}
 	}
 	int lst=1;
+	b[1]=1;
 	for (int i=2;i<=n;i++)
 	{
 		if (t[i]==0)
 		{
 			lst=i;
 		}
+		b[i]=lst;
 	}
 	return;
 }

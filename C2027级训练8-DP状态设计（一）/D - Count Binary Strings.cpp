@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=110,mod=998244353;
-int a[N][N],b[N],c[N],t[N];
+int a[N][N],dp[N][N],b[N],c[N],t[N];
 int n;
 void solve()
 {

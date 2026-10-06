@@ -61,6 +61,11 @@ void DFS3(int u,int f)
 		{
 			continue;
 		}
+		if (v.second)
+		{
+			t2[v.first]=n-sz[v.first];
+		}
+		DFS3(v.first,u);
 	}
 }
 void solve()

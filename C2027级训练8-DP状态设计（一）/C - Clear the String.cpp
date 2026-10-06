@@ -12,9 +12,14 @@ void solve()
 	cin>>n>>s;
 	s='@'+s;
 	int lst=1;
+	queue<pair<int,int>> q;
 	for (int i=1;i<=n;i++)
 	{
-		
+		if (i==n||s[i]!=s[i+1])
+		{
+			q.push({lst,i});
+			lst=i+1;
+		}
 	}
 	return;
 }

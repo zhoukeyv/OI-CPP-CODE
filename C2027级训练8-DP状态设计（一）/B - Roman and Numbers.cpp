@@ -14,7 +14,13 @@ void solve()
 	dp[0][0]=1;
 	for (int i=0;i<(1<<n)-1;i++)
 	{
-		
+		for (int j=0;j<m;j++)
+		{
+			if (dp[i][j]==0)
+			{
+				continue;
+			}
+		}
 	}
 	return;
 }

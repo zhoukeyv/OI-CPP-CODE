@@ -12,6 +12,10 @@ void solve()
 	cin>>s>>m;
 	n=s.size();
 	dp[0][0]=1;
+	for (int i=0;i<(1<<n)-1;i++)
+	{
+		
+	}
 	return;
 }
 signed main()

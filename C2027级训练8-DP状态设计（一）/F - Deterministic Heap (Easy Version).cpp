@@ -21,10 +21,10 @@ void solve()
 	{
 		for (int j=0;j<=k;j++)
 		{
-			for (int x=1;x<=j;x++)
+			for (int k=1;k<=j;k++)
 			{
-				dp1[i][j]=(dp1[i][j]+2*dp1[i+1][x]*s[i+1][min(x-1,j-x)]%mod)%mod;
-				dp2[i][j]=(dp2[i][j]+dp2[i+1][x]*s[i+1][j-x]%mod)%mod;
+				dp1[i][j]=(dp1[i][j]+2*dp1[i+1][k]*s[i+1][min(k-1,j-k)]%mod)%mod;
+				dp2[i][j]=(dp2[i][j]+dp2[i+1][k]*s[i+1][j-k]%mod)%mod;
 			}
 			dp2[i][j]=(dp2[i][j]+dp2[i+1][0]*s[i+1][j]%mod)%mod;
 			s[i][j]=((j?s[i][j-1]:0ll)+dp2[i][j])%mod;

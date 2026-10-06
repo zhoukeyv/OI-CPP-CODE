@@ -23,13 +23,9 @@ void solve()
 		{
 			for (int x=0;x<=j;x++)
 			{
-				if (x)
-				{
-					dp1[i][j]+=2ll*dp1[i+1][x]*s[i+1][min(x-1,j-x)]%mod;
-				}
-				dp2[i][j]+=dp2[i+1][x]*s[i+1][j-x]%mod;
+				dp1[i][j]=(dp1[i][j]+2*dp1[i+1][x]*s[i+1][min(x-1,j-x)]%mod)%mod;
 			}
-			dp1[i][j]%=mod,dp2[i][j]%=mod;
+			dp2[i][j]=(dp2[i][j]+dp2[i+1][0]*s[i+1][j]%mod)%mod;
 			s[i][j]=((j?s[i][j-1]:0ll)+dp2[i][j])%mod;
 		}
 	}

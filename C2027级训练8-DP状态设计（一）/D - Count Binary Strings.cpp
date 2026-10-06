@@ -37,8 +37,8 @@ void solve()
 		}
 		b[i]=lst;
 	}
-	dp[0][0]=2;
-	for (int i=1;i<=n;i++)
+	dp[1][1]=2;
+	for (int i=2;i<=n;i++)
 	{
 		for (int j=max(2ll,i-b[i]+1);j<i-c[i]+1;j++)
 		{

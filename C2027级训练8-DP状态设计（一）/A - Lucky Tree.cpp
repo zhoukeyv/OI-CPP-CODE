@@ -67,10 +67,11 @@ void DFS3(int u,int f)
 		}
 		else
 		{
-			t2[v.first]=t2[u]+t1[u]-t1[v.first];
+			t2[v.first]=t2[u]+t1[u]-(v.second?sz[v.first]:t1[v.first]);
 		}
 		DFS3(v.first,u);
 	}
+	return;
 }
 void solve()
 {

@@ -53,7 +53,7 @@ void solve()
 			}
 			if (s[lst]==s[nxt])
 			{
-				dp[l][r]=min(dp[l][r],dp[lst+1][nxt-1]+1);
+				dp[l][r]=min(dp[l][r],dp[lsct+1][nxt-1]+1);
 			}
 			dp[l][r]=min(dp[l][r],dp[lst+1][r]+1);
 			dp[l][r]=min(dp[l][r],dp[l][nxt-1]+1);

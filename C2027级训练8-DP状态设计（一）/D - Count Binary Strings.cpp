@@ -3,7 +3,7 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=110;
+const int inf=0x3f3f3f3f3f3f3f3f,N=110,mod=998244353;
 int a[N][N],b[N],c[N],t[N];
 int n;
 void solve()
@@ -40,7 +40,10 @@ void solve()
 	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
-		for ()
+		for (int j=1;j<i;j++)
+		{
+			
+		}
 	}
 	return;
 }

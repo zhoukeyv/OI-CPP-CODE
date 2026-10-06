@@ -83,6 +83,14 @@ void solve()
 		graph[u].push_back({v,check(w)});
 		graph[v].push_back({u,check(w)});
 	}
+	DFS1(1,-1);
+	DFS2(1,-1);
+	DFS3(1,-1);
+	int ans=0;
+	for (int i=1;i<=n;i++)
+	{
+		ans+=(t1[i]+t2[i])*(t1[i]+t2[i]-1);
+	}
 	return;
 }
 signed main()

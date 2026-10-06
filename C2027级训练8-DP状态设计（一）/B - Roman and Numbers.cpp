@@ -66,9 +66,8 @@ void solve()
 	{
 		if (cnt[i]>0)
 		{
-			
+			ans/=cnt[i];
 		}
-		ans/=cnt[i];
 	}
 	cout<<ans<<'\n';
 	return;

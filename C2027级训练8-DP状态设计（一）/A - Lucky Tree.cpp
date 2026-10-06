@@ -40,6 +40,25 @@ void DFS2(int u,int f)
 		if (v.first==f)
 		{
 			continue;
+		}
+		DFS2(v.first,u);
+		if (v.second)
+		{
+			t1[u]+=sz[v.first];
+		}
+		else
+		{
+			t1[u]+=t1[v.first];
+		}
+	}
+	return;
+}
+void DFS3(int u,int f)
+{
+	for (pair<int,int> v:graph[u])
+	{
+		if (v.first==f)
+		{
 			continue;
 		}
 	}

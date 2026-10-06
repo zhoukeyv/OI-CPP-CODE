@@ -52,6 +52,12 @@ void solve()
 			}
 		}
 	}
+	int ans=0;
+	for (int i=1;i<=n;i++)
+	{
+		ans=(ans+dp[n][i])%mod;
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

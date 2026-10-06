@@ -2,17 +2,15 @@
 #define double long double
 #define int long long
 using namespace std;
-vector<vector<int>> dp;
+const double eps=1e-6;
+const int inf=0x3f3f3f3f3f3f3f3f,N=510;
+int dp[N][N];
 string s;
 int n;
-signed main()
+void solve()
 {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
 	cin>>n>>s;
 	s='@'+s;
-	n=s.size()-1;
-	dp.resize(n+1,vector<int>(n+1));
 	for (int i=1;i<=n;i++)
 	{
 		dp[i][i]=1;
@@ -36,6 +34,20 @@ signed main()
 			}
 		}
 	}
-	cout<<dp[1][n];
+	cout<<dp[1][n]<<'\n';
+	return;
+}
+signed main()
+{
+	// freopen(".in","r",stdin);
+	// freopen(".out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int TestCase=1;
+	// cin>>TestCase;
+	for (int Caseid=1;Caseid<=TestCase;Caseid++)
+	{
+		solve();
+	}
 	return 0;
 }

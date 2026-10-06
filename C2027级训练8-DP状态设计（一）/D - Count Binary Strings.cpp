@@ -16,9 +16,20 @@ void solve()
 			cin>>a[i][j];
 			if (a[i][j]==1)
 			{
-				for (int k=)
+				for (int k=i+1;k<=j;k++)
+				{
+					t[k]=1;
+				}
+			}
+			else if (a[i][j]==2)
+			{
+				c[j]=max(c[j],i);
 			}
 		}
+	}
+	for (int i=1;i<=n;i++)
+	{
+		
 	}
 	return;
 }

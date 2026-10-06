@@ -65,7 +65,7 @@ void solve()
 			{
 				dp[l][r]=min(dp[l][r],dp[l][mid]+dp[mid+1][r]);
 			}
-			cerr<<l<<' '<<r<<' '<<dp[l][r]<<'\n';
+			// cerr<<l<<' '<<r<<' '<<dp[l][r]<<'\n';
 		}
 	}
 	cout<<dp[1][n]<<'\n';

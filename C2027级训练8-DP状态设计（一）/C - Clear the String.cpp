@@ -36,6 +36,10 @@ void solve()
 			{
 				lst--;
 			}
+			while (nxt<n&&s[nxt+1]==s[cur.second+1])
+			{
+				nxt++;
+			}
 		}
 	}
 	return;

@@ -9,6 +9,7 @@ int n;
 void solve()
 {
 	cin>>n;
+	bool flag=false;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=i;j<=n;j++)
@@ -23,9 +24,18 @@ void solve()
 			}
 			else if (a[i][j]==2)
 			{
+				if (i==j)
+				{
+					flag=true;
+				}
 				c[j]=max(c[j],i);
 			}
 		}
+	}
+	if (flag)
+	{
+		cout<<"0\n";
+		return;
 	}
 	int lst=1;
 	b[1]=1;

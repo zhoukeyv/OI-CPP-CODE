@@ -50,7 +50,10 @@ void solve()
 			{
 				dp[i][1]=(dp[i][1]+dp[i-1][j])%mod;
 			}
-			cerr<<i<<':'<<dp[i][1]<<'\n';
+		}
+		for (int j=1;j<=i;j++)
+		{
+			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
 	}
 	int ans=0;

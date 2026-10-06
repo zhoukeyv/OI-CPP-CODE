@@ -26,7 +26,7 @@ void solve()
 			}
 			else
 			{
-				dp[l][r]=1e18;
+				dp[l][r]=inf;
 				for (int k=l;k<r;k++)
 				{
 					dp[l][r]=min(dp[l][r],dp[l][k]+dp[k+1][r]);

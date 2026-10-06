@@ -51,6 +51,7 @@ void solve()
 				dp[i][1]=(dp[i][1]+dp[i-1][j])%mod;
 			}
 		}
+		cerr<<i<<':'<<dp[i][1]<<'\n';
 	}
 	int ans=0;
 	for (int i=1;i<=n;i++)

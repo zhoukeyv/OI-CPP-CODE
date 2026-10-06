@@ -40,9 +40,9 @@ void solve()
 	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=b[i];j>c[i];j--)
+		for (int j=i-b[i]+1;j>i-c[i]+1;j--)
 		{
-			for (int k=t[])
+			dp[i][j]=(dp[i][j]+dp[])
 		}
 	}
 	return;

@@ -21,6 +21,15 @@ int power(int a,int b,int p)
 	}
 	return res;
 }
+int fac(int x)
+{
+	int res=1;
+	for (int i=2;i<=x;i++)
+	{
+		res*=i;
+	}
+	return res;
+}
 void print(int x)
 {
 	bitset<3> b(x);
@@ -66,7 +75,7 @@ void solve()
 	{
 		if (cnt[i]>0)
 		{
-			ans/=cnt[i];
+			ans/=fac(cnt[i]);
 		}
 	}
 	cout<<ans<<'\n';

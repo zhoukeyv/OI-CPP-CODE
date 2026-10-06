@@ -8,6 +8,9 @@ int dp1[N][N],dp2[N][N],s[N][N];
 int n,k,mod;
 void solve()
 {
+	memset(dp1,0,sizeof dp1);
+	memset(dp2,0,sizeof dp2);
+	memset(s,0,sizeof s);
 	cin>>n>>k>>mod;
 	for (int j=0;j<=k;j++)
 	{
@@ -18,8 +21,7 @@ void solve()
 	{
 		for (int j=0;j<=k;j++)
 		{
-			dp1[i][j]=dp2[i][j]=0ll;
-			for (int x=0;x<=j;++x)
+			for (int x=0;x<=j;x++)
 			{
 				if (x)
 				{
@@ -43,7 +45,7 @@ signed main()
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;
-	// cin>>TestCase;
+	cin>>TestCase;
 	for (int Caseid=1;Caseid<=TestCase;Caseid++)
 	{
 		solve();

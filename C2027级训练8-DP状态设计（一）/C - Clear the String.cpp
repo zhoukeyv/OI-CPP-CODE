@@ -40,7 +40,14 @@ void solve()
 			{
 				lst++;
 			}
-			
+			while (s[nxt-1]==s[nxt])
+			{
+				nxt--;
+			}
+			if (s[lst]==s[nxt])
+			{
+				
+			}
 		}
 	}
 	return;

@@ -61,7 +61,12 @@ void solve()
 			cerr<<' '<<j<<' '<<dp[i][j]<<'\n';
 		}
 	}
-	cout<<dp[(1<<n)-1][0]<<'\n';
+	int ans=dp[(1<<n)-1][0];
+	for (int i=0;i<=9;i++)
+	{
+		ans/=cnt[i];
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

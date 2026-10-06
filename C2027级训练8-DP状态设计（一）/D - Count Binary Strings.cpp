@@ -37,6 +37,11 @@ void solve()
 		}
 		b[i]=lst;
 	}
+	dp[0][0]=1;
+	for (int i=1;i<=n;i++)
+	{
+		for ()
+	}
 	return;
 }
 signed main()

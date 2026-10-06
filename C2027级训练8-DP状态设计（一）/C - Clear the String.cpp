@@ -59,8 +59,8 @@ void solve()
 					nxt=i;
 				}
 			}
-			dp[l][r]=min(dp[l][r],suml+1);
-			dp[l][r]=min(dp[l][r],sumr+1);
+			dp[l][r]=min(dp[l][r],suml+dp[lst+1][r]+1);
+			dp[l][r]=min(dp[l][r],sumr+dp[l][nxt-1]+1);
 			for (int mid=l;mid<r;mid++)
 			{
 				dp[l][r]=min(dp[l][r],dp[l][mid]+dp[mid+1][r]);

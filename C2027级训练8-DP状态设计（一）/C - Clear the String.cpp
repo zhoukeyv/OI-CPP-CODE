@@ -31,7 +31,11 @@ void solve()
 		}
 		if (cur.first!=1&&cur.second!=n&&s[cur.first-1]==s[cur.second+1])
 		{
-			
+			int lst=cur.first-1,nxt=cur.second+1;
+			while (lst>1&&s[lst-1]==s[cur.first-1])
+			{
+				lst--;
+			}
 		}
 	}
 	return;

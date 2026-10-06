@@ -9,6 +9,7 @@ string s;
 int n;
 void solve()
 {
+	memset(dp,0x3f,sizeof dp);
 	cin>>n>>s;
 	s='@'+s;
 	int lst=1;
@@ -46,7 +47,7 @@ void solve()
 			}
 			if (s[lst]==s[nxt])
 			{
-				
+				dp[l][r]=
 			}
 		}
 	}

@@ -43,9 +43,12 @@ void solve()
 				continue;
 			}
 			int lst=l,suml=0,nxt=r,sumn=0;
-			while (lst<r&&s[lst+1]==s[lst])
+			for (int i=l;i<=r;i++)
 			{
-				lst++;
+				if (s[i]==s[l])
+				{
+					suml+=dp[lst+1][i-1];
+				}
 			}
 			while (s[nxt-1]==s[nxt])
 			{

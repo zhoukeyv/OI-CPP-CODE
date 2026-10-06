@@ -42,17 +42,22 @@ void solve()
 			{
 				continue;
 			}
-			int lst=l,suml=0,nxt=r,sumn=0;
+			int lst=l,suml=0,nxt=r,sumr=0;
 			for (int i=l;i<=r;i++)
 			{
 				if (s[i]==s[l])
 				{
 					suml+=dp[lst+1][i-1];
+					lst=i;
 				}
 			}
-			while (s[nxt-1]==s[nxt])
+			for (int i=r;i>=l;i--)
 			{
-				nxt--;
+				if (s[i]==s[r])
+				{
+					sumr+=dp[i+1][nxt-1];
+					nxt=i;
+				}
 			}
 			if (s[lst]==s[nxt])
 			{

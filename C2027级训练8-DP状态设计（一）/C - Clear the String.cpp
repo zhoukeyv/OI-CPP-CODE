@@ -21,6 +21,12 @@ void solve()
 			lst=i+1;
 		}
 	}
+	while (!q.empty())
+	{
+		pair<int,int> cur=q.front();
+		q.pop();
+		
+	}
 	return;
 }
 signed main()

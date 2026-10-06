@@ -35,8 +35,6 @@ void solve()
 	{
 		for (int j=0;j<m;j++)
 		{
-			print(i);
-			cout<<' '<<j<<' '<<dp[i][j]<<'\n';
 			if (dp[i][j]==0)
 			{
 				continue;
@@ -49,6 +47,14 @@ void solve()
 				}
 				dp[i|(1<<k)][(j+power(10,n-__builtin_popcount(i)-1,m))%m]+=dp[i][j];
 			}
+		}
+	}
+	for (int i=0;i<(1<<n);i++)
+	{
+		for (int j=0;j<m;j++)
+		{
+			print(i);
+			cout<<' '<<j<<' '<<dp[i][j]<<'\n';
 		}
 	}
 	cout<<dp[(1<<n)-1][0]<<'\n';

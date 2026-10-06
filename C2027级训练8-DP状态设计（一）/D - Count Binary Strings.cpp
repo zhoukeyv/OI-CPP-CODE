@@ -40,7 +40,7 @@ void solve()
 	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=max(1ll,i-b[i]+1);j>i-c[i]+1;j--)
+		for (int j=max(2ll,i-b[i]+1);j>i-c[i]+1;j--)
 		{
 			dp[i][j]=(dp[i][j]+dp[i-1][j-1])%mod;
 		}

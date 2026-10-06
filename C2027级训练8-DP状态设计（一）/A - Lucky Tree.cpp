@@ -65,6 +65,10 @@ void DFS3(int u,int f)
 		{
 			t2[v.first]=n-sz[v.first];
 		}
+		else
+		{
+			
+		}
 		DFS3(v.first,u);
 	}
 }

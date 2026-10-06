@@ -40,7 +40,7 @@ void solve()
 				{
 					continue;
 				}
-				
+				dp[i|(1<<k)][]
 			}
 		}
 	}

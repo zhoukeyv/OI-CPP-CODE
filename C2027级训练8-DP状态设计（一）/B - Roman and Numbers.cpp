@@ -4,9 +4,12 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f;
+string s;
+int n,m;
 void solve()
 {
-	
+	cin>>s>>m;
+	n=s.size();
 	return;
 }
 signed main()

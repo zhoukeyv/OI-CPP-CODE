@@ -3,10 +3,18 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
+const int inf=0x3f3f3f3f3f3f3f3f,N=510;
+int dp[N][N];
+string s;
+int n;
 void solve()
 {
-	
+	cin>>n>>s;
+	s='@'+s;
+	for (int i=1;i<=n;i++)
+	{
+		
+	}
 	return;
 }
 signed main()

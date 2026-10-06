@@ -48,7 +48,7 @@ void solve()
 		{
 			for (int j=1;j<i;j++)
 			{
-				dp[i][i]=(dp[i][i]+dp[i-1][j])%mod;
+				dp[i][1]=(dp[i][1]+dp[i-1][j])%mod;
 			}
 		}
 	}

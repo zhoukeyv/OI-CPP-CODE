@@ -37,7 +37,11 @@ void DFS2(int u,int f)
 {
 	for (pair<int,int> v:graph[u])
 	{
-		
+		if (v.first==f)
+		{
+			continue;
+			continue;
+		}
 	}
 }
 void solve()

@@ -25,6 +25,8 @@ void solve()
 	{
 		int u,v,w;
 		cin>>u>>v>>w;
+		graph[u].push_back({v,check(w)});
+		graph[v].push_back({u,check(w)});
 	}
 	return;
 }

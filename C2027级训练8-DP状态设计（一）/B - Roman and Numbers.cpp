@@ -45,7 +45,7 @@ void solve()
 				{
 					continue;
 				}
-				dp[i|(1<<k)][(j+power(10,n-__builtin_popcount(i)-1,m))%m]+=dp[i][j];
+				dp[i|(1<<k)][(j+(s[k]-'0')*power(10,n-__builtin_popcount(i)-1,m))%m]+=dp[i][j];
 			}
 		}
 	}

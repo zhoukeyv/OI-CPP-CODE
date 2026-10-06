@@ -37,7 +37,7 @@ void solve()
 		}
 		b[i]=lst;
 	}
-	dp[0][0]=1;
+	dp[0][0]=2;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=max(2ll,i-b[i]+1);j<i-c[i]+1;j++)
@@ -48,7 +48,7 @@ void solve()
 		{
 			for (int j=0;j<i;j++)
 			{
-				dp[i][1]=(dp[i][1]+dp[i-1][j]*2)%mod;
+				dp[i][1]=(dp[i][1]+dp[i-1][j])%mod;
 			}
 		}
 		for (int j=1;j<=i;j++)

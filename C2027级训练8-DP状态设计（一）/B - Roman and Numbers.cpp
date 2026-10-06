@@ -20,6 +20,10 @@ void solve()
 			{
 				continue;
 			}
+			for (int k=0;k<n;k++)
+			{
+				if (s[k]=='0'&&)
+			}
 		}
 	}
 	return;

@@ -54,7 +54,7 @@ void solve()
 		for (int j=0;j<m;j++)
 		{
 			print(i);
-			cout<<' '<<j<<' '<<dp[i][j]<<'\n';
+			cerr<<' '<<j<<' '<<dp[i][j]<<'\n';
 		}
 	}
 	cout<<dp[(1<<n)-1][0]<<'\n';

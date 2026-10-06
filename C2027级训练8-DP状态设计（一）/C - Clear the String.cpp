@@ -29,7 +29,10 @@ void solve()
 		{
 			continue;
 		}
-		if (cur.first!=1&&cur.second!=n)
+		if (cur.first!=1&&cur.second!=n&&s[cur.first-1]==s[cur.second+1])
+		{
+			
+		}
 	}
 	return;
 }

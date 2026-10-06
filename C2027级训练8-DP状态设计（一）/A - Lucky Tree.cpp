@@ -19,6 +19,27 @@ bool check(int x)
 	}
 	return true;
 }
+void DFS1(int u,int f)
+{
+	sz[u]=1;
+	for (pair<int,int> v:graph[u])
+	{
+		if (v.first==f)
+		{
+			continue;
+		}
+		DFS1(v.first,u);
+		sz[u]+=sz[v.first];
+	}
+	return;
+}
+void DFS2(int u,int f)
+{
+	for (pair<int,int> v:graph[u])
+	{
+		
+	}
+}
 void solve()
 {
 	cin>>n;

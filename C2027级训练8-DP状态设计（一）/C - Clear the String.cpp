@@ -9,10 +9,16 @@ string s;
 int n;
 void solve()
 {
-	memset(dp,0x3f,sizeof dp);
 	cin>>n>>s;
 	s='@'+s;
 	int lst=1;
+	for (int i=1;i<=n;i++)
+	{
+		for (int j=i;j<=n;j++)
+		{
+			dp[i][j]=inf;
+		}
+	}
 	for (int i=1;i<=n;i++)
 	{
 		if (i==n||s[i]!=s[i+1])

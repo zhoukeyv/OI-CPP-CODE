@@ -62,14 +62,14 @@ void solve()
 			}
 		}
 	}
-	for (int i=0;i<(1<<n);i++)
-	{
-		for (int j=0;j<m;j++)
-		{
-			print(i);
-			cerr<<' '<<j<<' '<<dp[i][j]<<'\n';
-		}
-	}
+	// for (int i=0;i<(1<<n);i++)
+	// {
+	// 	for (int j=0;j<m;j++)
+	// 	{
+	// 		print(i);
+	// 		cerr<<' '<<j<<' '<<dp[i][j]<<'\n';
+	// 	}
+	// }
 	int ans=dp[(1<<n)-1][0];
 	for (int i=0;i<=9;i++)
 	{

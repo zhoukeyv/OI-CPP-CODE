@@ -14,6 +14,10 @@ void solve()
 		for (int j=i;j<=n;j++)
 		{
 			cin>>a[i][j];
+			if (a[i][j]==1)
+			{
+				
+			}
 		}
 	}
 	return;

@@ -46,7 +46,7 @@ void solve()
 		}
 		if (b[i]==i)
 		{
-			for (int j=1;j<i;j++)
+			for (int j=0;j<i;j++)
 			{
 				dp[i][1]=(dp[i][1]+dp[i-1][j])%mod;
 			}

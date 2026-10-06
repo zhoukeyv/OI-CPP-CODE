@@ -14,7 +14,6 @@ void solve()
 	int lst=1;
 	for (int i=1;i<=n;i++)
 	{
-		dp[i][i]=1;
 		if (i==n||s[i]!=s[i+1])
 		{
 			for (int j=lst;j<=i;j++)
@@ -25,6 +24,18 @@ void solve()
 				}
 			}
 			lst=i+1;
+		}
+	}
+	for (int len=1;len<=n;len++)
+	{
+		for (int l=1;l+len-1<=n;l++)
+		{
+			int r=l+len-1;
+			if (dp[l][r]!=0)
+			{
+				continue;
+			}
+			
 		}
 	}
 	return;

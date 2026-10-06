@@ -21,7 +21,7 @@ void solve()
 	{
 		for (int j=0;j<=k;j++)
 		{
-			for (int x=0;x<=j;x++)
+			for (int x=1;x<=j;x++)
 			{
 				dp1[i][j]=(dp1[i][j]+2*dp1[i+1][x]*s[i+1][min(x-1,j-x)]%mod)%mod;
 			}

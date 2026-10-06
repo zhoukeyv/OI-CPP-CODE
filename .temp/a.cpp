@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define double long double
 #define int long long
 using namespace std;
@@ -9,62 +9,30 @@ string s;
 int n;
 void solve()
 {
-	cin>>n>>s;
-	s='@'+s;
-	int lst=1;
-	for (int i=1;i<=n;i++)
+	cin>>n>>k>>p;
+	const int mod=p;
+	for (int j=0;j<=k;++j)
 	{
-		for (int j=i;j<=n;j++)
-		{
-			dp[i][j]=inf;
-		}
+		f[n][j]=g[n][j]=1ll,s[n][j]=(j+1)%mod;
 	}
-	for (int i=1;i<=n;i++)
+	for (int i=n-1;i>=1;--i)
 	{
-		if (i==n||s[i]!=s[i+1])
+		for (int j=0;j<=k;++j)
 		{
-			for (int j=lst;j<=i;j++)
+			f[i][j]=g[i][j]=0ll;
+			for (int x=0;x<=j;++x)
 			{
-				for (int k=j;k<=i;k++)
+				if (x)
 				{
-					dp[j][k]=1;
+					f[i][j]+=2ll*f[i+1][x]*s[i+1][min(x-1,j-x)]%mod;
 				}
+				g[i][j]+=g[i+1][x]*s[i+1][j-x]%mod;
 			}
-			lst=i+1;
+			f[i][j]%=mod,g[i][j]%=mod;
+			s[i][j]=((j?s[i][j-1]:0ll)+g[i][j])%mod;
 		}
 	}
-	for (int len=1;len<=n;len++)
-	{
-		for (int l=1;l+len-1<=n;l++)
-		{
-			int r=l+len-1;
-			if (dp[l][r]!=inf)
-			{
-				continue;
-			}
-			int lst=l,nxt=r;
-			while (s[lst+1]==s[lst])
-			{
-				lst++;
-			}
-			while (s[nxt-1]==s[nxt])
-			{
-				nxt--;
-			}
-			if (s[lst]==s[nxt])
-			{
-				dp[l][r]=min(dp[l][r],dp[lst+1][nxt-1]+1);
-			}
-			dp[l][r]=min(dp[l][r],dp[lst+1][r]+1);
-			dp[l][r]=min(dp[l][r],dp[l][nxt-1]+1);
-			for (int mid=l;mid<r;mid++)
-			{
-				dp[l][r]=min(dp[l][r],dp[l][mid]+dp[mid+1][r]);
-			}
-			cerr<<l<<' '<<r<<' '<<dp[l][r]<<'\n';
-		}
-	}
-	cout<<dp[1][n]<<'\n';
+	cout<<f[1][k]<<'\n';
 	return;
 }
 signed main()

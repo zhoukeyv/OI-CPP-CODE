@@ -91,6 +91,7 @@ void solve()
 	{
 		ans+=(t1[i]+t2[i])*(t1[i]+t2[i]-1);
 	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

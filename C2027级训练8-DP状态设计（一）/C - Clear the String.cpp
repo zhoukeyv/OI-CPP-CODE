@@ -21,27 +21,6 @@ void solve()
 			lst=i+1;
 		}
 	}
-	while (!q.empty())
-	{
-		pair<int,int> cur=q.front();
-		q.pop();
-		if (cur.first==1&&cur.second==n)
-		{
-			continue;
-		}
-		if (cur.first!=1&&cur.second!=n&&s[cur.first-1]==s[cur.second+1])
-		{
-			int lst=cur.first-1,nxt=cur.second+1;
-			while (lst>1&&s[lst-1]==s[cur.first-1])
-			{
-				lst--;
-			}
-			while (nxt<n&&s[nxt+1]==s[cur.second+1])
-			{
-				nxt++;
-			}
-		}
-	}
 	return;
 }
 signed main()

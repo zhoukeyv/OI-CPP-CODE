@@ -42,7 +42,7 @@ void solve()
 			{
 				continue;
 			}
-			int lst=l,nxt=r;
+			int lst=l,suml=0,nxt=r,sumn=0;
 			while (s[lst+1]==s[lst])
 			{
 				lst++;

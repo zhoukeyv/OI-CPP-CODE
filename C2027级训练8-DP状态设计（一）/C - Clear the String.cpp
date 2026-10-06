@@ -25,7 +25,11 @@ void solve()
 	{
 		pair<int,int> cur=q.front();
 		q.pop();
-		
+		if (cur.first==1&&cur.second==n)
+		{
+			continue;
+		}
+		if (cur.first!=1&&cur.second!=n)
 	}
 	return;
 }

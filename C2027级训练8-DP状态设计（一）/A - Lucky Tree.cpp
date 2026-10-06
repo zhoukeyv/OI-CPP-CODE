@@ -55,6 +55,15 @@ void DFS2(int u,int f)
 }
 void DFS3(int u,int f)
 {
+	int sum=0;
+	for (pair<int,int> v:graph[u])
+	{
+		if (v.first==f)
+		{
+			continue;
+		}
+		sum+=t1[v.first];
+	}
 	for (pair<int,int> v:graph[u])
 	{
 		if (v.first==f)
@@ -67,7 +76,7 @@ void DFS3(int u,int f)
 		}
 		else
 		{
-			
+			t2[v.first]=t2[u]+sum-t1[v.first];
 		}
 		DFS3(v.first,u);
 	}

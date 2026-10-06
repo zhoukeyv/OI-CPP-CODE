@@ -63,6 +63,7 @@ void solve()
 			}
 		}
 	}
+	cout<<dp[1][n]<<'\n';
 	return;
 }
 signed main()

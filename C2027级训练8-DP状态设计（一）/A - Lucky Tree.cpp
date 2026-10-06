@@ -3,7 +3,7 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
+const int inf=0x3f3f3f3f3f3f3f3f,N=1e5+10;
 void solve()
 {
 	

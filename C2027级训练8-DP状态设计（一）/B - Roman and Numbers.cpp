@@ -36,7 +36,7 @@ void solve()
 			}
 			for (int k=0;k<n;k++)
 			{
-				if (s[k]=='0'&&i==0)
+				if (((i>>k)&1)||s[k]=='0'&&i==0)
 				{
 					continue;
 				}

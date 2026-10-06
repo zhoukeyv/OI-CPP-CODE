@@ -24,7 +24,7 @@ int power(int a,int b,int p)
 void print(int x)
 {
 	bitset<3> b(x);
-	cout<<b;
+	cerr<<b;
 }
 void solve()
 {

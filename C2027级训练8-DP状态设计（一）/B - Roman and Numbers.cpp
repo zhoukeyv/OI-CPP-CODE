@@ -40,10 +40,11 @@ void solve()
 				{
 					continue;
 				}
-				dp[i|(1<<k)][]
+				dp[i|(1<<k)][(j+power(10,n-__builtin_popcount(i)-1,m))%m]+=dp[i][j];
 			}
 		}
 	}
+	cout<<dp[(1<<n)-1][0]<<'\n';
 	return;
 }
 signed main()

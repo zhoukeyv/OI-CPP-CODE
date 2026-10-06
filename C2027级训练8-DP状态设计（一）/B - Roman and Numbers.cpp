@@ -21,6 +21,11 @@ int power(int a,int b,int p)
 	}
 	return res;
 }
+void print(int x)
+{
+	bitset<3> b(x);
+	cout<<b;
+}
 void solve()
 {
 	cin>>s>>m;

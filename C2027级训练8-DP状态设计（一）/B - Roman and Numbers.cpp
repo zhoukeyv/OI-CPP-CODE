@@ -11,6 +11,7 @@ void solve()
 {
 	cin>>s>>m;
 	n=s.size();
+	dp[0][0]=1;
 	return;
 }
 signed main()

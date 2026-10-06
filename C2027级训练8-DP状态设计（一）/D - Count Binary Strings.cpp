@@ -28,9 +28,12 @@ void solve()
 		}
 	}
 	int lst=1;
-	for (int i=1;i<=n;i++)
+	for (int i=2;i<=n;i++)
 	{
-		
+		if (t[i]==0)
+		{
+			lst=i;
+		}
 	}
 	return;
 }

@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,B=1<<18,M=110;
-int dp[B][M];
+int dp[B][M],cnt[10];
 string s;
 int n,m;
 int power(int a,int b,int p)
@@ -31,6 +31,10 @@ void solve()
 	cin>>s>>m;
 	n=s.size();
 	dp[0][0]=1;
+	for (int i=0;i<n;i++)
+	{
+		cnt[s[i]-'0']++;
+	}
 	for (int i=0;i<(1<<n)-1;i++)
 	{
 		for (int j=0;j<m;j++)

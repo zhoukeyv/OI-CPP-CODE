@@ -35,6 +35,8 @@ void solve()
 	{
 		for (int j=0;j<m;j++)
 		{
+			print(i);
+			cout<<' '<<j<<' '<<dp[i][j]<<'\n';
 			if (dp[i][j]==0)
 			{
 				continue;

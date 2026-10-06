@@ -35,6 +35,11 @@ void solve()
 			{
 				continue;
 			}
+			int lst=l,nxt=r;
+			while (s[lst+1]==s[lst])
+			{
+				lst++;
+			}
 			
 		}
 	}

@@ -115,7 +115,8 @@ void erase(int x)
 }
 void solve()
 {
-	cin>>n>>m;
+	n=read();
+	m=read();
 	dp[0]=1;
 	for (int i=1;i<=(n<<2);i++)
 	{
@@ -132,7 +133,8 @@ void solve()
 	}
 	for (int i=1;i<=m;i++)
 	{
-		cin>>a[i]>>b[i];
+		a[i]=read();
+		b[i]=read();
 	}
 	for (int i=m;i>=1;i--)
 	{

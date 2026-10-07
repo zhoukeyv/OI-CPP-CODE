@@ -163,6 +163,7 @@ void solve()
 	bit[0][0]=1;
 	for (int i=1;i<=(n<<1);i++)
 	{
+		int x=find(i),y=find(i+(n<<1));
 		if (!s[find(i)]&&!s[find(i+(n<<1))])
 		{
 			cnt[++cnt[0]]=find(i);

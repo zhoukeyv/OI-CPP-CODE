@@ -9,8 +9,6 @@ int a[M],b[M],fa[M],sz1[M],sz2[M],cnt[M],id[M];
 ll dp[M];
 bitset<N> bit[N],s;
 bitset<M> vis;
-bool vis[M];
-set<int> s;
 int n,m,sz;
 int find(int x)
 {
@@ -113,7 +111,7 @@ void solve()
 		{
 			cnt[++cnt[0]]=find(i);
 			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(2*abs(sz1[find(i)]-sz2[find(i)])));
-			s.insert(find(i));
+			s[find(i)]=true;
 		}
 		if (s.count(find(i)))
 		{

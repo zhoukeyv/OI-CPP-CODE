@@ -40,7 +40,7 @@ void insert(int x)
 	{
 		return;
 	}
-	sz+=x/2;
+	sz+=x>>1;
 	for (int j=(n<<1);j>=x;j--)
 	{
 		dp[j]=(dp[j]+dp[j-x])%mod;
@@ -53,7 +53,7 @@ void erase(int x)
 	{
 		return;
 	}
-	sz-=x/2;
+	sz-=x>>1;
 	for (int j=x;j<=(n<<1);j++)
 	{
 		dp[j]=(dp[j]-dp[j-x]+mod)%mod;
@@ -64,7 +64,7 @@ void solve()
 {
 	cin>>n>>m;
 	dp[0]=1;
-	for (int i=1;i<=4*n;i++)
+	for (int i=1;i<=(n<<2);i++)
 	{
 		fa[i]=i;
 		if (i<=(n<<1))
@@ -87,9 +87,9 @@ void solve()
 		{
 			continue;
 		}
-		erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]));
-		erase(2*abs(sz1[find(b[i]+(n<<1))]-sz2[find(b[i]+(n<<1))]));
-		insert(2*abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))]));
+		erase(abs(sz1[find(a[i])]-sz2[find(a[i])])<<1);
+		erase(abs(sz1[find(b[i]+(n<<1))]-sz2[find(b[i]+(n<<1))])<<1);
+		insert(abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))])<<1);
 		if (dp[sz]>0)
 		{
 			merge(a[i],b[i]+(n<<1));
@@ -97,8 +97,8 @@ void solve()
 		}
 		else
 		{
-			erase(2*abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))]));
-			insert(2*abs(sz1[find(a[i])]+sz1[find(b[i])]-sz2[find(a[i])]-sz2[find(b[i])]));
+			erase(abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))])<<1);
+			insert(abs(sz1[find(a[i])]+sz1[find(b[i])]-sz2[find(a[i])]-sz2[find(b[i])])<<1);
 			merge(a[i]+(n<<1),b[i]+(n<<1));
 			merge(a[i],b[i]);
 		}
@@ -129,7 +129,7 @@ void solve()
 			continue;
 		}
 		vis[cnt[i]]=true;
-		cnt2-=2*abs(sz1[find(cnt[i])]-sz2[find(cnt[i])]);
+		cnt2-=abs(sz1[find(cnt[i])]-sz2[find(cnt[i])])<<1;
 	}
 	for (int i=1;i<=(n<<1);i++)
 	{

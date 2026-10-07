@@ -11,14 +11,14 @@ void solve()
 {
 	memset(dp,0x3f,sizeof dp);
 	cin>>n;
-	dp[0][0]=0;
+	dp[1][0]=0;
 	int maxx=0;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
 		maxx=max(maxx,a[i]);
 	}
-	for (int i=0;i<n;i++)
+	for (int i=1;i<=n;i++)
 	{
 		for (int j=0;j<=2*maxx;j++)
 		{
@@ -26,8 +26,8 @@ void solve()
 			{
 				continue;
 			}
-			dp[i+1][max(0ll,j-a[i])]=min(dp[i+1][max(0ll,j-a[i])],dp[i][j]+a[i+1]);
-			dp[i+1][j]=min(dp[i+1][j],max(0ll,dp[i][j]-a[i]));
+			dp[i+1][max(0ll,j-a[i+1])]=min(dp[i+1][max(0ll,j-a[i+1])],dp[i][j]+a[i+1]);
+			dp[i+1][j]=min(dp[i+1][j],max(0ll,dp[i][j]-a[i+1]));
 		}
 	}
 	int ans=inf;

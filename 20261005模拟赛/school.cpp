@@ -3,7 +3,6 @@
 using namespace std;
 const double eps=1e-6;
 const int N=20010,M=1e6+10,BUFSIZE=1<<20;
-const int mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
@@ -90,10 +89,6 @@ void insert(int x)
 	for (int j=(n<<1);j>=x;j--)
 	{
 		dp[j]+=dp[j-x];
-		if (dp[j]>=mod)
-		{
-			dp[j]-=mod;
-		}
 	}
 	return;
 }
@@ -107,10 +102,6 @@ void erase(int x)
 	for (int j=x;j<=(n<<1);j++)
 	{
 		dp[j]-=dp[j-x];
-		if (dp[j]<0)
-		{
-			dp[j]+=mod;
-		}
 	}
 	return;
 }

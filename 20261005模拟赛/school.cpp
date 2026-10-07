@@ -1,12 +1,14 @@
 #include<bits/stdc++.h>
 #define double long double
+#define ll long long
 using namespace std;
 const double eps=1e-6;
 const int N=20010,M=1e6+10,BUFSIZE=1<<20,mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
-int dp[N],fac[N],infac[N];
+ll fac[N],infac[N];
+int dp[N];
 bitset<N> bit[N],vis,s;
 int n,m,sz;
 int power(int a,int b,int p)
@@ -22,6 +24,14 @@ int power(int a,int b,int p)
 		b>>=1;
 	}
 	return res;
+}
+int C(int a,int b)
+{
+	if (a<0||b<0||a<b)
+	{
+		return 0;
+	}
+	return fac[a]*infac[b]%mod*infac[a-b]%mod;
 }
 char getChar()
 {
@@ -140,7 +150,7 @@ void solve()
 	for (int i=1;i<=(n<<2);i++)
 	{
 		fa[i]=i;
-		fac[i]=fac[i-1]*i;
+		fac[i]=fac[i-1]*i%mod;
 		if (i<=(n<<1))
 		{
 			sz1[i]=1;

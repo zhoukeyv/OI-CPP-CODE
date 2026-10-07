@@ -69,6 +69,7 @@ void solve()
 	}
 	for (int i=0;i<n;i++)
 	{
+		memset(dp[i&1^1],0x3f,sizeof dp[i&1^1]);
 		for (int j=0;j<=2*maxx;j++)
 		{
 			// cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';

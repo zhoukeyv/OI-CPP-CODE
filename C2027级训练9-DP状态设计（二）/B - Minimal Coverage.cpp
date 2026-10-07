@@ -9,7 +9,13 @@ int a[N];
 int n;
 void solve()
 {
-	
+	memset(dp,0x3f,sizeof dp);
+	cin>>n;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+	}
+	for ()
 	return;
 }
 signed main()

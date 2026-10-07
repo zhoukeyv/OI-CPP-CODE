@@ -209,8 +209,8 @@ void solve()
 		{
 			erase(Abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
 			insert(Abs(sz1[x]+sz1[y]-sz2[x]-sz2[y])<<1);
-			merge(a[i]+(n<<1),b[i]+(n<<1));
-			merge(a[i],b[i]);
+			merge(find(a[i]+(n<<1)),z);
+            merge(x,y);
 		}
 	}
 	bit[0][0]=1;

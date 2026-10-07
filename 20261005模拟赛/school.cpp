@@ -6,7 +6,8 @@ const int N=20010,M=1e6+10,BUFSIZE=1<<20;
 const int mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
-int a[M],b[M],fa[N],sz1[N],sz2[N],dp[N],cnt[N],id[N];
+int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
+unsigned int dp[N];
 bitset<N> bit[N],vis,s;
 int n,m,sz;
 char getChar()

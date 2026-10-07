@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 #define double long double
-#define int long long
+#define ll long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=10010,M=1e6+10,mod=998244353;
-int a[M],b[M],fa[M],sz1[M],sz2[M],dp[M],cnt[M],id[M];
+const int N=10010,M=1e6+10;
+const ll mod=998244353;
+int a[M],b[M],fa[M],sz1[M],sz2[M],cnt[M],id[M];
+ll dp[M];
 bitset<N> bit[N];
 bool vis[M];
 set<int> s;

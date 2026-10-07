@@ -51,17 +51,6 @@ int read()
 	}
 	return neg?-x:x;
 }
-int main()
-{
-	int n=read();
-	long long sum=0;
-	for (int i=0;i<n;++i)
-	{
-		sum+=read();
-	}
-	printf("%lld\n",sum);
-	return 0;
-}
 int find(int x)
 {
 	if (fa[x]==x)

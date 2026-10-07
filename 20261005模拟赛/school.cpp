@@ -168,6 +168,7 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		dp[i<<1]=C(n<<1,i);
+		sz++;
 	}
 	for (int i=1;i<=m;i++)
 	{

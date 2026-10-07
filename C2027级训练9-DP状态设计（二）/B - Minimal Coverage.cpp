@@ -22,11 +22,11 @@ void solve()
 	{
 		for (int j=0;j<=2*maxx;j++)
 		{
+			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 			if (dp[i][j]==inf)
 			{
 				continue;
 			}
-			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 			dp[i+1][max(0ll,j-a[i+1])]=min(dp[i+1][max(0ll,j-a[i+1])],dp[i][j]+a[i+1]);
 			dp[i+1][j]=min(dp[i+1][j],max(0ll,dp[i][j]-a[i+1]));
 		}

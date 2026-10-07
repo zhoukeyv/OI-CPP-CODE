@@ -110,10 +110,10 @@ void solve()
 		if (!s[find(i)]&&!s[find(i+(n<<1))])
 		{
 			cnt[++cnt[0]]=find(i);
-			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(2*abs(sz1[find(i)]-sz2[find(i)])));
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[find(i)]-sz2[find(i)])<<1));
 			s[find(i)]=true;
 		}
-		if (s.count(find(i)))
+		if (s[find(i)])
 		{
 			id[i]=find(i);
 		}

@@ -16,7 +16,10 @@ void solve()
 	{
 		cin>>a[i];
 	}
-	for ()
+	for (int i=1;i<=n;i++)
+	{
+		
+	}
 	return;
 }
 signed main()

@@ -72,14 +72,14 @@ void solve()
 		for (int j=0;j<=2*maxx;j++)
 		{
 			// cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
-			if (dp[i][j]==inf)
+			if (dp[i&1][j]==inf)
 			{
 				continue;
 			}
-			dp[i+1][max(0ll,j-a[i+1])]=min(dp[i+1][max(0ll,j-a[i+1])],dp[i][j]+a[i+1]);
+			dp[i&1^1][max(0ll,j-a[i+1])]=min(dp[i&1^1][max(0ll,j-a[i+1])],dp[i&1][j]+a[i+1]);
 			if (j+a[i+1]<=2*maxx)
 			{
-				dp[i+1][j+a[i+1]]=min(dp[i+1][j+a[i+1]],max(0ll,dp[i][j]-a[i+1]));
+				dp[i&1^1][j+a[i+1]]=min(dp[i&1^1][j+a[i+1]],max(0ll,dp[i&1][j]-a[i+1]));
 			}
 		}
 	}

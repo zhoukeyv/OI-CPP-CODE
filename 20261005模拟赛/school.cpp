@@ -147,8 +147,8 @@ void solve()
 		}
 		else
 		{
-			erase(abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))])<<1);
-			insert(abs(sz1[find(a[i])]+sz1[find(b[i])]-sz2[find(a[i])]-sz2[find(b[i])])<<1);
+			erase(abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
+			insert(abs(sz1[x]+sz1[y]-sz2[x]-sz2[y])<<1);
 			merge(a[i]+(n<<1),b[i]+(n<<1));
 			merge(a[i],b[i]);
 		}

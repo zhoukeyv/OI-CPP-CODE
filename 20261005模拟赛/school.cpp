@@ -2,11 +2,11 @@
 #define double long double
 using namespace std;
 const double eps=1e-6;
-const int N=10010,M=1e6+10,BUFSIZE=1<<20;
+const int N=10010,N2=20010,M=1e6+10,BUFSIZE=1<<20;
 const int mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
-int a[M],b[M],fa[N],sz1[N],sz2[N],dp[M],cnt[M],id[M];
+int a[M],b[M],fa[N],sz1[N],sz2[N],dp[N2],cnt[M],id[M];
 bitset<N> bit[N],s;
 bitset<M> vis;
 int n,m,sz;

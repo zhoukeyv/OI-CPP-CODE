@@ -5,8 +5,8 @@ using namespace std;
 const double eps=1e-6;
 const int N=20010,M=1e6+10,BUFSIZE=1<<20;
 const ll mod=998244353;
-char buf[BUFSIZE];
-int buf_pos=0,buf_len=0;
+char buf[BUFSIZE],outbuf[BUFSIZE];
+int buf_pos=0,buf_len=0,outpos=0;
 int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
 ll fac[N],infac[N];
 int dp[N];
@@ -71,6 +71,17 @@ int read()
 		c=getChar();
 	}
 	return neg?-x:x;
+}
+
+void putChar(char c)
+{
+    if (outpos == BUFSIZE) { fwrite(outbuf, 1, outpos, stdout); outpos = 0; }
+    outbuf[outpos++] = c;
+}
+
+void flush()
+{
+    if (outpos > 0) { fwrite(outbuf, 1, outpos, stdout); outpos = 0; }
 }
 int find(int x)
 {

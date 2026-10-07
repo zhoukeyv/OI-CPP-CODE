@@ -6,9 +6,9 @@ const double eps=1e-6;
 const int N=10010,M=1e6+10;
 const ll mod=998244353;
 int a[M],b[M],fa[M],sz1[M],sz2[M],cnt[M],id[M];
-ll dp[M];
 bitset<N> bit[N],s;
 bitset<M> vis;
+ll dp[M];
 int n,m,sz;
 int find(int x)
 {

@@ -22,7 +22,7 @@ void solve()
 	{
 		for (int j=0;j<=2*maxx;j++)
 		{
-			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
+			// cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 			if (dp[i][j]==inf)
 			{
 				continue;

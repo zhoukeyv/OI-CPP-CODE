@@ -134,7 +134,7 @@ void solve()
 	}
 	for (int i=1;i<=(n<<1);i++)
 	{
-		cout<<((s.count(find(i))^(vis[find(i)]||vis[find(i+(n<<1))])^(sz1[id[i]]>sz2[id[i]]))^1);
+		cout<<((s[find(i)]^(vis[find(i)]||vis[find(i+(n<<1))])^(sz1[id[i]]>sz2[id[i]]))^1);
 	}
 	cout<<'\n';
 	return;

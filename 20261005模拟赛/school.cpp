@@ -154,7 +154,6 @@ void solve()
 		if (i<=(n<<1))
 		{
 			sz1[i]=1;
-			insert(2);
 		}
 		else
 		{
@@ -165,6 +164,10 @@ void solve()
 	for (int i=(n<<2)-1;i>=0;i--)
 	{
 		infac[i]=infac[i+1]*(i+1)%mod;
+	}
+	for (int i=1;i<=n;i++)
+	{
+		dp[i<<1]=C(n<<1,i);
 	}
 	for (int i=1;i<=m;i++)
 	{

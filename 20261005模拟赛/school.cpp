@@ -72,16 +72,22 @@ int read()
 	}
 	return neg?-x:x;
 }
-
 void putChar(char c)
 {
-    if (outpos == BUFSIZE) { fwrite(outbuf, 1, outpos, stdout); outpos = 0; }
-    outbuf[outpos++] = c;
+	if (outpos==BUFSIZE)
+	{
+		fwrite(outbuf,1,outpos,stdout);
+		outpos=0;
+	}
+	outbuf[outpos++]=c;
 }
-
 void flush()
 {
-    if (outpos > 0) { fwrite(outbuf, 1, outpos, stdout); outpos = 0; }
+	if (outpos>0)
+	{
+		fwrite(outbuf,1,outpos,stdout);
+		outpos=0;
+	}
 }
 int find(int x)
 {

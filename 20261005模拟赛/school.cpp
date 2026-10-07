@@ -41,7 +41,7 @@ void insert(int x)
 		return;
 	}
 	sz+=x/2;
-	for (int j=2*n;j>=x;j--)
+	for (int j=(n<<1);j>=x;j--)
 	{
 		dp[j]=(dp[j]+dp[j-x])%mod;
 	}
@@ -54,7 +54,7 @@ void erase(int x)
 		return;
 	}
 	sz-=x/2;
-	for (int j=x;j<=2*n;j++)
+	for (int j=x;j<=(n<<1);j++)
 	{
 		dp[j]=(dp[j]-dp[j-x]+mod)%mod;
 	}
@@ -67,7 +67,7 @@ void solve()
 	for (int i=1;i<=4*n;i++)
 	{
 		fa[i]=i;
-		if (i<=2*n)
+		if (i<=(n<<1))
 		{
 			sz1[i]=1;
 			insert(2);
@@ -83,30 +83,30 @@ void solve()
 	}
 	for (int i=m;i>=1;i--)
 	{
-		if (find(a[i])==find(b[i])||find(a[i])==find(b[i]+2*n))
+		if (find(a[i])==find(b[i])||find(a[i])==find(b[i]+(n<<1)))
 		{
 			continue;
 		}
 		erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]));
-		erase(2*abs(sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
-		insert(2*abs(sz1[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(a[i])]-sz2[find(b[i]+2*n)]));
+		erase(2*abs(sz1[find(b[i]+(n<<1))]-sz2[find(b[i]+(n<<1))]));
+		insert(2*abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))]));
 		if (dp[sz]>0)
 		{
-			merge(a[i],b[i]+2*n);
-			merge(a[i]+2*n,b[i]);
+			merge(a[i],b[i]+(n<<1));
+			merge(a[i]+(n<<1),b[i]);
 		}
 		else
 		{
-			erase(2*abs(sz1[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(a[i])]-sz2[find(b[i]+2*n)]));
+			erase(2*abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))]));
 			insert(2*abs(sz1[find(a[i])]+sz1[find(b[i])]-sz2[find(a[i])]-sz2[find(b[i])]));
-			merge(a[i]+2*n,b[i]+2*n);
+			merge(a[i]+(n<<1),b[i]+(n<<1));
 			merge(a[i],b[i]);
 		}
 	}
 	bit[0][0]=1;
-	for (int i=1;i<=2*n;i++)
+	for (int i=1;i<=(n<<1);i++)
 	{
-		if ((!s.count(find(i)))&&(!s.count(find(i+2*n))))
+		if ((!s.count(find(i)))&&(!s.count(find(i+(n<<1)))))
 		{
 			cnt[++cnt[0]]=find(i);
 			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(2*abs(sz1[find(i)]-sz2[find(i)])));
@@ -118,7 +118,7 @@ void solve()
 		}
 		else
 		{
-			id[i]=find(i+2*n);
+			id[i]=find(i+(n<<1));
 		}
 	}
 	int cnt2=sz;
@@ -131,9 +131,9 @@ void solve()
 		vis[cnt[i]]=true;
 		cnt2-=2*abs(sz1[find(cnt[i])]-sz2[find(cnt[i])]);
 	}
-	for (int i=1;i<=2*n;i++)
+	for (int i=1;i<=(n<<1);i++)
 	{
-		cout<<((s.count(find(i))^(vis[find(i)]||vis[find(i+2*n)])^(sz1[id[i]]>sz2[id[i]]))^1);
+		cout<<((s.count(find(i))^(vis[find(i)]||vis[find(i+(n<<1))])^(sz1[id[i]]>sz2[id[i]]))^1);
 	}
 	cout<<'\n';
 	return;

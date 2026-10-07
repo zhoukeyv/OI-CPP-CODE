@@ -117,6 +117,7 @@ void solve()
 	for (int i=1;i<=(n<<2);i++)
 	{
 		fa[i]=i;
+		fac[i]=fac[i-1]*i;
 		if (i<=(n<<1))
 		{
 			sz1[i]=1;
@@ -127,6 +128,7 @@ void solve()
 			sz2[i]=1;
 		}
 	}
+	
 	for (int i=1;i<=m;i++)
 	{
 		a[i]=read();

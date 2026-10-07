@@ -82,7 +82,11 @@ void insert(int x)
 	sz+=x>>1;
 	for (int j=(n<<1);j>=x;j--)
 	{
-		dp[j]=(dp[j]+dp[j-x])%mod;
+		dp[j]+=dp[j-x];
+		if (dp[j]>=mod)
+		{
+			dp[j]-=mod;
+		}
 	}
 	return;
 }
@@ -95,7 +99,11 @@ void erase(int x)
 	sz-=x>>1;
 	for (int j=x;j<=(n<<1);j++)
 	{
-		dp[j]=(dp[j]-dp[j-x]+mod)%mod;
+		dp[j]-=dp[j-x];
+		if (dp[j]<0)
+		{
+			dp[j]+=mod;
+		}
 	}
 	return;
 }

@@ -104,7 +104,7 @@ int find(int x)
 	}
 	return res;
 }
-void merge_root(int x,int y)
+void merge(int x,int y)
 {
 	if (x==y)
 	{
@@ -202,8 +202,8 @@ void solve()
 		insert(Abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
 		if (dp[sz]>0)
 		{
-			merge(a[i],b[i]+(n<<1));
-			merge(a[i]+(n<<1),b[i]);
+			merge(x,z);
+            merge(find(a[i]+(n<<1)),y);
 		}
 		else
 		{

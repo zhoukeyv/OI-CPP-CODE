@@ -142,7 +142,6 @@ void solve()
 			sz2[i]=1;
 		}
 	}
-	
 	for (int i=1;i<=m;i++)
 	{
 		a[i]=read();

@@ -1,44 +1,154 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #define double long double
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=510;
-int dp[N][N];
-string s;
-int n;
+const int inf=0x3f3f3f3f3f3f3f3f,N=10010,M=1e6+10,mod=998244353;
+int a[M],b[M],fa[M],sz1[M],sz2[M],dp[M],cnt[M],id[M];
+bitset<N> bit[N];
+bool vis[M];
+set<int> s;
+int n,m,sz;
+int find(int x)
+{
+	if (fa[x]==x)
+	{
+		return x;
+	}
+	return fa[x]=find(fa[x]);
+}
+void merge(int x,int y)
+{
+	x=find(x);
+	y=find(y);
+	if (x==y)
+	{
+		return;
+	}
+	if (sz1[x]+sz2[x]>sz1[y]+sz2[y])
+	{
+		swap(x,y);
+	}
+	fa[x]=y;
+	sz1[y]+=sz1[x];
+	sz2[y]+=sz2[x];
+	return;
+}
+void insert(int x)
+{
+	if (x==0)
+	{
+		return;
+	}
+	sz+=x/2;
+	for (int j=2*n;j>=x;j--)
+	{
+		dp[j]=(dp[j]+dp[j-x])%mod;
+	}
+	return;
+}
+void erase(int x)
+{
+	if (x==0)
+	{
+		return;
+	}
+	sz-=x/2;
+	for (int j=x;j<=2*n;j++)
+	{
+		dp[j]=(dp[j]-dp[j-x]+mod)%mod;
+	}
+	return;
+}
 void solve()
 {
-	cin>>n>>k>>p;
-	const int mod=p;
-	for (int j=0;j<=k;++j)
+	cin>>n>>m;
+	dp[0]=1;
+	for (int i=1;i<=4*n;i++)
 	{
-		f[n][j]=g[n][j]=1ll,s[n][j]=(j+1)%mod;
-	}
-	for (int i=n-1;i>=1;--i)
-	{
-		for (int j=0;j<=k;++j)
+		fa[i]=i;
+		if (i<=2*n)
 		{
-			f[i][j]=g[i][j]=0ll;
-			for (int x=0;x<=j;++x)
-			{
-				if (x)
-				{
-					f[i][j]+=2ll*f[i+1][x]*s[i+1][min(x-1,j-x)]%mod;
-				}
-				g[i][j]+=g[i+1][x]*s[i+1][j-x]%mod;
-			}
-			f[i][j]%=mod,g[i][j]%=mod;
-			s[i][j]=((j?s[i][j-1]:0ll)+g[i][j])%mod;
+			sz1[i]=1;
+			insert(2);
+		}
+		else
+		{
+			sz2[i]=1;
 		}
 	}
-	cout<<f[1][k]<<'\n';
+	for (int i=1;i<=m;i++)
+	{
+		cin>>a[i]>>b[i];
+	}
+	for (int i=m;i>=1;i--)
+	{
+		if (find(a[i])==find(b[i])||find(a[i])==find(b[i]+2*n))
+		{
+			continue;
+		}
+		erase(2*abs(sz1[find(a[i])]-sz2[find(a[i])]));
+		erase(2*abs(sz1[find(b[i]+2*n)]-sz2[find(b[i]+2*n)]));
+		insert(2*abs(sz1[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(a[i])]-sz2[find(b[i]+2*n)]));
+		if (dp[sz]>0)
+		{
+			merge(a[i],b[i]+2*n);
+			merge(a[i]+2*n,b[i]);
+		}
+		else
+		{
+			erase(2*abs(sz1[find(a[i])]+sz1[find(b[i]+2*n)]-sz2[find(a[i])]-sz2[find(b[i]+2*n)]));
+			insert(2*abs(sz1[find(a[i])]+sz1[find(b[i])]-sz2[find(a[i])]-sz2[find(b[i])]));
+			merge(a[i]+2*n,b[i]+2*n);
+			merge(a[i],b[i]);
+		}
+	}
+	bit[0][0]=1;
+	for (int i=1;i<=2*n;i++)
+	{
+		if ((!s.count(find(i)))&&(!s.count(find(i+2*n))))
+		{
+			cnt[++cnt[0]]=find(i);
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(2*abs(sz1[find(i)]-sz2[find(i)])));
+			s.insert(find(i));
+		}
+		if (s.count(find(i)))
+		{
+			id[i]=find(i);
+		}
+		else
+		{
+			id[i]=find(i+2*n);
+		}
+	}
+	int cnt2=sz;
+	for (int i=cnt[0];i>=1;i--)
+	{
+		if (bit[i-1][cnt2])
+		{
+			continue;
+		}
+		vis[cnt[i]]=true;
+		cnt2-=2*abs(sz1[find(cnt[i])]-sz2[find(cnt[i])]);
+	}
+	for (int i=1;i<=2*n;i++)
+	{
+		if ((s.count(find(i))+(vis[find(i)]||vis[find(i+2*n)])+1+(sz1[id[i]]>sz2[id[i]]))%2==1)
+		{
+			cout<<'1';
+		}
+		else
+		{
+			cout<<'0';
+		}
+	}
+	cout<<'\n';
 	return;
 }
 signed main()
 {
-	// freopen(".in","r",stdin);
-	// freopen(".out","w",stdout);
+//	freopen("school.in","r",stdin);
+//	freopen("school.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

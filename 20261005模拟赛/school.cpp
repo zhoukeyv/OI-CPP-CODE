@@ -107,7 +107,7 @@ void solve()
 	bit[0][0]=1;
 	for (int i=1;i<=(n<<1);i++)
 	{
-		if ((!s.count(find(i)))&&(!s.count(find(i+(n<<1)))))
+		if (!s[find(i)]&&!s[find(i+(n<<1))])
 		{
 			cnt[++cnt[0]]=find(i);
 			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(2*abs(sz1[find(i)]-sz2[find(i)])));

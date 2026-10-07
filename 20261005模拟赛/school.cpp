@@ -7,8 +7,7 @@ const int mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[N],sz1[N],sz2[N],dp[N],cnt[N],id[N];
-bitset<N> bit[N],s;
-bitset<M> vis;
+bitset<N> bit[N],vis,s;
 int n,m,sz;
 char getChar()
 {

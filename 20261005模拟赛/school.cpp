@@ -3,7 +3,8 @@
 #define ll long long
 using namespace std;
 const double eps=1e-6;
-const int N=20010,M=1e6+10,BUFSIZE=1<<20,mod=998244353;
+const int N=20010,M=1e6+10,BUFSIZE=1<<20;
+const ll mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
@@ -11,9 +12,9 @@ ll fac[N],infac[N];
 int dp[N];
 bitset<N> bit[N],vis,s;
 int n,m,sz;
-int power(int a,int b,int p)
+ll power(ll a,int b,ll p)
 {
-	int res=1;
+	ll res=1;
 	while (b)
 	{
 		if (b&1)

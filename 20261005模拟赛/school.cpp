@@ -3,9 +3,8 @@
 #define ll long long
 using namespace std;
 const double eps=1e-6;
-const int N=10010,M=1e6+10;
+const int N=10010,M=1e6+10,BUFSIZE=1<<20;
 const ll mod=998244353;
-const int BUFSIZE=1<<20;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[M],sz1[M],sz2[M],cnt[M],id[M];
@@ -186,8 +185,8 @@ signed main()
 {
 	//	freopen("school.in","r",stdin);
 	//	freopen("school.out","w",stdout);
-	ios::sync_with_stdio(0);
-	cin.tie(0);
+	// ios::sync_with_stdio(0);
+	// cin.tie(0);
 	int TestCase=1;
 	// cin>>TestCase;
 	for (int Caseid=1;Caseid<=TestCase;Caseid++)

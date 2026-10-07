@@ -133,13 +133,13 @@ void solve()
 	for (int i=m;i>=1;i--)
 	{
 		int x=find(a[i]),y=find(b[i]),z=find(b[i]+(n<<1));
-		if (find(a[i])==find(b[i])||find(a[i])==find(b[i]+(n<<1)))
+		if (x==y||x==z)
 		{
 			continue;
 		}
-		erase(abs(sz1[find(a[i])]-sz2[find(a[i])])<<1);
-		erase(abs(sz1[find(b[i]+(n<<1))]-sz2[find(b[i]+(n<<1))])<<1);
-		insert(abs(sz1[find(a[i])]+sz1[find(b[i]+(n<<1))]-sz2[find(a[i])]-sz2[find(b[i]+(n<<1))])<<1);
+		erase(abs(sz1[x]-sz2[x])<<1);
+		erase(abs(sz1[z]-sz2[z])<<1);
+		insert(abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
 		if (dp[sz]>0)
 		{
 			merge(a[i],b[i]+(n<<1));

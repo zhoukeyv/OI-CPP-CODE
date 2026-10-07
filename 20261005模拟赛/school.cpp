@@ -114,6 +114,10 @@ void erase(int x)
 	}
 	return;
 }
+int Abs(int x)
+{
+	return x<0?-x:x;
+}
 void solve()
 {
 	n=read();
@@ -144,9 +148,9 @@ void solve()
 		{
 			continue;
 		}
-		erase(abs(sz1[x]-sz2[x])<<1);
-		erase(abs(sz1[z]-sz2[z])<<1);
-		insert(abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
+		erase(Abs(sz1[x]-sz2[x])<<1);
+		erase(Abs(sz1[z]-sz2[z])<<1);
+		insert(Abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
 		if (dp[sz]>0)
 		{
 			merge(a[i],b[i]+(n<<1));
@@ -154,8 +158,8 @@ void solve()
 		}
 		else
 		{
-			erase(abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
-			insert(abs(sz1[x]+sz1[y]-sz2[x]-sz2[y])<<1);
+			erase(Abs(sz1[x]+sz1[z]-sz2[x]-sz2[z])<<1);
+			insert(Abs(sz1[x]+sz1[y]-sz2[x]-sz2[y])<<1);
 			merge(a[i]+(n<<1),b[i]+(n<<1));
 			merge(a[i],b[i]);
 		}
@@ -167,7 +171,7 @@ void solve()
 		if (!s[x]&&!s[y])
 		{
 			cnt[++cnt[0]]=x;
-			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[x]-sz2[x])<<1));
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(Abs(sz1[x]-sz2[x])<<1));
 			s[x]=true;
 		}
 		if (s[x])
@@ -187,7 +191,7 @@ void solve()
 			continue;
 		}
 		vis[cnt[i]]=true;
-		cnt2-=abs(sz1[find(cnt[i])]-sz2[find(cnt[i])])<<1;
+		cnt2-=Abs(sz1[find(cnt[i])]-sz2[find(cnt[i])])<<1;
 	}
 	for (int i=1;i<=(n<<1);i++)
 	{

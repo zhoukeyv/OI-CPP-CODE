@@ -152,7 +152,10 @@ void solve()
 		}
 	}
 	infac[n<<2]=power(fac[n<<2],mod-2,mod);
-	for (int i=)
+	for (int i=(n<<2)-1;i>=0;i--)
+	{
+		infac[i]=infac[i+1]*(i+1)%mod;
+	}
 	for (int i=1;i<=m;i++)
 	{
 		a[i]=read();

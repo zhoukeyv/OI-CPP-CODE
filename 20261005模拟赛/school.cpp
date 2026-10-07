@@ -50,18 +50,18 @@ int read()
 }
 int find(int x)
 {
-	int r=x;
-	while (fa[r]!=r)
+	int res=x;
+	while (fa[res]!=res)
 	{
-		r=fa[r];
+		res=fa[res];
 	}
-	while (fa[x]!=r)
+	while (fa[x]!=res)
 	{
 		int t=fa[x];
-		fa[x]=r;
+		fa[x]=res;
 		x=t;
 	}
-	return r;
+	return res;
 }
 void merge(int x,int y)
 {

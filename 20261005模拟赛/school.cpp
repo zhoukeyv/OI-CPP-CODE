@@ -6,19 +6,19 @@ const int N=20010,M=1e6+10,BUFSIZE=1<<20,mod=998244353;
 char buf[BUFSIZE];
 int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
-unsigned int dp[N],fac[N],infac[N];
+int dp[N],fac[N],infac[N];
 bitset<N> bit[N],vis,s;
 int n,m,sz;
-unsigned int power(unsigned int a,int b)
+int power(int a,int b,int p)
 {
-	unsigned int res=1;
+	int res=1;
 	while (b)
 	{
 		if (b&1)
 		{
-			res*=a;
+			res=res*a%p;
 		}
-		a*=a;
+		a=a*a%p;
 		b>>=1;
 	}
 	return res;
@@ -103,6 +103,10 @@ void insert(int x)
 	for (int j=(n<<1);j>=x;j--)
 	{
 		dp[j]+=dp[j-x];
+		if (dp[j]>=mod)
+		{
+			dp[j]-=mod;
+		}
 	}
 	return;
 }
@@ -116,6 +120,10 @@ void erase(int x)
 	for (int j=x;j<=(n<<1);j++)
 	{
 		dp[j]-=dp[j-x];
+		if (dp[j]<0)
+		{
+			dp[j]+=mod;
+		}
 	}
 	return;
 }
@@ -128,6 +136,7 @@ void solve()
 	n=read();
 	m=read();
 	dp[0]=1;
+	fac[0]=1;
 	for (int i=1;i<=(n<<2);i++)
 	{
 		fa[i]=i;
@@ -142,6 +151,8 @@ void solve()
 			sz2[i]=1;
 		}
 	}
+	infac[n<<2]=power(fac[n<<2],mod-2,mod);
+	for (int i=)
 	for (int i=1;i<=m;i++)
 	{
 		a[i]=read();

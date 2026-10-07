@@ -12,13 +12,14 @@ void solve()
 	memset(dp,0x3f,sizeof dp);
 	cin>>n;
 	dp[0][0]=0;
+	int maxx=0;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
 	}
 	for (int i=1;i<=n;i++)
 	{
-		
+		for (int j=)
 	}
 	return;
 }

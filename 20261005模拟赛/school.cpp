@@ -9,6 +9,10 @@ int a[M],b[M],fa[N],sz1[N],sz2[N],cnt[N],id[N];
 unsigned int dp[N],fac[N],infac[N];
 bitset<N> bit[N],vis,s;
 int n,m,sz;
+unsigned int power(int a,int b)
+{
+	unsigned int
+}
 char getChar()
 {
 	if (buf_pos==buf_len)

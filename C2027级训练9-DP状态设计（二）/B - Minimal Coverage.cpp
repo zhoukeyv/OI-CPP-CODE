@@ -22,7 +22,7 @@ void solve()
 	{
 		for (int j=0;j<=2*maxx;j++)
 		{
-			dp[i][j]
+			dp[i+1][max(0ll,j-a[i+1])]=min(dp[i+1][max(0ll,j-a[i+1])],dp[i][j]);
 		}
 	}
 	return;

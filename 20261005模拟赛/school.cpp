@@ -104,10 +104,8 @@ int find(int x)
 	}
 	return res;
 }
-void merge(int x,int y)
+void merge_root(int x,int y)
 {
-	x=find(x);
-	y=find(y);
 	if (x==y)
 	{
 		return;
@@ -119,7 +117,6 @@ void merge(int x,int y)
 	fa[x]=y;
 	sz1[y]+=sz1[x];
 	sz2[y]+=sz2[x];
-	return;
 }
 void insert(int x)
 {

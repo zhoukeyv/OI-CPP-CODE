@@ -1,15 +1,67 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define double long double
 #define ll long long
 using namespace std;
 const double eps=1e-6;
 const int N=10010,M=1e6+10;
 const ll mod=998244353;
+const int BUFSIZE=1<<20;
+char buf[BUFSIZE];
+int buf_pos=0,buf_len=0;
 int a[M],b[M],fa[M],sz1[M],sz2[M],cnt[M],id[M];
 bitset<N> bit[N],s;
 bitset<M> vis;
 ll dp[M];
 int n,m,sz;
+char getChar()
+{
+	if (buf_pos==buf_len)
+	{
+		buf_len=fread(buf,1,BUFSIZE,stdin);
+		buf_pos=0;
+		if (buf_len==0)
+		{
+			return 0;
+		}
+	}
+	return buf[buf_pos++];
+}
+int read()
+{
+	char c=getChar();
+	while (c<=' ')
+	{
+		if (!c)
+		{
+			return 0;
+		}
+		c=getChar();
+	}
+	bool neg=false;
+	if (c=='-')
+	{
+		neg=true;
+		c=getChar();
+	}
+	int x=0;
+	while (c>='0'&&c<='9')
+	{
+		x=x*10+(c-'0');
+		c=getChar();
+	}
+	return neg?-x:x;
+}
+int main()
+{
+	int n=read();
+	long long sum=0;
+	for (int i=0;i<n;++i)
+	{
+		sum+=read();
+	}
+	printf("%lld\n",sum);
+	return 0;
+}
 int find(int x)
 {
 	if (fa[x]==x)
@@ -141,8 +193,8 @@ void solve()
 }
 signed main()
 {
-//	freopen("school.in","r",stdin);
-//	freopen("school.out","w",stdout);
+	//	freopen("school.in","r",stdin);
+	//	freopen("school.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

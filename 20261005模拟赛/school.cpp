@@ -164,19 +164,19 @@ void solve()
 	for (int i=1;i<=(n<<1);i++)
 	{
 		int x=find(i),y=find(i+(n<<1));
-		if (!s[find(i)]&&!s[find(i+(n<<1))])
+		if (!s[x]&&!s[y])
 		{
-			cnt[++cnt[0]]=find(i);
-			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[find(i)]-sz2[find(i)])<<1));
-			s[find(i)]=true;
+			cnt[++cnt[0]]=x;
+			bit[cnt[0]]=bit[cnt[0]-1]|(bit[cnt[0]-1]<<(abs(sz1[x]-sz2[x])<<1));
+			s[x]=true;
 		}
-		if (s[find(i)])
+		if (s[x])
 		{
-			id[i]=find(i);
+			id[i]=x;
 		}
 		else
 		{
-			id[i]=find(i+(n<<1));
+			id[i]=y;
 		}
 	}
 	int cnt2=sz;

@@ -26,8 +26,8 @@ void solve()
 			{
 				continue;
 			}
-			dp[i+1][max(0ll,j-a[i+1])]=min(dp[i+1][max(0ll,j-a[i+1])],dp[i][j]+a[i+1]);
-			dp[i+1][j]=min(dp[i+1][j],max(0ll,dp[i][j]-a[i+1]));
+			dp[i+1][max(0ll,j-a[i])]=min(dp[i+1][max(0ll,j-a[i])],dp[i][j]+a[i+1]);
+			dp[i+1][j]=min(dp[i+1][j],max(0ll,dp[i][j]-a[i]));
 		}
 	}
 	int ans=inf;

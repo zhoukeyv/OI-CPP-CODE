@@ -53,7 +53,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=10010,V=2010;
-int dp[N][V];
+int dp[2][V];
 int a[N];
 int n;
 void solve()
@@ -86,7 +86,7 @@ void solve()
 	int ans=inf;
 	for (int j=0;j<=2*maxx;j++)
 	{
-		ans=min(ans,dp[n][j]+j);
+		ans=min(ans,dp[n&1][j]+j);
 	}
 	cout<<ans<<'\n';
 	return;

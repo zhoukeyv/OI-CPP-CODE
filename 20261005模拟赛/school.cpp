@@ -132,7 +132,7 @@ void solve()
 	}
 	for (int i=m;i>=1;i--)
 	{
-		int x=a[i],y=b[i],z=b[i]+(n<<1);
+		int x=find(a[i]),y=find(b[i]),z=find(b[i]+(n<<1));
 		if (find(a[i])==find(b[i])||find(a[i])==find(b[i]+(n<<1)))
 		{
 			continue;

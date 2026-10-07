@@ -16,10 +16,14 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+		maxx=max(maxx,a[i]);
 	}
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=)
+		for (int j=0;j<=2*maxx;j++)
+		{
+			
+		}
 	}
 	return;
 }

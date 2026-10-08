@@ -20,13 +20,23 @@ int power(int a,int b,int p)
 	}
 	return res;
 }
+int C(int a,int b)
+{
+	if (a<0||b<0||a<b)
+	{
+		return 0;
+	}
+	return fac[a]*infac[b]%mod*infac[a-b]%mod;
+}
 void solve()
 {
 	cin>>n>>c>>m;
-	for (int i=1;i<=n;i++)
+	fac[0]=1;
+	for (int i=1;i<=c;i++)
 	{
-		
+		fac[i]=fac[i-1]*i%mod;
 	}
+	infac
 	for (int i=1;i<=m;i++)
 	{
 		cin>>a[i];

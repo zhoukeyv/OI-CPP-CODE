@@ -8,7 +8,11 @@ int dp[N][M],a[N],fac[N],infac[N];
 int n,c,m;
 void solve()
 {
-	
+	cin>>n>>c>>m;
+	for (int i=1;i<=m;i++)
+	{
+		cin>>a[i];
+	}
 	return;
 }
 signed main()

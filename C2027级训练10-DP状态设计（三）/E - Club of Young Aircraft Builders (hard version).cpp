@@ -78,7 +78,7 @@ void solve()
 				{
 					continue;
 				}
-				dp[i][j+k]=(dp[i][j+k]+dp[i-1][j]*C(r-i-s[r][i]-cnt[i],k-cnt[i])%mod)%mod;
+				dp[i][j+k]=(dp[i][j+k]+dp[i-1][j]*C(r-j-s[r][i]-cnt[i],k-cnt[i])%mod)%mod;
 			}
 		}
 	}

@@ -63,22 +63,22 @@ void solve()
 		}
 	}
 	dp[0][0]=1;
-	for (int i=1;i<=n;i++)
+	for (int i=0;i<n;i++)
 	{
 		for (int j=0;j<=m;j++)
 		{
 			int r=min(j+c,m);
-			if (b[i]>r)
+			if (b[i+1]>r)
 			{
 				continue;
 			}
-			for (int k=cnt[i];k<=min(c,r-j-s[r][i]);k++)
+			for (int k=cnt[i+1];k<=min(c,r-j-s[r][i+1]);k++)
 			{
-				if (i==n&&k!=c)
+				if (i==n-1&&k!=c)
 				{
 					continue;
 				}
-				dp[i][j+k]=(dp[i][j+k]+dp[i-1][j]*C(r-j-s[r][i]-cnt[i],k-cnt[i])%mod)%mod;
+				dp[i+1][j+k]=(dp[i+1][j+k]+dp[i][j]*C(r-j-s[r][i+1]-cnt[i+1],k-cnt[i+1])%mod)%mod;
 			}
 		}
 	}

@@ -95,7 +95,7 @@ signed main()
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;
-	// cin>>TestCase;
+	cin>>TestCase;
 	for (int Caseid=1;Caseid<=TestCase;Caseid++)
 	{
 		solve();

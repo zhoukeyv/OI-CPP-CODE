@@ -63,15 +63,15 @@ void solve()
 	{
 		for (int j=1;j<=m;j++)
 		{
-			for(int k=0;k<=m;k++){
-				int pos=;
+			for (int k=0;k<=m;k++)
+			{
 				if(b[i]>min(k+c,m))
 				{
 					continue;
 				}
-				for(int l=cnt[i];l<=c&&l<=min(k+c,m)-k-s[pos][i];l++)
+				for (int l=cnt[i];l<=c&&l<=min(k+c,m)-k-s[min(k+c,m)][i];l++)
 				{
-					if(i==n&&l!=c)
+					if (i==n&&l!=c)
 					{
 						continue;
 					}

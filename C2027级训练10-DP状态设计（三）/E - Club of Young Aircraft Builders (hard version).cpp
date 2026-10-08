@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=110,M=10010,mod=1e9+7;
-int dp[N][M],s[M][N],a[M],cnt[N],fac[M],infac[M];
+int dp[N][M],s[M][N],a[M],b[N],cnt[N],fac[M],infac[M];
 int n,c,m;
 int power(int a,int b,int p)
 {

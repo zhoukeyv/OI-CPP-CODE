@@ -55,14 +55,10 @@ void solve()
 			{
 				dp[i][j]=(dp[i][j]+dp[i+1][j-k]*C(c,k)%mod)%mod;
 			}
+			// cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
 	}
-	int ans=0;
-	for (int i=0;i<=c;i++)
-	{
-		ans=(ans+dp[1][i])%mod;
-	}
-	cout<<ans<<'\n';
+	cout<<dp[1][m]<<'\n';
 	return;
 }
 signed main()

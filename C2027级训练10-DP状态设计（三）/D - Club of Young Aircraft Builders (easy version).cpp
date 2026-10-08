@@ -36,7 +36,11 @@ void solve()
 	{
 		fac[i]=fac[i-1]*i%mod;
 	}
-	infac
+	infac[c]=power(fac[c],mod-2,mod);
+	for (int i=c-1;i>=0;i--)
+	{
+		infac[i]=infac[i+1]*(i+1)%mod;
+	}
 	for (int i=1;i<=m;i++)
 	{
 		cin>>a[i];

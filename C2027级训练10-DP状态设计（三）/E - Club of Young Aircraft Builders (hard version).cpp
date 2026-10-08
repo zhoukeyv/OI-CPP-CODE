@@ -45,6 +45,7 @@ void solve()
 	{
 		cin>>a[i];
 		cnt[a[i]]++;
+		b[a[i]]=i;
 	}
 	for (int i=1;i<=m;i++)
 	{
@@ -63,9 +64,12 @@ void solve()
 		for (int j=1;j<=m;j++)
 		{
 			for(int k=0;k<=m;k++){
-				int pos=min(k+c,m);
-				if(mx[i]>pos)continue;
-				for(int l=cnt[i];l<=c&&l<=pos-k-s[pos][i];l++)
+				int pos=;
+				if(b[i]>min(k+c,m))
+				{
+					continue;
+				}
+				for(int l=cnt[i];l<=c&&l<=min(k+c,m)-k-s[pos][i];l++)
 				{
 					if(i==n&&l!=c)
 					{

@@ -4,6 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f;
+int n;
 void solve()
 {
 	

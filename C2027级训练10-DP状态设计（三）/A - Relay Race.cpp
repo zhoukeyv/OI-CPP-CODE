@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=310;
-int dp[N<<1][N][N];
+int dp[2][N][N];
 int a[N][N];
 int n;
 void solve()
@@ -19,6 +19,7 @@ void solve()
 	}
 	for (int k=2;k<=2*n;k++)
 	{
+		memset(dp[k&1],-0x3f,sizeof dp[k&1]);
 		for (int i1=1;i1<=n;i1++)
 		{
 			for (int i2=1;i2<=n;i2++)
@@ -30,10 +31,10 @@ void solve()
 				}
 				if (j1>=1&&j1<=n&&j2>=1&&j2<=n)
 				{
-					dp[k][i1][i2]=max(dp[k][i1][i2],dp[k-1][i1-1][i2-1]+t);
-					dp[k][i1][i2]=max(dp[k][i1][i2],dp[k-1][i1-1][i2]+t);
-					dp[k][i1][i2]=max(dp[k][i1][i2],dp[k-1][i1][i2-1]+t);
-					dp[k][i1][i2]=max(dp[k][i1][i2],dp[k-1][i1][i2]+t);
+					dp[k&1][i1][i2]=max(dp[k&1][i1][i2],dp[k&1^1][i1-1][i2-1]+t);
+					dp[k&1][i1][i2]=max(dp[k&1][i1][i2],dp[k&1^1][i1-1][i2]+t);
+					dp[k&1][i1][i2]=max(dp[k&1][i1][i2],dp[k&1^1][i1][i2-1]+t);
+					dp[k&1][i1][i2]=max(dp[k&1][i1][i2],dp[k&1^1][i1][i2]+t);
 				}
 			}
 		}

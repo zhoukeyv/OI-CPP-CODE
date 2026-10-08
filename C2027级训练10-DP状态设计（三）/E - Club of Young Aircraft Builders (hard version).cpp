@@ -65,23 +65,20 @@ void solve()
 	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
-		for (int j=1;j<=m;j++)
+		for (int j=0;j<=m;j++)
 		{
-			for (int k=0;k<=m;k++)
+			int r=min(j+c,m);
+			if (b[i]>r)
 			{
-				int r=min(k+c,m);
-				if(b[i]>r)
+				continue;
+			}
+			for (int k=cnt[i];k<=c&&k<=r-j-s[r][i];k++)
+			{
+				if (i==n&&k!=c)
 				{
 					continue;
 				}
-				for (int l=cnt[i];l<=c&&l<=r-k-s[r][i];l++)
-				{
-					if (i==n&&l!=c)
-					{
-						continue;
-					}
-					dp[i][k+l]=(dp[i][k+l]+1ll*dp[i-1][k]*C(r-i-s[r][i]-cnt[i],l-cnt[i])%mod)%mod;
-				}
+				dp[i][j+k]=(dp[i][j+k]+dp[i-1][j]*C(r-i-s[r][i]-cnt[i],k-cnt[i])%mod)%mod;
 			}
 		}
 	}

@@ -39,7 +39,7 @@ void solve()
 			}
 		}
 	}
-	cout<<dp[2*n][n][n];
+	cout<<dp[0][n][n];
 	return;
 }
 signed main()

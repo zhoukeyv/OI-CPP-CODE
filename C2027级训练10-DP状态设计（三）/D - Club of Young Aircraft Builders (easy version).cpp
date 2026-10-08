@@ -30,6 +30,7 @@ int C(int a,int b)
 }
 void solve()
 {
+	memset(dp,0,sizeof dp);
 	cin>>n>>c>>m;
 	fac[0]=1;
 	for (int i=1;i<=c;i++)

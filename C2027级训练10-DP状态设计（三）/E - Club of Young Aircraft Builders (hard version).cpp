@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=110,M=10010,mod=1e9+7;
-int dp[N][M],a[M],cnt[N];
+int dp[N][M],s[M][N],a[M],cnt[N];
 int n,c,m;
 void solve()
 {
@@ -19,7 +19,11 @@ void solve()
 	{
 		for (int j=1;j<=n;j++)
 		{
-			
+			s[i][j]=s[i-1][j];
+		}
+		for (int j=1;j<a[i];j++)
+		{
+			s[i][j]++;
 		}
 	}
 	for (int i=2;i<=n;i++)

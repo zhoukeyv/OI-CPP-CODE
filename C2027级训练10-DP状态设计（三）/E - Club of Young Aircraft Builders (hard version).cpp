@@ -72,7 +72,7 @@ void solve()
 			{
 				continue;
 			}
-			for (int k=cnt[i];k<=c&&k<=r-j-s[r][i];k++)
+			for (int k=cnt[i];k<=min(c,k<=r-j-s[r][i]);k++)
 			{
 				if (i==n&&k!=c)
 				{

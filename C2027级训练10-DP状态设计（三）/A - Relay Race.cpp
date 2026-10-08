@@ -4,10 +4,15 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=310;
+int dp[N][N][N];
 int n;
 void solve()
 {
 	cin>>n;
+	for (int i=1;i<=n;i++)
+	{
+		
+	}
 	return;
 }
 signed main()

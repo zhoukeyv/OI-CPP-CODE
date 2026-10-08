@@ -16,7 +16,13 @@ void solve()
 	dp[n][c]=1;
 	for (int i=n-1;i>=1;i--)
 	{
-		
+		for (int j=c;j<=m;j++)
+		{
+			for (int k=0;k<=c;k++)
+			{
+				dp[i][j]=(dp[i][j]+dp[i+1][j-k]*C(c,k)%mod)%mod;
+			}
+		}
 	}
 	return;
 }

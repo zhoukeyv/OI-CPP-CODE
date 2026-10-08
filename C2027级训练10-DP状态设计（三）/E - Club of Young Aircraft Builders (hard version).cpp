@@ -69,17 +69,18 @@ void solve()
 		{
 			for (int k=0;k<=m;k++)
 			{
-				if(b[i]>min(k+c,m))
+				int r=min(k+c,m);
+				if(b[i]>r)
 				{
 					continue;
 				}
-				for (int l=cnt[i];l<=c&&l<=min(k+c,m)-k-s[min(k+c,m)][i];l++)
+				for (int l=cnt[i];l<=c&&l<=r-k-s[r][i];l++)
 				{
 					if (i==n&&l!=c)
 					{
 						continue;
 					}
-					dp[i][k+l]=(dp[i][k+l]+1ll*dp[i-1][k]*C(pos-i-s[pos][i]-cnt[i],l-cnt[i])%mod)%mod;
+					dp[i][k+l]=(dp[i][k+l]+1ll*dp[i-1][k]*C(r-i-s[r][i]-cnt[i],l-cnt[i])%mod)%mod;
 				}
 			}
 		}

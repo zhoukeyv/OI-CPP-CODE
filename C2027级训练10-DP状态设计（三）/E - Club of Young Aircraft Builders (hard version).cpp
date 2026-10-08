@@ -31,6 +31,16 @@ int C(int a,int b)
 void solve()
 {
 	cin>>n>>c>>m;
+	fac[0]=1;
+	for (int i=1;i<=m;i++)
+	{
+		fac[i]=fac[i-1]*i%mod;
+	}
+	infac[m]=power(fac[m],mod-2,mod);
+	for (int i=m-1;i>=0;i--)
+	{
+		infac[i]=infac[i+1]*(i+1)%mod;
+	}
 	for (int i=1;i<=m;i++)
 	{
 		cin>>a[i];

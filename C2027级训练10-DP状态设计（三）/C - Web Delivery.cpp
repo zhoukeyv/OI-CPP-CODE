@@ -8,6 +8,8 @@ int dp[N][M],a[N][N],d[N];
 int n,m;
 void solve()
 {
+	memset(a,0,sizeof a);
+	memset(d,0,sizeof d);
 	memset(dp,0x3f,sizeof dp);
 	for (int i=1;i<=n;i++)
 	{

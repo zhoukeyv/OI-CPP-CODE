@@ -62,7 +62,14 @@ void solve()
 	{
 		for (int j=1;j<=m;j++)
 		{
-			
+			for(int k=0;k<=m;k++){
+				int pos=min(k+c,m);
+				if(mx[i]>pos)continue;
+				for(int l=cnt[i];l<=c&&l<=pos-k-s[pos][i];l++){
+					if(i==n&&l!=c)continue;
+					dp[i][k+l]=(dp[i][k+l]+1ll*dp[i-1][k]*C(pos-i-s[pos][i]-cnt[i],l-cnt[i])%mod)%mod;
+				}
+			}
 		}
 	}
 	return;

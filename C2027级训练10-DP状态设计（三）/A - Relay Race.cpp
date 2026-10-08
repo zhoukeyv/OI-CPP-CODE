@@ -5,13 +5,27 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=310;
 int dp[N][N][N];
+int a[N][N];
 int n;
 void solve()
 {
 	cin>>n;
 	for (int i=1;i<=n;i++)
 	{
-		
+		for (int j=1;j<=n;j++)
+		{
+			cin>>a[i][j];
+		}
+	}
+	for (int i=1;i<=n;i++)
+	{
+		for (int j=1;j<=n;j++)
+		{
+			for (int k=j;k<=n;k++)
+			{
+				
+			}
+		}
 	}
 	return;
 }

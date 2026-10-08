@@ -31,8 +31,9 @@ int C(int a,int b)
 void solve()
 {
 	memset(dp,0,sizeof dp);
-	memset(cnt,0,sizeof 0);
-	memset(b,0,sizeof 0);
+	memset(cnt,0,sizeof cnt);
+	memset(b,0,sizeof b);
+	memset(s,0,sizeof s);
 	cin>>n>>c>>m;
 	fac[0]=1;
 	for (int i=1;i<=m;i++)

@@ -4,8 +4,30 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=110,M=10010,mod=1e9+7;
-int dp[N][M],s[M][N],a[M],cnt[N];
+int dp[N][M],s[M][N],a[M],cnt[N],fac[M],infac[M];
 int n,c,m;
+int power(int a,int b,int p)
+{
+	int res=1;
+	while (b)
+	{
+		if (b&1)
+		{
+			res=res*a%p;
+		}
+		a=a*a%p;
+		b>>=1;
+	}
+	return res;
+}
+int C(int a,int b)
+{
+	if (a<0||b<0||a<b)
+	{
+		return 0;
+	}
+	return fac[a]*infac[b]%mod*infac[a-b]%mod;
+}
 void solve()
 {
 	cin>>n>>c>>m;

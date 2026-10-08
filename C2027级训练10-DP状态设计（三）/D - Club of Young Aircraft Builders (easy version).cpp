@@ -9,6 +9,15 @@ int n,c,m;
 void solve()
 {
 	cin>>n>>c>>m;
+	for (int i=1;i<=m;i++)
+	{
+		cin>>a[i];
+	}
+	dp[n][c]=1;
+	for (int i=n-1;i>=1;i--)
+	{
+		
+	}
 	return;
 }
 signed main()

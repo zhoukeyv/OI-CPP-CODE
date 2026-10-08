@@ -85,7 +85,7 @@ void solve()
 			}
 		}
 	}
-	cout<<dp[m]<<'\n';
+	cout<<dp[n][m]<<'\n';
 	return;
 }
 signed main()

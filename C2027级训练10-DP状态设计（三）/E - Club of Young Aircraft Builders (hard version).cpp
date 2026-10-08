@@ -46,7 +46,6 @@ void solve()
 		cin>>a[i];
 		cnt[a[i]]++;
 	}
-	dp[1][0]=1;
 	for (int i=1;i<=m;i++)
 	{
 		for (int j=1;j<=n;j++)
@@ -58,7 +57,7 @@ void solve()
 			s[i][j]++;
 		}
 	}
-	dp[0][0]=1;
+	dp[1][0]=1;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=1;j<=m;j++)

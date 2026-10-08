@@ -13,7 +13,8 @@ void solve()
 	{
 		cin>>a[i];
 	}
-	for (int i=1;i<=n;i++)
+	dp[1][0]=1;
+	for (int i=2;i<=n;i++)
 	{
 		
 	}

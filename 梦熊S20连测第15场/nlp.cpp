@@ -6,7 +6,7 @@ const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
 unordered_map<int,int> um1[V],um2[V];
 set<int> pl;
-int a[N],l[N],r[N];
+int a[N],l[N],r[N],vis[N];
 int n,m;
 void solve()
 {
@@ -55,7 +55,14 @@ void solve()
 		{
 			if (um2[a[cur]].count(a[l[cur]]))
 			{
-				st.insert(l[cur]);
+				pl.insert(l[cur]);
+			}
+		}
+		if (r[cur]!=-1)
+		{
+			if (um1[a[cur]].count(a[r[cur]]))
+			{
+				pl.insert(r[cur]);
 			}
 		}
 	}

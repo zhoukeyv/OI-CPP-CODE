@@ -90,7 +90,7 @@ void solve()
 		bool fg=true;
 		for (int j=1;j<=m&&fg;j++)
 		{
-			unordered_set<int> um;
+			unordered_set<int> us;
 			for (int i=1;i<=n;i++)
 			{
 				if (um.count(s[i][j][0]))

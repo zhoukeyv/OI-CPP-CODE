@@ -34,9 +34,11 @@ void solve()
 			pl.insert(i);
 		}
 	}
-	l[i]=1;
-	r[i]=n;
-	while (!)
+	l[1]=r[n]=-1;
+	while (!st.empty())
+	{
+		
+	}
 	return;
 }
 signed main()

@@ -4,15 +4,18 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
-struct Place
-{
-	int id;
-};
+set<int> pl;
+unordered_map<int,int> um[V];
+unordered_map<int,int> um[V];
 int a[N];
 int n,m;
 void solve()
 {
-	
+	cin>>n>>m;
+	for (int i=1;i<=n;i++)
+	{
+		
+	}
 	return;
 }
 signed main()

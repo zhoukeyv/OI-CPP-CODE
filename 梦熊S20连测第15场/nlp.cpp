@@ -1,12 +1,13 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define double long double
 #define int long long
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
-unordered_map<int,int> um1[V],um2[V];
-set<int> pl;
-int a[N],l[N],r[N],t[N],vis[N];
+unordered_map<int,int> um1[V];
+// unordered_map<int,int> um2[V]; // 不再需要
+set<int> pl;// 改为 set<pair<int,int>>
+int a[N],l[N],r[N],t[N],vis[N],inpl[N];
 int n,m;
 void solve()
 {
@@ -22,50 +23,97 @@ void solve()
 		if (!um1[x].count(y))
 		{
 			um1[x][y]=i;
-			um2[y][x]=i;
 		}
 		t[i]=z;
 	}
-	for (int i=1;i<n;i++)
+	// 初始化链表
+	for (int i=1;i<=n;i++)
 	{
 		l[i]=i-1;
 		r[i]=i+1;
-		if (um1[a[i]].count(a[i+1]))
-		{
-			pl.insert(i);
-		}
 	}
-	l[1]=r[n]=-1;
-	while (!pl.empty())
+	l[1]=-1;
+	r[n]=-1;
+	set<pair<int,int>> pq;// (规则编号, 位置)
+	// inpl 已全局清零
+	auto erase_pos=[&](int pos)
 	{
-		int cur=*pl.begin();
-		pl.erase(*pl.begin());
-		if (pl.count(r[cur]))
+		if (pos<1||pos>n)
 		{
-			pl.erase(pl.find(r[cur]));
+			return;
 		}
-		if (pl.count(l[cur]))
+		if (inpl[pos])
 		{
-			pl.erase(pl.find(l[cur]));
+			pq.erase({inpl[pos],pos});
+			inpl[pos]=0;
 		}
+	};
+	auto insert_pos=[&](int pos)
+	{
+		if (pos<1||pos>=n)
+		{
+			return;
+		}
+		if (r[pos]==-1)
+		{
+			return;
+		}
+		int x=a[pos],y=a[r[pos]];
+		auto it=um1[x].find(y);
+		if (it!=um1[x].end())
+		{
+			int j=it->second;
+			if (inpl[pos])
+			{
+				pq.erase({inpl[pos],pos});
+			}
+			pq.insert({j,pos});
+			inpl[pos]=j;
+		}
+		else
+		{
+			if (inpl[pos])
+			{
+				pq.erase({inpl[pos],pos});
+				inpl[pos]=0;
+			}
+		}
+	};
+	for (int i=1;i<n;i++)
+	{
+		insert_pos(i);
+	}
+	while (!pq.empty())
+	{
+		auto it=pq.begin();
+		int j=it->first;
+		int cur=it->second;
+		pq.erase(it);
+		inpl[cur]=0;
 		int idx=r[cur];
-		r[cur]=r[idx];
-		l[r[idx]]=cur;
-		vis[idx]=1;
-		a[cur]=t[um1[a[cur]][a[idx]]];
+		if (idx==-1)
+		{
+			continue;
+		}
+		erase_pos(idx);
 		if (l[cur]!=-1)
 		{
-			if (um2[a[cur]].count(a[l[cur]]))
-			{
-				pl.insert(l[cur]);
-			}
+			erase_pos(l[cur]);
+		}
+		r[cur]=r[idx];
+		if (r[idx]!=-1)
+		{
+			l[r[idx]]=cur;
+		}
+		vis[idx]=1;
+		a[cur]=t[j];
+		if (l[cur]!=-1)
+		{
+			insert_pos(l[cur]);
 		}
 		if (r[cur]!=-1)
 		{
-			if (um1[a[cur]].count(a[r[cur]]))
-			{
-				pl.insert(r[cur]);
-			}
+			insert_pos(cur);
 		}
 	}
 	int ans=0;
@@ -81,9 +129,10 @@ void solve()
 	{
 		if (vis[i]==0)
 		{
-			cout<<i<<' ';
+			cout<<a[i]<<' ';
 		}
 	}
+	cout<<'\n';
 	return;
 }
 signed main()

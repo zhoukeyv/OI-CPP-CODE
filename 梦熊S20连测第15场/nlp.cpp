@@ -38,7 +38,7 @@ void solve()
 	l[1]=r[n]=-1;
 	while (!pl.empty())
 	{
-		int cur=(*pl.begin()).second;
+		int cur=*((*pl.begin()).second.begin);
 		pl.erase(*pl.begin());
 		if (pl.count(r[cur]))
 		{

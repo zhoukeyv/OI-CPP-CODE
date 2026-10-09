@@ -55,7 +55,7 @@ void solve()
 		{
 			if (um2[a[cur]].count(a[l[cur]]))
 			{
-				
+				st.insert(l[cur]);
 			}
 		}
 	}

@@ -11,36 +11,37 @@ int unsat;
 int n,m;
 void insert(int j,bitset<N> bit[])
 {
-	static unordered_map<int,vector<int>> elem_to_students;
-	elem_to_students.clear();
-	for (int x=1;x<=n;x++)
+	static unordered_map<int,vector<int>> um;
+	um.clear();
+	for (int i=1;i<=n;i++)
 	{
-		for (int e:s[x][j])
+		for (int j:s[i][j])
 		{
-			elem_to_students[e].push_back(x);
+			um[j].push_back(i);
 		}
 	}
-	static bitset<N> inter[N];
-	for (int x=1;x<=n;x++)
+	static bitset<N> temp[N];
+	for (int i=1;i<=n;i++)
 	{
-		inter[x].reset();
+		temp[i].reset();
 	}
-	for (int x=1;x<=n;x++)
+	for (int i=1;i<=n;i++)
 	{
-		for (int e:s[x][j])
+		for (int j:s[i][j])
 		{
-			for (int y:elem_to_students[e])
+			for (int y:um[j])
 			{
-				inter[x].set(y);
+				temp[i].set(y);
 			}
 		}
 	}
-	for (int x=1;x<=n;x++)
+	for (int i=1;i<=n;i++)
 	{
-		bit[x]=~inter[x];
-		bit[x].reset(x);
-		bit[x]&=b[x];
+		bit[i]=~temp[i];
+		bit[i].reset(i);
+		bit[i]&=b[i];
 	}
+	return;
 }
 void solve()
 {
@@ -65,12 +66,12 @@ void solve()
 			}
 		}
 	}
-	for (int x=1;x<=n;x++)
+	for (int i=1;i<=n;i++)
 	{
-		b[x].reset();
-		for (int y=x+1;y<=n;y++)
+		b[i].reset();
+		for (int y=i+1;y<=n;y++)
 		{
-			b[x].set(y);
+			b[i].set(y);
 		}
 	}
 	bool flag=true;
@@ -119,15 +120,15 @@ void solve()
 		{
 			r++;
 			insert(r,bit);
-			for (int x=1;x<=n;x++)
+			for (int i=1;i<=n;i++)
 			{
-				for (int y=bit[x]._Find_first();y<=n;y=bit[x]._Find_next(y))
+				for (int y=bit[i]._Find_first();y<=n;y=bit[i]._Find_next(y))
 				{
-					if (cnt[x][y]==1)
+					if (cnt[i][y]==1)
 					{
 						unsat--;
 					}
-					cnt[x][y]++;
+					cnt[i][y]++;
 				}
 			}
 		}
@@ -138,12 +139,12 @@ void solve()
 		if (l<=r)
 		{
 			insert(l,bit);
-			for (int x=1;x<=n;x++)
+			for (int i=1;i<=n;i++)
 			{
-				for (int y=bit[x]._Find_first();y<=n;y=bit[x]._Find_next(y))
+				for (int y=bit[i]._Find_first();y<=n;y=bit[i]._Find_next(y))
 				{
-					cnt[x][y]--;
-					if (cnt[x][y]==1)
+					cnt[i][y]--;
+					if (cnt[i][y]==1)
 					{
 						unsat++;
 					}

@@ -2,12 +2,11 @@
 using namespace std;
 const int MAXN=1005;
 int n,m;
-vector<vector<int>> S[MAXN];// S[i][j]：学生 i 在位置 j 的集合
-short cnt[MAXN][MAXN];		// cnt[x][y]：窗口内区分 x,y 的位置数
-int unsat;					// 尚未满足（cnt < 2）的对数
-bitset<MAXN> mask_gt[MAXN];	// mask_gt[x] 只保留 y > x 的位
-// 计算位置 j 上，每个学生与哪些学生不相交（只保留 y > x）
-void compute_not_inter(int j,bitset<MAXN> not_inter[])
+vector<vector<int>> S[MAXN];
+short cnt[MAXN][MAXN];
+int unsat;
+bitset<MAXN> mask_gt[MAXN];
+void insert(int j,bitset<MAXN> bit[])
 {
 	static unordered_map<int,vector<int>> elem_to_students;
 	elem_to_students.clear();
@@ -35,9 +34,9 @@ void compute_not_inter(int j,bitset<MAXN> not_inter[])
 	}
 	for (int x=1;x<=n;x++)
 	{
-		not_inter[x]=~inter[x];
-		not_inter[x].reset(x);		// 去掉自己
-		not_inter[x]&=mask_gt[x];// 只保留 y > x
+		bit[x]=~inter[x];
+		bit[x].reset(x);
+		bit[x]&=mask_gt[x];
 	}
 }
 void solve()
@@ -63,7 +62,6 @@ void solve()
 			}
 		}
 	}
-	// 预处理 mask_gt
 	for (int x=1;x<=n;x++)
 	{
 		mask_gt[x].reset();
@@ -72,20 +70,19 @@ void solve()
 			mask_gt[x].set(y);
 		}
 	}
-	// 特判：所有集合大小都是 1 且所有值都不同 → 任意长度 ≥ 2 的区间都合法
-	bool all_size_1=true;
-	for (int i=1;i<=n&&all_size_1;i++)
+	bool flag=true;
+	for (int i=1;i<=n&&flag;i++)
 	{
 		for (int j=1;j<=m;j++)
 		{
 			if (c[i][j]!=1)
 			{
-				all_size_1=false;
+				flag=false;
 				break;
 			}
 		}
 	}
-	if (all_size_1)
+	if (flag)
 	{
 		bool all_diff=true;
 		for (int j=1;j<=m&&all_diff;j++)
@@ -103,25 +100,25 @@ void solve()
 		}
 		if (all_diff)
 		{
-			long long ans=(long long)m*(m-1)/2;
+			int ans=(int)m*(m-1)/2;
 			cout<<ans<<'\n';
 			return;
 		}
 	}
 	memset(cnt,0,sizeof(cnt));
 	unsat=n*(n-1)/2;
-	long long ans=0;
+	int ans=0;
 	int r=0;
-	bitset<MAXN> not_inter[MAXN];
+	bitset<MAXN> bit[MAXN];
 	for (int l=1;l<=m;l++)
 	{
 		while (r<m&&unsat>0)
 		{
 			r++;
-			compute_not_inter(r,not_inter);
+			insert(r,bit);
 			for (int x=1;x<=n;x++)
 			{
-				for (int y=not_inter[x]._Find_first();y<=n;y=not_inter[x]._Find_next(y))
+				for (int y=bit[x]._Find_first();y<=n;y=bit[x]._Find_next(y))
 				{
 					if (cnt[x][y]==1)
 					{
@@ -137,10 +134,10 @@ void solve()
 		}
 		if (l<=r)
 		{
-			compute_not_inter(l,not_inter);
+			insert(l,bit);
 			for (int x=1;x<=n;x++)
 			{
-				for (int y=not_inter[x]._Find_first();y<=n;y=not_inter[x]._Find_next(y))
+				for (int y=bit[x]._Find_first();y<=n;y=bit[x]._Find_next(y))
 				{
 					cnt[x][y]--;
 					if (cnt[x][y]==1)

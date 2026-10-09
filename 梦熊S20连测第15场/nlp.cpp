@@ -6,7 +6,7 @@ const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
 unordered_map<int,int> um1[V];
 set<pair<int,int>> pq;
-int a[N],l[N],r[N],t[N],vis[N],inpl[N];
+int a[N],l[N],r[N],t[N],vis[N],pl[N];
 int n,m;
 void erase(int pos)
 {
@@ -14,10 +14,10 @@ void erase(int pos)
 	{
 		return;
 	}
-	if (inpl[pos])
+	if (pl[pos])
 	{
-		pq.erase({inpl[pos],pos});
-		inpl[pos]=0;
+		pq.erase({pl[pos],pos});
+		pl[pos]=0;
 	}
 	return;
 }
@@ -36,19 +36,19 @@ void insert(int pos)
 	if (it!=um1[x].end())
 	{
 		int j=it->second;
-		if (inpl[pos])
+		if (pl[pos])
 		{
-			pq.erase({inpl[pos],pos});
+			pq.erase({pl[pos],pos});
 		}
 		pq.insert({j,pos});
-		inpl[pos]=j;
+		pl[pos]=j;
 	}
 	else
 	{
-		if (inpl[pos])
+		if (pl[pos])
 		{
-			pq.erase({inpl[pos],pos});
-			inpl[pos]=0;
+			pq.erase({pl[pos],pos});
+			pl[pos]=0;
 		}
 	}
 	return;
@@ -86,7 +86,7 @@ void solve()
 		set<pair<int,int>>::iterator it=pq.begin();
 		int j=it->first,cur=it->second;
 		pq.erase(it);
-		inpl[cur]=0;
+		pl[cur]=0;
 		int idx=r[cur];
 		if (idx==-1)
 		{

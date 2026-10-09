@@ -41,7 +41,11 @@ void solve()
 		pl.erase(*pl.begin());
 		if (pl.count(r[cur]))
 		{
-			pl.erase(cur);
+			pl.erase(pl.find(r[cur]));
+		}
+		if (pl.count(l[cur]))
+		{
+			pl.erase(pl.find(l[cur]));
 		}
 	}
 	return;

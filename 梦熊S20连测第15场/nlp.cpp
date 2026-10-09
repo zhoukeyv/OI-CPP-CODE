@@ -6,7 +6,7 @@ const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
 unordered_map<int,int> um1[V],um2[V];
 set<int> pl;
-int a[N],l[N],r[N],vis[N];
+int a[N],l[N],r[N],t[N],vis[N];
 int n,m;
 void solve()
 {
@@ -21,9 +21,10 @@ void solve()
 		cin>>x>>y>>z;
 		if (!um1[x].count(y))
 		{
-			um1[x][y]=z;
-			um2[y][x]=z;
+			um1[x][y]=i;
+			um2[y][x]=i;
 		}
+		t[i]=z;
 	}
 	for (int i=1;i<n;i++)
 	{

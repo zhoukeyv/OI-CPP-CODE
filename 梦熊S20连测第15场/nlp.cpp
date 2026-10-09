@@ -47,6 +47,9 @@ void solve()
 		{
 			pl.erase(pl.find(l[cur]));
 		}
+		int idx=r[cur];
+		r[cur]=r[idx];
+		l[r[idx]]=cur;
 	}
 	return;
 }

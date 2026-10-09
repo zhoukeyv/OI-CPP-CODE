@@ -138,10 +138,10 @@ void solve()
 			insert(l,bit);
 			for (int i=1;i<=n;i++)
 			{
-				for (int y=bit[i]._Find_first();y<=n;y=bit[i]._Find_next(y))
+				for (int j=bit[i]._Find_first();j<=n;j=bit[i]._Find_next(j))
 				{
-					cnt[i][y]--;
-					if (cnt[i][y]==1)
+					cnt[i][j]--;
+					if (cnt[i][j]==1)
 					{
 						sum++;
 					}

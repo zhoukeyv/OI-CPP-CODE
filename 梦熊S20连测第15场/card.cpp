@@ -4,14 +4,14 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
+unordered_map<int,vector<int>> um;
+bitset<N> b[N],bit[N],temp[N];
 vector<vector<int>> c,s[N];
-bitset<N> b[N],bit[N];
 short cnt[N][N];
 int sum;
 int n,m;
 void insert(int j,bitset<N> bit[])
 {
-	static unordered_map<int,vector<int>> um;
 	um.clear();
 	for (int i=1;i<=n;i++)
 	{
@@ -20,7 +20,6 @@ void insert(int j,bitset<N> bit[])
 			um[j].push_back(i);
 		}
 	}
-	static bitset<N> temp[N];
 	for (int i=1;i<=n;i++)
 	{
 		temp[i].reset();

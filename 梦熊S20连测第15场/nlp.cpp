@@ -50,6 +50,7 @@ void solve()
 		int idx=r[cur];
 		r[cur]=r[idx];
 		l[r[idx]]=cur;
+		a[cur]=um1[a[cur]][a[idx]];
 	}
 	return;
 }

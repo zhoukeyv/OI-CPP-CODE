@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
 unordered_map<int,int> um1[V],um2[V];
-map<int,set<int>> pl;
+set<int> pl;
 int a[N],l[N],r[N],t[N],vis[N];
 int n,m;
 void solve()
@@ -32,21 +32,21 @@ void solve()
 		r[i]=i+1;
 		if (um1[a[i]].count(a[i+1]))
 		{
-			pl[um1[a[i]][a[i+1]]].insert(i);
+			pl.insert(i);
 		}
 	}
 	l[1]=r[n]=-1;
 	while (!pl.empty())
 	{
-		int cur=*((*pl.begin()).second.begin());
-		(*pl.begin()).second.erase(cur);
+		int cur=*pl.begin();
+		pl.erase(*pl.begin());
 		if (pl.count(r[cur]))
 		{
-			pl.erase(r[cur]);
+			pl.erase(pl.find(r[cur]));
 		}
 		if (pl.count(l[cur]))
 		{
-			pl.erase(l[cur]);
+			pl.erase(pl.find(l[cur]));
 		}
 		int idx=r[cur];
 		r[cur]=r[idx];

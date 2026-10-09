@@ -7,7 +7,7 @@ const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
 vector<vector<int>> c,s[N];
 bitset<N> b[N];
 int cnt[N][N];
-int unsat;
+int sum;
 int n,m;
 void insert(int j,bitset<N> bit[])
 {
@@ -109,13 +109,12 @@ void solve()
 		}
 	}
 	memset(cnt,0,sizeof(cnt));
-	unsat=n*(n-1)/2;
-	int ans=0;
-	int r=0;
+	sum=n*(n-1)/2;
+	int ans=0,r=0;
 	bitset<N> bit[N];
 	for (int l=1;l<=m;l++)
 	{
-		while (r<m&&unsat>0)
+		while (r<m&&sum>0)
 		{
 			r++;
 			insert(r,bit);
@@ -125,13 +124,13 @@ void solve()
 				{
 					if (cnt[i][y]==1)
 					{
-						unsat--;
+						sum--;
 					}
 					cnt[i][y]++;
 				}
 			}
 		}
-		if (unsat==0)
+		if (sum==0)
 		{
 			ans+=m-r+1;
 		}
@@ -145,7 +144,7 @@ void solve()
 					cnt[i][y]--;
 					if (cnt[i][y]==1)
 					{
-						unsat++;
+						sum++;
 					}
 				}
 			}

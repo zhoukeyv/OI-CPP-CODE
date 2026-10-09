@@ -44,10 +44,8 @@ void insert(int x,bitset<N> bit[])
 }
 void solve()
 {
-	c.clear();
-	s.clear();
 	cin>>n>>m;
-	c.resize(n+1,vector<int>(m+1));
+	c.assign(n+1,vector<int>(m+1));
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=1;j<=m;j++)
@@ -57,10 +55,10 @@ void solve()
 	}
 	for (int i=1;i<=n;i++)
 	{
-		s[i].resize(m+1);
+		s[i].assign(m+1);
 		for (int j=1;j<=m;j++)
 		{
-			s[i][j].resize(c[i][j]);
+			s[i][j].assign(c[i][j]);
 			for (int k=0;k<c[i][j];k++)
 			{
 				cin>>s[i][j][k];

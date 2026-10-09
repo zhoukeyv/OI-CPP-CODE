@@ -38,9 +38,10 @@ void solve()
 	while (!pl.empty())
 	{
 		int cur=*pl.begin();
-		if (st.count(r[cur]))
+		pl.erase(*pl.begin());
+		if (pl.count(r[cur]))
 		{
-			st.erase(cur);
+			pl.erase(cur);
 		}
 	}
 	return;

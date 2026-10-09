@@ -35,9 +35,13 @@ void solve()
 		}
 	}
 	l[1]=r[n]=-1;
-	while (!st.empty())
+	while (!pl.empty())
 	{
-		
+		int cur=*pl.begin();
+		if (st.count(r[cur]))
+		{
+			st.erase(cur);
+		}
 	}
 	return;
 }

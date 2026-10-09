@@ -32,7 +32,7 @@ void solve()
 		r[i]=i+1;
 		if (um1[a[i]].count(a[i+1]))
 		{
-			pl.insert({um1[a[i]][a[i+1]],i});
+			pl[um1[a[i]][a[i+1]]].insert(i);
 		}
 	}
 	l[1]=r[n]=-1;

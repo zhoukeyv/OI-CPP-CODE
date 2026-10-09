@@ -4,8 +4,8 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
-vector<vector<int>> c,S[N];
-bitset<N> mask_gt[N];
+vector<vector<int>> c,s[N];
+bitset<N> b[N];
 int cnt[N][N];
 int unsat;
 int n,m;
@@ -15,7 +15,7 @@ void insert(int j,bitset<N> bit[])
 	elem_to_students.clear();
 	for (int x=1;x<=n;x++)
 	{
-		for (int e:S[x][j])
+		for (int e:s[x][j])
 		{
 			elem_to_students[e].push_back(x);
 		}
@@ -27,7 +27,7 @@ void insert(int j,bitset<N> bit[])
 	}
 	for (int x=1;x<=n;x++)
 	{
-		for (int e:S[x][j])
+		for (int e:s[x][j])
 		{
 			for (int y:elem_to_students[e])
 			{
@@ -39,14 +39,13 @@ void insert(int j,bitset<N> bit[])
 	{
 		bit[x]=~inter[x];
 		bit[x].reset(x);
-		bit[x]&=mask_gt[x];
+		bit[x]&=b[x];
 	}
 }
 void solve()
 {
 	cin>>n>>m;
 	c.resize(n+1,vector<int>(m+1));
-	vector<vector<int>> c(n+1,vector<int>(m+1));
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=1;j<=m;j++)
@@ -56,22 +55,22 @@ void solve()
 	}
 	for (int i=1;i<=n;i++)
 	{
-		S[i].resize(m+1);
+		s[i].resize(m+1);
 		for (int j=1;j<=m;j++)
 		{
-			S[i][j].resize(c[i][j]);
+			s[i][j].resize(c[i][j]);
 			for (int k=0;k<c[i][j];k++)
 			{
-				cin>>S[i][j][k];
+				cin>>s[i][j][k];
 			}
 		}
 	}
 	for (int x=1;x<=n;x++)
 	{
-		mask_gt[x].reset();
+		b[x].reset();
 		for (int y=x+1;y<=n;y++)
 		{
-			mask_gt[x].set(y);
+			b[x].set(y);
 		}
 	}
 	bool flag=true;
@@ -94,12 +93,12 @@ void solve()
 			unordered_set<int> seen;
 			for (int i=1;i<=n;i++)
 			{
-				if (seen.count(S[i][j][0]))
+				if (seen.count(s[i][j][0]))
 				{
 					all_diff=false;
 					break;
 				}
-				seen.insert(S[i][j][0]);
+				seen.insert(s[i][j][0]);
 			}
 		}
 		if (all_diff)

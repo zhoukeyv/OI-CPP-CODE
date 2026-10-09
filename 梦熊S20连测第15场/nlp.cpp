@@ -25,6 +25,13 @@ void solve()
 			um2[y][x]=z;
 		}
 	}
+	for (int i=1;i<n;i++)
+	{
+		if (um1[a[i]].count(a[i+1]))
+		{
+			pl.insert(i);
+		}
+	}
 	return;
 }
 signed main()

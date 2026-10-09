@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 #define double long double
-#define int long long
+#define ll long long
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
 vector<vector<int>> c,s[N];
 bitset<N> b[N],bit[N];
-int cnt[N][N];
+short cnt[N][N];
 int sum;
 int n,m;
 void insert(int j,bitset<N> bit[])
@@ -110,7 +110,8 @@ void solve()
 	}
 	memset(cnt,0,sizeof(cnt));
 	sum=n*(n-1)/2;
-	int ans=0,r=0;
+	ll ans=0;
+	int r=0;
 	for (int l=1;l<=m;l++)
 	{
 		while (r<m&&sum>0)

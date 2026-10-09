@@ -50,6 +50,7 @@ void solve()
 		int idx=r[cur];
 		r[cur]=r[idx];
 		l[r[idx]]=cur;
+		vis[idx]=1;
 		a[cur]=um1[a[cur]][a[idx]];
 		if (l[cur]!=-1)
 		{
@@ -64,6 +65,22 @@ void solve()
 			{
 				pl.insert(r[cur]);
 			}
+		}
+	}
+	int ans=0;
+	for (int i=1;i<=n;i++)
+	{
+		if (vis[i]==0)
+		{
+			ans++;
+		}
+	}
+	cout<<ans<<'\n';
+	for (int i=1;i<=n;i++)
+	{
+		if (vis[i]==0)
+		{
+			cout<<i<<' ';
 		}
 	}
 	return;

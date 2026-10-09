@@ -88,24 +88,23 @@ void solve()
 	}
 	if (flag)
 	{
-		bool all_diff=true;
-		for (int j=1;j<=m&&all_diff;j++)
+		bool fg=true;
+		for (int j=1;j<=m&&fg;j++)
 		{
-			unordered_set<int> seen;
+			unordered_set<int> um;
 			for (int i=1;i<=n;i++)
 			{
-				if (seen.count(s[i][j][0]))
+				if (um.count(s[i][j][0]))
 				{
-					all_diff=false;
+					fg=false;
 					break;
 				}
-				seen.insert(s[i][j][0]);
+				um.insert(s[i][j][0]);
 			}
 		}
-		if (all_diff)
+		if (fg)
 		{
-			int ans=(int)m*(m-1)/2;
-			cout<<ans<<'\n';
+			cout<<m*(m-1)/2<<'\n';
 			return;
 		}
 	}

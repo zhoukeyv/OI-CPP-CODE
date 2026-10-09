@@ -83,7 +83,7 @@ void solve()
 	}
 	while (!pq.empty())
 	{
-		auto it=pq.begin();
+		set<pair<int,int>>::iterator it=pq.begin();
 		int j=it->first;
 		int cur=it->second;
 		pq.erase(it);

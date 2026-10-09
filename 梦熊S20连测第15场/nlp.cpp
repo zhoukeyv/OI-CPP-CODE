@@ -52,7 +52,7 @@ void solve()
 		r[cur]=r[idx];
 		l[r[idx]]=cur;
 		vis[idx]=1;
-		a[cur]=um1[a[cur]][a[idx]];
+		a[cur]=t[um1[a[cur]][a[idx]]];
 		if (l[cur]!=-1)
 		{
 			if (um2[a[cur]].count(a[l[cur]]))

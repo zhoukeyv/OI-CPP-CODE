@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
 unordered_map<int,int> um1[V],um2[V];
-set<int> pl;
+set<pair<int,int>> pl;
 int a[N],l[N],r[N],t[N],vis[N];
 int n,m;
 void solve()

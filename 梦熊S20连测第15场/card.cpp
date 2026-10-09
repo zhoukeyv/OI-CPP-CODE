@@ -10,12 +10,12 @@ vector<vector<int>> c,s[N];
 short cnt[N][N];
 int sum;
 int n,m;
-void insert(int j,bitset<N> bit[])
+void insert(int x,bitset<N> bit[])
 {
 	um.clear();
 	for (int i=1;i<=n;i++)
 	{
-		for (int j:s[i][j])
+		for (int j:s[i][x])
 		{
 			um[j].push_back(i);
 		}
@@ -26,7 +26,7 @@ void insert(int j,bitset<N> bit[])
 	}
 	for (int i=1;i<=n;i++)
 	{
-		for (int j:s[i][j])
+		for (int j:s[i][x])
 		{
 			for (int y:um[j])
 			{

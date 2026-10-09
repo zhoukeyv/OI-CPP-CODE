@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
-vector<vector<int>> S[N];
+vector<vector<int>> c,S[N];
 bitset<N> mask_gt[N];
 int cnt[N][N];
 int unsat;
@@ -45,6 +45,7 @@ void insert(int j,bitset<N> bit[])
 void solve()
 {
 	cin>>n>>m;
+	c.resize(n+1,vector<int>(m+1));
 	vector<vector<int>> c(n+1,vector<int>(m+1));
 	for (int i=1;i<=n;i++)
 	{

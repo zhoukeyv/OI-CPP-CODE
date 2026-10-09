@@ -17,8 +17,13 @@ void solve()
 	}
 	for (int i=1;i<=m;i++)
 	{
-		int x,y;
-		cin>>x>>y;
+		int x,y,z;
+		cin>>x>>y>>z;
+		if (!um1[x].count(y))
+		{
+			um1[x][y]=z;
+			um2[y][x]=z;
+		}
 	}
 	return;
 }

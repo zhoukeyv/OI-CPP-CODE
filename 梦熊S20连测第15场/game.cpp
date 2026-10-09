@@ -9,14 +9,14 @@ void solve()
 {
 	cin>>a>>b;
 	int t=max(a,b);
-	double ans=(2*t*t-2)*1.0/(4*t*t-2*t);
+	double ans=(t*(t-1)*2)*1.0/(2*t*(2*t-1));
 	cout<<fixed<<setprecision(5)<<ans<<'\n';
 	return;
 }
 signed main()
 {
-	// freopen("game.in","r",stdin);
-	// freopen("game.out","w",stdout);
+	freopen("game.in","r",stdin);
+	freopen("game.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

@@ -4,9 +4,8 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10,V=2e6+10;
+unordered_map<int,int> um1[V],um2[V];
 set<int> pl;
-unordered_map<int,int> um[V];
-unordered_map<int,int> um[V];
 int a[N];
 int n,m;
 void solve()
@@ -14,7 +13,12 @@ void solve()
 	cin>>n>>m;
 	for (int i=1;i<=n;i++)
 	{
-		
+		cin>>a[i];
+	}
+	for (int i=1;i<=m;i++)
+	{
+		int x,y;
+		cin>>x>>y;
 	}
 	return;
 }

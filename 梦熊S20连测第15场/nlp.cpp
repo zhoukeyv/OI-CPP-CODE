@@ -84,8 +84,7 @@ void solve()
 	while (!pq.empty())
 	{
 		set<pair<int,int>>::iterator it=pq.begin();
-		int j=it->first;
-		int cur=it->second;
+		int j=it->first,cur=it->second;
 		pq.erase(it);
 		inpl[cur]=0;
 		int idx=r[cur];

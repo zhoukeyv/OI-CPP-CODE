@@ -93,12 +93,12 @@ void solve()
 			unordered_set<int> us;
 			for (int i=1;i<=n;i++)
 			{
-				if (um.count(s[i][j][0]))
+				if (us.count(s[i][j][0]))
 				{
 					fg=false;
 					break;
 				}
-				um.insert(s[i][j][0]);
+				us.insert(s[i][j][0]);
 			}
 		}
 		if (fg)

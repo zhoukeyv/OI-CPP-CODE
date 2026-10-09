@@ -40,14 +40,13 @@ void solve()
 	{
 		int cur=*((*pl.begin()).second.begin());
 		(*pl.begin()).second.erase(cur);
-		pl.erase(pl.begin());
 		if (pl.count(r[cur]))
 		{
-			pl.erase(pl.find(r[cur]));
+			pl.erase(r[cur]);
 		}
 		if (pl.count(l[cur]))
 		{
-			pl.erase(pl.find(l[cur]));
+			pl.erase(l[cur]);
 		}
 		int idx=r[cur];
 		r[cur]=r[idx];

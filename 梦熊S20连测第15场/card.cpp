@@ -44,6 +44,8 @@ void insert(int x,bitset<N> bit[])
 }
 void solve()
 {
+	c.clear();
+	s.clear();
 	cin>>n>>m;
 	c.resize(n+1,vector<int>(m+1));
 	for (int i=1;i<=n;i++)

@@ -51,6 +51,13 @@ void solve()
 		r[cur]=r[idx];
 		l[r[idx]]=cur;
 		a[cur]=um1[a[cur]][a[idx]];
+		if (l[cur]!=-1)
+		{
+			if (um2[a[cur]].count(a[l[cur]]))
+			{
+				
+			}
+		}
 	}
 	return;
 }

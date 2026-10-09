@@ -39,7 +39,7 @@ void solve()
 	while (!pl.empty())
 	{
 		int cur=*((*pl.begin()).second.begin());
-		pl.erase(*pl.begin());
+		pl.erase(pl.begin());
 		if (pl.count(r[cur]))
 		{
 			pl.erase(pl.find(r[cur]));

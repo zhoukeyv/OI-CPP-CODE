@@ -63,23 +63,23 @@ int main()
 	{
 		string s;
 		cin>>s;
-		int pos[26];
+		int temp[26];
 		for (int i=0;i<26;i++)
 		{
-			pos[s[i]-'a']=i;
+			temp[s[i]-'a']=i;
 		}
-		int ans=ans;
-		for (int c=0;c<26;c++)
+		int res=ans;
+		for (int i=0;i<26;i++)
 		{
-			for (int d=0;d<26;d++)
+			for (int j=0;j<26;j++)
 			{
-				if (c!=d&&pos[c]<pos[d])
+				if (i!=j&&temp[i]<temp[j])
 				{
-					ans+=b[c][d];
+					res+=b[i][j];
 				}
 			}
 		}
-		cout<<ans<<'\n';
+		cout<<res<<'\n';
 	}
 	return 0;
 }

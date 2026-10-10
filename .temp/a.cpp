@@ -52,21 +52,21 @@ int main()
 			}
 		}
 	}
-	for (int c=0;c<26;c++)
+	for (int i=0;i<26;i++)
 	{
-		for (int d=0;d<26;d++)
+		for (int j=0;j<26;j++)
 		{
-			b[c][d]=val[d][c];
+			b[i][j]=val[j][i];
 		}
 	}
 	while (q--)
 	{
-		string alpha;
-		cin>>alpha;
+		string s;
+		cin>>s;
 		int pos[26];
 		for (int i=0;i<26;i++)
 		{
-			pos[alpha[i]-'a']=i;
+			pos[s[i]-'a']=i;
 		}
 		int ans=ans;
 		for (int c=0;c<26;c++)

@@ -33,18 +33,18 @@ int solve1()
 			}
 		}
 		int sum=0,g=0;
-		bool all_zero=true;
+		bool flag=true;
 		for (int c:a)
 		{
 			int d=dis[c];
 			sum+=d;
 			if (d!=0)
 			{
-				all_zero=false;
+				flag=false;
 			}
 			g=__gcd(g,d);
 		}
-		if (all_zero)
+		if (flag)
 		{
 			return 0;
 		}

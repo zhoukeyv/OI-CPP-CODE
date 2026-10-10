@@ -15,15 +15,14 @@ int main()
 		string s;
 		cin>>s;
 		int p=0;
-		for (char ch:s)
+		for (char c:s)
 		{
-			int c=ch-'a';
-			tr[p].push_back({i,c});
-			if (trie[p][c]==-1)
+			tr[p].push_back({i,c-'a'});
+			if (trie[p][c-'a']==-1)
 			{
-				trie[p][c]=++sz;
+				trie[p][c-'a']=++sz;
 			}
-			p=trie[p][c];
+			p=trie[p][c-'a'];
 		}
 		tr[p].push_back({i,-1});
 	}

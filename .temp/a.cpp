@@ -1,42 +1,91 @@
 #include<bits/stdc++.h>
 using namespace std;
+const int N=1e6+10;
+int trie[N][26];
+vector<pair<int,int>> tr[N];
+int tot=0;
+int val[26][26];
+int fixed_ans=0;
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(nullptr);
-	int N,k;
-	long long p;
-	cin>>N>>k>>p;
-	vector<long long> dp(k,0),f(k,0);
-	dp[0]=1;
-	for (int i=0;i<N;++i)
+	cin.tie(0);
+	int n,q;
+	cin>>n>>q;
+	memset(trie,-1,sizeof(trie));
+	for (int i=1;i<=n;i++)
 	{
-		long long a;
-		cin>>a;
-		long long q=a/k;
-		int ra=a%k;
-		vector<long long> ndp(k,0),nf(k,0);
-		for (int r=0;r<k;++r)
+		string s;
+		cin>>s;
+		int u=0;
+		for (char ch:s)
 		{
-			if (dp[r]==0&&f[r]==0)
+			int c=ch-'a';
+			tr[u].push_back({i,c});
+			if (trie[u][c]==-1)
 			{
-				continue;
+				trie[u][c]=++tot;
 			}
-			ndp[r]=(ndp[r]+dp[r])%p;
-			nf[r]=(nf[r]+f[r])%p;
-			int nr=(r+ra)%k;
-			long long carry=(r+ra>=k)?1:0;
-			ndp[nr]=(ndp[nr]+dp[r])%p;
-			nf[nr]=(nf[nr]+f[r]+dp[r]*((q+carry)%p))%p;
+			u=trie[u][c];
 		}
-		dp=move(ndp);
-		f=move(nf);
+		tr[u].push_back({i,-1});
 	}
-	long long ans=0;
-	for (int r=0;r<k;++r)
+	for (int u=0;u<=tot;u++)
 	{
-		ans=(ans+f[r])%p;
+		int cnt_sub[26]={0};
+		int cnt_D=0;
+		for (auto& p:tr[u])
+		{
+			int idx=p.first;
+			int branch=p.second;
+			if (branch==-1)
+			{
+				fixed_ans+=cnt_D;
+			}
+			else
+			{
+				int c=branch;
+				for (int y=0;y<26;y++)
+				{
+					if (y!=c&&cnt_sub[y]>0)
+					{
+						val[y][c]+=cnt_sub[y];
+					}
+				}
+				cnt_sub[c]++;
+				cnt_D++;
+			}
+		}
 	}
-	cout<<ans<<'\n';
+	int contrib[26][26];
+	for (int c=0;c<26;c++)
+	{
+		for (int d=0;d<26;d++)
+		{
+			contrib[c][d]=val[d][c];
+		}
+	}
+	while (q--)
+	{
+		string alpha;
+		cin>>alpha;
+		int pos[26];
+		for (int i=0;i<26;i++)
+		{
+			pos[alpha[i]-'a']=i;
+		}
+		int ans=fixed_ans;
+		for (int c=0;c<26;c++)
+		{
+			for (int d=0;d<26;d++)
+			{
+				if (c!=d&&pos[c]<pos[d])
+				{
+					ans+=contrib[c][d];
+				}
+			}
+		}
+		cout<<ans<<'\n';
+	}
 	return 0;
 }

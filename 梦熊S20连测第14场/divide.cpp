@@ -10,24 +10,24 @@ void solve()
 {
 	cin>>n>>k>>mod;
 	dp1[0]=1;
-	for (int i=0;i<n;i++)
+	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
 		long long q=a[i]/k;
 		int ra=a[i]%k;
 		vector<long long> ndp(k,0),nf(k,0);
-		for (int r=0;r<k;++r)
+		for (int j=0;j<k;j++)
 		{
-			if (dp[r]==0&&f[r]==0)
+			if (dp[j]==0&&f[j]==0)
 			{
 				continue;
 			}
-			ndp[r]=(ndp[r]+dp[r])%mod;
-			nf[r]=(nf[r]+f[r])%mod;
-			int nr=(r+ra)%k;
-			long long carry=(r+ra>=k)?1:0;
-			ndp[nr]=(ndp[nr]+dp[r])%mod;
-			nf[nr]=(nf[nr]+f[r]+dp[r]*((q+carry)%mod))%mod;
+			ndp[j]=(ndp[j]+dp[j])%mod;
+			nf[j]=(nf[j]+f[j])%mod;
+			int nr=(j+ra)%k;
+			long long carry=(j+ra>=k)?1:0;
+			ndp[nr]=(ndp[nr]+dp[j])%mod;
+			nf[nr]=(nf[nr]+f[j]+dp[j]*((q+carry)%mod))%mod;
 		}
 		dp1=move(ndp);
 		dp2=move(nf);
@@ -42,7 +42,7 @@ void solve()
 }
 signed main()
 {
-	// freopen("divide.in","r",stdin);
+	// freopen("divide.in","j",stdin);
 	// freopen("divide.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);

@@ -13,8 +13,6 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
-		long long q=a[i]/k;
-		int ra=a[i]%k;
 		for (int j=0;j<k;j++)
 		{
 			if (dp1[i&1^1][j]==0&&dp2[i&1^1][j]==0)
@@ -24,10 +22,10 @@ void solve()
 			dp1[i&1][j]=(dp1[i&1][j]+dp1[i&1^1][j])%mod;
 			dp2[i&1][j]=(dp2[i&1][j]+dp2[i&1^1][j])%mod;
 			dp1[i&1][(j+a[i])%k]=(dp1[i&1][(j+a[i])%k]+dp1[i&1^1][j])%mod;
-			dp2[i&1][(j+a[i])%k]=(dp2[i&1][(j+a[i])%k]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+(j+a[i]%k>=k?1:0))%mod))%mod;
+			dp2[i&1][(j+a[i])%k]=(dp2[i&1][(j+a[i])%k]+dp2[i&1^1][j]+dp1[i&1^1][j]*((a[i]/k+(j+a[i]%k>=k?1:0))%mod))%mod;
 		}
 	}
-	long long ans=0;
+	int ans=0;
 	for (int i=0;i<k;i++)
 	{
 		ans=(ans+dp2[i])%mod;

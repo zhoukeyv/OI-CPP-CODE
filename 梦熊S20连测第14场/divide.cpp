@@ -21,15 +21,11 @@ void solve()
 			{
 				continue;
 			}
-			ndp[i&1][j]=(ndp[i&1][j]+dp1[i&1^1][j])%mod;
-			nf[i&1][j]=(nf[i&1][j]+dp2[i&1^1][j])%mod;
-			int nr=(j+ra)%k;
-			int temp=(j+ra>=k)?1:0;
-			ndp[i&1][nr]=(ndp[i&1][nr]+dp1[i&1^1][j])%mod;
-			nf[i&1][nr]=(nf[i&1][nr]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+temp)%mod))%mod;
+			dp1[i&1][j]=(dp1[i&1][j]+dp1[i&1^1][j])%mod;
+			dp2[i&1][j]=(dp2[i&1][j]+dp2[i&1^1][j])%mod;
+			dp1[i&1][nr]=(dp1[i&1][(j+ra)%k]+dp1[i&1^1][j])%mod;
+			dp2[i&1][nr]=(dp2[i&1][(j+ra)%k]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+(j+ra>=k?1:0))%mod))%mod;
 		}
-		dp1=move(ndp);
-		dp2=move(nf);
 	}
 	long long ans=0;
 	for (int i=0;i<k;i++)

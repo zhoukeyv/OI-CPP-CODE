@@ -63,8 +63,7 @@ int solve2()
 			}
 		}
 	}
-	vector<int> sz(n+1,0);
-	vector<int> dp(n+1,0);
+	vector<int> sz(n+1),dp(n+1),dis(n+1);
 	function<void(int,int)>dfs1=[&](int u,int p)
 	{
 		sz[u]=1;
@@ -81,10 +80,9 @@ int solve2()
 		}
 	};
 	dfs1(1,0);
-	vector<int> sum_dist(n+1,0);
 	function<void(int,int,int)>dfs2=[&](int u,int p,int val)
 	{
-		sum_dist[u]=val;
+		dis[u]=val;
 		for (auto& e:adj[u])
 		{
 			int v=e.first,w=e.second;
@@ -100,7 +98,7 @@ int solve2()
 	int ans=LLONG_MAX;
 	for (int u=1;u<=n;++u)
 	{
-		ans=min(ans,2*sum_dist[u]/g);
+		ans=min(ans,2*dis[u]/g);
 	}
 	return ans;
 }

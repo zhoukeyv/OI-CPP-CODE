@@ -23,8 +23,8 @@ void solve()
 			}
 			dp1[i&1][j]=(dp1[i&1][j]+dp1[i&1^1][j])%mod;
 			dp2[i&1][j]=(dp2[i&1][j]+dp2[i&1^1][j])%mod;
-			dp1[i&1][nr]=(dp1[i&1][(j+ra)%k]+dp1[i&1^1][j])%mod;
-			dp2[i&1][nr]=(dp2[i&1][(j+ra)%k]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+(j+ra>=k?1:0))%mod))%mod;
+			dp1[i&1][(j+a[i])%k]=(dp1[i&1][(j+a[i])%k]+dp1[i&1^1][j])%mod;
+			dp2[i&1][(j+a[i])%k]=(dp2[i&1][(j+a[i])%k]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+(j+a[i]%k>=k?1:0))%mod))%mod;
 		}
 	}
 	long long ans=0;

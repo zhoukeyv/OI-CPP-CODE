@@ -9,11 +9,10 @@ int n,k,mod;
 void solve()
 {
 	cin>>n>>k>>mod;
-	dp[0]=1;
+	dp1[0]=1;
 	for (int i=0;i<n;i++)
 	{
-		long long a;
-		cin>>a;
+		cin>>a[i];
 		long long q=a/k;
 		int ra=a%k;
 		vector<long long> ndp(k,0),nf(k,0);
@@ -30,8 +29,8 @@ void solve()
 			ndp[nr]=(ndp[nr]+dp[r])%mod;
 			nf[nr]=(nf[nr]+f[r]+dp[r]*((q+carry)%mod))%mod;
 		}
-		dp=move(ndp);
-		f=move(nf);
+		dp1=move(ndp);
+		dp2=move(nf);
 	}
 	long long ans=0;
 	for (int r=0;r<k;++r)

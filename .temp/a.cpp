@@ -64,7 +64,7 @@ int solve2()
 		}
 	}
 	vector<int> sz(n+1),dp(n+1),dis(n+1);
-	function<void(int,int)>dfs1=[&](int u,int p)
+	function<void(int,int)> DFS1=[&](int u,int p)
 	{
 		sz[u]=1;
 		for (auto& e:adj[u])
@@ -74,13 +74,13 @@ int solve2()
 			{
 				continue;
 			}
-			dfs1(v,u);
+			DFS1(v,u);
 			sz[u]+=sz[v];
 			dp[u]+=dp[v]+(int)sz[v]*w;
 		}
 	};
-	dfs1(1,0);
-	function<void(int,int,int)>dfs2=[&](int u,int p,int val)
+	DFS1(1,0);
+	function<void(int,int,int)> DFS2=[&](int u,int p,int val)
 	{
 		dis[u]=val;
 		for (auto& e:adj[u])
@@ -91,10 +91,10 @@ int solve2()
 				continue;
 			}
 			int nv=val-(int)sz[v]*w+(int)(n-sz[v])*w;
-			dfs2(v,u,nv);
+			DFS2(v,u,nv);
 		}
 	};
-	dfs2(1,0,dp[1]);
+	DFS2(1,0,dp[1]);
 	int ans=LLONG_MAX;
 	for (int u=1;u<=n;++u)
 	{

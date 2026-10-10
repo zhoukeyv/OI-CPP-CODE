@@ -26,8 +26,8 @@ void solve()
 }
 signed main()
 {
-	// freopen("mex.in","r",stdin);
-	// freopen("mex.out","w",stdout);
+	freopen("mex.in","r",stdin);
+	freopen("mex.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

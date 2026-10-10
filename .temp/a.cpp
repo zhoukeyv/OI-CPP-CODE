@@ -132,8 +132,8 @@ void solve()
 }
 signed main()
 {
-	// freopen("hospital.in","r",stdin);
-	// freopen("hospital.out","w",stdout);
+	freopen("hospital.in","r",stdin);
+	freopen("hospital.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

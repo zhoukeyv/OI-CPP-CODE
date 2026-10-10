@@ -1,16 +1,18 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#define double long double
+#define int long long
 using namespace std;
-typedef long long int;
-const int MAXN=500005;
+const double eps=1e-6;
+const int inf=0x3f3f3f3f3f3f3f3f,N=500005;
+vector<pair<int,int>> graph[N];
+int a[N];
 int n,k;
-vector<int> a;
-vector<pair<int,int>> graph[MAXN];
 int solve1()
 {
 	int ans=inf;
-	for (int u=1;u<=n;++u)
+	for (int u=1;u<=n;u++)
 	{
-		vector<int> dist(n+1,0);
+		vector<int> dis(n+1,0);
 		vector<bool> vis(n+1,false);
 		stack<int> st;
 		st.push(u);
@@ -25,24 +27,24 @@ int solve1()
 				if (!vis[v])
 				{
 					vis[v]=true;
-					dist[v]=dist[cur]+w;
+					dis[v]=dis[cur]+w;
 					st.push(v);
 				}
 			}
 		}
 		int sum=0,g=0;
-		bool all_zero=true;
+		bool flag=true;
 		for (int c:a)
 		{
-			int d=dist[c];
+			int d=dis[c];
 			sum+=d;
 			if (d!=0)
 			{
-				all_zero=false;
+				flag=false;
 			}
 			g=__gcd(g,d);
 		}
-		if (all_zero)
+		if (flag)
 		{
 			return 0;
 		}
@@ -102,15 +104,10 @@ int solve2()
 	}
 	return ans;
 }
-int main()
+void solve()
 {
-	freopen("hospital.in","r",stdin);
-	freopen("hospital.out","w",stdout);
-	ios::sync_with_stdio(false);
-	cin.tie(0);
 	cin>>n>>k;
-	a.resize(k);
-	for (int i=0;i<k;++i)
+	for (int i=0;i<k;i++)
 	{
 		cin>>a[i];
 	}
@@ -131,5 +128,19 @@ int main()
 		ans=solve1();
 	}
 	cout<<ans<<'\n';
+	return;
+}
+signed main()
+{
+	freopen("hospital.in","r",stdin);
+	freopen("hospital.out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int TestCase=1;
+	// cin>>TestCase;
+	for (int Caseid=1;Caseid<=TestCase;Caseid++)
+	{
+		solve();
+	}
 	return 0;
 }

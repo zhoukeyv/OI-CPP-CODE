@@ -1,16 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e6+10;
-int trie[N][26];
 vector<pair<int,int>> tr[N];
-int tot=0;
-int val[26][26];
-int fixed_ans=0;
+int val[26][26],trie[N][26];
+int n,q,tot=0,ans=0;
 int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	int n,q;
 	cin>>n>>q;
 	memset(trie,-1,sizeof(trie));
 	for (int i=1;i<=n;i++)
@@ -32,28 +29,26 @@ int main()
 	}
 	for (int u=0;u<=tot;u++)
 	{
-		int cnt_sub[26]={0};
-		int cnt_D=0;
-		for (auto& p:tr[u])
+		int cnt[26]={0};
+		int sum=0;
+		for (pair<int,int> p:tr[u])
 		{
-			int idx=p.first;
-			int branch=p.second;
-			if (branch==-1)
+			if (p.second==-1)
 			{
-				fixed_ans+=cnt_D;
+				ans+=sum;
 			}
 			else
 			{
-				int c=branch;
+				int c=p.second;
 				for (int y=0;y<26;y++)
 				{
-					if (y!=c&&cnt_sub[y]>0)
+					if (y!=c&&cnt[y]>0)
 					{
-						val[y][c]+=cnt_sub[y];
+						val[y][c]+=cnt[y];
 					}
 				}
-				cnt_sub[c]++;
-				cnt_D++;
+				cnt[c]++;
+				sum++;
 			}
 		}
 	}
@@ -74,7 +69,7 @@ int main()
 		{
 			pos[alpha[i]-'a']=i;
 		}
-		int ans=fixed_ans;
+		int ans=ans;
 		for (int c=0;c<26;c++)
 		{
 			for (int d=0;d<26;d++)

@@ -3,17 +3,16 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
-const int MAXN=500005;
+const int inf=0x3f3f3f3f3f3f3f3f,N=500005;
+vector<pair<int,int>> graph[N];
+int a[N];
 int n,k;
-vector<int> a;
-vector<pair<int,int>> graph[MAXN];
 int solve1()
 {
 	int ans=inf;
-	for (int u=1;u<=n;++u)
+	for (int u=1;u<=n;u++)
 	{
-		vector<int> dist(n+1,0);
+		vector<int> dis(n+1,0);
 		vector<bool> vis(n+1,false);
 		stack<int> st;
 		st.push(u);
@@ -28,7 +27,7 @@ int solve1()
 				if (!vis[v])
 				{
 					vis[v]=true;
-					dist[v]=dist[cur]+w;
+					dis[v]=dis[cur]+w;
 					st.push(v);
 				}
 			}
@@ -37,7 +36,7 @@ int solve1()
 		bool all_zero=true;
 		for (int c:a)
 		{
-			int d=dist[c];
+			int d=dis[c];
 			sum+=d;
 			if (d!=0)
 			{

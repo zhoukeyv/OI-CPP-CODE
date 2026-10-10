@@ -4,7 +4,7 @@ typedef long long int;
 const int MAXN=500005;
 int n,k;
 vector<int> infected;
-vector<pair<int,int>> adj[MAXN];
+vector<pair<int,int>> graph[MAXN];
 int solve1()
 {
 	int ans=LLONG_MAX;
@@ -19,7 +19,7 @@ int solve1()
 		{
 			int cur=st.top();
 			st.pop();
-			for (auto& e:adj[cur])
+			for (pair<int,int> e:graph[cur])
 			{
 				int v=e.first,w=e.second;
 				if (!vis[v])
@@ -55,7 +55,7 @@ int solve2()
 	int g=0;
 	for (int u=1;u<=n;++u)
 	{
-		for (auto& e:adj[u])
+		for (pair<int,int> e:graph[u])
 		{
 			if (u<e.first)
 			{
@@ -67,7 +67,7 @@ int solve2()
 	function<void(int,int)> DFS1=[&](int u,int p)
 	{
 		sz[u]=1;
-		for (auto& e:adj[u])
+		for (pair<int,int> e:graph[u])
 		{
 			int v=e.first,w=e.second;
 			if (v==p)
@@ -83,7 +83,7 @@ int solve2()
 	function<void(int,int,int)> DFS2=[&](int u,int p,int val)
 	{
 		dis[u]=val;
-		for (auto& e:adj[u])
+		for (pair<int,int> e:graph[u])
 		{
 			int v=e.first,w=e.second;
 			if (v==p)
@@ -117,7 +117,7 @@ int solve3()
 		{
 			int cur=st.top();
 			st.pop();
-			for (auto& e:adj[cur])
+			for (pair<int,int> e:graph[cur])
 			{
 				int v=e.first,w=e.second;
 				if (!vis[v])
@@ -166,8 +166,8 @@ int main()
 	{
 		int u,v,w;
 		cin>>u>>v>>w;
-		adj[u].push_back({v,w});
-		adj[v].push_back({u,w});
+		graph[u].push_back({v,w});
+		graph[v].push_back({u,w});
 	}
 	int ans;
 	if (n<=2000)

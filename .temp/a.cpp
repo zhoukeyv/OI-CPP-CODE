@@ -2,8 +2,8 @@
 using namespace std;
 const int N=1e6+10;
 vector<pair<int,int>> tr[N];
-int val[26][26],trie[N][26],b[26][26];
-int n,q,tot=0,ans=0;
+int t[26][26],trie[N][26],b[26][26];
+int n,q,sz=0,ans=0;
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -14,40 +14,39 @@ int main()
 	{
 		string s;
 		cin>>s;
-		int u=0;
+		int p=0;
 		for (char ch:s)
 		{
 			int c=ch-'a';
-			tr[u].push_back({i,c});
-			if (trie[u][c]==-1)
+			tr[p].push_back({i,c});
+			if (trie[p][c]==-1)
 			{
-				trie[u][c]=++tot;
+				trie[p][c]=++sz;
 			}
-			u=trie[u][c];
+			p=trie[p][c];
 		}
-		tr[u].push_back({i,-1});
+		tr[p].push_back({i,-1});
 	}
-	for (int u=0;u<=tot;u++)
+	for (int i=0;i<=sz;i++)
 	{
 		int cnt[26]={0};
 		int sum=0;
-		for (pair<int,int> p:tr[u])
+		for (pair<int,int> v:tr[i])
 		{
-			if (p.second==-1)
+			if (v.second==-1)
 			{
 				ans+=sum;
 			}
 			else
 			{
-				int c=p.second;
-				for (int y=0;y<26;y++)
+				for (int j=0;j<26;j++)
 				{
-					if (y!=c&&cnt[y]>0)
+					if (j!=v.second&&cnt[j]>0)
 					{
-						val[y][c]+=cnt[y];
+						t[j][v.second]+=cnt[j];
 					}
 				}
-				cnt[c]++;
+				cnt[v.second]++;
 				sum++;
 			}
 		}
@@ -56,7 +55,7 @@ int main()
 	{
 		for (int j=0;j<26;j++)
 		{
-			b[i][j]=val[j][i];
+			b[i][j]=t[j][i];
 		}
 	}
 	while (q--)

@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
 int a[N],b[N];
-int n;
+int n,ans=0;
 void solve()
 {
 	cin>>n;
@@ -14,6 +14,14 @@ void solve()
 		cin>>a[i];
 		b[a[i]]=i;
 	}
+	int l=n+1,r=0;
+	for (int i=0;i<n;i++)
+	{
+		l=min(l,b[i]);
+		r=max(r,b[i]);
+		ans+=l*(n-r+1);
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

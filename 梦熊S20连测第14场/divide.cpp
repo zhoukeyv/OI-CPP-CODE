@@ -9,7 +9,7 @@ int n,k,mod;
 void solve()
 {
 	cin>>n>>k>>mod;
-	dp1[0]=1;
+	dp1[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];

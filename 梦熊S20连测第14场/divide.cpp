@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=5010;
-int a[N],dp1[N],dp2[N];
+int a[N],dp1[2][N],dp2[2][N];
 int n,k,mod;
 void solve()
 {
@@ -13,8 +13,8 @@ void solve()
 	for (int i=0;i<n;i++)
 	{
 		cin>>a[i];
-		long long q=a/k;
-		int ra=a%k;
+		long long q=a[i]/k;
+		int ra=a[i]%k;
 		vector<long long> ndp(k,0),nf(k,0);
 		for (int r=0;r<k;++r)
 		{
@@ -33,9 +33,9 @@ void solve()
 		dp2=move(nf);
 	}
 	long long ans=0;
-	for (int r=0;r<k;++r)
+	for (int i=0;i<k;i++)
 	{
-		ans=(ans+f[r])%mod;
+		ans=(ans+dp2[i])%mod;
 	}
 	cout<<ans<<'\n';
 	return;

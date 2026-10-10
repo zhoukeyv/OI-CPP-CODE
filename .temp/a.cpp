@@ -1,6 +1,9 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#define double long double
+#define int long long
 using namespace std;
-typedef long long int;
+const double eps=1e-6;
+const int inf=0x3f3f3f3f3f3f3f3f;
 const int MAXN=500005;
 int n,k;
 vector<int> a;
@@ -102,12 +105,8 @@ int solve2()
 	}
 	return ans;
 }
-int main()
+void solve()
 {
-	freopen("hospital.in","r",stdin);
-	freopen("hospital.out","w",stdout);
-	ios::sync_with_stdio(false);
-	cin.tie(0);
 	cin>>n>>k;
 	a.resize(k);
 	for (int i=0;i<k;++i)
@@ -131,5 +130,19 @@ int main()
 		ans=solve1();
 	}
 	cout<<ans<<'\n';
+	return;
+}
+signed main()
+{
+	// freopen(".in","r",stdin);
+	// freopen(".out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int TestCase=1;
+	// cin>>TestCase;
+	for (int Caseid=1;Caseid<=TestCase;Caseid++)
+	{
+		solve();
+	}
 	return 0;
 }

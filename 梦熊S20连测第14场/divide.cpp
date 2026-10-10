@@ -3,10 +3,42 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
+const int inf=0x3f3f3f3f3f3f3f3f,N=5010;
+int a[N],dp1[N],dp2[N];
+int n,k,mod;
 void solve()
 {
-	
+	cin>>n>>k>>mod;
+	dp[0]=1;
+	for (int i=0;i<n;i++)
+	{
+		long long a;
+		cin>>a;
+		long long q=a/k;
+		int ra=a%k;
+		vector<long long> ndp(k,0),nf(k,0);
+		for (int r=0;r<k;++r)
+		{
+			if (dp[r]==0&&f[r]==0)
+			{
+				continue;
+			}
+			ndp[r]=(ndp[r]+dp[r])%mod;
+			nf[r]=(nf[r]+f[r])%mod;
+			int nr=(r+ra)%k;
+			long long carry=(r+ra>=k)?1:0;
+			ndp[nr]=(ndp[nr]+dp[r])%mod;
+			nf[nr]=(nf[nr]+f[r]+dp[r]*((q+carry)%mod))%mod;
+		}
+		dp=move(ndp);
+		f=move(nf);
+	}
+	long long ans=0;
+	for (int r=0;r<k;++r)
+	{
+		ans=(ans+f[r])%mod;
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

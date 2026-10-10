@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1e6+10;
-int a[N];
+int a[N],b[N];
 int n;
 void solve()
 {
@@ -12,6 +12,7 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+		b[a[i]]=i;
 	}
 	return;
 }

@@ -1,164 +1,42 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int MAXN=1005;
-int n,m;
-vector<vector<int>> S[MAXN];
-short cnt[MAXN][MAXN];
-int unsat;
-bitset<MAXN> mask_gt[MAXN];
-void insert(int j,bitset<MAXN> bit[])
-{
-	static unordered_map<int,vector<int>> elem_to_students;
-	elem_to_students.clear();
-	for (int x=1;x<=n;x++)
-	{
-		for (int e:S[x][j])
-		{
-			elem_to_students[e].push_back(x);
-		}
-	}
-	static bitset<MAXN> inter[MAXN];
-	for (int x=1;x<=n;x++)
-	{
-		inter[x].reset();
-	}
-	for (int x=1;x<=n;x++)
-	{
-		for (int e:S[x][j])
-		{
-			for (int y:elem_to_students[e])
-			{
-				inter[x].set(y);
-			}
-		}
-	}
-	for (int x=1;x<=n;x++)
-	{
-		bit[x]=~inter[x];
-		bit[x].reset(x);
-		bit[x]&=mask_gt[x];
-	}
-}
-void solve()
-{
-	cin>>n>>m;
-	vector<vector<int>> c(n+1,vector<int>(m+1));
-	for (int i=1;i<=n;i++)
-	{
-		for (int j=1;j<=m;j++)
-		{
-			cin>>c[i][j];
-		}
-	}
-	for (int i=1;i<=n;i++)
-	{
-		S[i].resize(m+1);
-		for (int j=1;j<=m;j++)
-		{
-			S[i][j].resize(c[i][j]);
-			for (int k=0;k<c[i][j];k++)
-			{
-				cin>>S[i][j][k];
-			}
-		}
-	}
-	for (int x=1;x<=n;x++)
-	{
-		mask_gt[x].reset();
-		for (int y=x+1;y<=n;y++)
-		{
-			mask_gt[x].set(y);
-		}
-	}
-	bool flag=true;
-	for (int i=1;i<=n&&flag;i++)
-	{
-		for (int j=1;j<=m;j++)
-		{
-			if (c[i][j]!=1)
-			{
-				flag=false;
-				break;
-			}
-		}
-	}
-	if (flag)
-	{
-		bool all_diff=true;
-		for (int j=1;j<=m&&all_diff;j++)
-		{
-			unordered_set<int> seen;
-			for (int i=1;i<=n;i++)
-			{
-				if (seen.count(S[i][j][0]))
-				{
-					all_diff=false;
-					break;
-				}
-				seen.insert(S[i][j][0]);
-			}
-		}
-		if (all_diff)
-		{
-			int ans=(int)m*(m-1)/2;
-			cout<<ans<<'\n';
-			return;
-		}
-	}
-	memset(cnt,0,sizeof(cnt));
-	unsat=n*(n-1)/2;
-	int ans=0;
-	int r=0;
-	bitset<MAXN> bit[MAXN];
-	for (int l=1;l<=m;l++)
-	{
-		while (r<m&&unsat>0)
-		{
-			r++;
-			insert(r,bit);
-			for (int x=1;x<=n;x++)
-			{
-				for (int y=bit[x]._Find_first();y<=n;y=bit[x]._Find_next(y))
-				{
-					if (cnt[x][y]==1)
-					{
-						unsat--;
-					}
-					cnt[x][y]++;
-				}
-			}
-		}
-		if (unsat==0)
-		{
-			ans+=m-r+1;
-		}
-		if (l<=r)
-		{
-			insert(l,bit);
-			for (int x=1;x<=n;x++)
-			{
-				for (int y=bit[x]._Find_first();y<=n;y=bit[x]._Find_next(y))
-				{
-					cnt[x][y]--;
-					if (cnt[x][y]==1)
-					{
-						unsat++;
-					}
-				}
-			}
-		}
-	}
-	cout<<ans<<'\n';
-}
 int main()
 {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	int T;
-	cin>>T;
-	while (T--)
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int N,k;
+	long long p;
+	cin>>N>>k>>p;
+	vector<long long> dp(k,0),f(k,0);
+	dp[0]=1;
+	for (int i=0;i<N;++i)
 	{
-		solve();
+		long long a;
+		cin>>a;
+		long long q=a/k;
+		int ra=a%k;
+		vector<long long> ndp(k,0),nf(k,0);
+		for (int r=0;r<k;++r)
+		{
+			if (dp[r]==0&&f[r]==0)
+			{
+				continue;
+			}
+			ndp[r]=(ndp[r]+dp[r])%p;
+			nf[r]=(nf[r]+f[r])%p;
+			int nr=(r+ra)%k;
+			long long carry=(r+ra>=k)?1:0;
+			ndp[nr]=(ndp[nr]+dp[r])%p;
+			nf[nr]=(nf[nr]+f[r]+dp[r]*((q+carry)%p))%p;
+		}
+		dp=move(ndp);
+		f=move(nf);
 	}
+	long long ans=0;
+	for (int r=0;r<k;++r)
+	{
+		ans=(ans+f[r])%p;
+	}
+	cout<<ans<<'\n';
 	return 0;
 }

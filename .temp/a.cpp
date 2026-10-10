@@ -3,7 +3,7 @@ using namespace std;
 typedef long long int;
 const int MAXN=500005;
 int n,k;
-vector<int> infected;
+vector<int> a;
 vector<pair<int,int>> graph[MAXN];
 int solve1()
 {
@@ -32,7 +32,7 @@ int solve1()
 		}
 		int sum=0,g=0;
 		bool all_zero=true;
-		for (int c:infected)
+		for (int c:a)
 		{
 			int d=dist[c];
 			sum+=d;
@@ -104,13 +104,15 @@ int solve2()
 }
 int main()
 {
+	freopen("hospital.in","r",stdin);
+	freopen("hospital.out","w",stdout);
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 	cin>>n>>k;
-	infected.resize(k);
+	a.resize(k);
 	for (int i=0;i<k;++i)
 	{
-		cin>>infected[i];
+		cin>>a[i];
 	}
 	for (int i=0;i<n-1;++i)
 	{

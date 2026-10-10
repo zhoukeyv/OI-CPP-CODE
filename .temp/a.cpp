@@ -7,7 +7,7 @@ vector<int> infected;
 vector<pair<int,int>> graph[MAXN];
 int solve1()
 {
-	int ans=LLONG_MAX;
+	int ans=inf;
 	for (int u=1;u<=n;++u)
 	{
 		vector<int> dist(n+1,0);
@@ -95,60 +95,10 @@ int solve2()
 		}
 	};
 	DFS2(1,0,dp[1]);
-	int ans=LLONG_MAX;
+	int ans=inf;
 	for (int u=1;u<=n;++u)
 	{
 		ans=min(ans,2*dis[u]/g);
-	}
-	return ans;
-}
-int solve3()
-{
-	int K=infected.size();
-	vector<vector<int>> dists(K,vector<int>(n+1,0));
-	for (int i=0;i<K;++i)
-	{
-		int src=infected[i];
-		vector<bool> vis(n+1,false);
-		stack<int> st;
-		st.push(src);
-		vis[src]=true;
-		while (!st.empty())
-		{
-			int cur=st.top();
-			st.pop();
-			for (pair<int,int> e:graph[cur])
-			{
-				int v=e.first,w=e.second;
-				if (!vis[v])
-				{
-					vis[v]=true;
-					dists[i][v]=dists[i][cur]+w;
-					st.push(v);
-				}
-			}
-		}
-	}
-	int ans=LLONG_MAX;
-	for (int u=1;u<=n;++u)
-	{
-		int sum=0,g=0;
-		bool all_zero=true;
-		for (int i=0;i<K;++i)
-		{
-			int d=dists[i][u];
-			sum+=d;
-			if (d!=0)
-			{
-				all_zero=false;
-			}
-			g=__gcd(g,d);
-		}
-		if (all_zero)
-		{
-			return 0;
-		}
-		ans=min(ans,2*sum/g);
 	}
 	return ans;
 }
@@ -170,17 +120,9 @@ int main()
 		graph[v].push_back({u,w});
 	}
 	int ans;
-	if (n<=2000)
-	{
-		ans=solve1();
-	}
-	else if (k==n)
+	if (k==n)
 	{
 		ans=solve2();
-	}
-	else if (k<=20)
-	{
-		ans=solve3();
 	}
 	else
 	{

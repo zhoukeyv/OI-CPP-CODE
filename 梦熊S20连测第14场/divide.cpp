@@ -24,9 +24,9 @@ void solve()
 			ndp[j]=(ndp[j]+dp1[i&1^1][j])%mod;
 			nf[j]=(nf[j]+dp2[i&1^1][j])%mod;
 			int nr=(j+ra)%k;
-			long long carry=(j+ra>=k)?1:0;
+			int temp=(j+ra>=k)?1:0;
 			ndp[nr]=(ndp[nr]+dp1[i&1^1][j])%mod;
-			nf[nr]=(nf[nr]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+carry)%mod))%mod;
+			nf[nr]=(nf[nr]+dp2[i&1^1][j]+dp1[i&1^1][j]*((q+temp)%mod))%mod;
 		}
 		dp1=move(ndp);
 		dp2=move(nf);

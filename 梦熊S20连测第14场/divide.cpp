@@ -13,6 +13,8 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+		memset(dp1[i&1],0,sizeof dp1[i&1]);
+		memset(dp2[i&1],0,sizeof dp2[i&1]);
 		for (int j=0;j<k;j++)
 		{
 			if (dp1[i&1^1][j]==0&&dp2[i&1^1][j]==0)
@@ -35,8 +37,8 @@ void solve()
 }
 signed main()
 {
-	// freopen("divide.in","j",stdin);
-	// freopen("divide.out","w",stdout);
+	freopen("divide.in","j",stdin);
+	freopen("divide.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

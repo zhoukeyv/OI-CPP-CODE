@@ -28,7 +28,7 @@ void solve()
 	int ans=0;
 	for (int i=0;i<k;i++)
 	{
-		ans=(ans+dp2[i])%mod;
+		ans=(ans+dp2[n&1][i])%mod;
 	}
 	cout<<ans<<'\n';
 	return;

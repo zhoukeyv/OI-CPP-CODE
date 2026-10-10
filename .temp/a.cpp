@@ -107,8 +107,7 @@ int solve2()
 void solve()
 {
 	cin>>n>>k;
-	a.resize(k);
-	for (int i=0;i<k;++i)
+	for (int i=0;i<k;i++)
 	{
 		cin>>a[i];
 	}
@@ -133,8 +132,8 @@ void solve()
 }
 signed main()
 {
-	// freopen(".in","r",stdin);
-	// freopen(".out","w",stdout);
+	// freopen("hospital.in","r",stdin);
+	// freopen("hospital.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

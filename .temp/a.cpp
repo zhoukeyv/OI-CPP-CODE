@@ -2,7 +2,7 @@
 using namespace std;
 const int N=1e6+10;
 vector<pair<int,int>> tr[N];
-int val[26][26],trie[N][26];
+int val[26][26],trie[N][26],c[26][26];
 int n,q,tot=0,ans=0;
 int main()
 {
@@ -52,12 +52,11 @@ int main()
 			}
 		}
 	}
-	int contrib[26][26];
 	for (int c=0;c<26;c++)
 	{
 		for (int d=0;d<26;d++)
 		{
-			contrib[c][d]=val[d][c];
+			c[c][d]=val[d][c];
 		}
 	}
 	while (q--)
@@ -76,7 +75,7 @@ int main()
 			{
 				if (c!=d&&pos[c]<pos[d])
 				{
-					ans+=contrib[c][d];
+					ans+=c[c][d];
 				}
 			}
 		}

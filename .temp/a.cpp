@@ -1,15 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e6+10;
-vector<pair<int,int>> t[N];
-int t[26][26],tr[N][26],b[26][26];
+vector<pair<int,int>> tr[N];
+int t[26][26],trie[N][26],b[26][26];
 int n,q,sz=0,ans=0;
 int main()
 {
-	ios::sync_with_stdio(0);
+	ios::sync_with_stdio(false);
 	cin.tie(0);
 	cin>>n>>q;
-	memset(tr,-1,sizeof(tr));
+	memset(trie,-1,sizeof(trie));
 	for (int i=1;i<=n;i++)
 	{
 		string s;
@@ -17,20 +17,20 @@ int main()
 		int p=0;
 		for (char c:s)
 		{
-			t[p].push_back({i,c-'a'});
-			if (tr[p][c-'a']==-1)
+			tr[p].push_back({i,c-'a'});
+			if (trie[p][c-'a']==-1)
 			{
-				tr[p][c-'a']=++sz;
+				trie[p][c-'a']=++sz;
 			}
-			p=tr[p][c-'a'];
+			p=trie[p][c-'a'];
 		}
-		t[p].push_back({i,-1});
+		tr[p].push_back({i,-1});
 	}
 	for (int i=0;i<=sz;i++)
 	{
 		int cnt[26]={0};
 		int sum=0;
-		for (pair<int,int> v:t[i])
+		for (pair<int,int> v:tr[i])
 		{
 			if (v.second==-1)
 			{

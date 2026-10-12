@@ -32,25 +32,25 @@ void solve()
 		{
 			if (i+2<=n+1)
 			{
-				update({i+2,j},{i,j},max(a[i],a[i+1]));
-				update({i+2,i},{i,j},max(a[i+1],a[j]));
+				update({i+2,j},{i,j},max(a[i],a[i+1]),i,i+1);
+				update({i+2,i},{i,j},max(a[i+1],a[j]),i+1,j);
 				// dp[i+2][j]=min(dp[i+2][j],dp[i][j]+max(a[i],a[i+1]));
 				// dp[i+2][i]=min(dp[i+2][i],dp[i][j]+max(a[i+1],a[j]));
 			}
-			update({i+1,i+1},{i,j},max(a[i],a[j]));
+			update({i+1,i+1},{i,j},max(a[i],a[j]),i,j);
 			// dp[i+1][i+1]=min(dp[i+1][i+1],dp[i][j]+max(a[i],a[j]));
 			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
 		if (i+3<=n+1)
 		{
-			update({i+3,i},{i,i},max(a[i+1],a[i+2]));
-			update({i+3,i+1},{i,i},max(a[i],a[i+2]));
+			update({i+3,i},{i,i},max(a[i+1],a[i+2]),i+1,i+2);
+			update({i+3,i+1},{i,i},max(a[i],a[i+2]),i,i+2);
 			// dp[i+3][i]=min(dp[i+3][i],dp[i][i]+max(a[i+1],a[i+2]));
 			// dp[i+3][i+1]=min(dp[i+3][i+1],dp[i][i]+max(a[i],a[i+2]));
 		}
 		if (i+2<=n+1)
 		{
-			update({i+2,i+2},{i,i},max(a[i],a[i+1]));
+			update({i+2,i+2},{i,i},max(a[i],a[i+1]),i,i+1);
 			// dp[i+2][i+2]=min(dp[i+2][i+2],dp[i][i]+max(a[i],a[i+1]));
 		}
 		cerr<<i<<' '<<i<<':'<<dp[i][i]<<'\n';

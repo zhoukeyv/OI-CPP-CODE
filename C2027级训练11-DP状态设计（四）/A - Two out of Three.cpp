@@ -19,7 +19,7 @@ void solve()
 	{
 		for (int j=1;j<i;j++)
 		{
-			dp[]
+			dp[i+2][j]=min(dp[i+2][j],dp[i][j]+max(a[i],a[i+1]));
 		}
 	}
 	return;

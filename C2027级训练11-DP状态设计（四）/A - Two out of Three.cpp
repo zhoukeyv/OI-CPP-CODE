@@ -31,6 +31,7 @@ void solve()
 		{
 			if (i+2<=n+1)
 			{
+				update({i+2,j},{i,j},v);
 				dp[i+2][j]=min(dp[i+2][j],dp[i][j]+max(a[i],a[i+1]));
 				dp[i+2][i]=min(dp[i+2][i],dp[i][j]+max(a[i+1],a[j]));
 			}

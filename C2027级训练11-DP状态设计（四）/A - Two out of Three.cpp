@@ -59,9 +59,12 @@ void solve()
 		cout<<dp[n+1][n+1]<<'\n';
 		vector<pair<int,int>> t;
 		int idx1=n+1,idx2=n+1;
-		while (way[idx1][idx2]!=pair<int,int>(0,0))
+		while (way[idx1][idx2]!=pair<int,int>(1,1))
 		{
-			
+			if (idx1==idx2)
+			{
+				
+			}
 		}
 	}
 	else

@@ -55,12 +55,12 @@ void solve()
 		cerr<<i<<' '<<i<<':'<<dp[i][i]<<'\n';
 	}
 	int ans=inf;
-	int endi=-1,endj=-1;
+	int idx1=-1,idxj=-1;
 	if (n%2==0)
 	{
 		ans=dp[n+1][n+1];
-		endi=n+1;
-		endj=n+1;
+		idx1=n+1;
+		idxj=n+1;
 	}
 	else
 	{
@@ -72,8 +72,8 @@ void solve()
 				if (val<ans)
 				{
 					ans=val;
-					endi=n+1;
-					endj=i;
+					idx1=n+1;
+					idxj=i;
 				}
 			}
 		}
@@ -83,14 +83,14 @@ void solve()
 			if (val<ans)
 			{
 				ans=val;
-				endi=n;
-				endj=n;
+				idx1=n;
+				idxj=n;
 			}
 		}
 	}
 	cout<<ans<<'\n';
 	vector<pair<int,int>> ops;
-	int ci=endi,cj=endj;
+	int ci=idx1,cj=idxj;
 	while (ci!=1||cj!=1)
 	{
 		ops.push_back(op[ci][cj]);
@@ -109,7 +109,7 @@ void solve()
 	}
 	if (n%2==1)
 	{
-		int last=(endi==n&&endj==n)?n:endj;
+		int last=(idx1==n&&idxj==n)?n:idxj;
 		cout<<last<<'\n';
 	}
 	return;

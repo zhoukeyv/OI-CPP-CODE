@@ -18,7 +18,7 @@ void solve()
 	}
 	for (int i=1;i<=n;i++)
 	{
-		dp[1][i]=i-1;
+		dp[i][1]=i-1;
 	}
 	for (int j=2;j<=n;j++)
 	{

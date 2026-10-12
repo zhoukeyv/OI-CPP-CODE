@@ -30,7 +30,7 @@ void solve()
 				idx--;
 				minn=min(minn,dp[idx][j-1]);
 			}
-			
+			dp[i][j]=minn;
 		}
 	}
 	for (int i=1;i<=n;i++)

@@ -19,6 +19,7 @@ void solve()
 	dp[1][1]=0;
 	for (int j=1;j<=n;j++)
 	{
+		int idx=j-1;
 		for (int i=2;i<=n;i++)
 		{
 			

@@ -85,7 +85,7 @@ void solve()
 		}
 		cout<<ans<<'\n';
 	}
-	while (way[idx1][idx2]!=pair<int,int>(1,1))
+	while (idx1!=1||idx2!=1)
 	{
 		t.push_back(p[idx1][idx2]);
 		pair<int,int> temp=way[idx1][idx2];

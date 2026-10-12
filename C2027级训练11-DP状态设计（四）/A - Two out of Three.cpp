@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define double long double
 #define int long long
 using namespace std;
@@ -54,69 +54,64 @@ void solve()
 		}
 		cerr<<i<<' '<<i<<':'<<dp[i][i]<<'\n';
 	}
-	int ans = inf;
-    int endi = -1, endj = -1;
-
-    if (n % 2 == 0)
-    {
-        ans = dp[n + 1][n + 1];
-        endi = n + 1;
-        endj = n + 1;
-    }
-    else
-    {
-        for (int i = 1; i <= n; i++)
-        {
-            if (dp[n + 1][i] < inf)
-            {
-                int val = dp[n + 1][i] + a[i];
-                if (val < ans)
-                {
-                    ans = val;
-                    endi = n + 1;
-                    endj = i;
-                }
-            }
-        }
-
-        if (dp[n][n] < inf)
-        {
-            int val = dp[n][n] + a[n];
-            if (val < ans)
-            {
-                ans = val;
-                endi = n;
-                endj = n;
-            }
-        }
-    }
-
-    cout << ans << '\n';
-
-    vector<pair<int,int>> ops;
-    int ci = endi, cj = endj;
-
-    while (ci != 1 || cj != 1)
-    {
-        ops.push_back(op[ci][cj]);
-        auto p = way[ci][cj];
-        ci = p.first;
-        cj = p.second;
-    }
-
-    reverse(ops.begin(), ops.end());
-
-    for (auto p : ops)
-    {
-        if (p.first > p.second) swap(p.first, p.second);
-        cout << p.first << ' ' << p.second << '\n';
-    }
-
-    if (n % 2 == 1)
-    {
-        int last = (endi == n && endj == n) ? n : endj;
-        cout << last << '\n';
-    }
+	int ans=inf;
+	int endi=-1,endj=-1;
+	if (n%2==0)
+	{
+		ans=dp[n+1][n+1];
+		endi=n+1;
+		endj=n+1;
+	}
+	else
+	{
+		for (int i=1;i<=n;i++)
+		{
+			if (dp[n+1][i]<inf)
+			{
+				int val=dp[n+1][i]+a[i];
+				if (val<ans)
+				{
+					ans=val;
+					endi=n+1;
+					endj=i;
+				}
+			}
+		}
+		if (dp[n][n]<inf)
+		{
+			int val=dp[n][n]+a[n];
+			if (val<ans)
+			{
+				ans=val;
+				endi=n;
+				endj=n;
+			}
+		}
+	}
+	cout<<ans<<'\n';
+	vector<pair<int,int>> ops;
+	int ci=endi,cj=endj;
+	while (ci!=1||cj!=1)
+	{
+		ops.push_back(op[ci][cj]);
+		auto p=way[ci][cj];
+		ci=p.first;
+		cj=p.second;
+	}
+	reverse(ops.begin(),ops.end());
+	for (auto p:ops)
+	{
+		if (p.first>p.second)
+		{
+			swap(p.first,p.second);
+		}
+		cout<<p.first<<' '<<p.second<<'\n';
+	}
+	if (n%2==1)
+	{
+		int last=(endi==n&&endj==n)?n:endj;
+		cout<<last<<'\n';
+	}
 	return;
 }
 signed main()

@@ -4,14 +4,15 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
-pair<int,int> way[N][N];
+pair<int,int> way[N][N],p[N][N];
 int a[N],dp[N][N];
 int n;
-void update(pair<int,int> i,pair<int,int> j,int v)
+void update(pair<int,int> i,pair<int,int> j,int v,int x,int y)
 {
 	if (dp[i.first][i.second]>dp[j.first][j.second]+v)
 	{
 		dp[i.first][i.second]=dp[j.first][j.second]+v;
+		p[i.first][i.second]={x,y};
 		way[i.first][i.second]=j;
 	}
 	return;
@@ -36,7 +37,7 @@ void solve()
 				// dp[i+2][j]=min(dp[i+2][j],dp[i][j]+max(a[i],a[i+1]));
 				// dp[i+2][i]=min(dp[i+2][i],dp[i][j]+max(a[i+1],a[j]));
 			}
-			update({i+1,i+1},{i,i},max(a[i],a[j]));
+			update({i+1,i+1},{i,j},max(a[i],a[j]));
 			// dp[i+1][i+1]=min(dp[i+1][i+1],dp[i][j]+max(a[i],a[j]));
 			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}

@@ -40,7 +40,7 @@ void solve()
 			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
 	}
-	int ans=inf;
+	int ans=n-1;
 	for (int i=1;i<=n;i++)
 	{
 		ans=min(ans,dp[n][i]);

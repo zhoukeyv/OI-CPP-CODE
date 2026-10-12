@@ -15,7 +15,7 @@ void solve()
 	{
 		cin>>a[i];
 	}
-	
+	dp[0][0]=1;
 	return;
 }
 signed main()

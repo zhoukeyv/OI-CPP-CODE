@@ -29,7 +29,11 @@ void solve()
 	}
 	if (n%2==0)
 	{
-		
+		cout<<dp[n+1][n+1]<<'\n';
+	}
+	else
+	{
+		cout<<dp[n][n]<<'\n';
 	}
 	return;
 }

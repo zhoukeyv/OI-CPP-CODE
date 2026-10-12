@@ -15,11 +15,11 @@ void solve()
 		cin>>a[i];
 	}
 	dp[1][1]=0;
-	for (int i=1;i<n;i++)
+	for (int i=1;i<=n;i++)
 	{
 		for (int j=1;j<i;j++)
 		{
-			if (i+2<=n)
+			if (i+2<=n+1)
 			{
 				dp[i+2][j]=min(dp[i+2][j],dp[i][j]+max(a[i],a[i+1]));
 				dp[i+2][i]=min(dp[i+2][i+1],dp[i][j]+max(a[i+1],a[j]));

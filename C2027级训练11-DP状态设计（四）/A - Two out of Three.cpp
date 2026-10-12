@@ -4,11 +4,17 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
-int a[N],dp[N][N],way[N][N];
+pair<int,int> way[N][N];
+int a[N],dp[N][N];
 int n;
-int update(pair<int,int> i,pair<int,int> j,int v)
+void update(pair<int,int> i,pair<int,int> j,int v)
 {
-	
+	if (dp[i.first][i.second]>dp[j.first][j.second]+v)
+	{
+		dp[i.first][i.second]=dp[j.first][j.second]+v;
+		way[i.first][i.second]=j;
+	}
+	return;
 }
 void solve()
 {

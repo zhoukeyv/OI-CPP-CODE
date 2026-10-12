@@ -55,15 +55,12 @@ void solve()
 		}
 		cerr<<i<<' '<<i<<':'<<dp[i][i]<<'\n';
 	}
+	vector<pair<int,int>> t;
+	int idx1,idx2;
 	if (n%2==0)
 	{
 		cout<<dp[n+1][n+1]<<'\n';
-		vector<pair<int,int>> t;
-		int idx1=n+1,idx2=n+1;
-		while (way[idx1][idx2]!=pair<int,int>(1,1))
-		{
-			
-		}
+		idx1=idx2=n+1;
 	}
 	else
 	{
@@ -73,6 +70,10 @@ void solve()
 			ans=min(ans,dp[n+1][i]+a[i]);
 		}
 		cout<<ans<<'\n';
+	}
+	while (way[idx1][idx2]!=pair<int,int>(1,1))
+	{
+		
 	}
 	return;
 }

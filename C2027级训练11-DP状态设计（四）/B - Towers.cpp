@@ -28,7 +28,7 @@ void solve()
 			while (idx>1&&s[j-1]-s[idx-2]<=s[i]-s[j-1])
 			{
 				idx--;
-				minn=min(minn,dp[idx][j-1]);
+				minn=min(minn,dp[idx][j-1]+1);
 			}
 			dp[i][j]=minn;
 		}

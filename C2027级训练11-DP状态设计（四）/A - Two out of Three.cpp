@@ -91,6 +91,11 @@ void solve()
 		idx1=way[idx1][idx2].first;
 		idx2=way[idx1][idx2].second;
 	}
+	reverse(t.begin(),t.end());
+	for (pair<int,int> i:t)
+	{
+		cout<<i.first<<' '<<i.second<<'\n';
+	}
 	return;
 }
 signed main()

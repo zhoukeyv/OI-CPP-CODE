@@ -93,8 +93,12 @@ void solve()
 		idx2=temp.second;
 	}
 	reverse(t.begin(),t.end());
-	for (pair<int,int> i:t)
+	for (pair<int,int>& i:t)
 	{
+		if (i.first>i.second)
+		{
+			swap(i.first,i.second);
+		}
 		cout<<i.first;
 		if (i.second!=0)
 		{

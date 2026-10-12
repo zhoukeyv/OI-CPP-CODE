@@ -3,9 +3,18 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
+const int inf=0x3f3f3f3f3f3f3f3f,N=5010;
+int dp[N][N];
+int a[N];
+int n;
 void solve()
 {
+	memset(dp,0x3f,sizeof dp);
+	cin>>n;
+	for (int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+	}
 	
 	return;
 }

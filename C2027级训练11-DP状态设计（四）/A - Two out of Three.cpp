@@ -8,11 +8,13 @@ int a[N],dp[N][N];
 int n;
 void solve()
 {
+	memset(dp,0x3f,sizeof dp);
 	cin>>n;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
 	}
+	dp[1][1]=0;
 	for (int i=1;i<=n;i++)
 	{
 		for (int j=1;j<=i;j++)

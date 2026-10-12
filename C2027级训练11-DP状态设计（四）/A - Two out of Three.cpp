@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #define double long double
 #define int long long
 using namespace std;
@@ -36,7 +36,7 @@ void solve()
 				// dp[i+2][j]=min(dp[i+2][j],dp[i][j]+max(a[i],a[i+1]));
 				// dp[i+2][i]=min(dp[i+2][i],dp[i][j]+max(a[i+1],a[j]));
 			}
-			update({i+1,i+1},{i,j},max(a[i],a[j]));
+			update({i+1,i+1},{i,i},max(a[i],a[j]));
 			// dp[i+1][i+1]=min(dp[i+1][i+1],dp[i][j]+max(a[i],a[j]));
 			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
@@ -54,63 +54,24 @@ void solve()
 		}
 		cerr<<i<<' '<<i<<':'<<dp[i][i]<<'\n';
 	}
-	int ans=inf;
-	int idx1=-1,idxj=-1;
 	if (n%2==0)
 	{
-		ans=dp[n+1][n+1];
-		idx1=n+1;
-		idxj=n+1;
+		cout<<dp[n+1][n+1]<<'\n';
+		vector<pair<int,int>> t;
+		int idx1=n+1,idx2=n+1;
+		while (way[idx1][idx2]!=pair<int,int>(1,1))
+		{
+			
+		}
 	}
 	else
 	{
+		int ans=inf;
 		for (int i=1;i<=n;i++)
 		{
-			if (dp[n+1][i]<inf)
-			{
-				int val=dp[n+1][i]+a[i];
-				if (val<ans)
-				{
-					ans=val;
-					idx1=n+1;
-					idxj=i;
-				}
-			}
+			ans=min(ans,dp[n+1][i]+a[i]);
 		}
-		if (dp[n][n]<inf)
-		{
-			int val=dp[n][n]+a[n];
-			if (val<ans)
-			{
-				ans=val;
-				idx1=n;
-				idxj=n;
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	vector<pair<int,int>> ops;
-	int ci=idx1,cj=idxj;
-	while (ci!=1||cj!=1)
-	{
-		ops.push_back(op[ci][cj]);
-		auto p=way[ci][cj];
-		ci=p.first;
-		cj=p.second;
-	}
-	reverse(ops.begin(),ops.end());
-	for (auto p:ops)
-	{
-		if (p.first>p.second)
-		{
-			swap(p.first,p.second);
-		}
-		cout<<p.first<<' '<<p.second<<'\n';
-	}
-	if (n%2==1)
-	{
-		int last=(idx1==n&&idxj==n)?n:idxj;
-		cout<<last<<'\n';
+		cout<<ans<<'\n';
 	}
 	return;
 }

@@ -44,7 +44,12 @@ void solve()
 	}
 	else
 	{
-		cout<<dp[n][n]+a[n]<<'\n';
+		int ans=inf;
+		for (int i=1;i<=n;i++)
+		{
+			ans=min(ans,dp[n+1][i]+a[i]);
+		}
+		cout<<ans<<'\n';
 	}
 	return;
 }

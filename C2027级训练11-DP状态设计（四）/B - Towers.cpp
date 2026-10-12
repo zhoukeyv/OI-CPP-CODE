@@ -28,22 +28,18 @@ void solve()
 			while (idx>1&&s[j-1]-s[idx-2]<=s[i]-s[j-1])
 			{
 				idx--;
-				minn=min(minn,dp[idx][j-1]);
-			}
-			if (i==5&&j==5)
-			{
-				cerr<<idx<<'\n';
+				minn=min(minn,dp[j-1][idx]);
 			}
 			dp[i][j]=minn+i-j;
 		}
 	}
-	for (int i=1;i<=n;i++)
-	{
-		for (int j=1;j<=i;j++)
-		{
-			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
-		}
-	}
+	// for (int i=1;i<=n;i++)
+	// {
+	// 	for (int j=1;j<=i;j++)
+	// 	{
+	// 		cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
+	// 	}
+	// }
 	int ans=inf;
 	for (int i=1;i<=n;i++)
 	{

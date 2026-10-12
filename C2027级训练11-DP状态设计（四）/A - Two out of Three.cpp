@@ -4,7 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
-int dp[N];
+int a[N],dp[N][N];
 int n;
 void solve()
 {

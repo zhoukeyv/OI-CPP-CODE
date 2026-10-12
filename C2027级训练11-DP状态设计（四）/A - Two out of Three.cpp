@@ -44,7 +44,7 @@ void solve()
 	}
 	else
 	{
-		cout<<dp[n][n]<<'\n';
+		cout<<dp[n][n]+a[n]<<'\n';
 	}
 	return;
 }

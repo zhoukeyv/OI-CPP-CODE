@@ -32,7 +32,7 @@ void solve()
 			}
 			if (i==5&&j==5)
 			{
-				cerr<<s[i]-s[j-1]<<'\n';
+				cerr<<idx<<'\n';
 			}
 			dp[i][j]=minn+i-j;
 		}

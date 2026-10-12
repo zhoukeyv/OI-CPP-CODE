@@ -17,9 +17,9 @@ void solve()
 		s[i]=s[i-1]+a[i];
 	}
 	dp[1][1]=0;
-	for (int i=2;i<=n;i++)
+	for (int j=1;j<=n;j++)
 	{
-		for (int j=1;j<=i;j++)
+		for (int i=2;i<=n;i++)
 		{
 			
 		}

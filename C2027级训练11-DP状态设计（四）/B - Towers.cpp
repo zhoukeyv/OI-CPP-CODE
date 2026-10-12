@@ -33,13 +33,13 @@ void solve()
 			dp[i][j]=minn+i-j;
 		}
 	}
-	// for (int i=1;i<=n;i++)
-	// {
-	// 	for (int j=1;j<=i;j++)
-	// 	{
-	// 		cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
-	// 	}
-	// }
+	for (int i=1;i<=n;i++)
+	{
+		for (int j=1;j<=i;j++)
+		{
+			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
+		}
+	}
 	int ans=inf;
 	for (int i=1;i<=n;i++)
 	{

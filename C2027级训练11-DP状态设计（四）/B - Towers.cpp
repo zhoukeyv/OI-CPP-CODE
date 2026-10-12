@@ -30,6 +30,10 @@ void solve()
 				idx--;
 				minn=min(minn,dp[idx][j-1]);
 			}
+			if (i==5&&j==5)
+			{
+				cerr<<s[i]-s[j-1]<<'\n';
+			}
 			dp[i][j]=minn+i-j;
 		}
 	}

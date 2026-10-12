@@ -63,7 +63,10 @@ void solve()
 		{
 			if (idx1==idx2)
 			{
-				
+				if (idx1-way[idx1].first==3)
+				{
+					
+				}
 			}
 		}
 	}

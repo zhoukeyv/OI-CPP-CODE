@@ -4,8 +4,12 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=1010;
-int a[N],dp[N][N];
+int a[N],dp[N][N],way[N][N];
 int n;
+int update(pair<int,int> i,pair<int,int> j,int v)
+{
+	
+}
 void solve()
 {
 	memset(dp,0x3f,sizeof dp);

@@ -65,7 +65,7 @@ void solve()
 	else
 	{
 		int ans=inf;
-		for (int i=1;i<=n;i++)
+		for (int i=1;i<n;i++)
 		{
 			if (ans>dp[n+1][i]+a[i])
 			{
@@ -73,8 +73,15 @@ void solve()
 				t.push_back({i,0});
 				idx1=n+1;
 				idx2=i;
+				ans=dp[n+1][i]+a[i];
 			}
-			ans=min(ans,dp[n+1][i]+a[i]);
+		}
+		if (ans>dp[n][n]+a[n])
+		{
+			t.clear();
+			t.push_back({n,0});
+			idx1=idx2=n;
+			ans=dp[n][n]+a[n];
 		}
 		cout<<ans<<'\n';
 	}

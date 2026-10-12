@@ -87,7 +87,9 @@ void solve()
 	}
 	while (way[idx1][idx2]!=pair<int,int>(1,1))
 	{
-		
+		t.push_back(p[idx1][idx2]);
+		idx1=way[idx1][idx2].first;
+		idx2=way[idx1][idx2].second;
 	}
 	return;
 }

@@ -95,7 +95,12 @@ void solve()
 	reverse(t.begin(),t.end());
 	for (pair<int,int> i:t)
 	{
-		cout<<i.first<<' '<<i.second<<'\n';
+		cout<<i.first;
+		if (i.second!=0)
+		{
+			cout<<' '<<i.second;
+		}
+		cout<<'\n';
 	}
 	return;
 }

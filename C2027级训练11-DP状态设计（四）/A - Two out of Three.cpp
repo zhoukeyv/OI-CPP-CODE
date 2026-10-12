@@ -25,6 +25,7 @@ void solve()
 				dp[i+2][i]=min(dp[i+2][i],dp[i][j]+max(a[i+1],a[j]));
 			}
 			dp[i+1][i+1]=min(dp[i+1][i+1],dp[i][j]+max(a[i],a[j]));
+			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
 	}
 	if (n%2==0)

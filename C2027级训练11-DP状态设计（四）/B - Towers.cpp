@@ -22,13 +22,15 @@ void solve()
 	}
 	for (int j=2;j<=n;j++)
 	{
-		int idx=j;
+		int idx=j,minn=inf;
 		for (int i=j;i<=n;i++)
 		{
 			while (idx>1&&s[j-1]-s[idx-2]<=s[i]-s[j-1])
 			{
 				idx--;
+				minn=min(minn,dp[idx][j-1]);
 			}
+			
 		}
 	}
 	for (int i=1;i<=n;i++)

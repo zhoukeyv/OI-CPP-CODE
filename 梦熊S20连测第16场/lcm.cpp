@@ -135,7 +135,7 @@ void solve()
 				auto node=child->extract(it++);
 				int p=node.key();
 				int e=node.mapped();
-				auto res=cur->insert(std::move(node));
+				auto res=cur->insert(move(node));
 				if (!res.inserted)
 				{
 					if (res.position->second<e)

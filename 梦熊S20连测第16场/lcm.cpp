@@ -140,13 +140,13 @@ void solve()
 					if (res.first->second<e)
 					{
 						int old=res.first->second;
-						ans[u]=ans[u]*power(p,e-old)%mod;
+						ans[u]=ans[u]*power(p,e-(res.first->second),mod)%mod;
 						res.first->second=e;
 					}
 				}
 				else
 				{
-					ans[u]=ans[u]*power(p,e)%mod;
+					ans[u]=ans[u]*power(p,e,mod)%mod;
 				}
 			}
 			child->clear();
@@ -161,12 +161,12 @@ void solve()
 			if (it==cur->end())
 			{
 				(*cur)[p]=e;
-				ans[u]=ans[u]*power(p,e)%mod;
+				ans[u]=ans[u]*power(p,e,mod)%mod;
 			}
 			else if (it->second<e)
 			{
 				int old=it->second;
-				ans[u]=ans[u]*power(p,e-old)%mod;
+				ans[u]=ans[u]*power(p,e-old,mod)%mod;
 				it->second=e;
 			}
 		}

@@ -1,178 +1,89 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-typedef long long int;
-const int mod=998244353;
-vector<unordered_map<int,int>*> mp;
-vector<int> l,a,fa,sz,hev,a,b,ans;
-vector<vector<int>> graph,g;
-stack<int> st;
-int n;
-int power(int a,int e)
-{
-	int res=1;
-	while (e)
-	{
-		if (e&1)
-		{
-			res=res*a%mod;
-		}
-		a=a*a%mod;
-		e>>=1;
-	}
-	return res;
+
+typedef long long ll;
+
+struct Interval {
+    ll l, r;
+    bool operator<(const Interval& other) const {
+        return l < other.l;
+    }
+};
+
+// 将区间 [l, r] 加入已涂集合 painted，返回新涂的长度
+ll add_interval(vector<Interval>& painted, ll l, ll r) {
+    if (l > r) return 0;
+    vector<Interval> all;
+    for (auto& seg : painted) all.push_back(seg);
+    all.push_back({l, r});
+    sort(all.begin(), all.end());
+    
+    vector<Interval> merged;
+    for (auto& seg : all) {
+        if (merged.empty() || merged.back().r + 1 < seg.l) {
+            merged.push_back(seg);
+        } else {
+            merged.back().r = max(merged.back().r, seg.r);
+        }
+    }
+    
+    ll old_len = 0;
+    for (auto& seg : painted) old_len += seg.r - seg.l + 1;
+    ll new_len = 0;
+    for (auto& seg : merged) new_len += seg.r - seg.l + 1;
+    
+    painted = move(merged);
+    return new_len - old_len;
 }
-vector<pair<int,int>> get(int x)
-{
-	vector<pair<int,int>> res;
-	while (x>1)
-	{
-		int p=l[x];
-		int e=0;
-		while (x%p==0)
-		{
-			x/=p;
-			e++;
-		}
-		res.emplace_back(p,e);
-	}
-	return res;
+
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    vector<ll> p(n);
+    for (int i = 0; i < n; ++i) cin >> p[i];
+    vector<ll> l(m);
+    for (int i = 0; i < m; ++i) cin >> l[i];
+
+    vector<ll> cur = p;          // 当前机器人位置
+    vector<ll> ans(n, 0);        // 每个机器人刷漆的总长度
+    vector<Interval> painted;    // 全局已涂区间，按左端点排序
+
+    // 按初始位置从大到小排序，保证处理顺序为从右到左
+    vector<int> order(n);
+    iota(order.begin(), order.end(), 0);
+    sort(order.begin(), order.end(), [&](int a, int b) {
+        return p[a] > p[b];
+    });
+
+    for (int step = 0; step < m; ++step) {
+        ll delta = l[step];
+        vector<pair<ll, ll>> moves(n);
+        for (int i = 0; i < n; ++i) {
+            ll old_pos = cur[i];
+            ll new_pos = old_pos + delta;
+            cur[i] = new_pos;
+            ll lo = min(old_pos, new_pos);
+            ll hi = max(old_pos, new_pos);
+            moves[i] = {lo, hi};
+        }
+
+        // 按从右到左的顺序处理每个机器人的移动区间
+        for (int idx : order) {
+            ll lo = moves[idx].first;
+            ll hi = moves[idx].second;
+            ll new_len = add_interval(painted, lo, hi);
+            ans[idx] += new_len;
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        cout << ans[i] << "\n";
+    }
 }
-int main()
-{
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	a.resize(n+1);
-	g.resize(n+1);
-	fa.resize(n+1);
-	hev.resize(n+1);
-	sz.resize(n+1,1);
-	ans.resize(n+1,1);
-	graph.resize(n+1);
-	mp.resize(n+1,nullptr);
-	l.resize(1e6+10);
-	for (int i=2;i<(int)1e6+10;i++)
-	{
-		if (!l[i])
-		{
-			l[i]=i;
-			for (int j=(int)i*i;j<(int)1e6+10;j+=i)
-			{
-				if (!l[j])
-				{
-					l[j]=i;
-				}
-			}
-		}
-	}
-	cin>>n;
-	for (int i=1;i<=n;i++)
-	{
-		cin>>a[i];
-	}
-	for (int i=0;i<n-1;i++)
-	{
-		int u,v;
-		cin>>u>>v;
-		graph[u].push_back(v);
-		graph[v].push_back(u);
-	}
-	st.push(1);
-	fa[1]=-1;
-	while (!st.empty())
-	{
-		int u=st.top();
-		st.pop();
-		b.push_back(u);
-		for (int v:graph[u])
-		{
-			if (v!=fa[u])
-			{
-				fa[v]=u;
-				g[u].push_back(v);
-				st.push(v);
-			}
-		}
-	}
-	for (int i=b.size()-1;i>=0;i--)
-	{
-		int u=b[i];
-		int max_sz=0;
-		for (int v:g[u])
-		{
-			sz[u]+=sz[v];
-			if (sz[v]>max_sz)
-			{
-				max_sz=sz[v];
-				hev[u]=v;
-			}
-		}
-	}
-	for (int i=b.size()-1;i>=0;i--)
-	{
-		int u=b[i];
-		unordered_map<int,int>* cur;
-		if (hev[u])
-		{
-			cur=mp[hev[u]];
-			ans[u]=ans[hev[u]];
-		}
-		else
-		{
-			cur=new unordered_map<int,int>();
-			ans[u]=1;
-		}
-		for (int v:g[u])
-		{
-			if (v==hev[u])
-			{
-				continue;
-			}
-			unordered_map<int,int>* child=mp[v];
-			for (auto it=child->begin();it!=child->end();)
-			{
-				auto node=child->extract(it++);
-				int p=node.key();
-				int e=node.mapped();
-				auto res=cur->insert(std::move(node));
-				if (!res.inserted)
-				{
-					if (res.position->second<e)
-					{
-						int old=res.position->second;
-						ans[u]=ans[u]*power(p,e-old)%mod;
-						res.position->second=e;
-					}
-				}
-				else
-				{
-					ans[u]=ans[u]*power(p,e)%mod;
-				}
-			}
-			delete child;
-			mp[v]=nullptr;
-		}
-		vector<pair<int,int>> fac=get(a[u]);
-		for (auto& pr:fac)
-		{
-			int p=pr.first,e=pr.second;
-			auto it=cur->find(p);
-			if (it==cur->end())
-			{
-				(*cur)[p]=e;
-				ans[u]=ans[u]*power(p,e)%mod;
-			}
-			else if (it->second<e)
-			{
-				int old=it->second;
-				ans[u]=ans[u]*power(p,e-old)%mod;
-				it->second=e;
-			}
-		}
-		mp[u]=cur;
-	}
-	for (int i=1;i<=n;i++)
-	{
-		cout<<ans[i]<<'\n';
-	}
-	return 0;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    solve();
+    return 0;
 }

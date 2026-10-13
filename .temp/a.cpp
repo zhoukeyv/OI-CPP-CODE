@@ -1,33 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int MOD=998244353;
+const int mod=998244353;
 const int MAXA=1000005;
 int n;
 vector<int> a;
-vector<vector<int>> adj;
-vector<int> spf(MAXA);// 最小质因数
-ll modpow(ll a,ll e)
+vector<vector<int>> graph;
+vector<int> l(MAXA);
+ll power(ll a,ll e)
 {
 	ll res=1;
 	while (e)
 	{
 		if (e&1)
 		{
-			res=res*a%MOD;
+			res=res*a%mod;
 		}
-		a=a*a%MOD;
+		a=a*a%mod;
 		e>>=1;
 	}
 	return res;
 }
-// 分解质因数
-vector<pair<int,int>> factorize(int x)
+vector<pair<int,int>> get(int x)
 {
 	vector<pair<int,int>> res;
 	while (x>1)
 	{
-		int p=spf[x];
+		int p=l[x];
 		int e=0;
 		while (x%p==0)
 		{
@@ -42,17 +41,16 @@ int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	// 线性筛预处理最小质因数
 	for (int i=2;i<MAXA;i++)
 	{
-		if (!spf[i])
+		if (!l[i])
 		{
-			spf[i]=i;
+			l[i]=i;
 			for (ll j=(ll)i*i;j<MAXA;j+=i)
 			{
-				if (!spf[j])
+				if (!l[j])
 				{
-					spf[j]=i;
+					l[j]=i;
 				}
 			}
 		}
@@ -63,16 +61,16 @@ int main()
 	{
 		cin>>a[i];
 	}
-	adj.resize(n+1);
+	graph.resize(n+1);
 	for (int i=0;i<n-1;i++)
 	{
 		int u,v;
 		cin>>u>>v;
-		adj[u].push_back(v);
-		adj[v].push_back(u);
+		graph[u].push_back(v);
+		graph[v].push_back(u);
 	}
 	vector<int> fa(n+1,0),b;
-	vector<vector<int>> graph(n+1);
+	vector<vector<int>> g(n+1);
 	stack<int> st;
 	st.push(1);
 	fa[1]=-1;
@@ -81,12 +79,12 @@ int main()
 		int u=st.top();
 		st.pop();
 		b.push_back(u);
-		for (int v:adj[u])
+		for (int v:graph[u])
 		{
 			if (v!=fa[u])
 			{
 				fa[v]=u;
-				graph[u].push_back(v);
+				g[u].push_back(v);
 				st.push(v);
 			}
 		}
@@ -96,7 +94,7 @@ int main()
 	{
 		int u=b[i];
 		int max_sz=0;
-		for (int v:graph[u])
+		for (int v:g[u])
 		{
 			sz[u]+=sz[v];
 			if (sz[v]>max_sz)
@@ -122,7 +120,7 @@ int main()
 			cur=new unordered_map<int,int>();
 			ans[u]=1;
 		}
-		for (int v:graph[u])
+		for (int v:g[u])
 		{
 			if (v==heavy[u])
 			{
@@ -140,19 +138,19 @@ int main()
 					if (res.position->second<e)
 					{
 						int old=res.position->second;
-						ans[u]=ans[u]*modpow(p,e-old)%MOD;
+						ans[u]=ans[u]*power(p,e-old)%mod;
 						res.position->second=e;
 					}
 				}
 				else
 				{
-					ans[u]=ans[u]*modpow(p,e)%MOD;
+					ans[u]=ans[u]*power(p,e)%mod;
 				}
 			}
 			delete child;
 			mp[v]=nullptr;
 		}
-		vector<pair<int,int>> fac=factorize(a[u]);
+		vector<pair<int,int>> fac=get(a[u]);
 		for (auto& pr:fac)
 		{
 			int p=pr.first,e=pr.second;
@@ -160,12 +158,12 @@ int main()
 			if (it==cur->end())
 			{
 				(*cur)[p]=e;
-				ans[u]=ans[u]*modpow(p,e)%MOD;
+				ans[u]=ans[u]*power(p,e)%mod;
 			}
 			else if (it->second<e)
 			{
 				int old=it->second;
-				ans[u]=ans[u]*modpow(p,e-old)%MOD;
+				ans[u]=ans[u]*power(p,e-old)%mod;
 				it->second=e;
 			}
 		}

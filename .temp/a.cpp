@@ -28,14 +28,13 @@ void solve()
 	for (char ch:s)
 	{
 		bool new_empty=false;
-		int n00e_min=INF,n00e_max=-INF;// 顶0偶
-		int n00o_min=INF,n00o_max=-INF;// 顶0奇
-		int n01e_min=INF,n01e_max=-INF;// 顶1偶
-		int n01o_min=INF,n01o_max=-INF;// 顶1奇
+		int n00e_min=INF,n00e_max=-INF;
+		int n00o_min=INF,n00o_max=-INF;
+		int n01e_min=INF,n01e_max=-INF;
+		int n01o_min=INF,n01o_max=-INF;
 		if (ch=='0'||ch=='1')
 		{
 			int c=ch-'0';
-			// 从空栈转移
 			if (empty_reach)
 			{
 				if (c==0)
@@ -47,12 +46,11 @@ void solve()
 					add_interval(n01o_min,n01o_max,1,1);
 				}
 			}
-			// 旧顶1 -> 新顶0
 			if (min1_even!=INF)
 			{
 				int a=min1_even,b=max1_even;
 				if (c==1)
-				{// 相同，弹出
+				{
 					int lo=a-1,hi=b-1;
 					if (a==1)
 					{
@@ -62,7 +60,7 @@ void solve()
 					add_interval(n00o_min,n00o_max,lo,hi);
 				}
 				else
-				{// 不同，压入
+				{
 					add_interval(n00o_min,n00o_max,a+1,b+1);
 				}
 			}
@@ -84,7 +82,6 @@ void solve()
 					add_interval(n00e_min,n00e_max,a+1,b+1);
 				}
 			}
-			// 旧顶0 -> 新顶1
 			if (min0_even!=INF)
 			{
 				int a=min0_even,b=max0_even;
@@ -123,24 +120,20 @@ void solve()
 			}
 		}
 		else
-		{// ch == '2'
-			// 从空栈转移
+		{
 			if (empty_reach)
 			{
 				add_interval(n00o_min,n00o_max,1,1);
 				add_interval(n01o_min,n01o_max,1,1);
 			}
-			// 旧顶1 -> 新顶0
 			if (min1_even!=INF)
 			{
 				int a=min1_even,b=max1_even;
-				// 旧偶 -> 新奇
 				add_interval(n00o_min,n00o_max,a-1,b+1);
 			}
 			if (min1_odd!=INF)
 			{
 				int a=min1_odd,b=max1_odd;
-				// 旧奇 -> 新偶
 				int lo=a-1,hi=b+1;
 				if (a==1)
 				{
@@ -149,7 +142,6 @@ void solve()
 				}
 				add_interval(n00e_min,n00e_max,lo,hi);
 			}
-			// 旧顶0 -> 新顶1
 			if (min0_even!=INF)
 			{
 				int a=min0_even,b=max0_even;
@@ -167,7 +159,6 @@ void solve()
 				add_interval(n01e_min,n01e_max,lo,hi);
 			}
 		}
-		// 更新状态
 		empty_reach=new_empty;
 		min0_even=n00e_min;
 		max0_even=n00e_max;

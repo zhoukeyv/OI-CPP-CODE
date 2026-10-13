@@ -9,6 +9,10 @@ vector<int> ans(n+1,1);
 vector<vector<int>> graph;
 vector<int> l(MAXA);
 vector<int> a;
+vector<int> sz(n+1,1),hev(n+1,0);
+vector<int> fa(n+1,0),b;
+vector<vector<int>> g(n+1);
+stack<int> st;
 int power(int a,int e)
 {
 	int res=1;
@@ -43,6 +47,13 @@ int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
+	g.resize(n+1);
+	fa.resize(n+1);
+	hev.resize(n+1);
+	sz.resize(n+1,1);
+	ans.resize(n+1,1);
+	mp.resize(n+1,nullptr);
+	l.resize(1e6+10);
 	for (int i=2;i<MAXA;i++)
 	{
 		if (!l[i])
@@ -71,9 +82,6 @@ int main()
 		graph[u].push_back(v);
 		graph[v].push_back(u);
 	}
-	vector<int> fa(n+1,0),b;
-	vector<vector<int>> g(n+1);
-	stack<int> st;
 	st.push(1);
 	fa[1]=-1;
 	while (!st.empty())
@@ -91,7 +99,6 @@ int main()
 			}
 		}
 	}
-	vector<int> sz(n+1,1),hev(n+1,0);
 	for (int i=b.size()-1;i>=0;i--)
 	{
 		int u=b[i];

@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,mod=998244353;
 vector<unordered_map<int,int>*> mp;
-vector<int> l,a,fa,sz,hev,a,b,ans;
+vector<int> l,a,fa,sz,hev,b,ans;
 vector<vector<int>> graph,g;
 stack<int> st;
 int n;

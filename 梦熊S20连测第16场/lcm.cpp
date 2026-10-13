@@ -180,8 +180,8 @@ void solve()
 }
 signed main()
 {
-	// freopen("lcm.in","r",stdin);
-	// freopen("lcm.out","w",stdout);
+	freopen("lcm.in","r",stdin);
+	freopen("lcm.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

@@ -1,206 +1,192 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int INF=1e9;
-void solve()
+const int inf=1e9;
+void u(int& a,int& b,int l,int r)
+{
+	if (l>r)
+	{
+		return;
+	}
+	if (l<a)
+	{
+		a=l;
+	}
+	if (r>b)
+	{
+		b=r;
+	}
+}
+void s()
 {
 	string s;
 	cin>>s;
-	bool empty_reach=true;
-	int min0_even=INF,max0_even=-INF;
-	int min0_odd=INF,max0_odd=-INF;
-	int min1_even=INF,max1_even=-INF;
-	int min1_odd=INF,max1_odd=-INF;
-	auto add_interval=[](int& min_val,int& max_val,int lo,int hi)
-	{
-		if (lo>hi)
-		{
-			return;
-		}
-		if (lo<min_val)
-		{
-			min_val=lo;
-		}
-		if (hi>max_val)
-		{
-			max_val=hi;
-		}
-	};
+	bool e=1,ne=0;
+	int a=inf,b=-inf,c=inf,d=-inf,f=inf,g=-inf,h=inf,i=-inf;
 	for (char ch:s)
 	{
-		bool new_empty=false;
-		int n00e_min=INF,n00e_max=-INF;
-		int n00o_min=INF,n00o_max=-INF;
-		int n01e_min=INF,n01e_max=-INF;
-		int n01o_min=INF,n01o_max=-INF;
+		ne=0;
+		int na=inf,nb=-inf,nc=inf,nd=-inf,nf=inf,ng=-inf,nh=inf,ni=-inf;
 		if (ch=='0'||ch=='1')
 		{
-			int c=ch-'0';
-			if (empty_reach)
+			int x=ch-'0';
+			if (e)
 			{
-				if (c==0)
+				if (x==0)
 				{
-					add_interval(n00o_min,n00o_max,1,1);
+					u(nc,nd,1,1);
 				}
 				else
 				{
-					add_interval(n01o_min,n01o_max,1,1);
+					u(nh,ni,1,1);
 				}
 			}
-			if (min1_even!=INF)
+			if (f!=inf)
 			{
-				int a=min1_even,b=max1_even;
-				if (c==1)
+				if (x==1)
 				{
-					int lo=a-1,hi=b-1;
-					if (a==1)
+					int l=f-1,r=g-1;
+					if (f==1)
 					{
-						new_empty=true;
-						lo=2;
+						ne=1;
+						l=2;
 					}
-					add_interval(n00o_min,n00o_max,lo,hi);
+					u(nc,nd,l,r);
 				}
 				else
 				{
-					add_interval(n00o_min,n00o_max,a+1,b+1);
+					u(nc,nd,f+1,g+1);
 				}
 			}
-			if (min1_odd!=INF)
+			if (h!=inf)
 			{
-				int a=min1_odd,b=max1_odd;
-				if (c==1)
+				if (x==1)
 				{
-					int lo=a-1,hi=b-1;
-					if (a==1)
+					int l=h-1,r=i-1;
+					if (h==1)
 					{
-						new_empty=true;
-						lo=2;
+						ne=1;
+						l=2;
 					}
-					add_interval(n00e_min,n00e_max,lo,hi);
+					u(na,nb,l,r);
 				}
 				else
 				{
-					add_interval(n00e_min,n00e_max,a+1,b+1);
+					u(na,nb,h+1,i+1);
 				}
 			}
-			if (min0_even!=INF)
+			if (a!=inf)
 			{
-				int a=min0_even,b=max0_even;
-				if (c==0)
+				if (x==0)
 				{
-					int lo=a-1,hi=b-1;
+					int l=a-1,r=b-1;
 					if (a==1)
 					{
-						new_empty=true;
-						lo=2;
+						ne=1;
+						l=2;
 					}
-					add_interval(n01o_min,n01o_max,lo,hi);
+					u(nh,ni,l,r);
 				}
 				else
 				{
-					add_interval(n01o_min,n01o_max,a+1,b+1);
+					u(nh,ni,a+1,b+1);
 				}
 			}
-			if (min0_odd!=INF)
+			if (c!=inf)
 			{
-				int a=min0_odd,b=max0_odd;
-				if (c==0)
+				if (x==0)
 				{
-					int lo=a-1,hi=b-1;
-					if (a==1)
+					int l=c-1,r=d-1;
+					if (c==1)
 					{
-						new_empty=true;
-						lo=2;
+						ne=1;
+						l=2;
 					}
-					add_interval(n01e_min,n01e_max,lo,hi);
+					u(nf,ng,l,r);
 				}
 				else
 				{
-					add_interval(n01e_min,n01e_max,a+1,b+1);
+					u(nf,ng,c+1,d+1);
 				}
 			}
 		}
 		else
 		{
-			if (empty_reach)
+			if (e)
 			{
-				add_interval(n00o_min,n00o_max,1,1);
-				add_interval(n01o_min,n01o_max,1,1);
+				u(nc,nd,1,1);
+				u(nh,ni,1,1);
 			}
-			if (min1_even!=INF)
+			if (f!=inf)
 			{
-				int a=min1_even,b=max1_even;
-				add_interval(n00o_min,n00o_max,a-1,b+1);
+				u(nc,nd,f-1,g+1);
 			}
-			if (min1_odd!=INF)
+			if (h!=inf)
 			{
-				int a=min1_odd,b=max1_odd;
-				int lo=a-1,hi=b+1;
-				if (a==1)
+				int l=h-1,r=i+1;
+				if (h==1)
 				{
-					new_empty=true;
-					lo=2;
+					ne=1;
+					l=2;
 				}
-				add_interval(n00e_min,n00e_max,lo,hi);
+				u(na,nb,l,r);
 			}
-			if (min0_even!=INF)
+			if (a!=inf)
 			{
-				int a=min0_even,b=max0_even;
-				add_interval(n01o_min,n01o_max,a-1,b+1);
+				u(nh,ni,a-1,b+1);
 			}
-			if (min0_odd!=INF)
+			if (c!=inf)
 			{
-				int a=min0_odd,b=max0_odd;
-				int lo=a-1,hi=b+1;
-				if (a==1)
+				int l=c-1,r=d+1;
+				if (c==1)
 				{
-					new_empty=true;
-					lo=2;
+					ne=1;
+					l=2;
 				}
-				add_interval(n01e_min,n01e_max,lo,hi);
+				u(nf,ng,l,r);
 			}
 		}
-		empty_reach=new_empty;
-		min0_even=n00e_min;
-		max0_even=n00e_max;
-		min0_odd=n00o_min;
-		max0_odd=n00o_max;
-		min1_even=n01e_min;
-		max1_even=n01e_max;
-		min1_odd=n01o_min;
-		max1_odd=n01o_max;
+		e=ne;
+		a=na;
+		b=nb;
+		c=nc;
+		d=nd;
+		f=nf;
+		g=ng;
+		h=nh;
+		i=ni;
 	}
-	int ans=INF;
-	if (empty_reach)
+	int ans=inf;
+	if (e)
 	{
 		ans=0;
 	}
-	if (min0_even!=INF)
+	if (a!=inf)
 	{
-		ans=min(ans,min0_even);
+		ans=min(ans,a);
 	}
-	if (min0_odd!=INF)
+	if (c!=inf)
 	{
-		ans=min(ans,min0_odd);
+		ans=min(ans,c);
 	}
-	if (min1_even!=INF)
+	if (f!=inf)
 	{
-		ans=min(ans,min1_even);
+		ans=min(ans,f);
 	}
-	if (min1_odd!=INF)
+	if (h!=inf)
 	{
-		ans=min(ans,min1_odd);
+		ans=min(ans,h);
 	}
 	cout<<ans<<"\n";
 }
 int main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr);
-	int T;
-	cin>>T;
-	while (T--)
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t;
+	cin>>t;
+	while (t--)
 	{
-		solve();
+		s();
 	}
 	return 0;
 }

@@ -4,9 +4,11 @@ typedef long long int;
 const int mod=998244353;
 const int MAXA=1000005;
 int n;
-vector<int> a;
+vector<unordered_map<int,int>*> mp(n+1,nullptr);
+vector<int> ans(n+1,1);
 vector<vector<int>> graph;
 vector<int> l(MAXA);
+vector<int> a;
 int power(int a,int e)
 {
 	int res=1;
@@ -104,8 +106,6 @@ int main()
 			}
 		}
 	}
-	vector<unordered_map<int,int>*> mp(n+1,nullptr);
-	vector<int> ans(n+1,1);
 	for (int i=b.size()-1;i>=0;i--)
 	{
 		int u=b[i];

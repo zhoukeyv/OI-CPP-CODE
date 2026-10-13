@@ -3,7 +3,7 @@ using namespace std;
 typedef long long int;
 const int mod=998244353;
 vector<unordered_map<int,int>*> mp;
-vector<int> l,a,sz,hev,a,b,ans;
+vector<int> l,a,fa,sz,hev,a,b,ans;
 vector<vector<int>> graph,g;
 stack<int> st;
 int n;

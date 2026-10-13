@@ -1,15 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
+typedef long long int;
 const int mod=998244353;
 const int MAXA=1000005;
 int n;
 vector<int> a;
 vector<vector<int>> graph;
 vector<int> l(MAXA);
-ll power(ll a,ll e)
+int power(int a,int e)
 {
-	ll res=1;
+	int res=1;
 	while (e)
 	{
 		if (e&1)
@@ -46,7 +46,7 @@ int main()
 		if (!l[i])
 		{
 			l[i]=i;
-			for (ll j=(ll)i*i;j<MAXA;j+=i)
+			for (int j=(int)i*i;j<MAXA;j+=i)
 			{
 				if (!l[j])
 				{
@@ -89,7 +89,7 @@ int main()
 			}
 		}
 	}
-	vector<int> sz(n+1,1),heavy(n+1,0);
+	vector<int> sz(n+1,1),hev(n+1,0);
 	for (int i=b.size()-1;i>=0;i--)
 	{
 		int u=b[i];
@@ -100,20 +100,20 @@ int main()
 			if (sz[v]>max_sz)
 			{
 				max_sz=sz[v];
-				heavy[u]=v;
+				hev[u]=v;
 			}
 		}
 	}
 	vector<unordered_map<int,int>*> mp(n+1,nullptr);
-	vector<ll> ans(n+1,1);
+	vector<int> ans(n+1,1);
 	for (int i=b.size()-1;i>=0;i--)
 	{
 		int u=b[i];
 		unordered_map<int,int>* cur;
-		if (heavy[u])
+		if (hev[u])
 		{
-			cur=mp[heavy[u]];
-			ans[u]=ans[heavy[u]];
+			cur=mp[hev[u]];
+			ans[u]=ans[hev[u]];
 		}
 		else
 		{
@@ -122,7 +122,7 @@ int main()
 		}
 		for (int v:g[u])
 		{
-			if (v==heavy[u])
+			if (v==hev[u])
 			{
 				continue;
 			}

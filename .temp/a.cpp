@@ -20,11 +20,11 @@ void solve()
 {
 	string s;
 	cin>>s;
-	bool flag=1,ne=0;
+	bool flag=true;
 	int t1=inf,t2=-inf,t3=inf,t4=-inf,t5=inf,t6=-inf,t7=inf,t8=-inf;
 	for (char ch:s)
 	{
-		ne=0;
+		bool fg=0;
 		int temp1=inf,temp2=-inf,temp3=inf,temp4=-inf,temp5=inf,temp6=-inf,temp7=inf,temp8=-inf;
 		if (ch=='0'||ch=='1')
 		{
@@ -47,7 +47,7 @@ void solve()
 					int l=t5-1,r=t6-1;
 					if (t5==1)
 					{
-						ne=1;
+						fg=1;
 						l=2;
 					}
 					get(temp3,temp4,l,r);
@@ -64,7 +64,7 @@ void solve()
 					int l=t7-1,r=t8-1;
 					if (t7==1)
 					{
-						ne=1;
+						fg=1;
 						l=2;
 					}
 					get(temp1,temp2,l,r);
@@ -81,7 +81,7 @@ void solve()
 					int l=t1-1,r=t2-1;
 					if (t1==1)
 					{
-						ne=1;
+						fg=1;
 						l=2;
 					}
 					get(temp7,temp8,l,r);
@@ -98,7 +98,7 @@ void solve()
 					int l=t3-1,r=t4-1;
 					if (t3==1)
 					{
-						ne=1;
+						fg=1;
 						l=2;
 					}
 					get(temp5,temp6,l,r);
@@ -125,7 +125,7 @@ void solve()
 				int l=t7-1,r=t8+1;
 				if (t7==1)
 				{
-					ne=1;
+					fg=1;
 					l=2;
 				}
 				get(temp1,temp2,l,r);
@@ -139,13 +139,13 @@ void solve()
 				int l=t3-1,r=t4+1;
 				if (t3==1)
 				{
-					ne=1;
+					fg=1;
 					l=2;
 				}
 				get(temp5,temp6,l,r);
 			}
 		}
-		flag=ne;
+		flag=fg;
 		t1=temp1;
 		t2=temp2;
 		t3=temp3;
@@ -164,7 +164,7 @@ void solve()
 	ans=min(ans,t3);
 	ans=min(ans,t5);
 	ans=min(ans,t7);
-	cout<<ans<<"\n";
+	cout<<ans<<'\n';
 }
 int main()
 {

@@ -1,181 +1,169 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int inf=1e9;
-void u(int& a,int& b,int l,int r)
+void get(int& t1,int& t2,int l,int r)
 {
 	if (l>r)
 	{
 		return;
 	}
-	if (l<a)
+	if (l<t1)
 	{
-		a=l;
+		t1=l;
 	}
-	if (r>b)
+	if (r>t2)
 	{
-		b=r;
+		t2=r;
 	}
 }
-void s()
+void solve()
 {
 	string s;
 	cin>>s;
-	bool e=1,ne=0;
-	int a=inf,b=-inf,c=inf,d=-inf,f=inf,g=-inf,h=inf,i=-inf;
+	bool flag=1,ne=0;
+	int t1=inf,t2=-inf,t3=inf,t4=-inf,t5=inf,t6=-inf,t7=inf,t8=-inf;
 	for (char ch:s)
 	{
 		ne=0;
-		int na=inf,nb=-inf,nc=inf,nd=-inf,nf=inf,ng=-inf,nh=inf,ni=-inf;
+		int temp1=inf,temp2=-inf,temp3=inf,temp4=-inf,temp5=inf,temp6=-inf,temp7=inf,temp8=-inf;
 		if (ch=='0'||ch=='1')
 		{
 			int x=ch-'0';
-			if (e)
+			if (flag)
 			{
 				if (x==0)
 				{
-					u(nc,nd,1,1);
+					get(temp3,temp4,1,1);
 				}
 				else
 				{
-					u(nh,ni,1,1);
+					get(temp7,temp8,1,1);
 				}
 			}
-			if (f!=inf)
+			if (t5!=inf)
 			{
 				if (x==1)
 				{
-					int l=f-1,r=g-1;
-					if (f==1)
+					int l=t5-1,r=t6-1;
+					if (t5==1)
 					{
 						ne=1;
 						l=2;
 					}
-					u(nc,nd,l,r);
+					get(temp3,temp4,l,r);
 				}
 				else
 				{
-					u(nc,nd,f+1,g+1);
+					get(temp3,temp4,t5+1,t6+1);
 				}
 			}
-			if (h!=inf)
+			if (t7!=inf)
 			{
 				if (x==1)
 				{
-					int l=h-1,r=i-1;
-					if (h==1)
+					int l=t7-1,r=t8-1;
+					if (t7==1)
 					{
 						ne=1;
 						l=2;
 					}
-					u(na,nb,l,r);
+					get(temp1,temp2,l,r);
 				}
 				else
 				{
-					u(na,nb,h+1,i+1);
+					get(temp1,temp2,t7+1,t8+1);
 				}
 			}
-			if (a!=inf)
+			if (t1!=inf)
 			{
 				if (x==0)
 				{
-					int l=a-1,r=b-1;
-					if (a==1)
+					int l=t1-1,r=t2-1;
+					if (t1==1)
 					{
 						ne=1;
 						l=2;
 					}
-					u(nh,ni,l,r);
+					get(temp7,temp8,l,r);
 				}
 				else
 				{
-					u(nh,ni,a+1,b+1);
+					get(temp7,temp8,t1+1,t2+1);
 				}
 			}
-			if (c!=inf)
+			if (t3!=inf)
 			{
 				if (x==0)
 				{
-					int l=c-1,r=d-1;
-					if (c==1)
+					int l=t3-1,r=t4-1;
+					if (t3==1)
 					{
 						ne=1;
 						l=2;
 					}
-					u(nf,ng,l,r);
+					get(temp5,temp6,l,r);
 				}
 				else
 				{
-					u(nf,ng,c+1,d+1);
+					get(temp5,temp6,t3+1,t4+1);
 				}
 			}
 		}
 		else
 		{
-			if (e)
+			if (flag)
 			{
-				u(nc,nd,1,1);
-				u(nh,ni,1,1);
+				get(temp3,temp4,1,1);
+				get(temp7,temp8,1,1);
 			}
-			if (f!=inf)
+			if (t5!=inf)
 			{
-				u(nc,nd,f-1,g+1);
+				get(temp3,temp4,t5-1,t6+1);
 			}
-			if (h!=inf)
+			if (t7!=inf)
 			{
-				int l=h-1,r=i+1;
-				if (h==1)
+				int l=t7-1,r=t8+1;
+				if (t7==1)
 				{
 					ne=1;
 					l=2;
 				}
-				u(na,nb,l,r);
+				get(temp1,temp2,l,r);
 			}
-			if (a!=inf)
+			if (t1!=inf)
 			{
-				u(nh,ni,a-1,b+1);
+				get(temp7,temp8,t1-1,t2+1);
 			}
-			if (c!=inf)
+			if (t3!=inf)
 			{
-				int l=c-1,r=d+1;
-				if (c==1)
+				int l=t3-1,r=t4+1;
+				if (t3==1)
 				{
 					ne=1;
 					l=2;
 				}
-				u(nf,ng,l,r);
+				get(temp5,temp6,l,r);
 			}
 		}
-		e=ne;
-		a=na;
-		b=nb;
-		c=nc;
-		d=nd;
-		f=nf;
-		g=ng;
-		h=nh;
-		i=ni;
+		flag=ne;
+		t1=temp1;
+		t2=temp2;
+		t3=temp3;
+		t4=temp4;
+		t5=temp5;
+		t6=temp6;
+		t7=temp7;
+		t8=temp8;
 	}
 	int ans=inf;
-	if (e)
+	if (flag)
 	{
 		ans=0;
 	}
-	if (a!=inf)
-	{
-		ans=min(ans,a);
-	}
-	if (c!=inf)
-	{
-		ans=min(ans,c);
-	}
-	if (f!=inf)
-	{
-		ans=min(ans,f);
-	}
-	if (h!=inf)
-	{
-		ans=min(ans,h);
-	}
+	ans=min(ans,t1);
+	ans=min(ans,t3);
+	ans=min(ans,t5);
+	ans=min(ans,t7);
 	cout<<ans<<"\n";
 }
 int main()

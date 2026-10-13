@@ -2,17 +2,16 @@
 using namespace std;
 typedef long long int;
 const int mod=998244353;
-const int MAXA=1000005;
-int n;
-vector<unordered_map<int,int>*> mp(n+1,nullptr);
-vector<int> ans(n+1,1);
+vector<unordered_map<int,int>*> mp;
+vector<int> ans;
 vector<vector<int>> graph;
-vector<int> l(MAXA);
+vector<int> l;
 vector<int> a;
-vector<int> sz(n+1,1),hev(n+1,0);
-vector<int> fa(n+1,0),b;
-vector<vector<int>> g(n+1);
+vector<int> sz,hev;
+vector<int> fa,b;
+vector<vector<int>> g;
 stack<int> st;
+int n;
 int power(int a,int e)
 {
 	int res=1;

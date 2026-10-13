@@ -1,180 +1,181 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int inf=1e9;
-void get(int& t1,int& t2,int l,int r)
+typedef long long ll;
+const int MOD=998244353;
+const int MAXA=1000005;
+int n;
+vector<int> a;
+vector<vector<int>> adj;
+vector<int> spf(MAXA);// 最小质因数
+ll modpow(ll a,ll e)
 {
-	if (l>r)
+	ll res=1;
+	while (e)
 	{
-		return;
+		if (e&1)
+		{
+			res=res*a%MOD;
+		}
+		a=a*a%MOD;
+		e>>=1;
 	}
-	if (l<t1)
-	{
-		t1=l;
-	}
-	if (r>t2)
-	{
-		t2=r;
-	}
+	return res;
 }
-void solve()
+// 分解质因数
+vector<pair<int,int>> factorize(int x)
 {
-	string s;
-	cin>>s;
-	bool flag=true;
-	int t1=inf,t2=-inf,t3=inf,t4=-inf,t5=inf,t6=-inf,t7=inf,t8=-inf;
-	for (char ch:s)
+	vector<pair<int,int>> res;
+	while (x>1)
 	{
-		bool fg=0;
-		int temp1=inf,temp2=-inf,temp3=inf,temp4=-inf,temp5=inf,temp6=-inf,temp7=inf,temp8=-inf;
-		if (ch=='0'||ch=='1')
+		int p=spf[x];
+		int e=0;
+		while (x%p==0)
 		{
-			int x=ch-'0';
-			if (flag)
-			{
-				if (x==0)
-				{
-					get(temp3,temp4,1,1);
-				}
-				else
-				{
-					get(temp7,temp8,1,1);
-				}
-			}
-			if (t5!=inf)
-			{
-				if (x==1)
-				{
-					int l=t5-1,r=t6-1;
-					if (t5==1)
-					{
-						fg=1;
-						l=2;
-					}
-					get(temp3,temp4,l,r);
-				}
-				else
-				{
-					get(temp3,temp4,t5+1,t6+1);
-				}
-			}
-			if (t7!=inf)
-			{
-				if (x==1)
-				{
-					int l=t7-1,r=t8-1;
-					if (t7==1)
-					{
-						fg=1;
-						l=2;
-					}
-					get(temp1,temp2,l,r);
-				}
-				else
-				{
-					get(temp1,temp2,t7+1,t8+1);
-				}
-			}
-			if (t1!=inf)
-			{
-				if (x==0)
-				{
-					int l=t1-1,r=t2-1;
-					if (t1==1)
-					{
-						fg=1;
-						l=2;
-					}
-					get(temp7,temp8,l,r);
-				}
-				else
-				{
-					get(temp7,temp8,t1+1,t2+1);
-				}
-			}
-			if (t3!=inf)
-			{
-				if (x==0)
-				{
-					int l=t3-1,r=t4-1;
-					if (t3==1)
-					{
-						fg=1;
-						l=2;
-					}
-					get(temp5,temp6,l,r);
-				}
-				else
-				{
-					get(temp5,temp6,t3+1,t4+1);
-				}
-			}
+			x/=p;
+			e++;
 		}
-		else
-		{
-			if (flag)
-			{
-				get(temp3,temp4,1,1);
-				get(temp7,temp8,1,1);
-			}
-			if (t5!=inf)
-			{
-				get(temp3,temp4,t5-1,t6+1);
-			}
-			if (t7!=inf)
-			{
-				int l=t7-1,r=t8+1;
-				if (t7==1)
-				{
-					fg=1;
-					l=2;
-				}
-				get(temp1,temp2,l,r);
-			}
-			if (t1!=inf)
-			{
-				get(temp7,temp8,t1-1,t2+1);
-			}
-			if (t3!=inf)
-			{
-				int l=t3-1,r=t4+1;
-				if (t3==1)
-				{
-					fg=1;
-					l=2;
-				}
-				get(temp5,temp6,l,r);
-			}
-		}
-		flag=fg;
-		t1=temp1;
-		t2=temp2;
-		t3=temp3;
-		t4=temp4;
-		t5=temp5;
-		t6=temp6;
-		t7=temp7;
-		t8=temp8;
+		res.emplace_back(p,e);
 	}
-	int ans=inf;
-	if (flag)
-	{
-		ans=0;
-	}
-	ans=min(ans,t1);
-	ans=min(ans,t3);
-	ans=min(ans,t5);
-	ans=min(ans,t7);
-	cout<<ans<<'\n';
+	return res;
 }
 int main()
 {
-	ios::sync_with_stdio(0);
+	ios::sync_with_stdio(false);
 	cin.tie(0);
-	int t;
-	cin>>t;
-	while (t--)
+	// 线性筛预处理最小质因数
+	for (int i=2;i<MAXA;i++)
 	{
-		s();
+		if (!spf[i])
+		{
+			spf[i]=i;
+			for (ll j=(ll)i*i;j<MAXA;j+=i)
+			{
+				if (!spf[j])
+				{
+					spf[j]=i;
+				}
+			}
+		}
+	}
+	cin>>n;
+	a.resize(n+1);
+	for (int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+	}
+	adj.resize(n+1);
+	for (int i=0;i<n-1;i++)
+	{
+		int u,v;
+		cin>>u>>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+	}
+	// 迭代后序遍历建树，确定父子关系和重儿子
+	vector<int> parent(n+1,0),order;
+	vector<vector<int>> children(n+1);
+	stack<int> st;
+	st.push(1);
+	parent[1]=-1;
+	while (!st.empty())
+	{
+		int u=st.top();
+		st.pop();
+		order.push_back(u);
+		for (int v:adj[u])
+		{
+			if (v!=parent[u])
+			{
+				parent[v]=u;
+				children[u].push_back(v);
+				st.push(v);
+			}
+		}
+	}
+	vector<int> sz(n+1,1),heavy(n+1,0);
+	for (int i=order.size()-1;i>=0;i--)
+	{
+		int u=order[i];
+		int max_sz=0;
+		for (int v:children[u])
+		{
+			sz[u]+=sz[v];
+			if (sz[v]>max_sz)
+			{
+				max_sz=sz[v];
+				heavy[u]=v;
+			}
+		}
+	}
+	vector<unordered_map<int,int>*> mp(n+1,nullptr);
+	vector<ll> ans(n+1,1);
+	// 后序遍历处理每个节点
+	for (int i=order.size()-1;i>=0;i--)
+	{
+		int u=order[i];
+		unordered_map<int,int>* cur;
+		if (heavy[u])
+		{
+			cur=mp[heavy[u]];
+			ans[u]=ans[heavy[u]];
+		}
+		else
+		{
+			cur=new unordered_map<int,int>();
+			ans[u]=1;
+		}
+		for (int v:children[u])
+		{
+			if (v==heavy[u])
+			{
+				continue;
+			}
+			unordered_map<int,int>* child=mp[v];
+			for (auto it=child->begin();it!=child->end();)
+			{
+				auto node=child->extract(it++);
+				int p=node.key();
+				int e=node.mapped();
+				auto res=cur->insert(std::move(node));
+				if (!res.inserted)
+				{
+					if (res.position->second<e)
+					{
+						int old=res.position->second;
+						ans[u]=ans[u]*modpow(p,e-old)%MOD;
+						res.position->second=e;
+					}
+				}
+				else
+				{
+					ans[u]=ans[u]*modpow(p,e)%MOD;
+				}
+			}
+			delete child;
+			mp[v]=nullptr;
+		}
+		vector<pair<int,int>> fac=factorize(a[u]);
+		for (auto& pr:fac)
+		{
+			int p=pr.first,e=pr.second;
+			auto it=cur->find(p);
+			if (it==cur->end())
+			{
+				(*cur)[p]=e;
+				ans[u]=ans[u]*modpow(p,e)%MOD;
+			}
+			else if (it->second<e)
+			{
+				int old=it->second;
+				ans[u]=ans[u]*modpow(p,e-old)%MOD;
+				it->second=e;
+			}
+		}
+		mp[u]=cur;
+	}
+	for (int i=1;i<=n;i++)
+	{
+		cout<<ans[i]<<'\n';
 	}
 	return 0;
 }

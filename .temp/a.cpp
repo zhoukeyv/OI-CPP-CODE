@@ -71,33 +71,32 @@ int main()
 		adj[u].push_back(v);
 		adj[v].push_back(u);
 	}
-	// 迭代后序遍历建树，确定父子关系和重儿子
-	vector<int> parent(n+1,0),order;
-	vector<vector<int>> children(n+1);
+	vector<int> fa(n+1,0),b;
+	vector<vector<int>> graph(n+1);
 	stack<int> st;
 	st.push(1);
-	parent[1]=-1;
+	fa[1]=-1;
 	while (!st.empty())
 	{
 		int u=st.top();
 		st.pop();
-		order.push_back(u);
+		b.push_back(u);
 		for (int v:adj[u])
 		{
-			if (v!=parent[u])
+			if (v!=fa[u])
 			{
-				parent[v]=u;
-				children[u].push_back(v);
+				fa[v]=u;
+				graph[u].push_back(v);
 				st.push(v);
 			}
 		}
 	}
 	vector<int> sz(n+1,1),heavy(n+1,0);
-	for (int i=order.size()-1;i>=0;i--)
+	for (int i=b.size()-1;i>=0;i--)
 	{
-		int u=order[i];
+		int u=b[i];
 		int max_sz=0;
-		for (int v:children[u])
+		for (int v:graph[u])
 		{
 			sz[u]+=sz[v];
 			if (sz[v]>max_sz)
@@ -109,10 +108,9 @@ int main()
 	}
 	vector<unordered_map<int,int>*> mp(n+1,nullptr);
 	vector<ll> ans(n+1,1);
-	// 后序遍历处理每个节点
-	for (int i=order.size()-1;i>=0;i--)
+	for (int i=b.size()-1;i>=0;i--)
 	{
-		int u=order[i];
+		int u=b[i];
 		unordered_map<int,int>* cur;
 		if (heavy[u])
 		{
@@ -124,7 +122,7 @@ int main()
 			cur=new unordered_map<int,int>();
 			ans[u]=1;
 		}
-		for (int v:children[u])
+		for (int v:graph[u])
 		{
 			if (v==heavy[u])
 			{

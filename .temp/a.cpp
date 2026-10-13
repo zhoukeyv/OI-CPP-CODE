@@ -41,6 +41,7 @@ int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
+	a.resize(n+1);
 	g.resize(n+1);
 	fa.resize(n+1);
 	hev.resize(n+1);
@@ -48,12 +49,12 @@ int main()
 	ans.resize(n+1,1);
 	mp.resize(n+1,nullptr);
 	l.resize(1e6+10);
-	for (int i=2;i<MAXA;i++)
+	for (int i=2;i<(int)1e6+10;i++)
 	{
 		if (!l[i])
 		{
 			l[i]=i;
-			for (int j=(int)i*i;j<MAXA;j+=i)
+			for (int j=(int)i*i;j<(int)1e6+10;j+=i)
 			{
 				if (!l[j])
 				{
@@ -63,7 +64,6 @@ int main()
 		}
 	}
 	cin>>n;
-	a.resize(n+1);
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];

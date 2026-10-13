@@ -43,6 +43,7 @@ void solve()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
+	cin>>n;
 	a.resize(n+1);
 	g.resize(n+1);
 	fa.resize(n+1);
@@ -66,7 +67,6 @@ void solve()
 			}
 		}
 	}
-	cin>>n;
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];

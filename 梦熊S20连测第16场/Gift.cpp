@@ -3,25 +3,25 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
-void get(int& t1,int& t2,int l,int r)
+const int inf=0x3f3f3f3f3f3f3f3f,N=2e5+10;
+string s;
+void get(int& x,int& y,int l,int r)
 {
 	if (l>r)
 	{
 		return;
 	}
-	if (l<t1)
+	if (l<x)
 	{
-		t1=l;
+		x=l;
 	}
-	if (r>t2)
+	if (r>y)
 	{
-		t2=r;
+		y=r;
 	}
 }
 void solve()
 {
-	string s;
 	cin>>s;
 	bool flag=true;
 	int t1=inf,t2=-inf,t3=inf,t4=-inf,t5=inf,t6=-inf,t7=inf,t8=-inf;

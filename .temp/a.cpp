@@ -47,6 +47,7 @@ int main()
 	hev.resize(n+1);
 	sz.resize(n+1,1);
 	ans.resize(n+1,1);
+	graph.resize(n+1);
 	mp.resize(n+1,nullptr);
 	l.resize(1e6+10);
 	for (int i=2;i<(int)1e6+10;i++)
@@ -68,7 +69,6 @@ int main()
 	{
 		cin>>a[i];
 	}
-	graph.resize(n+1);
 	for (int i=0;i<n-1;i++)
 	{
 		int u,v;

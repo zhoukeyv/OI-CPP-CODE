@@ -9,17 +9,17 @@ vector<int> l,a,fa,sz,hev,b,ans;
 vector<vector<int>> graph,g;
 stack<int> st;
 int n;
-int power(int a,int e)
+int power(int a,int b,int p)
 {
 	int res=1;
-	while (e)
+	while (b)
 	{
-		if (e&1)
+		if (b&1)
 		{
-			res=res*a%mod;
+			res=res*a%p;
 		}
-		a=a*a%mod;
-		e>>=1;
+		a=a*a%p;
+		b>>=1;
 	}
 	return res;
 }

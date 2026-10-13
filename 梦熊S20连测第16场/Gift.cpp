@@ -25,13 +25,13 @@ void solve()
 	cin>>s;
 	bool flag=true;
 	int t1=inf,t2=-inf,t3=inf,t4=-inf,t5=inf,t6=-inf,t7=inf,t8=-inf;
-	for (char ch:s)
+	for (char c:s)
 	{
 		bool fg=0;
 		int temp1=inf,temp2=-inf,temp3=inf,temp4=-inf,temp5=inf,temp6=-inf,temp7=inf,temp8=-inf;
-		if (ch=='0'||ch=='1')
+		if (c=='0'||c=='1')
 		{
-			int x=ch-'0';
+			int x=c-'0';
 			if (flag)
 			{
 				if (x==0)

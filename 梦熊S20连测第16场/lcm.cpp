@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 #define double long double
 #define int long long
 using namespace std;
@@ -130,19 +130,18 @@ void solve()
 				continue;
 			}
 			unordered_map<int,int>* child=mp[v];
-			for (auto it=child->begin();it!=child->end();)
+			for (auto it=child->begin();it!=child->end();++it)
 			{
-				auto node=child->extract(it++);
-				int p=node.key();
-				int e=node.mapped();
-				auto res=cur->insert(move(node));
-				if (!res.inserted)
+				int p=it->first;
+				int e=it->second;
+				auto res=cur->insert({p,e});
+				if (!res.second)
 				{
-					if (res.position->second<e)
+					if (res.first->second<e)
 					{
-						int old=res.position->second;
+						int old=res.first->second;
 						ans[u]=ans[u]*power(p,e-old)%mod;
-						res.position->second=e;
+						res.first->second=e;
 					}
 				}
 				else
@@ -150,6 +149,7 @@ void solve()
 					ans[u]=ans[u]*power(p,e)%mod;
 				}
 			}
+			child->clear();
 			delete child;
 			mp[v]=nullptr;
 		}

@@ -96,8 +96,8 @@ void solve()
 }
 int main()
 {
-	// freopen("paint.in","r",stdin);
-	// freopen("paint.out","w",stdout);
+	freopen("paint.in","r",stdin);
+	freopen("paint.out","w",stdout);
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 	solve();

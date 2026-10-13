@@ -128,7 +128,7 @@ void solve()
 				int l=t7-1,r=t8+1;
 				if (t7==1)
 				{
-					fg=1;
+					fg=true;
 					l=2;
 				}
 				get(temp1,temp2,l,r);
@@ -142,7 +142,7 @@ void solve()
 				int l=t3-1,r=t4+1;
 				if (t3==1)
 				{
-					fg=1;
+					fg=true;
 					l=2;
 				}
 				get(temp5,temp6,l,r);

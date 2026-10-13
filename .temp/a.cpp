@@ -3,13 +3,8 @@ using namespace std;
 typedef long long int;
 const int mod=998244353;
 vector<unordered_map<int,int>*> mp;
-vector<int> ans;
-vector<vector<int>> graph;
-vector<int> l;
-vector<int> a;
-vector<int> sz,hev;
-vector<int> fa,b;
-vector<vector<int>> g;
+vector<int> l,a,sz,hev,a,b,ans;
+vector<vector<int>> graph,g;
 stack<int> st;
 int n;
 int power(int a,int e)

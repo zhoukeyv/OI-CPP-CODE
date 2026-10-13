@@ -50,7 +50,7 @@ void solve()
 					int l=t5-1,r=t6-1;
 					if (t5==1)
 					{
-						fg=1;
+						fg=true;
 						l=2;
 					}
 					get(temp3,temp4,l,r);

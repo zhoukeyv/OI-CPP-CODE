@@ -78,8 +78,15 @@ void solve()
 				b[idx].x=0;
 				idx++;
 			}
+			add(idx+2,n,x);
+			sum+=x;
 		}
 	}
+	for (int i=1;i<=n;i++)
+	{
+		ans[i]+=ans[i-1];
+	}
+	
 	return;
 }
 signed main()

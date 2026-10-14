@@ -30,11 +30,11 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
-		if (i<n)
-		{
-			b[i].id=i;
-			b[i].x=a[i+1]-a[i];
-		}
+	}
+	for (int i=1;i<n;i++)
+	{
+		b[i].id=i;
+		b[i].x=a[i+1]-a[i];
 	}
 	sort(b+1,b+n);
 	int sum=0,l=0,r=0,idx=1;

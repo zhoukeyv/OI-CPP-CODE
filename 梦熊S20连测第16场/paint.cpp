@@ -27,7 +27,16 @@ void solve()
 		}
 	}
 	sort(b+1,b+n);
-	int sum=0;
+	int sum=0,l=0,r=0;
+	for (int i=1;i<=m;i++)
+	{
+		int x;
+		cin>>x;
+		if (x>0)
+		{
+			
+		}
+	}
 	return;
 }
 signed main()

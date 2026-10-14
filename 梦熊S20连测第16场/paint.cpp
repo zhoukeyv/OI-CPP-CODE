@@ -87,6 +87,7 @@ void solve()
 			add(idx+2,n,x);
 			sum+=x;
 		}
+		cerr<<l<<' '<<r<<'\n';
 	}
 	for (int i=1;i<=n;i++)
 	{

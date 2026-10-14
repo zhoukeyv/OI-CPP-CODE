@@ -58,7 +58,8 @@ void solve()
 				b[idx].x=0;
 				idx++;
 			}
-			add(idx+1,n)
+			add(idx+1,n,x);
+			sum+=x;
 		}
 	}
 	return;

@@ -26,6 +26,8 @@ void solve()
 			b[i].x=a[i];
 		}
 	}
+	sort(b+1,b+n);
+	
 	return;
 }
 signed main()

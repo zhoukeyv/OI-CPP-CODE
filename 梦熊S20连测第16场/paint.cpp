@@ -69,6 +69,8 @@ void solve()
 				r-=x;
 				continue;
 			}
+			x-=r;
+			l=x;
 		}
 	}
 	return;

@@ -11,7 +11,7 @@ struct Node
 	{
 		return x<w.x;
 	}
-};
+}b[N];
 int a[N];
 int n,m;
 void solve()
@@ -20,6 +20,11 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		cin>>a[i];
+		if (i<n)
+		{
+			b[i].id=i;
+			b[i].x=a[i];
+		}
 	}
 	return;
 }

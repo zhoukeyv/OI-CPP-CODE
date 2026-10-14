@@ -27,7 +27,7 @@ void solve()
 		}
 	}
 	sort(b+1,b+n);
-	
+	int sum=0;
 	return;
 }
 signed main()

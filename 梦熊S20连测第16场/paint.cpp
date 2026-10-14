@@ -12,7 +12,7 @@ struct Node
 		return x<w.x;
 	}
 }b[N];
-int a[N];
+int a[N],ans[N];
 int n,m;
 void solve()
 {

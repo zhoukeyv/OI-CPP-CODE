@@ -14,6 +14,16 @@ struct Node
 }b[N];
 int a[N],ans[N];
 int n,m;
+void add(int l,int r,int x)
+{
+	if (l>r)
+	{
+		return;
+	}
+	ans[l]+=x;
+	ans[r+1]-=x;
+	return;
+}
 void solve()
 {
 	cin>>n>>m;
@@ -44,8 +54,11 @@ void solve()
 			r=x;
 			while (idx<=n&&b[idx].x-sum<x)
 			{
-				
+				add(idx,idx,b[idx].x-sum);
+				b[idx].x=0;
+				idx++;
 			}
+			add(idx+1,n)
 		}
 	}
 	return;

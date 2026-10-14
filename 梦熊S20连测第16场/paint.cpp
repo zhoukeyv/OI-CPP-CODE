@@ -36,6 +36,8 @@ void solve()
 		b[i].id=i;
 		b[i].x=a[i+1]-a[i];
 	}
+	b[0]={0,inf};
+	b[n]={n,inf};
 	sort(b+1,b+n);
 	int sum=0,l=0,r=0,idx=1;
 	for (int i=1;i<n;i++)

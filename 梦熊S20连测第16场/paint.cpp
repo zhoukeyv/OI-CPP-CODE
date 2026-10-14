@@ -42,7 +42,10 @@ void solve()
 			x-=l;
 			l=0;
 			r=x;
-			
+			while (idx<=n&&b[idx].x-sum<x)
+			{
+				
+			}
 		}
 	}
 	return;

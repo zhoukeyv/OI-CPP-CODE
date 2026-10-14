@@ -70,7 +70,14 @@ void solve()
 				continue;
 			}
 			x-=r;
+			r=0;
 			l=x;
+			while (idx<=n&&b[idx].x-sum<x)
+			{
+				add(idx+1,idx+1,b[idx].x-sum);
+				b[idx].x=0;
+				idx++;
+			}
 		}
 	}
 	return;

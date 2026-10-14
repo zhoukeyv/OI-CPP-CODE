@@ -61,6 +61,15 @@ void solve()
 			add(idx+1,n,x);
 			sum+=x;
 		}
+		else if (x<0)
+		{
+			x=-x;
+			if (x<r)
+			{
+				r-=x;
+				continue;
+			}
+		}
 	}
 	return;
 }

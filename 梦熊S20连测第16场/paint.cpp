@@ -12,7 +12,7 @@ struct Node
 		return x<w.x;
 	}
 }b[N];
-int a[N],ans[N];
+int a[N],ans[N],t[N];
 int n,m;
 void add(int l,int r,int x)
 {
@@ -85,8 +85,12 @@ void solve()
 	for (int i=1;i<=n;i++)
 	{
 		ans[i]+=ans[i-1];
+		t[b[i].id]=ans[i];
 	}
-	
+	for (int i=1;i<=n;i++)
+	{
+		cout<<t[i]<<'\n';
+	}
 	return;
 }
 signed main()

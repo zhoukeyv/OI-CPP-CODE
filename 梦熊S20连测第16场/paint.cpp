@@ -42,7 +42,7 @@ void solve()
 	int sum=0,l=0,r=0,idx=1;
 	for (int i=1;i<n;i++)
 	{
-		cerr<<b[i].id<<' '<<b[i].x<<'\n';
+		cerr<<b[i].id<<':'<<b[i].x<<'\n';
 	}
 	for (int i=1;i<=m;i++)
 	{

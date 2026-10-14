@@ -34,7 +34,14 @@ void solve()
 		cin>>x;
 		if (x>0)
 		{
-			
+			if (x<l)
+			{
+				l-=x;
+				continue;
+			}
+			x-=l;
+			l=0;
+			r+=x;
 		}
 	}
 	return;

@@ -82,7 +82,7 @@ signed main()
 	cin>>k;
 	for (int i=1;i<=k;i++)
 	{
-		bool opt;
+		int opt;
 		int l,r;
 		cin>>opt>>l>>r;
 		if (l>r)

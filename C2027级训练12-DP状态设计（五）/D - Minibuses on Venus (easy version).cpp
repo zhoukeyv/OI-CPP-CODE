@@ -9,6 +9,11 @@ int n,k,mod;
 void solve()
 {
 	cin>>n>>k>>mod;
+	dp[0][0]=1;
+	for (int i=1;i<=n;i++)
+	{
+		
+	}
 	return;
 }
 signed main()

@@ -44,6 +44,7 @@ void solve()
 	b/=100.0;
 	s='@'+s;
 	DFS(1,0,0,1,0.5);
+	cerr<<a<<' '<<b<<'\n';
 	if (fabs(ans1-ans2)==0)
 	{
 		cout<<"?\n";

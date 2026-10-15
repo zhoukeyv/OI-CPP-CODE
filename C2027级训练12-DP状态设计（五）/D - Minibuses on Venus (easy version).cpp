@@ -12,7 +12,13 @@ void solve()
 	dp[0][0]=1;
 	for (int i=1;i<=n;i++)
 	{
-		
+		for (int j=0;j<=n*(k-1);j++)
+		{
+			for (int l=0;l<=min(k-1,j);l++)
+			{
+				dp[i][j]=(dp[i][j]+dp[i-1][j-l])%mod;
+			}
+		}
 	}
 	return;
 }

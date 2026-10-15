@@ -45,7 +45,7 @@ void solve()
 	s='@'+s;
 	DFS(1,0,0,1,0.5);
 	// cerr<<a<<' '<<b<<'\n';
-	if (fabs(ans1-ans2)==0)
+	if (fabs(ans1-ans2)<=eps)
 	{
 		cout<<"?\n";
 	}

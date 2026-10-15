@@ -18,7 +18,7 @@ void DFS(int pos,int x,int y,double k,double t)
 		{
 			ans2+=k;
 		}
-		cerr<<pos<<' '<<x<<' '<<y<<' '<<k<<'\n';
+		// cerr<<pos<<' '<<x<<' '<<y<<' '<<k<<'\n';
 		return;
 	}
 	if (s[pos]=='a')
@@ -32,7 +32,7 @@ void DFS(int pos,int x,int y,double k,double t)
 	else
 	{
 		DFS(pos+1,x+1,y,k*t,a);
-		DFS(pos+1,x,y+1,k*t,1-b);
+		DFS(pos+1,x,y+1,k*(1-t),1-b);
 	}
 	return;
 }
@@ -44,7 +44,7 @@ void solve()
 	b/=100.0;
 	s='@'+s;
 	DFS(1,0,0,1,0.5);
-	cerr<<a<<' '<<b<<'\n';
+	// cerr<<a<<' '<<b<<'\n';
 	if (fabs(ans1-ans2)==0)
 	{
 		cout<<"?\n";

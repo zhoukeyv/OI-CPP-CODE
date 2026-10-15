@@ -18,6 +18,7 @@ void DFS(int pos,int x,int y,double k,double t)
 		{
 			ans2+=k;
 		}
+		cerr<<pos<<' '<<x<<' '<<y<<' '<<k<<'\n';
 		return;
 	}
 	if (s[pos]=='a')

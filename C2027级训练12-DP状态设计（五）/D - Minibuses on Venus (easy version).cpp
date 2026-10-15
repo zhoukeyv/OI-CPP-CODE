@@ -20,6 +20,13 @@ void solve()
 			}
 		}
 	}
+	for (int i=0;i<=V;i++)
+	{
+		for (int j=0;j<=min(k-1,i);j++)
+		{
+			
+		}
+	}
 	return;
 }
 signed main()

@@ -28,9 +28,10 @@ void solve()
 			{
 				continue;
 			}
-			ans+=dp[n-1][i-j]*n%mod;
+			ans=(ans+dp[n-1][i-j]*n%mod)%mod;
 		}
 	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

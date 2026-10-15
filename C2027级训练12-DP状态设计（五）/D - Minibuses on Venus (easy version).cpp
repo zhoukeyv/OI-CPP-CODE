@@ -5,7 +5,7 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=110,K=40,V=3010;
 int dp[N][V];
-int n,k,mod;
+int n,k,mod,ans=0;
 void solve()
 {
 	cin>>n>>k>>mod;
@@ -28,6 +28,7 @@ void solve()
 			{
 				continue;
 			}
+			ans+=dp[n-1][i-j]*n%mod;
 		}
 	}
 	return;

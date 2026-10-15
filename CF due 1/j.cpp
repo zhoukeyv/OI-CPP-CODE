@@ -89,7 +89,14 @@ signed main()
 		{
 			swap(l,r);
 		}
-		opt?cout<<query(l,r)<<'\n',void():add(l,r);
+		if (opt==1)
+		{
+			cout<<query(l,r)<<'\n';
+		}
+		else
+		{
+			add(l,r);
+		}
 	}
 	return 0;
 }

@@ -42,6 +42,19 @@ void solve()
 	a/=100.0;
 	b/=100.0;
 	s='@'+s;
+	DFS(1,0,0,1,0.5);
+	if (fabs(ans1-ans2)==0)
+	{
+		cout<<"?\n";
+	}
+	else if (ans1>ans2)
+	{
+		cout<<"a\n";
+	}
+	else
+	{
+		cout<<"b\n";
+	}
 	return;
 }
 signed main()

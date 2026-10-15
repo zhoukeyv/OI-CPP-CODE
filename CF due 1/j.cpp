@@ -22,17 +22,15 @@ void DFS(int pos,int x,int y,double k,double t)
 	}
 	if (s[pos]=='a')
 	{
-		x++;
-		DFS(pos+1,x,y,k,a);
+		DFS(pos+1,x+1,y,k,a);
 	}
 	else if (s[pos]=='b')
 	{
-		y++;
-		DFS(pos+1,x,y,k,b);
+		DFS(pos+1,x,y+1,k,1-b);
 	}
 	else
 	{
-		DFS(pos+1,x,y,k*a,a);
+		DFS(pos+1,x+1,y,k*a,a);
 	}
 }
 void solve()

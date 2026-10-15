@@ -18,6 +18,7 @@ void solve()
 			{
 				dp[i][j]=(dp[i][j]+dp[i-1][j-l])%mod;
 			}
+			cerr<<i<<' '<<j<<':'<<dp[i][j]<<'\n';
 		}
 	}
 	for (int i=0;i<=V;i++)

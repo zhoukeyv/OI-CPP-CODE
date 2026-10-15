@@ -32,7 +32,7 @@ void DFS(int pos,int x,int y,double k,double t)
 	}
 	else
 	{
-		DFS(pos+1,x,y,k*a,b);
+		DFS(pos+1,x,y,k*a,a);
 	}
 }
 void solve()

@@ -8,7 +8,7 @@ string s;
 double a,b,ans1,ans2;
 void DFS(int pos,int x,int y,double k,double t)
 {
-	if (pos==6)
+	if (pos==6||max(x,y)>=3)
 	{
 		if (x>y)
 		{

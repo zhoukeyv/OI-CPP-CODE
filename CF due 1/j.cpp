@@ -25,9 +25,10 @@ void DFS(int pos,int x,int y,double k)
 		x++;
 		DFS(pos+1,x,y,k);
 	}
-	else if (s[pos]=='a')
+	else if (s[pos]=='b')
 	{
-		
+		y++;
+		DFS(pos+1,x,y,k);
 	}
 }
 void solve()

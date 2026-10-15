@@ -4,9 +4,18 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=3010;
+vector<int> graph[N];
+int n;
 void solve()
 {
-	
+	cin>>n;
+	for (int i=1;i<n;i++)
+	{
+		int u,v;
+		cin>>u>>v;
+		graph[u].push_back(v);
+		graph[v].push_back(u);
+	}
 	return;
 }
 signed main()

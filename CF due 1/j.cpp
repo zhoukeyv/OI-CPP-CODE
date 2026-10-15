@@ -6,9 +6,20 @@ const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f;
 string s;
 double a,b;
+void DFS(int pos,int x,int y,int k)
+{
+	if (pos==6)
+	{
+		if (x>y)
+		{
+			
+		}
+	}
+}
 void solve()
 {
-	cin>>a>>b;
+	cin>>s>>a>>b;
+	s='@'+s;
 	return;
 }
 signed main()

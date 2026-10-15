@@ -32,16 +32,15 @@ void DFS(int pos,int x,int y,double k,double t)
 	}
 	else
 	{
-		if (pos==1)
-		{
-			DFS(pos+1,x,y,k*a,b);
-		}
+		DFS(pos+1,x,y,k*a,b);
 	}
 }
 void solve()
 {
 	ans1=ans2=0;
 	cin>>s>>a>>b;
+	a/=100.0;
+	b/=100.0;
 	s='@'+s;
 	return;
 }

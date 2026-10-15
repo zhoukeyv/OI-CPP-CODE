@@ -6,7 +6,7 @@ const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f;
 string s;
 double a,b,ans1,ans2;
-void DFS(int pos,int x,int y,double k)
+void DFS(int pos,int x,int y,double k,double t)
 {
 	if (pos==6)
 	{
@@ -23,12 +23,19 @@ void DFS(int pos,int x,int y,double k)
 	if (s[pos]=='a')
 	{
 		x++;
-		DFS(pos+1,x,y,k);
+		DFS(pos+1,x,y,k,a);
 	}
 	else if (s[pos]=='b')
 	{
 		y++;
-		DFS(pos+1,x,y,k);
+		DFS(pos+1,x,y,k,b);
+	}
+	else
+	{
+		if (pos==1)
+		{
+			DFS(pos+1,x,y,k*a,b);
+		}
 	}
 }
 void solve()

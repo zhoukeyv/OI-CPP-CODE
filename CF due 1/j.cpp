@@ -1,75 +1,61 @@
 #include <bits/stdc++.h>
-#define double long double
 #define int long long
 using namespace std;
-const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
-string s;
-double a,b,ans1,ans2;
-void DFS(int pos,int x,int y,double k,double t)
-{
-	if (pos==6||max(x,y)>=3)
-	{
-		if (x>y)
-		{
-			ans1+=k;
-		}
-		else
-		{
-			ans2+=k;
-		}
-		// cerr<<pos<<' '<<x<<' '<<y<<' '<<k<<'\n';
-		return;
-	}
-	if (s[pos]=='a')
-	{
-		DFS(pos+1,x+1,y,k,a);
-	}
-	else if (s[pos]=='b')
-	{
-		DFS(pos+1,x,y+1,k,1-b);
-	}
-	else
-	{
-		DFS(pos+1,x+1,y,k*t,a);
-		DFS(pos+1,x,y+1,k*(1-t),1-b);
-	}
-	return;
+int b[500005], a[500005], sum[5005];
+bool flag[5005];
+int len,k;
+void sol(int x) {
+  if (flag[x]) return;
+  flag[x] = true;
+  sum[x] = 0;
+  for (int i = (x - 1) * len + 1; i <= x * len; i++) {
+    a[i] = sqrt(a[i]), sum[x] += a[i];
+    if (a[i] > 1) flag[x] = false;
+  }
+  return;
 }
-void solve()
-{
-	ans1=ans2=0;
-	cin>>s>>a>>b;
-	a/=100.0;
-	b/=100.0;
-	s='@'+s;
-	DFS(1,0,0,1,0.5);
-	// cerr<<a<<' '<<b<<'\n';
-	if (fabs(ans1-ans2)<=eps)
-	{
-		cout<<"?\n";
-	}
-	else if (ans1>ans2)
-	{
-		cout<<"a\n";
-	}
-	else
-	{
-		cout<<"b\n";
-	}
-	return;
+
+void add(int l, int r) {
+  for (int i = l; i <= (b[l] * len < r ? b[l] * len : r); i++) {
+    sum[b[l]] -= a[i];
+    a[i] = sqrt(a[i]);
+    sum[b[l]] += a[i];
+  }
+  if (b[l] != b[r])
+    for (int i = r; b[i] == b[r]; i--) {
+      sum[b[r]] -= a[i];
+      a[i] = sqrt(a[i]);
+      sum[b[r]] += a[i];
+    }
+  for (int i = b[l] + 1; i <= b[r] - 1; i++) sol(i);
+  return;
 }
-signed main()
-{
-	// freopen(".in","r",stdin);
-	// freopen(".out","w",stdout);
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	int TestCase=1;
-	cin>>TestCase;
-	for (int Caseid=1;Caseid<=TestCase;Caseid++)
-	{
-		solve();
-	}
-	return 0;
+
+int query(int l, int r) {
+  int ans = 0;
+  for (int i = l; i <= (b[l] * len < r ? b[l] * len : r); i++) ans += a[i];
+  if (b[l] != b[r]) for (int i = r; b[i] == b[r]; i--) ans += a[i];
+  for (int i = b[l] + 1; i <= b[r] - 1; i++) ans += sum[i];
+  return ans;
+}
+signed main() {
+  int n;
+  cin>>n;
+  len = sqrt(n);
+  for (int i = 1; i <= n; i++) cin>>a[i];
+  for (int i = 1; i <= n; i++) {
+    b[i] = (i - 1) / len + 1;
+    sum[b[i]] += a[i];
+  }
+    cin>>k;
+  for (int i = 1; i <=k; i++) {
+    bool opt; int l, r;
+    cin>>opt>>l>>r;
+      if (l>r)
+      {
+          swap(l,r);
+      }
+    opt ? cout<<query(l, r)<<'\n' ,void(): add(l, r);
+  }
+  return 0;
 }

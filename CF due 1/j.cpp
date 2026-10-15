@@ -30,8 +30,10 @@ void DFS(int pos,int x,int y,double k,double t)
 	}
 	else
 	{
-		DFS(pos+1,x+1,y,k*a,a);
+		DFS(pos+1,x+1,y,k*t,a);
+		DFS(pos+1,x,y+1,k*t,1-b);
 	}
+	return;
 }
 void solve()
 {

@@ -24,7 +24,10 @@ void solve()
 	{
 		for (int j=0;j<=min(k-1,i);j++)
 		{
-			
+			if ((i-j)%k!=j)
+			{
+				continue;
+			}
 		}
 	}
 	return;

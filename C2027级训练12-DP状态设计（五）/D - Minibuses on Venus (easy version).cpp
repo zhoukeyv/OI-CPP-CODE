@@ -4,6 +4,7 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=110,K=40,V=3010;
+int dp[N][V];
 int n,k,mod;
 void solve()
 {

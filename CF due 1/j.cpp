@@ -13,7 +13,7 @@ void solve()
 	{
 		ans=max(ans,(i+1)*(n-i+1));
 	}
-	cout<<ans<<'\n';
+	cout<<2*n<<'\n';
 	return;
 }
 signed main()

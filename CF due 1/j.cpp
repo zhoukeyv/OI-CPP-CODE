@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int MAXN=2000005;
-const int MAXM=1<<20;// 2^20 = 1048576
+const int MAXM=1<<20;
 int a[MAXN];
 int cnt[MAXM+5];
 int touched[MAXN+5];
@@ -48,7 +48,6 @@ int main()
 	}
 	unsigned long long total=(unsigned long long)n*(n+1)/2;
 	unsigned long long ans=0;
-	// b <= 20，需要统计 C_b
 	for (int b=0;b<=20;b++)
 	{
 		int M=1<<b;
@@ -96,7 +95,6 @@ int main()
 							C+=(unsigned long long)(L-start+1);
 						}
 					}
-					// 回滚计数数组
 					for (int j=0;j<top;j++)
 					{
 						cnt[touched[j]]=0;
@@ -107,7 +105,6 @@ int main()
 		}
 		ans+=(unsigned long long)(1ULL<<b)*(total-count0+C);
 	}
-	// b > 20，此时 C_b = 0，只需统计 count0
 	for (int b=21;b<=29;b++)
 	{
 		unsigned long long count0=0;

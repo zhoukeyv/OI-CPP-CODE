@@ -56,15 +56,15 @@ void solve()
 	for (int b=0;b<=20;b++)
 	{
 		int M=1<<b;
-		ull cnt=0;
-		ull C=0;
+		ull cnt0=0;
+		ull c=0;
 		int st=0;
 		for (int i=0;i<=n;i++)
 		{
 			if (i==n||(a[i]&(1<<b)))
 			{
 				int len=i-st;
-				cnt+=(ull)len*(len+1)/2;
+				cnt0+=(ull)len*(len+1)/2;
 				if (len>=M)
 				{
 					int L=st;
@@ -97,7 +97,7 @@ void solve()
 						}
 						if (mss==0)
 						{
-							C+=(ull)(L-st+1);
+							c+=(ull)(L-st+1);
 						}
 					}
 					for (int j=0;j<top;j++)
@@ -108,22 +108,22 @@ void solve()
 				st=i+1;
 			}
 		}
-		ans+=(ull)(1ULL<<b)*(sum-cnt+C);
+		ans+=(ull)(1ULL<<b)*(sum-cnt0+c);
 	}
 	for (int b=21;b<=29;b++)
 	{
-		ull cnt=0;
+		ull cnt0=0;
 		int st=0;
 		for (int i=0;i<=n;i++)
 		{
 			if (i==n||(a[i]&(1<<b)))
 			{
 				int len=i-st;
-				cnt+=(ull)len*(len+1)/2;
+				cnt0+=(ull)len*(len+1)/2;
 				st=i+1;
 			}
 		}
-		ans+=(ull)(1ULL<<b)*(sum-cnt);
+		ans+=(ull)(1ULL<<b)*(sum-cnt0);
 	}
 	print_u64(ans);
 	putchar('\n');

@@ -51,26 +51,26 @@ void solve()
 	{
 		a[i]=read();
 	}
-	ull total=(ull)n*(n+1)/2;
+	ull sum=(ull)n*(n+1)/2;
 	ull ans=0;
 	for (int b=0;b<=20;b++)
 	{
 		int M=1<<b;
-		ull count0=0;
+		ull cnt=0;
 		ull C=0;
-		int start=0;
+		int st=0;
 		for (int i=0;i<=n;i++)
 		{
 			if (i==n||(a[i]&(1<<b)))
 			{
-				int len=i-start;
-				count0+=(ull)len*(len+1)/2;
+				int len=i-st;
+				cnt+=(ull)len*(len+1)/2;
 				if (len>=M)
 				{
-					int L=start;
+					int L=st;
 					int mss=M;
 					int top=0;
-					for (int R=start;R<i;R++)
+					for (int R=st;R<i;R++)
 					{
 						int x=a[R];
 						if (x<M)
@@ -97,7 +97,7 @@ void solve()
 						}
 						if (mss==0)
 						{
-							C+=(ull)(L-start+1);
+							C+=(ull)(L-st+1);
 						}
 					}
 					for (int j=0;j<top;j++)
@@ -105,25 +105,25 @@ void solve()
 						cnt[tch[j]]=0;
 					}
 				}
-				start=i+1;
+				st=i+1;
 			}
 		}
-		ans+=(ull)(1ULL<<b)*(total-count0+C);
+		ans+=(ull)(1ULL<<b)*(sum-cnt+C);
 	}
 	for (int b=21;b<=29;b++)
 	{
-		ull count0=0;
-		int start=0;
+		ull cnt=0;
+		int st=0;
 		for (int i=0;i<=n;i++)
 		{
 			if (i==n||(a[i]&(1<<b)))
 			{
-				int len=i-start;
-				count0+=(ull)len*(len+1)/2;
-				start=i+1;
+				int len=i-st;
+				cnt+=(ull)len*(len+1)/2;
+				st=i+1;
 			}
 		}
-		ans+=(ull)(1ULL<<b)*(total-count0);
+		ans+=(ull)(1ULL<<b)*(sum-cnt);
 	}
 	print_u64(ans);
 	putchar('\n');

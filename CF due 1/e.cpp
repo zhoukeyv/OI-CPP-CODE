@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define ull unsigned long long
 #define double long double
 #define int long long
 using namespace std;
@@ -24,7 +25,7 @@ int read()
 	}
 	return x;
 }
-void print_u64(unsigned long long x)
+void print_u64(ull x)
 {
 	if (x==0)
 	{
@@ -50,20 +51,20 @@ void solve()
 	{
 		a[i]=read();
 	}
-	unsigned long long total=(unsigned long long)n*(n+1)/2;
-	unsigned long long ans=0;
+	ull total=(ull)n*(n+1)/2;
+	ull ans=0;
 	for (int b=0;b<=20;b++)
 	{
 		int M=1<<b;
-		unsigned long long count0=0;
-		unsigned long long C=0;
+		ull count0=0;
+		ull C=0;
 		int start=0;
 		for (int i=0;i<=n;i++)
 		{
 			if (i==n||(a[i]&(1<<b)))
 			{
 				int len=i-start;
-				count0+=(unsigned long long)len*(len+1)/2;
+				count0+=(ull)len*(len+1)/2;
 				if (len>=M)
 				{
 					int L=start;
@@ -96,7 +97,7 @@ void solve()
 						}
 						if (missing==0)
 						{
-							C+=(unsigned long long)(L-start+1);
+							C+=(ull)(L-start+1);
 						}
 					}
 					for (int j=0;j<top;j++)
@@ -107,22 +108,22 @@ void solve()
 				start=i+1;
 			}
 		}
-		ans+=(unsigned long long)(1ULL<<b)*(total-count0+C);
+		ans+=(ull)(1ULL<<b)*(total-count0+C);
 	}
 	for (int b=21;b<=29;b++)
 	{
-		unsigned long long count0=0;
+		ull count0=0;
 		int start=0;
 		for (int i=0;i<=n;i++)
 		{
 			if (i==n||(a[i]&(1<<b)))
 			{
 				int len=i-start;
-				count0+=(unsigned long long)len*(len+1)/2;
+				count0+=(ull)len*(len+1)/2;
 				start=i+1;
 			}
 		}
-		ans+=(unsigned long long)(1ULL<<b)*(total-count0);
+		ans+=(ull)(1ULL<<b)*(total-count0);
 	}
 	print_u64(ans);
 	putchar('\n');

@@ -1,7 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int MAXV=2000000;
+const int N=2e6+10;
+int s[N],vis[N];
+int n,m;
 inline int read()
 {
 	int x=0;
@@ -43,19 +45,16 @@ void print128(__int128 x)
 }
 int main()
 {
-	int n=read();
-	int m=read();
-	vector<int> isCore(MAXV+2,0);
-	vector<int> pref(MAXV+2,0);
+	n=read();
+	m=read();
 	for (int i=0;i<n;i++)
 	{
 		int x=read();
-		isCore[x]=1;
+		vis[x]=1;
 	}
-	// pref[x] = 核心档案中 <= x 的数量
-	for (int i=1;i<=MAXV;i++)
+	for (int i=1;i<=2e6;i++)
 	{
-		pref[i]=pref[i-1]+isCore[i];
+		s[i]=s[i-1]+vis[i];
 	}
 	vector<ll> w(m,0);
 	for (int i=0;i<m;i++)
@@ -65,18 +64,14 @@ int main()
 		for (int j=0;j<l;j++)
 		{
 			int x=read();
-			// 核心档案中 > x 的数量
-			int cnt=n-pref[x];
+			int cnt=n-s[x];
 			sum+=cnt;
 		}
 		w[i]=sum;
 	}
 	sort(w.begin(),w.end());
 	__int128 ans=0;
-	// 核心档案之间的固定贡献
 	ans+=(__int128)m*n*(n+1)/2;
-	// 非核心档案贡献
-	// 按权重升序处理，第 i 批（0-index）系数为 m - i
 	for (int i=0;i<m;i++)
 	{
 		ans+=(__int128)w[i]*(m-i);

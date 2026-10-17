@@ -131,8 +131,8 @@ void solve()
 }
 signed main()
 {
-	// freopen(".in","r",stdin);
-	// freopen(".out","w",stdout);
+	// freopen("func.in","r",stdin);
+	// freopen("func.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

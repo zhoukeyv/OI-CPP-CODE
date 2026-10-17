@@ -9,7 +9,7 @@ const int MAXN=2000005;
 const int MAXM=1<<20;
 int a[MAXN];
 int cnt[MAXM+5];
-int touched[MAXN+5];
+int tch[MAXN+5];
 int read()
 {
 	int x=0;
@@ -68,7 +68,7 @@ void solve()
 				if (len>=M)
 				{
 					int L=start;
-					int missing=M;
+					int mss=M;
 					int top=0;
 					for (int R=start;R<i;R++)
 					{
@@ -77,12 +77,12 @@ void solve()
 						{
 							if (cnt[x]==0)
 							{
-								missing--;
-								touched[top++]=x;
+								mss--;
+								tch[top++]=x;
 							}
 							cnt[x]++;
 						}
-						while (missing==0)
+						while (mss==0)
 						{
 							int y=a[L];
 							if (y<M)
@@ -95,14 +95,14 @@ void solve()
 							}
 							L++;
 						}
-						if (missing==0)
+						if (mss==0)
 						{
 							C+=(ull)(L-start+1);
 						}
 					}
 					for (int j=0;j<top;j++)
 					{
-						cnt[touched[j]]=0;
+						cnt[tch[j]]=0;
 					}
 				}
 				start=i+1;

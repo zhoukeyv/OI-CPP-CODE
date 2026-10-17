@@ -60,8 +60,7 @@ void solve()
 	}
 	for (int i=0;i<m;i++)
 	{
-		int l=read();
-		int sum=0;
+		int l=read(),sum=0;
 		for (int j=0;j<l;j++)
 		{
 			int x=read();

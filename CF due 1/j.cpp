@@ -2,9 +2,9 @@
 using namespace std;
 typedef long long ll;
 const int N=2e6+10;
-int s[N],vis[N];
+int s[N],vis[N],w[N];
 int n,m;
-inline int read()
+int read()
 {
 	int x=0;
 	char c=getchar();
@@ -56,11 +56,10 @@ int main()
 	{
 		s[i]=s[i-1]+vis[i];
 	}
-	vector<ll> w(m,0);
 	for (int i=0;i<m;i++)
 	{
 		int l=read();
-		ll sum=0;
+		int sum=0;
 		for (int j=0;j<l;j++)
 		{
 			int x=read();
@@ -69,7 +68,7 @@ int main()
 		}
 		w[i]=sum;
 	}
-	sort(w.begin(),w.end());
+	sort(w,w+m);
 	__int128 ans=0;
 	ans+=(__int128)m*n*(n+1)/2;
 	for (int i=0;i<m;i++)

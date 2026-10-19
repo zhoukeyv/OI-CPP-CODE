@@ -59,7 +59,7 @@ signed main()
     ios::sync_with_stdio(0);
     cin.tie(0);
     int TestCase=1;
-    // cin>>TestCase;
+    cin>>TestCase;
     for (int CaseId=1;CaseId<=TestCase;CaseId++)
     {
         solve();

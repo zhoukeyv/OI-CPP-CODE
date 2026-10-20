@@ -10,6 +10,11 @@ int n,k;
 void solve()
 {
 	cin>>n>>k;
+	fac[0]=1;
+	for (int i=1;i<=n;i++)
+	{
+		fac[i]=fac[i-1]*i%mod;
+	}
 	return;
 }
 signed main()

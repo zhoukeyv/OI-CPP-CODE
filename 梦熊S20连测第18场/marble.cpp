@@ -35,7 +35,7 @@ void solve()
 	int ans=0;
 	for (int j=1;j<n;j++)
 	{
-		int present[101]={0};
+		int ps[101]={0};
 		ull l=st1[j],r=st2[j];
 		for (int c=0;c<=100;c++)
 		{
@@ -43,14 +43,14 @@ void solve()
 			{
 				if ((l>>c)&1)
 				{
-					present[c]=1;
+					ps[c]=1;
 				}
 			}
 			else
 			{
 				if ((r>>(c-64))&1)
 				{
-					present[c]=1;
+					ps[c]=1;
 				}
 			}
 		}
@@ -58,7 +58,7 @@ void solve()
 		int last=-1;
 		for (int a=100;a>=0;a--)
 		{
-			if (present[a])
+			if (ps[a])
 			{
 				last=a;
 			}

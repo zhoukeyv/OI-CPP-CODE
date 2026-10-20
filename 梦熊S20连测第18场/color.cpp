@@ -49,6 +49,7 @@ void solve()
 		graph[u].push_back(v);
 		graph[v].push_back(u);
 	}
+	int ans=C(k-1,(int)graph[1].size());
 	return;
 }
 signed main()

@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 #define double long double
 #define int long long
+#define ull unsigned long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f;
-const int N=10005,mod=1e9+7;
+const int inf=0x3f3f3f3f3f3f3f3f,N=10005,mod=1e9+7;
 int n;
 unsigned long long setsL[N],setsH[N];
 int maskL[101],maskH[101];
@@ -49,7 +49,6 @@ void solve()
 	long long ans=0;
 	for (int j=1;j<n;j++)
 	{
-		// 提取 B = C_j
 		int present[101]={0};
 		unsigned long long lo=setsL[j],hi=setsH[j];
 		for (int c=0;c<=100;c++)
@@ -69,7 +68,6 @@ void solve()
 				}
 			}
 		}
-		// nxt[a] = B 中 >= a 的最小坑位置，不存在则为 -1
 		int nxt[101];
 		int last=-1;
 		for (int a=100;a>=0;a--)
@@ -80,7 +78,6 @@ void solve()
 			}
 			nxt[a]=last;
 		}
-		// mask[a] 表示球在 a 时会落入哪个坑
 		for (int a=0;a<=100;a++)
 		{
 			int b=nxt[a];
@@ -97,7 +94,6 @@ void solve()
 				}
 			}
 		}
-		// 对当前 B 建 8 位分块表
 		for (int k=0;k<13;k++)
 		{
 			int s=k*8;
@@ -120,7 +116,6 @@ void solve()
 				tblH[k][p]=rh;
 			}
 		}
-		// 枚举所有 i < j
 		for (int i=0;i<j;i++)
 		{
 			unsigned long long al=setsL[i],ah=setsH[i];

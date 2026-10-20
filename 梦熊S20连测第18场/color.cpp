@@ -21,13 +21,13 @@ int power(int a,int b,int p)
 	}
 	return res;
 }
-int C(int a,int b)
+int A(int a,int b)
 {
 	if (a<0||b<0||a<b)
 	{
 		return 0;
 	}
-	return fac[a]*infac[b]%mod*infac[a-b]%mod;
+	return fac[a]*infac[a-b]%mod;
 }
 void solve()
 {
@@ -49,10 +49,10 @@ void solve()
 		graph[u].push_back(v);
 		graph[v].push_back(u);
 	}
-	int ans=k*C(k-1,(int)graph[1].size())%mod;
+	int ans=k*A(k-1,(int)graph[1].size())%mod;
 	for (int i=2;i<=n;i++)
 	{
-		ans=ans*C(k-2,(int)graph[i].size()-1)%mod;
+		ans=ans*A(k-2,(int)graph[i].size()-1)%mod;
 	}
 	cout<<ans<<'\n';
 	return;

@@ -3,10 +3,24 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=5e5+10;
+const int inf=0x3f3f3f3f3f3f3f3f,N=5e5+10,mod=1e9+7;
 vector<int> graph[N];
 int fac[N],infac[N];
 int n,k;
+int power(int a,int b,int p)
+{
+	int res=1;
+	while (b)
+	{
+		if (b&1)
+		{
+			res=res*a%p;
+		}
+		a=a*a%p;
+		b>>=1;
+	}
+	return res;
+}
 void solve()
 {
 	cin>>n>>k;

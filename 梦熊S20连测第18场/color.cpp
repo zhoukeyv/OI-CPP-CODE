@@ -59,8 +59,8 @@ void solve()
 }
 signed main()
 {
-	// freopen("color.in","r",stdin);
-	// freopen("color.out","w",stdout);
+	freopen("color.in","r",stdin);
+	freopen("color.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

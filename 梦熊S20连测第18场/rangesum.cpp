@@ -55,7 +55,7 @@ void solve()
 			int coef=C(i+k-2,k-1)*C(r-i+k-1,k-1)%mod;
 			ans=(ans+a[i]*coef)%mod;
 		}
-		cout<<ans<<" ";
+		cout<<ans<<' ';
 	}
 	cout<<'\n';
 	return;

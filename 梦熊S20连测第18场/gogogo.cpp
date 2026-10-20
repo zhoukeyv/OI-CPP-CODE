@@ -44,16 +44,16 @@ void solve()
 	cin>>s;
 	int n=s.size();
 	int ans=0;
-	for (int mask=0;mask<(1<<n);mask++)
+	for (int k=0;k<(1<<n);k++)
 	{
-		if (__builtin_popcount(mask)<=ans)
+		if (__builtin_popcount(k)<=ans)
 		{
 			continue;
 		}
 		string t;
 		for (int i=0;i<n;i++)
 		{
-			if (mask>>i&1)
+			if (k>>i&1)
 			{
 				t+=s[i];
 			}

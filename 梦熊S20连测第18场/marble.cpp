@@ -104,18 +104,17 @@ void solve()
 		}
 		for (int i=0;i<j;i++)
 		{
-			ull al=st1[i],ah=st2[i];
 			ull rl=0,rh=0;
 			for (int k=0;k<13;k++)
 			{
 				int temp;
 				if (k<8)
 				{
-					temp=(al>>(8*k))&25;
+					temp=(st1[i]>>(8*k))&255;
 				}
 				else
 				{
-					temp=(ah>>(8*(k-8)))&255;
+					temp=(st2[i]>>(8*(k-8)))&255;
 				}
 				rl|=tbl1[k][temp];
 				rh|=tbl2[k][temp];

@@ -36,14 +36,13 @@ void solve()
 		cin>>a[i];
 		a[i]%=mod;
 	}
-	int maxN=n+k+5;
 	fac[0]=1;
-	for (int i=1;i<=maxN;i++)
+	for (int i=1;i<=n+k;i++)
 	{
 		fac[i]=fac[i-1]*i%mod;
 	}
-	infac[maxN]=power(fac[maxN],mod-2,mod);
-	for (int i=maxN-1;i>=0;i--)
+	infac[n+k]=power(fac[n+k],mod-2,mod);
+	for (int i=n+k-1;i>=0;i--)
 	{
 		infac[i]=infac[i+1]*(i+1)%mod;
 	}

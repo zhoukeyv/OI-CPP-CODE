@@ -26,7 +26,7 @@ void solve()
 			}
 			else
 			{
-				r|=1ULL<<(c-64);
+				r|=1ull<<(c-64);
 			}
 		}
 		st1[i]=l;
@@ -72,11 +72,11 @@ void solve()
 			{
 				if (b<64)
 				{
-					msk1[a]=1ULL<<b;
+					msk1[a]=1ull<<b;
 				}
 				else
 				{
-					msk2[a]=1ULL<<(b-64);
+					msk2[a]=1ull<<(b-64);
 				}
 			}
 		}

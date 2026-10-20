@@ -5,49 +5,50 @@
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=10005,mod=1e9+7;
+ull tbl1[13][256],tbl2[13][256],st1[N],st2[N];
+int msk1[101],msk2[101];
 int n;
-ull setsL[N],setsH[N];
-int maskL[101],maskH[101];
-ull tblL[13][256],tblH[13][256];
 void solve()
 {
 	cin>>n;
 	for (int i=0;i<n;i++)
 	{
-		int s=read();
-		ull lo=0,hi=0;
+		int s;
+		cin>>s;
+		ull l=0,r=0;
 		for (int j=0;j<s;j++)
 		{
-			int c=read();
+			int c;
+			cin>>c;
 			if (c<64)
 			{
-				lo|=1ULL<<c;
+				l|=1ull<<c;
 			}
 			else
 			{
-				hi|=1ULL<<(c-64);
+				r|=1ULL<<(c-64);
 			}
 		}
-		setsL[i]=lo;
-		setsH[i]=hi;
+		st1[i]=l;
+		st2[i]=r;
 	}
 	int ans=0;
 	for (int j=1;j<n;j++)
 	{
 		int present[101]={0};
-		ull lo=setsL[j],hi=setsH[j];
+		ull l=st1[j],r=st2[j];
 		for (int c=0;c<=100;c++)
 		{
 			if (c<64)
 			{
-				if ((lo>>c)&1)
+				if ((l>>c)&1)
 				{
 					present[c]=1;
 				}
 			}
 			else
 			{
-				if ((hi>>(c-64))&1)
+				if ((r>>(c-64))&1)
 				{
 					present[c]=1;
 				}
@@ -66,16 +67,16 @@ void solve()
 		for (int a=0;a<=100;a++)
 		{
 			int b=nxt[a];
-			maskL[a]=maskH[a]=0;
+			msk1[a]=msk2[a]=0;
 			if (b!=-1)
 			{
 				if (b<64)
 				{
-					maskL[a]=1ULL<<b;
+					msk1[a]=1ULL<<b;
 				}
 				else
 				{
-					maskH[a]=1ULL<<(b-64);
+					msk2[a]=1ULL<<(b-64);
 				}
 			}
 		}
@@ -92,18 +93,18 @@ void solve()
 						int pos=s+t;
 						if (pos<=100)
 						{
-							rl|=maskL[pos];
-							rh|=maskH[pos];
+							rl|=msk1[pos];
+							rh|=msk2[pos];
 						}
 					}
 				}
-				tblL[k][p]=rl;
-				tblH[k][p]=rh;
+				tbl1[k][p]=rl;
+				tbl2[k][p]=rh;
 			}
 		}
 		for (int i=0;i<j;i++)
 		{
-			ull al=setsL[i],ah=setsH[i];
+			ull al=st1[i],ah=st2[i];
 			ull rl=0,rh=0;
 			for (int k=0;k<13;k++)
 			{
@@ -116,8 +117,8 @@ void solve()
 				{
 					byte=(ah>>(8*(k-8)))&0xFF;
 				}
-				rl|=tblL[k][byte];
-				rh|=tblH[k][byte];
+				rl|=tbl1[k][byte];
+				rh|=tbl2[k][byte];
 			}
 			int cnt=__builtin_popcountll(rl)+__builtin_popcountll(rh);
 			if (cnt&1)

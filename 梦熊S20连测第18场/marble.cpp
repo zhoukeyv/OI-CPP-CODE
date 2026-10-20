@@ -153,6 +153,8 @@ signed main()
 {
 	// freopen("marble.in","r",stdin);
 	// freopen("marble.out","w",stdout);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 	int TestCase=1;
 	// cin>>TestCase;
 	for (int Caseid=1;Caseid<=TestCase;Caseid++)

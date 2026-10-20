@@ -1,36 +1,21 @@
 #include<bits/stdc++.h>
+#define ull unsigned long long
 #define double long double
 #define int long long
-#define ull unsigned long long
 using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=10005,mod=1e9+7;
 int n;
-unsigned long long setsL[N],setsH[N];
+ull setsL[N],setsH[N];
 int maskL[101],maskH[101];
-unsigned long long tblL[13][256],tblH[13][256];
-inline int read()
-{
-	int x=0;
-	char c=getchar();
-	while (c<'0'||c>'9')
-	{
-		c=getchar();
-	}
-	while (c>='0'&&c<='9')
-	{
-		x=x*10+c-'0';
-		c=getchar();
-	}
-	return x;
-}
+ull tblL[13][256],tblH[13][256];
 void solve()
 {
-	n=read();
+	cin>>n;
 	for (int i=0;i<n;i++)
 	{
 		int s=read();
-		unsigned long long lo=0,hi=0;
+		ull lo=0,hi=0;
 		for (int j=0;j<s;j++)
 		{
 			int c=read();
@@ -46,11 +31,11 @@ void solve()
 		setsL[i]=lo;
 		setsH[i]=hi;
 	}
-	long long ans=0;
+	int ans=0;
 	for (int j=1;j<n;j++)
 	{
 		int present[101]={0};
-		unsigned long long lo=setsL[j],hi=setsH[j];
+		ull lo=setsL[j],hi=setsH[j];
 		for (int c=0;c<=100;c++)
 		{
 			if (c<64)
@@ -99,7 +84,7 @@ void solve()
 			int s=k*8;
 			for (int p=0;p<256;p++)
 			{
-				unsigned long long rl=0,rh=0;
+				ull rl=0,rh=0;
 				for (int t=0;t<8;t++)
 				{
 					if ((p>>t)&1)
@@ -118,8 +103,8 @@ void solve()
 		}
 		for (int i=0;i<j;i++)
 		{
-			unsigned long long al=setsL[i],ah=setsH[i];
-			unsigned long long rl=0,rh=0;
+			ull al=setsL[i],ah=setsH[i];
+			ull rl=0,rh=0;
 			for (int k=0;k<13;k++)
 			{
 				int byte;

@@ -42,6 +42,13 @@ void solve()
 	{
 		infac[i]=infac[i+1]*(i+1)%mod;
 	}
+	for (int i=1;i<n;i++)
+	{
+		int u,v;
+		cin>>u>>v;
+		graph[u].push_back(v);
+		graph[v].push_back(u);
+	}
 	return;
 }
 signed main()

@@ -85,7 +85,7 @@ void solve()
 			int s=k*8;
 			for (int p=0;p<256;p++)
 			{
-				ull rl=0,rh=0;
+				ull t1=0,t2=0;
 				for (int t=0;t<8;t++)
 				{
 					if ((p>>t)&1)
@@ -93,18 +93,18 @@ void solve()
 						int pos=s+t;
 						if (pos<=100)
 						{
-							rl|=msk1[pos];
-							rh|=msk2[pos];
+							t1|=msk1[pos];
+							t2|=msk2[pos];
 						}
 					}
 				}
-				tbl1[k][p]=rl;
-				tbl2[k][p]=rh;
+				tbl1[k][p]=t1;
+				tbl2[k][p]=t2;
 			}
 		}
 		for (int i=0;i<j;i++)
 		{
-			ull rl=0,rh=0;
+			ull t1=0,t2=0;
 			for (int k=0;k<13;k++)
 			{
 				int temp;
@@ -116,10 +116,10 @@ void solve()
 				{
 					temp=(st2[i]>>(8*(k-8)))&255;
 				}
-				rl|=tbl1[k][temp];
-				rh|=tbl2[k][temp];
+				t1|=tbl1[k][temp];
+				t2|=tbl2[k][temp];
 			}
-			int cnt=__builtin_popcountll(rl)+__builtin_popcountll(rh);
+			int cnt=__builtin_popcountll(t1)+__builtin_popcountll(t2);
 			if (cnt&1)
 			{
 				ans++;

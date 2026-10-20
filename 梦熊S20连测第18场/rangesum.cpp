@@ -3,7 +3,7 @@
 #define int long long
 using namespace std;
 const double eps=1e-6;
-const int inf=0x3f3f3f3f3f3f3f3f,N=200005,mod=1e9+7;
+const int inf=0x3f3f3f3f3f3f3f3f,N=2e5+10,mod=1e9+7;
 int a[N],fac[N],infac[N];
 int n,k;
 int power(int a,int b,int p)
@@ -46,15 +46,14 @@ void solve()
 	{
 		infac[i]=infac[i+1]*(i+1)%mod;
 	}
-	for (int r=1;r<=n;r++)
+	for (int i=1;i<=n;i++)
 	{
-		int ans=0;
-		for (int i=1;i<=r;i++)
+		int sum=0;
+		for (int j=1;j<=i;j++)
 		{
-			int coef=C(i+k-2,k-1)*C(r-i+k-1,k-1)%mod;
-			ans=(ans+a[i]*coef)%mod;
+			sum=(sum+a[j]*C(j+k-2,k-1)%mod*C(i-j+k-1,k-1)%mod)%mod;
 		}
-		cout<<ans<<' ';
+		cout<<sum<<' ';
 	}
 	cout<<'\n';
 	return;

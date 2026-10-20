@@ -5,10 +5,11 @@ using namespace std;
 const double eps=1e-6;
 const int inf=0x3f3f3f3f3f3f3f3f,N=5e5+10;
 vector<int> graph[N];
+int fac[N],infac[N];
 int n,k;
 void solve()
 {
-	
+	cin>>n>>k;
 	return;
 }
 signed main()

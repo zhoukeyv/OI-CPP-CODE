@@ -60,8 +60,8 @@ void solve()
 }
 signed main()
 {
-	// freopen("rangesum.in","r",stdin);
-	// freopen("rangesum.out","w",stdout);
+	freopen("rangesum.in","r",stdin);
+	freopen("rangesum.out","w",stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int TestCase=1;

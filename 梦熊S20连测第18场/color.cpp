@@ -49,7 +49,12 @@ void solve()
 		graph[u].push_back(v);
 		graph[v].push_back(u);
 	}
-	int ans=C(k-1,(int)graph[1].size());
+	int ans=k*C(k-1,(int)graph[1].size())%mod;
+	for (int i=2;i<=n;i++)
+	{
+		ans=ans*C(k-2,(int)graph[i].size())%mod;
+	}
+	cout<<ans<<'\n';
 	return;
 }
 signed main()

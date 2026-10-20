@@ -23,21 +23,21 @@ bool check(string t)
 		{
 			continue;
 		}
-		int ok=1;
+		int flag=1;
 		for (int i=d;i<n;i++)
 		{
 			if (t[i]!=t[i-d])
 			{
-				ok=0;
+				flag=0;
 				break;
 			}
 		}
-		if (ok)
+		if (flag)
 		{
-			return 1;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 void solve()
 {

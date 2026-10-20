@@ -52,7 +52,7 @@ void solve()
 	int ans=k*C(k-1,(int)graph[1].size())%mod;
 	for (int i=2;i<=n;i++)
 	{
-		ans=ans*C(k-2,(int)graph[i].size())%mod;
+		ans=ans*C(k-2,(int)graph[i].size()-1)%mod;
 	}
 	cout<<ans<<'\n';
 	return;

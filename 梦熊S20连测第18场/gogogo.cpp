@@ -44,7 +44,7 @@ void solve()
 	cin>>s;
 	int n=s.size();
 	int ans=0;
-	for (int k=0;k<(1<<n);k++)
+	for (int k=0;k<(1ll<<n);k++)
 	{
 		if (__builtin_popcount(k)<=ans)
 		{

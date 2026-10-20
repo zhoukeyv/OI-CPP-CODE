@@ -146,15 +146,15 @@ void solve()
 			}
 		}
 	}
-	printf("%lld\n",ans);
+	cout<<ans<<'\n';
 	return;
 }
 signed main()
 {
-	// freopen("color.in", "r", stdin);
-	// freopen("color.out", "w", stdout);
+	// freopen("marble.in","r",stdin);
+	// freopen("marble.out","w",stdout);
 	int TestCase=1;
-	// cin >> TestCase;
+	// cin>>TestCase;
 	for (int Caseid=1;Caseid<=TestCase;Caseid++)
 	{
 		solve();

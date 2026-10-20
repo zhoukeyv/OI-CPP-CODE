@@ -108,17 +108,17 @@ void solve()
 			ull rl=0,rh=0;
 			for (int k=0;k<13;k++)
 			{
-				int byte;
+				int temp;
 				if (k<8)
 				{
-					byte=(al>>(8*k))&0xFF;
+					temp=(al>>(8*k))&25;
 				}
 				else
 				{
-					byte=(ah>>(8*(k-8)))&0xFF;
+					temp=(ah>>(8*(k-8)))&255;
 				}
-				rl|=tbl1[k][byte];
-				rh|=tbl2[k][byte];
+				rl|=tbl1[k][temp];
+				rh|=tbl2[k][temp];
 			}
 			int cnt=__builtin_popcountll(rl)+__builtin_popcountll(rh);
 			if (cnt&1)

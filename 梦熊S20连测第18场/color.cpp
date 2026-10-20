@@ -29,6 +29,11 @@ void solve()
 	{
 		fac[i]=fac[i-1]*i%mod;
 	}
+	infac[n]=power(fac[n],mod-2,mod);
+	for (int i=n-1;i>=0;i--)
+	{
+		infac[i]=infac[i+1]*(i+1)%mod;
+	}
 	return;
 }
 signed main()
